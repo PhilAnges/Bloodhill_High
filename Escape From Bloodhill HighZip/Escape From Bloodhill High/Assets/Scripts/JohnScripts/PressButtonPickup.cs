@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkOverToPickUp : MonoBehaviour
+public class PressButtonPickup : MonoBehaviour
 {
-
     public string playerTag;
+    public KeyCode pickItUp;
     public GameObject pickedUpText;
 
     // Start is called before the first frame update
@@ -17,16 +17,18 @@ public class WalkOverToPickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
-
-            pickedUpText.SetActive(true);
-            gameObject.SetActive(false);
+            if (Input.GetKeyUp(pickItUp))
+            {
+                pickedUpText.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
     }
 }
