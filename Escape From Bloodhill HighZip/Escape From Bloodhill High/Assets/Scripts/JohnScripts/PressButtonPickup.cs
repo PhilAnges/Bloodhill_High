@@ -26,6 +26,7 @@ public class PressButtonPickup : MonoBehaviour
         {
             if (Input.GetKeyUp(pickItUp))
             {
+                other.gameObject.GetComponent<ItemPickup>().pickedUpItem = true;
                 pickedUpText.SetActive(true);
                 gameObject.SetActive(false);
             }
