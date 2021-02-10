@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 0}
-  pauseButton: 112
+  pauseButton: 9
 --- !u!114 &4883341769070792769
 MonoBehaviour:
   m_ObjectHideFlags: 0
