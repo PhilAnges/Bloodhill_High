@@ -15,6 +15,7 @@ public class AskForPassword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
     }
@@ -22,8 +23,12 @@ public class AskForPassword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(passwordPlease.activeSelf);
+
         if(thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
         {
+            player.GetComponent<FirstPersonCamera>().enabled = true;
+            instructions.SetActive(false);
             passwordPlease.SetActive(false);
             gameObject.SetActive(false);
         }
@@ -42,6 +47,7 @@ public class AskForPassword : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             instructions.SetActive(false);
+            passwordPlease.SetActive(false);
         }
     }
 
@@ -51,9 +57,22 @@ public class AskForPassword : MonoBehaviour
         {
             if (Input.GetKeyUp(startTyping))
             {
-                passwordPlease.SetActive(true);
-                
+                //passwordPlease.SetActive(true);
+                DisableAskForPassword(passwordPlease.activeSelf);
+                player.GetComponent<FirstPersonCamera>().enabled = !player.GetComponent<FirstPersonCamera>().enabled;
             }
+        }
+    }
+
+    public void DisableAskForPassword(bool isActive)
+    {
+        if (isActive == false)
+        {
+            passwordPlease.SetActive(true);
+        }
+        if (isActive == true)
+        {
+            passwordPlease.SetActive(false);
         }
     }
 }

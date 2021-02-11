@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject player;
     public GameObject pauseUI;
     public KeyCode pauseButton;
     private bool isPaused;
@@ -11,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("MainCamera");
         isPaused = false;
         pauseUI.SetActive(false);
     }
@@ -21,14 +23,19 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyUp(pauseButton))
         {
             isPaused = !isPaused;
+            player.GetComponent<FirstPersonCamera>().enabled = !player.GetComponent<FirstPersonCamera>().enabled;
         }
         if (isPaused == true)
         {
+            
+            Cursor.lockState = CursorLockMode.None;
             pauseUI.SetActive(true);
             Time.timeScale = 0f;
         }
         if (isPaused == false)
         {
+            
+            Cursor.lockState = CursorLockMode.Locked;
             pauseUI.SetActive(false);
             Time.timeScale = 1f;
         }
@@ -37,5 +44,6 @@ public class PauseMenu : MonoBehaviour
     public void Unpause()
     {
         isPaused = false;
+        player.GetComponent<FirstPersonCamera>().enabled = true;
     }
 }

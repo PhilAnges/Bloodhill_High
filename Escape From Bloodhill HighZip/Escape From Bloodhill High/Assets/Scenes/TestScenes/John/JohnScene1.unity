@@ -863,7 +863,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press SPACE to start typing.
+  m_Text: Press ENTER to start typing.
 --- !u!222 &879739181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1589,10 +1589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  player: {fileID: 0}
+  player: {fileID: 1775676383}
   passwordPlease: {fileID: 252150778}
   instructions: {fileID: 879739177}
-  startTyping: 32
+  startTyping: 13
   thisIsPassword: Sparta
 --- !u!65 &1730802072
 BoxCollider:
