@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 1789883265}
   - component: {fileID: 1789883264}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Audio Key
   m_TagString: AudioKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
