@@ -23,7 +23,7 @@ public class AskForPassword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(passwordPlease.activeSelf);
+        
 
         if(thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
         {

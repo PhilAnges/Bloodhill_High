@@ -42,9 +42,6 @@ public class OpenDoor : MonoBehaviour
                 
                 openTheDoor = true;
             }
-
-
-
         }
     }
 
@@ -57,9 +54,6 @@ public class OpenDoor : MonoBehaviour
             transform.position = outOfWay;
             waitToMove = Time.deltaTime;
         }
-
-        //gameObject.transform.Rotate(0.0f, swing, 0.0f);
-
     }
     void SwingOpen()
     {
