@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7ad4a8d5c5184fa7101d882ffb04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   pauseUI: {fileID: 0}
+  inventoryUI: {fileID: 0}
   pauseButton: 9
 --- !u!114 &4883341769070792769
 MonoBehaviour:
