@@ -9,12 +9,17 @@ public class InventoryMenu : MonoBehaviour
     public GameObject playerCharacter;
 
     private int itemCounter;
-    private GameObject[] itemHold;
+    public GameObject[] itemHold;
     // Start is called before the first frame update
     void Start()
     {
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemCounter = 0;
+
+        for(int i = 0; i < buttonLocations.Length; i++)
+        {
+            itemHold[i] = null;
+        }
 
     }
 
