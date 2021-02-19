@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 1152824812}
   - component: {fileID: 1152824811}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CowardsWayOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2389,6 +2389,7 @@ GameObject:
   - component: {fileID: 1435642049}
   - component: {fileID: 1435642048}
   - component: {fileID: 1435642052}
+  - component: {fileID: 1435642053}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -2484,6 +2485,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   pickItUp: 32
+--- !u!114 &1435642053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435642047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075b8758f0afffa4db09e026343c3f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Bronze Key
+  itemDescription: "It\u2019s a rough, brown key. Your conscious mind knows you\u2019ve
+    never seen this item before, yet you feel like you must protect this with your
+    life. You have too many dark secrets, and too many enemies to just let something
+    like this out of your hands. You do\u2026 don\u2019t you? Maybe it\u2019s just
+    a feeling."
 --- !u!1 &1475620833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3089,7 @@ GameObject:
   - component: {fileID: 1789883260}
   - component: {fileID: 1789883265}
   - component: {fileID: 1789883264}
+  - component: {fileID: 1789883266}
   m_Layer: 0
   m_Name: Audio Key
   m_TagString: AudioKey
@@ -3182,6 +3202,21 @@ MonoBehaviour:
   spookSpawn: {x: 0, y: 0, z: 5}
   spookFacing: {x: 0, y: 0, z: 0, w: 45}
   pickItUp: 32
+--- !u!114 &1789883266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789883259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075b8758f0afffa4db09e026343c3f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Recording
+  itemDescription: It's an old phonograph disk. Holding it, you think about what could
+    be on it. As you rub the coarse grooves, a voice calls to you. 'Room 211'.
 --- !u!1 &1794942234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,6 +3978,7 @@ GameObject:
   - component: {fileID: 2047183580}
   - component: {fileID: 2047183579}
   - component: {fileID: 2047183583}
+  - component: {fileID: 2047183584}
   m_Layer: 0
   m_Name: Palm
   m_TagString: Untagged
@@ -4037,6 +4073,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   pickItUp: 32
+--- !u!114 &2047183584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047183578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075b8758f0afffa4db09e026343c3f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Gold Hand
+  itemDescription: "It\u2019s a beautiful, gilded hand. Dainty, fingernails not too
+    long, nary a stray wrinkle. Despite being made of gold, it\u2019s comfortably
+    warm to the touch, like when you were young and sad, so your mother would stroke
+    your cheek to make you feel better. How long have you been standing here, scrutinizing
+    this artifact?"
 --- !u!1 &2092889244
 GameObject:
   m_ObjectHideFlags: 0

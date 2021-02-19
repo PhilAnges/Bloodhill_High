@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryMenu : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class InventoryMenu : MonoBehaviour
         itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
         if (itemHold[itemCounter] != null)
         {
+            itemSlot.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemName;
             Instantiate(itemSlot, buttonLocations[itemCounter]);
             itemCounter++;
         }

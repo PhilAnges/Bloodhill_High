@@ -27,6 +27,7 @@ public class EscapeEnd : MonoBehaviour
         {
             if(nopenope == true)
             {
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene(escapeSuccessful);
             }
         }
