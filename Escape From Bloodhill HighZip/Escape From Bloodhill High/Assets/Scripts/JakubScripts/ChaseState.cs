@@ -7,7 +7,6 @@ public class ChaseState : AIState
     public ChaseState(AIController parentAI)
     {
         parent = parentAI;
-        maxAwareness = parent.aggroTime;
     }
 
     public override void UpdateBehavior()
@@ -22,8 +21,7 @@ public class ChaseState : AIState
     {
         parent.navAgent.stoppingDistance = parent.playerChaseStoppingDistance;
         parent.navAgent.SetDestination(parent.playerPosition);
-        parent.navAgent.speed = parent.ogSpeed * parent.chaseSpeedMultiplier;
-        //parent.alertTime = parent.aggroTime;
+        parent.navAgent.speed = parent.patrolSpeed * parent.chaseSpeedMultiplier;
         Debug.Log("Entering Chase State");
     }
 

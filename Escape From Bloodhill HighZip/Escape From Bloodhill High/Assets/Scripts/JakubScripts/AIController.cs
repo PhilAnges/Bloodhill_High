@@ -11,7 +11,7 @@ public class AIController : MonoBehaviour
     public GameController gameController;
     [HideInInspector]
     public Vector3 currentDestination;
-    //[HideInInspector]
+    [HideInInspector]
     public bool aware = false;
     [HideInInspector]
     public float arriveDistance;
@@ -23,7 +23,7 @@ public class AIController : MonoBehaviour
     public int previousPoint;
     [HideInInspector]
     public AIState currentState;
-    //[HideInInspector]
+    [HideInInspector]
     public float awareness = 0f;
     [HideInInspector]
     public Vector3 playerPosition;
@@ -34,23 +34,25 @@ public class AIController : MonoBehaviour
     [HideInInspector]
     public float ogAlertTime;
     [HideInInspector]
-    public float ogSpeed;
-
+    public float fieldOfView = 2f;
+    [HideInInspector]
     public Vector3 playerDirection;
 
     private int frameLimit = 10;
-    private int frameIncrement = 0;
-    
-
+    private int frameIncrement = 0;    
     private int playerMask = 1 << 8;
 
-    public float fieldOfView = 2f;
+    [Range(5f, 20f)]
     public float maxViewDistance = 10f;
-    public float alertTime = 3f;
-    public float aggroTime = 10f;
-    public float rotationSpeed = 5f;   
-    public float playerChaseStoppingDistance;
+    [Range(1f, 10f)]
+    public float patrolSpeed;
+    [Range(1f, 10f)]
     public float chaseSpeedMultiplier = 2f;
+    [Range(1f, 45f)]
+    public float rotationSpeed = 5f;
+    public float alertTime = 3f;    
+    public float playerChaseStoppingDistance;
+    
     public Transform[] pathPoints;
     public Transform spherePos;
 
@@ -60,7 +62,7 @@ public class AIController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
-        ogSpeed = navAgent.speed;
+        navAgent.speed = patrolSpeed;
         nextPoint = 0;
         previousPoint = 0;
         currentState = new PatrolState(this);

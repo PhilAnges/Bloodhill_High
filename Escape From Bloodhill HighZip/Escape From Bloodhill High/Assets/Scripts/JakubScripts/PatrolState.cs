@@ -10,7 +10,9 @@ public class PatrolState : AIState
     }
 
     public override void UpdateBehavior()
-    {        
+    {
+        //Delete this line in final build
+        parent.navAgent.speed = parent.patrolSpeed;
         parent.Sight();
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
@@ -32,7 +34,7 @@ public class PatrolState : AIState
     public override void EntryBehavior()
     {
         parent.navAgent.SetDestination(parent.pathPoints[0].position);
-        parent.navAgent.speed = parent.ogSpeed;
+        parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         Debug.Log("Entering Patrol State");
     }

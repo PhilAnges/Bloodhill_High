@@ -27,7 +27,7 @@ public class SearchState : AIState
         }
         if (checkTimer >= 0f)
         {
-            Debug.Log("Updating timer");
+            //Debug.Log("Updating timer");
             checkTimer -= Time.deltaTime;
         }
         if (checkTimer <= 0 && checking == true && parent.aware == false)
