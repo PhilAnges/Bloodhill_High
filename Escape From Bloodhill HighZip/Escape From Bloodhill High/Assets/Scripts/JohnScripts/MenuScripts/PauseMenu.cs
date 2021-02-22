@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject player;
     public GameObject pauseUI;
+    public GameObject inventoryUI;
     public KeyCode pauseButton;
     private bool isPaused;
 
@@ -15,29 +16,21 @@ public class PauseMenu : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera");
         isPaused = false;
         pauseUI.SetActive(false);
+        inventoryUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(pauseButton))
+        if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
         {
-            isPaused = !isPaused;
-            player.GetComponent<FirstPersonCamera>().enabled = !player.GetComponent<FirstPersonCamera>().enabled;
-        }
-        if (isPaused == true)
+            //isPaused = !isPaused;
+            Unpause();
+        }else
+        if ((Input.GetKeyUp(pauseButton)) && (isPaused == false))
         {
-            
-            Cursor.lockState = CursorLockMode.None;
-            pauseUI.SetActive(true);
-            Time.timeScale = 0f;
-        }
-        if (isPaused == false)
-        {
-            
-            Cursor.lockState = CursorLockMode.Locked;
-            pauseUI.SetActive(false);
-            Time.timeScale = 1f;
+            //isPaused = !isPaused;
+            Pause();
         }
     }
 
@@ -45,5 +38,26 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         player.GetComponent<FirstPersonCamera>().enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        inventoryUI.SetActive(false);
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
     }
+
+    public void Pause()
+    {
+        isPaused = true;
+        player.GetComponent<FirstPersonCamera>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        pauseUI.SetActive(true);
+        inventoryUI.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
+    public void Inventory()
+    {
+        pauseUI.SetActive(false);
+        inventoryUI.SetActive(true);
+    }
+
 }
