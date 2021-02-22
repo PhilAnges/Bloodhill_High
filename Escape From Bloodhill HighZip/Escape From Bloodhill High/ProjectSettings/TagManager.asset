@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AudioKey
+  - Skull
   layers:
   - Default
   - TransparentFX
