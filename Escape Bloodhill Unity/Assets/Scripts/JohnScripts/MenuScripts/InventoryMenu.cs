@@ -10,12 +10,17 @@ public class InventoryMenu : MonoBehaviour
     public GameObject playerCharacter;
 
     public GameObject descriptionBox;
+    public AudioPassword isAudioDevice;
 
     private int itemCounter;
     public GameObject[] itemHold;
+
+    private bool testing;
     // Start is called before the first frame update
     void Start()
     {
+        testing = false;
+
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemCounter = 0;
 
@@ -35,7 +40,22 @@ public class InventoryMenu : MonoBehaviour
             itemSlot.GetComponent<ShowItemDescription>().itemHeld = itemHold[itemCounter];
             itemSlot.GetComponent<ShowItemDescription>().descriptionBox = descriptionBox;
             itemSlot.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemName;
+
+            if(itemHold[itemCounter].TryGetComponent(out AudioPassword component))
+            {
+                Debug.Log("Work");
+                isAudioDevice = component;
+            }
             
+
+            if (testing == true)
+            {
+                itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
+
+                //isAudioDevice = itemHold[itemCounter].GetComponent<AudioPassword>();
+                Debug.Log(testing);
+            }
+
             //descriptionBox.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemDescription;
             Instantiate(itemSlot, buttonLocations[itemCounter]);
             itemCounter++;

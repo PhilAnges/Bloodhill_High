@@ -9,12 +9,14 @@ public class AudioPassword : MonoBehaviour
     public AudioSource audioPassword;
 
     private bool hasItem;
+    
     private GameObject hold;
 
     // Start is called before the first frame update
     void Start()
     {
         hasItem = false;
+        
     }
 
     // Update is called once per frame
@@ -44,11 +46,14 @@ public class AudioPassword : MonoBehaviour
         }
     }
 
+    
+
     public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             audioPassword.Stop();
+            
         }
     }
 

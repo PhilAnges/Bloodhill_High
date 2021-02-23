@@ -7,12 +7,13 @@ public class ShowItemDescription : MonoBehaviour
 {
     public GameObject itemHeld;
     public GameObject descriptionBox;
+    public bool isAudioDevice;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isAudioDevice = false;
     }
 
     // Update is called once per frame

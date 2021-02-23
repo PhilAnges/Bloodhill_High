@@ -2705,6 +2705,7 @@ MonoBehaviour:
     type: 3}
   playerCharacter: {fileID: 1056509504}
   descriptionBox: {fileID: 2055046394}
+  isAudioDevice: {fileID: 0}
   itemHold: []
 --- !u!1 &1594152134
 GameObject:
@@ -3169,6 +3170,7 @@ GameObject:
   - component: {fileID: 1789883265}
   - component: {fileID: 1789883264}
   - component: {fileID: 1789883266}
+  - component: {fileID: 1789883267}
   m_Layer: 0
   m_Name: Audio Key
   m_TagString: AudioKey
@@ -3296,6 +3298,21 @@ MonoBehaviour:
   itemName: Recording
   itemDescription: It's an old phonograph disk. Holding it, you think about what could
     be on it. As you rub the coarse grooves, a voice calls to you. 'Room 211'.
+--- !u!114 &1789883267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789883259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755f6651b198c1a45a7d82750a2bb740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  itemTag: AudioKey
+  audioPassword: {fileID: 762044937}
 --- !u!1 &1794942234
 GameObject:
   m_ObjectHideFlags: 0
