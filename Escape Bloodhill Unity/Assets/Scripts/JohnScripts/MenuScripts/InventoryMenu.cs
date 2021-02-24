@@ -41,10 +41,11 @@ public class InventoryMenu : MonoBehaviour
             itemSlot.GetComponent<ShowItemDescription>().descriptionBox = descriptionBox;
             itemSlot.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemName;
 
-            if(itemHold[itemCounter].TryGetComponent(out AudioPasswordOld component))
+            
+            if(itemHold[itemCounter].CompareTag("AudioKey"))
             {
                 Debug.Log("Work");
-                isAudioDevice = component;
+                
                 itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
             }
             
