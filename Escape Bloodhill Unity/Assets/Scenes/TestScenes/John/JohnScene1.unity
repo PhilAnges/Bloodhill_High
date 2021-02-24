@@ -2580,6 +2580,7 @@ MonoBehaviour:
     life. You have too many dark secrets, and too many enemies to just let something
     like this out of your hands. You do\u2026 don\u2019t you? Maybe it\u2019s just
     a feeling."
+  recording: {fileID: 0}
 --- !u!1 &1475620833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,6 +3299,7 @@ MonoBehaviour:
   itemName: Recording
   itemDescription: It's an old phonograph disk. Holding it, you think about what could
     be on it. As you rub the coarse grooves, a voice calls to you. 'Room 211'.
+  recording: {fileID: 762044937}
 --- !u!114 &1789883267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3609,6 +3611,7 @@ MonoBehaviour:
     you think, as an incredible urge to jam your fingers into the empty sockets comes
     over you. You manage to restrain yourself. \u2018Best to not look for too long\u2026\u2019
     you put the skull away."
+  recording: {fileID: 0}
 --- !u!1 &1897131620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,7 +3855,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941202951}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 755f6651b198c1a45a7d82750a2bb740, type: 3}
   m_Name: 
@@ -4187,6 +4190,7 @@ MonoBehaviour:
     warm to the touch, like when you were young and sad, so your mother would stroke
     your cheek to make you feel better. How long have you been standing here, scrutinizing
     this artifact?"
+  recording: {fileID: 0}
 --- !u!1 &2055046394
 GameObject:
   m_ObjectHideFlags: 0

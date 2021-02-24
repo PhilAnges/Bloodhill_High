@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioPassword : MonoBehaviour
+public class AudioPasswordOld : MonoBehaviour
 {
     public string playerTag;
     public string itemTag;

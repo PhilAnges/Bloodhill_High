@@ -10,7 +10,7 @@ public class InventoryMenu : MonoBehaviour
     public GameObject playerCharacter;
 
     public GameObject descriptionBox;
-    public AudioPassword isAudioDevice;
+    public AudioPasswordOld isAudioDevice;
 
     private int itemCounter;
     public GameObject[] itemHold;
@@ -41,20 +41,14 @@ public class InventoryMenu : MonoBehaviour
             itemSlot.GetComponent<ShowItemDescription>().descriptionBox = descriptionBox;
             itemSlot.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemName;
 
-            if(itemHold[itemCounter].TryGetComponent(out AudioPassword component))
+            if(itemHold[itemCounter].TryGetComponent(out AudioPasswordOld component))
             {
                 Debug.Log("Work");
                 isAudioDevice = component;
+                itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
             }
             
 
-            if (testing == true)
-            {
-                itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
-
-                //isAudioDevice = itemHold[itemCounter].GetComponent<AudioPassword>();
-                Debug.Log(testing);
-            }
 
             //descriptionBox.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemDescription;
             Instantiate(itemSlot, buttonLocations[itemCounter]);

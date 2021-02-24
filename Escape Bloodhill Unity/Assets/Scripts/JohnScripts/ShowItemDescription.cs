@@ -9,11 +9,12 @@ public class ShowItemDescription : MonoBehaviour
     public GameObject descriptionBox;
     public bool isAudioDevice;
 
+    private bool playAudio;
 
     // Start is called before the first frame update
     void Start()
     {
-        isAudioDevice = false;
+        playAudio = false;
     }
 
     // Update is called once per frame
@@ -25,5 +26,11 @@ public class ShowItemDescription : MonoBehaviour
     public void ShowDescription()
     {
         descriptionBox.GetComponentInChildren<Text>().text = itemHeld.GetComponent<ItemProperties>().itemDescription;
+
+        if(isAudioDevice == true)
+        {
+            //itemHeld.GetComponent<ItemProperties>().recording.Play();
+            playAudio = true;
+        }
     }
 }
