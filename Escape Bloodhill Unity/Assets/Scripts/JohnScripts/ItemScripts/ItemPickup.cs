@@ -22,6 +22,12 @@ public class ItemPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for(int i = 0; i < inventory.Length; i++)
+        {
+            if(inventory[i] != null)
+            {
+                pickedUpItem = true;
+            }
+        }
     }
 }

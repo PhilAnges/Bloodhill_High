@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject player;
     public GameObject pauseUI;
     public GameObject inventoryUI;
+    public GameObject button;
     public KeyCode pauseButton;
     private bool isPaused;
 
@@ -22,6 +23,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        button = GameObject.FindGameObjectWithTag("Button");
+
         player = GameObject.FindGameObjectWithTag("MainCamera");
 
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
@@ -38,6 +41,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
+        /*while(button != null)
+        {
+            Debug.Log("Button found. DESTROY!");
+            Destroy(button, 0.0f);
+            button = GameObject.FindGameObjectWithTag("Button");
+        }*/
+        //inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
         isPaused = false;
         player.GetComponent<FirstPersonCamera>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
@@ -60,6 +70,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(false);
         inventoryUI.SetActive(true);
+        inventoryUI.GetComponent<InventoryMenu>().PopulateInventory(0);
     }
 
 }
