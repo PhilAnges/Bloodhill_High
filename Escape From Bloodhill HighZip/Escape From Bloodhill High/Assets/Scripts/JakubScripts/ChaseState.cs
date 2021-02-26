@@ -28,7 +28,7 @@ public class ChaseState : AIState
     public override void ExitBehavior()
     {
         parent.navAgent.stoppingDistance = parent.ogStoppingDistance;
-        parent.Teleport(parent.pathPoints[parent.previousPoint].position);
+        parent.Teleport(parent.pathPoints[parent.previousPoint].gameObject.transform.position);
     }
 
     public override void CheckConditions()
