@@ -22,6 +22,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("MainCamera");
+
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
         {
             //isPaused = !isPaused;
