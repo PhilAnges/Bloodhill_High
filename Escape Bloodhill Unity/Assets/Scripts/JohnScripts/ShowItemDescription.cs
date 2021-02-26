@@ -7,7 +7,9 @@ public class ShowItemDescription : MonoBehaviour
 {
     public GameObject itemHeld;
     public GameObject descriptionBox;
+    public GameObject playerCharacter;
     public bool isAudioDevice;
+
 
     private bool playAudio;
 
@@ -15,6 +17,7 @@ public class ShowItemDescription : MonoBehaviour
     void Start()
     {
         playAudio = false;
+        playerCharacter = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -29,8 +32,11 @@ public class ShowItemDescription : MonoBehaviour
 
         if(isAudioDevice == true)
         {
-            //itemHeld.GetComponent<ItemProperties>().recording.Play();
-            playAudio = true;
+            playerCharacter.GetComponent<ItemPickup>().givenAudio = itemHeld.GetComponent<ItemProperties>().recording;
+            if(playerCharacter.GetComponent<ItemPickup>().playAudio == true)
+            {
+                playerCharacter.GetComponent<ItemPickup>().givenAudio.Play();
+            }
         }
     }
 }

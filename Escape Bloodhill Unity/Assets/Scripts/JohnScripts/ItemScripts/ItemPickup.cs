@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public bool pickedUpItem;
+    public bool playAudio;
 
     public GameObject[] inventory;
+    public AudioSource givenAudio;
     public int inventoryCounter;
+    public bool pickedUpItem;
 
     // Start is called before the first frame update
     void Start()
     {
         inventoryCounter = 0;
         pickedUpItem = false;
+        playAudio = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for(int i = 0; i < inventory.Length; i++)
+        {
+            if(inventory[i] != null)
+            {
+                pickedUpItem = true;
+            }
+        }
     }
 }

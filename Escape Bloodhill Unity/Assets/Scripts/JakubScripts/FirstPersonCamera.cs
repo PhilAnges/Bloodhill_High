@@ -27,6 +27,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         var mouseChange = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         mouseChange = Vector2.Scale(mouseChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 

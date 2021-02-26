@@ -23,9 +23,9 @@ public class AskForPassword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        player = GameObject.FindGameObjectWithTag("MainCamera");
 
-        if(thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
+        if (thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
         {
             player.GetComponent<FirstPersonCamera>().enabled = true;
             instructions.SetActive(false);
