@@ -13,7 +13,7 @@ public class CamPatrolState : PatrolState
     {        
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
-            if (parent.nextPoint == parent.pathPoints.Length - 1 && parent.pathDirection == 1)
+            if (parent.nextPoint == parent.pathPoints.Count - 1 && parent.pathDirection == 1)
             {
                 parent.pathDirection *= -1;
             }
@@ -22,7 +22,7 @@ public class CamPatrolState : PatrolState
                 parent.pathDirection *= -1;
             }
             parent.nextPoint = parent.nextPoint + parent.pathDirection;
-            parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].position);
+            parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].gameObject.transform.position);
         }
     }   
 }

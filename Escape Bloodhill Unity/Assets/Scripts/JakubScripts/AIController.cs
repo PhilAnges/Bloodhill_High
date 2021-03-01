@@ -52,19 +52,26 @@ public class AIController : MonoBehaviour
     public float rotationSpeed = 5f;
     public float alertTime = 3f;    
     public float playerChaseStoppingDistance;
-    
-    public Transform[] pathPoints;
-    public Transform spherePos;
+
+    public Path defaultPath;
+
+    public List<PathPoint> pathPoints;
+
+    private Transform spherePos;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
+        spherePos = gameObject.transform.Find("Eye");
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
         navAgent.speed = patrolSpeed;
         nextPoint = 0;
         previousPoint = 0;
+
+        pathPoints = PopulateList(defaultPath);
+
         currentState = new PatrolState(this);
         SetState(currentState);
     }
@@ -136,5 +143,21 @@ public class AIController : MonoBehaviour
     public void Teleport(Vector3 targetLocation)
     {
         transform.position = targetLocation;
+    }
+
+    public List<PathPoint> PopulateList(Path path)
+    {
+        List<PathPoint> outList = new List<PathPoint>();
+        if (path.transform.childCount > 0)
+        {
+            PathPoint currentPoint = path.gameObject.transform.GetChild(0).GetComponent<PathPoint>();
+            while (!currentPoint.endPoint)
+            {
+                outList.Add(currentPoint);
+                currentPoint = currentPoint.next;
+            }
+            outList.Add(currentPoint);
+        }
+        return outList;
     }
 }
