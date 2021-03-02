@@ -3796,7 +3796,7 @@ MonoBehaviour:
     type: 3}
   playerCharacter: {fileID: 1056509504}
   descriptionBox: {fileID: 2055046394}
-  itemHold: []
+  buttons: []
 --- !u!1 &1522206203
 GameObject:
   m_ObjectHideFlags: 0

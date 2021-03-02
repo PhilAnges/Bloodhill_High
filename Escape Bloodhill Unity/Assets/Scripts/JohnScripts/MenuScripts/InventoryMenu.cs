@@ -14,14 +14,14 @@ public class InventoryMenu : MonoBehaviour
     private int itemCounter;
     private GameObject[] itemHold;
     private GameObject holdButton;
-    public GameObject[] buttons;
+    //public List<GameObject> buttons;
 
     private bool testing;
     // Start is called before the first frame update
     void Start()
     {
         testing = false;
-        buttons = new GameObject[10];
+        //buttons = new List<GameObject>();
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemCounter = 0;
@@ -30,17 +30,15 @@ public class InventoryMenu : MonoBehaviour
         {
             itemHold[i] = null;
         }
-
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
-
         itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
-        
-        
     }
 
     public void PopulateInventory(int itemCounter)
@@ -54,23 +52,22 @@ public class InventoryMenu : MonoBehaviour
 
             if (itemHold[itemCounter].CompareTag("AudioKey"))
             {
-                Debug.Log("Work");
-
                 itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
             }
             Instantiate(itemSlot, buttonLocations[itemCounter]);
-            buttons[itemCounter] = itemSlot;
+            //buttons.Add(itemSlot);
             itemCounter++;
         }
     }
     public void DepopulateInventory(int itemCounter)
     {
-        while(buttons[itemCounter] != null)
+        holdButton = buttonLocations[itemCounter].gameObject.GetComponentInChildren<Button>().gameObject;
+        while (holdButton != null)
         {
-            holdButton = buttons[itemCounter];
-            buttons[itemCounter] = null;
             Destroy(holdButton, 0.0f);
             itemCounter++;
+            holdButton = buttonLocations[itemCounter].gameObject.GetComponentInChildren<Button>().gameObject;
         }
+            
     }
 }

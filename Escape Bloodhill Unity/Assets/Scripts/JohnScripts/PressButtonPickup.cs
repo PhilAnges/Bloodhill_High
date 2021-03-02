@@ -27,10 +27,12 @@ public class PressButtonPickup : MonoBehaviour
         {
             if (Input.GetKeyUp(pickItUp))
             {
-                other.gameObject.GetComponent<ItemPickup>().pickedUpItem = true;
+                while (other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] != null)
+                {
+                    
+                    other.gameObject.GetComponent<ItemPickup>().inventoryCounter++;
+                }
                 other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] = gameObject;
-                other.gameObject.GetComponent<ItemPickup>().inventoryCounter++;
-
 
                 gameObject.SetActive(false);
             }
