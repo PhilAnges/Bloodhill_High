@@ -12,26 +12,19 @@ public class InventoryMenu : MonoBehaviour
     public GameObject descriptionBox;
 
     private int itemCounter;
-    private GameObject[] itemHold;
+    public GameObject[] itemHold;
     private GameObject holdButton;
-    //public List<GameObject> buttons;
 
-    private bool testing;
+    
     // Start is called before the first frame update
     void Start()
     {
-        testing = false;
-        //buttons = new List<GameObject>();
-
+        
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemCounter = 0;
+        itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
 
-        for(int i = 0; i < buttonLocations.Length; i++)
-        {
-            itemHold[i] = null;
-        }
-        
-        
+
     }
 
     // Update is called once per frame
@@ -43,6 +36,7 @@ public class InventoryMenu : MonoBehaviour
 
     public void PopulateInventory(int itemCounter)
     {
+        itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
         while (itemHold[itemCounter] != null)
         {
             itemSlot.GetComponent<ShowItemDescription>().itemHeld = itemHold[itemCounter];
@@ -55,10 +49,10 @@ public class InventoryMenu : MonoBehaviour
                 itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
             }
             Instantiate(itemSlot, buttonLocations[itemCounter]);
-            //buttons.Add(itemSlot);
             itemCounter++;
         }
     }
+
     public void DepopulateInventory(int itemCounter)
     {
         holdButton = buttonLocations[itemCounter].gameObject.GetComponentInChildren<Button>().gameObject;

@@ -15,10 +15,11 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
+        
+
         isPaused = false;
         pauseUI.SetActive(false);
         inventoryUI.SetActive(false);
-        
     }
 
     // Update is called once per frame
@@ -30,12 +31,10 @@ public class PauseMenu : MonoBehaviour
 
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
         {
-            //isPaused = !isPaused;
             Unpause();
         }else
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == false))
         {
-            //isPaused = !isPaused;
             Pause();
         }
     }

@@ -6,9 +6,6 @@ public class PressButtonPickup : MonoBehaviour
 {
     public string playerTag;
     public KeyCode pickItUp;
-    
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +26,6 @@ public class PressButtonPickup : MonoBehaviour
             {
                 while (other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] != null)
                 {
-                    
                     other.gameObject.GetComponent<ItemPickup>().inventoryCounter++;
                 }
                 other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] = gameObject;
