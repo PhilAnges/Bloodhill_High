@@ -19,26 +19,6 @@ public class RepopulateLostItems : MonoBehaviour
     {
         itemsInSaferoom = gameObject.GetComponent<SafeRoom>().storedInventory;
 
-        /*if (Input.GetKeyDown(KeyCode.Q))
-        {
-            for(int i = 0; i < allItems.Length; i++)
-            {
-                for(int j = 0; j < itemsInSaferoom.Length; j++)
-                {
-                    if(allItems[i].gameObject == itemsInSaferoom[j])
-                    {
-                        allItems[i].gameObject.SetActive(false);
-                        //Debug.Log("Item Stored");
-                        break;
-                    }
-                    else
-                    {
-                        allItems[i].gameObject.SetActive(true);
-                        //Debug.Log("Item not stored");
-                    }
-                }
-            }
-        }*/
     }
 
     public void Repopulate()
