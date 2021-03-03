@@ -36,7 +36,9 @@ public class InventoryMenu : MonoBehaviour
 
     public void PopulateInventory(int itemCounter)
     {
+        playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
+
         while (itemHold[itemCounter] != null)
         {
             itemSlot.GetComponent<ShowItemDescription>().itemHeld = itemHold[itemCounter];
