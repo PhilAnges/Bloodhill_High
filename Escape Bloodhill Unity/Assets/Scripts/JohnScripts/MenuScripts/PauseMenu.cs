@@ -15,6 +15,8 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
+        
+
         isPaused = false;
         pauseUI.SetActive(false);
         inventoryUI.SetActive(false);
@@ -29,31 +31,23 @@ public class PauseMenu : MonoBehaviour
 
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
         {
-            //isPaused = !isPaused;
             Unpause();
         }else
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == false))
         {
-            //isPaused = !isPaused;
             Pause();
         }
     }
 
     public void Unpause()
     {
-        /*while(button != null)
-        {
-            Debug.Log("Button found. DESTROY!");
-            Destroy(button, 0.0f);
-            button = GameObject.FindGameObjectWithTag("Button");
-        }*/
-        //inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
         isPaused = false;
         player.GetComponent<FirstPersonCamera>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         inventoryUI.SetActive(false);
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
+        inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
 
     public void Pause()
@@ -64,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(true);
         inventoryUI.SetActive(false);
         Time.timeScale = 0f;
+        inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
 
     public void Inventory()
