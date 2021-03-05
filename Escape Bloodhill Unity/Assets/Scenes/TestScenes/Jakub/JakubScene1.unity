@@ -1615,10 +1615,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1001573360523685363, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: camPrefab
+      value: 
+      objectReference: {fileID: 5211979798853660193, guid: bba348fb9ed1c304e972dc3a31c99ebd,
+        type: 3}
+    - target: {fileID: 1001573360523685363, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 1001573360523685373, guid: dd294e24b449fe440a1e8991a312318e,
         type: 3}
       propertyPath: m_Name
       value: DummyPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001573360523685374, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd294e24b449fe440a1e8991a312318e, type: 3}

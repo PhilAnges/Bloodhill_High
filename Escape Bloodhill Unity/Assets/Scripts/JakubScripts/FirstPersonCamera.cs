@@ -22,32 +22,35 @@ public class FirstPersonCamera : MonoBehaviour
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        parent = transform.parent.GetComponent<PlayerController>();
+        parent = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (parent.isCrouching)
-        {
-            if (transform.position.y > crouchHeight)
-            {
-                Move(crouchHeight);
-            }
-        }
-        else if (transform.position.y < standHeight)
-        {
-            Move(standHeight);
-        }
+
     }
 
     private void FixedUpdate()
     {
-
+        
     }
 
     private void LateUpdate()
     {
-        
+        Vector3 targetPosition;
+
+        transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(-mouseVector.y, parent.transform.right);
+        transform.rotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 1);
+
+        if (parent.isCrouching)
+        {
+            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z);
+        }
+        else
+        {
+            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z);
+        }       
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
     }
 
     public void Look()
@@ -60,8 +63,7 @@ public class FirstPersonCamera : MonoBehaviour
         mouseVector += smoothVector;
         mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
 
-        transform.localRotation = Quaternion.AngleAxis(-mouseVector.y, Vector3.right);
-        transform.parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, transform.parent.transform.up);
+        parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
     }
 
     public void Move(float targetHeight)

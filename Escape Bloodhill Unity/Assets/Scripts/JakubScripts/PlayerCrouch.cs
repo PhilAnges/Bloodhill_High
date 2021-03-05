@@ -11,8 +11,6 @@ public class PlayerCrouch : PlayerState
 
     public override void UpdateBehavior()
     {
-
-
         parent.camera.Look();
         parent.Move();
         parent.DrainStamina(false);
@@ -35,23 +33,20 @@ public class PlayerCrouch : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
         {
-            if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
+            if (Input.GetAxis("Fire3") != 0)
             {
-                if (Input.GetAxis("Fire3") != 0)
-                {
-                    parent.SetState(new PlayerRun(parent));
-                }
-                else
-                {
-                    parent.SetState(new PlayerWalk(parent));
-                }
+                parent.SetState(new PlayerRun(parent));
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.C))
             {
-                parent.SetState(new PlayerIdle(parent));
+                parent.SetState(new PlayerWalk(parent));
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            parent.SetState(new PlayerIdle(parent));
         }
     }
 }
