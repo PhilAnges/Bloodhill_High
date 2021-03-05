@@ -27,7 +27,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
-
+        parent = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void FixedUpdate()

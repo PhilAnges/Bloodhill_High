@@ -13,6 +13,7 @@ public class SafeRoom : MonoBehaviour
     private bool isIn;
     private GameObject[] storage;
     private GameObject gameOverScreen;
+    private GameObject playerCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class SafeRoom : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag(playerTag);
         currentPlayer = GameObject.FindGameObjectWithTag(playerTag);
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     public void OnTriggerEnter(Collider other)
@@ -51,12 +53,14 @@ public class SafeRoom : MonoBehaviour
         Time.timeScale = 1.0f;
 
         player.gameObject.GetComponent<ItemPickup>().inventory = storedInventory;
-        Instantiate(player, spawnPoint.position, Quaternion.identity);
+        Destroy(playerCamera, 0.0f);
         
-
-        currentPlayer.GetComponentInChildren<Camera>().enabled = false;
-        player.GetComponentInChildren<Camera>().enabled = true;
+        Instantiate(player, spawnPoint.position, Quaternion.identity);
         Destroy(currentPlayer, 0.0f);
+
+        //currentPlayer.GetComponentInChildren<Camera>().enabled = false;
+        //player.GetComponentInChildren<Camera>().enabled = true;
+
         gameOverScreen.SetActive(false);
 
     }
