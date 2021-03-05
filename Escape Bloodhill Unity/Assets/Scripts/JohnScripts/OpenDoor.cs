@@ -33,11 +33,11 @@ public class OpenDoor : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
-            if (other.gameObject.GetComponent<ItemPickup>().pickedUpItem == true)
+            if (Input.GetKeyUp(KeyCode.Q))
             {
                 
                 openTheDoor = true;
