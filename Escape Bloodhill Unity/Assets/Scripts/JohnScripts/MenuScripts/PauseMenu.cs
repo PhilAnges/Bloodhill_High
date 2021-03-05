@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject player;
     public GameObject pauseUI;
     public GameObject inventoryUI;
+    public GameObject journalUI;
     public GameObject button;
     public KeyCode pauseButton;
     private bool isPaused;
@@ -20,6 +21,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseUI.SetActive(false);
         inventoryUI.SetActive(false);
+        journalUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         inventoryUI.SetActive(false);
         pauseUI.SetActive(false);
+        journalUI.SetActive(false);
         Time.timeScale = 1f;
         inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
@@ -64,8 +67,16 @@ public class PauseMenu : MonoBehaviour
     public void Inventory()
     {
         pauseUI.SetActive(false);
+        journalUI.SetActive(false);
         inventoryUI.SetActive(true);
         inventoryUI.GetComponent<InventoryMenu>().PopulateInventory(0);
+    }
+
+    public void Journal()
+    {
+        inventoryUI.SetActive(false);
+        journalUI.SetActive(true);
+        inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
 
 }
