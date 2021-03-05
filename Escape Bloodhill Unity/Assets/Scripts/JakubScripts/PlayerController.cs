@@ -38,8 +38,6 @@ public class PlayerController : MonoBehaviour
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         ogMoveSpeed = moveSpeed;
         ogRegenRate = staminaRegenRate;
-        camera = GetComponentInChildren<FirstPersonCamera>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCamera>();
         lights = camera.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
         SetState(new PlayerIdle(this));       
