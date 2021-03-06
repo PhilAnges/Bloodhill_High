@@ -193,7 +193,13 @@ MonoBehaviour:
   smoothing: 2.27
   height: 1.5
   crouchHeight: 1
+  ogCrouchHeight: 0
   standHeight: 1.5
+  ogStandHeight: 0
+  walkBobMagnitude: 0.1
+  ogMagnitude: 0
+  swayFactor: 0
+  ogSwayFactor: 0
   parent: {fileID: 0}
 --- !u!1 &5211979799478954053
 GameObject:

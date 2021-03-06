@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Path : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class Path : MonoBehaviour
         newPointScript.prev.next = newPointScript;
         newPointScript.next.prev = newPointScript;
 
+        Selection.activeGameObject = newPoint;
 
     }
 }

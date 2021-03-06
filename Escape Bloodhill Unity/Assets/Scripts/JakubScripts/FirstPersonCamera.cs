@@ -14,8 +14,17 @@ public class FirstPersonCamera : MonoBehaviour
     public float height = 0.1f;
     [Range(0.5f, 2f)]
     public float crouchHeight = 1f;
-    [Range(0.5f, 2f)]
+    public float ogCrouchHeight;
+    //[Range(0.5f, 2f)]
     public float standHeight = 1.5f;
+    public float ogStandHeight;
+
+
+    public float walkBobMagnitude;
+    public float ogMagnitude;
+
+    public float swayFactor = 0f;
+    public float ogSwayFactor;
 
     public PlayerController parent;
 
@@ -23,6 +32,10 @@ public class FirstPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         parent = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        ogStandHeight = standHeight;
+        ogCrouchHeight = crouchHeight;
+        ogMagnitude = walkBobMagnitude;
+        ogSwayFactor = swayFactor;
     }
 
     void Update()
@@ -44,11 +57,11 @@ public class FirstPersonCamera : MonoBehaviour
 
         if (parent.isCrouching)
         {
-            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z);
+            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z + swayFactor);
         }
         else
         {
-            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z);
+            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z + swayFactor);
         }       
         transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
     }
