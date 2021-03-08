@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     public string playerTag;
     public float howLong;
     public float spin;
+    public KeyCode actionKey;
 
     private Vector3 outOfWay;
     public Quaternion swing;
@@ -37,7 +38,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(actionKey))
             {
                 
                 openTheDoor = true;
