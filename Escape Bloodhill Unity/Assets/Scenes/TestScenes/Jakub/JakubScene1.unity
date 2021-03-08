@@ -2085,52 +2085,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: stepInterval
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: runInterval
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: runBobIntensity
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: crouchBobIntensity
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: crouchInterval
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: walkSwayIntensity
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: runSwayIntensity
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: crouchSwayIntensity
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
-        type: 3}
-      propertyPath: camPrefab
-      value: 
-      objectReference: {fileID: 9083725253466467257, guid: fdede3bbf0c0a8a408aa81a2d8e77aee,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd294e24b449fe440a1e8991a312318e, type: 3}
 --- !u!1001 &4415616617415234705

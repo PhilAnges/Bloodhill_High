@@ -90,5 +90,16 @@ MonoBehaviour:
   flashLightOn: 0
   isCrouching: 0
   stamina: 100
-  camPrefab: {fileID: 5211979798853660193, guid: bba348fb9ed1c304e972dc3a31c99ebd,
+  camPrefab: {fileID: 9083725253466467257, guid: fdede3bbf0c0a8a408aa81a2d8e77aee,
     type: 3}
+  stepInterval: 0.35
+  ogstepInterval: 0
+  runInterval: 0.2
+  crouchInterval: 0.5
+  runBobIntensity: 0.15
+  crouchBobIntensity: 0.2
+  walkSwayIntensity: 0.05
+  runSwayIntensity: 0.15
+  crouchSwayIntensity: 0.1
+  viewTimer: 0
+  viewStep: 0
