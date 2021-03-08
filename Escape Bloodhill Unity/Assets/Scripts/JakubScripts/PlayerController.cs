@@ -31,6 +31,19 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigbod;
     public  GameObject camPrefab;
+    public float stepInterval = 2f;
+    public float ogstepInterval;
+    public float runInterval = 0.2f;
+    public float crouchInterval = 0.5f;
+
+    public float runBobIntensity = 0.2f;
+    public float crouchBobIntensity = 0.05f;
+    public float walkSwayIntensity = 0.2f;
+    public float runSwayIntensity = 0.2f;
+    public float crouchSwayIntensity = 0.1f;
+
+    public float viewTimer;
+    public bool viewStep;
 
 
     private void Awake()
@@ -38,6 +51,9 @@ public class PlayerController : MonoBehaviour
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         ogMoveSpeed = moveSpeed;
         ogRegenRate = staminaRegenRate;
+        ogstepInterval = stepInterval;
+        camera = GetComponentInChildren<FirstPersonCamera>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCamera>();
         lights = camera.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
         SetState(new PlayerIdle(this));       
@@ -50,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        currentState.WalkRythm();
     }
 
     private void LateUpdate()
@@ -75,11 +91,11 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
-        if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
+        /*if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
         {
             input = 0f;
         }
-        Debug.Log(input);
+        Debug.Log(input);*/
         return input;
     }
 
@@ -90,11 +106,12 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
+        /*
         if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
         {
             input = 0f;
         }
-        Debug.Log(input);
+        Debug.Log(input);*/
         return input;
     }
 
