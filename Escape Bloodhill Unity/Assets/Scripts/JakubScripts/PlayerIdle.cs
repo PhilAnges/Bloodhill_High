@@ -11,7 +11,8 @@ public class PlayerIdle : PlayerState
 
     public override void UpdateBehavior()
     {
-        //parent.camera.Look();
+        parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
+        parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
         parent.DrainStamina(false);
         CheckConditions();
     }
@@ -19,6 +20,7 @@ public class PlayerIdle : PlayerState
     public override void EntryBehavior()
     {
         Debug.Log("Entering Idle State");
+        //parent.camera.swayFactor = 0f;
 
     }
 

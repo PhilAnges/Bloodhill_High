@@ -7,6 +7,12 @@ public class PlayerState
     public PlayerController parent;
     public PlayerState nextState;
 
+    public float rythmTimer;
+    public float lowPoint;
+    public float highPoint;
+    public int beat;
+    public bool step = false;
+
     public PlayerState()
     {
 
@@ -28,6 +34,11 @@ public class PlayerState
     }
 
     public virtual void CheckConditions()
+    {
+
+    }
+
+    public virtual void WalkRythm()
     {
 
     }
