@@ -20,8 +20,6 @@ public class PlayerIdle : PlayerState
     public override void EntryBehavior()
     {
         Debug.Log("Entering Idle State");
-        //parent.camera.swayFactor = 0f;
-
     }
 
     public override void ExitBehavior()

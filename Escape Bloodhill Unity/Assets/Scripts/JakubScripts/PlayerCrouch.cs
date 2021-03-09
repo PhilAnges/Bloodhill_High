@@ -14,7 +14,6 @@ public class PlayerCrouch : PlayerState
     {
         parent.camera.Look();
         parent.Move();
-        //WalkRythm();
         parent.DrainStamina(false);
         CheckConditions();
     }
