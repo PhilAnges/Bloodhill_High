@@ -106,6 +106,6 @@ public class PlayerRun : PlayerState
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }
 
-        parent.viewStep = step;
+        //parent.viewStep = step;
     }
 }

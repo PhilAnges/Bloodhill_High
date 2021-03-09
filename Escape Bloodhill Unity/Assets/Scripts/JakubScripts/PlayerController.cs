@@ -117,10 +117,15 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        //transform.Translate(new Vector3(GetXInput(), 0, GetZInput()).normalized * moveSpeed * Time.deltaTime);
-        Vector3 newPos = transform.rotation * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        rigbod.velocity = newPos * moveSpeed * Time.deltaTime;
-        //Debug.DrawRay(transform.position, newPos * collisionDistance, Color.green, 0.5f);
+        Vector3 moveDirection = transform.rotation * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 2f))
+        {
+            moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
+        }
+        rigbod.velocity = moveDirection * moveSpeed * Time.deltaTime;
+        Debug.DrawRay(transform.position, moveDirection * 2f, Color.green, 0.5f);
     }
 
     public void DrainStamina(bool drain)
