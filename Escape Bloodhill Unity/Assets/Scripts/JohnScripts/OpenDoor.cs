@@ -7,11 +7,13 @@ public class OpenDoor : MonoBehaviour
     public string playerTag;
     public float howLong;
     public float spin;
+    public KeyCode actionKey;
+    public bool locked;
 
     private Vector3 outOfWay;
     public Quaternion swing;
     private float tolerance;
-    private bool openTheDoor;
+    public bool openTheDoor;
     private float waitToMove;
 
 
@@ -37,7 +39,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            if (Input.GetKeyUp(KeyCode.Q))
+            if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
                 
                 openTheDoor = true;
@@ -45,7 +47,7 @@ public class OpenDoor : MonoBehaviour
         }
     }
 
-    void OpenTheDoor()
+    public void OpenTheDoor()
     {
         Vector3 headingTo = outOfWay - transform.position;
         transform.position += (headingTo / headingTo.magnitude) * howLong * Time.deltaTime;
@@ -55,7 +57,7 @@ public class OpenDoor : MonoBehaviour
             waitToMove = Time.deltaTime;
         }
     }
-    void SwingOpen()
+    public void SwingOpen()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, swing, spin);
     }

@@ -27,10 +27,7 @@ public class AskForPassword : MonoBehaviour
 
         if (thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
         {
-            player.GetComponent<FirstPersonCamera>().enabled = true;
-            instructions.SetActive(false);
-            passwordPlease.SetActive(false);
-            gameObject.SetActive(false);
+            CorrectPassword();
         }
     }
 
@@ -46,6 +43,8 @@ public class AskForPassword : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            passwordPlease.GetComponent<TypePasscode>().password = "";
+            passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
             instructions.SetActive(false);
             passwordPlease.SetActive(false);
         }
@@ -57,7 +56,6 @@ public class AskForPassword : MonoBehaviour
         {
             if (Input.GetKeyUp(startTyping))
             {
-                //passwordPlease.SetActive(true);
                 DisableAskForPassword(passwordPlease.activeSelf);
                 player.GetComponent<FirstPersonCamera>().enabled = !player.GetComponent<FirstPersonCamera>().enabled;
             }
@@ -74,5 +72,15 @@ public class AskForPassword : MonoBehaviour
         {
             passwordPlease.SetActive(false);
         }
+    }
+    public void CorrectPassword()
+    {
+        passwordPlease.GetComponent<TypePasscode>().password = "";
+        passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
+        instructions.SetActive(false);
+        passwordPlease.SetActive(false);
+        gameObject.GetComponent<OpenDoor>().openTheDoor = true;
+        player.GetComponent<FirstPersonCamera>().enabled = true;
+        Destroy(gameObject.GetComponent<AskForPassword>(), 0.0f);
     }
 }

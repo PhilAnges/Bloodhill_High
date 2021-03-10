@@ -6,6 +6,7 @@ public class PeepThroughKeyhole : MonoBehaviour
 {
     public GameObject playerCamera;
     public Camera doorCamera;
+    public KeyCode actionKey;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +27,12 @@ public class PeepThroughKeyhole : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(actionKey))
             {
             playerCamera.GetComponentInChildren<Camera>().enabled = false;
             doorCamera.enabled = true;
             }
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(actionKey))
             {
             doorCamera.enabled = false;
             playerCamera.GetComponentInChildren<Camera>().enabled = true;
