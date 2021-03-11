@@ -9,7 +9,7 @@ public class ShowItemDescription : MonoBehaviour
     public GameObject descriptionBox;
     public GameObject playerCharacter;
     public bool isAudioDevice;
-
+    public bool isDoorKey;
 
     private bool playAudio;
 
@@ -37,6 +37,12 @@ public class ShowItemDescription : MonoBehaviour
             {
                 playerCharacter.GetComponent<ItemPickup>().givenAudio.Play();
             }
+        }
+        if(isDoorKey == true)
+        {
+            playerCharacter.GetComponent<ItemPickup>().relatedDoor = itemHeld.GetComponent<ItemProperties>().lockedDoor;
+
+
         }
     }
 }

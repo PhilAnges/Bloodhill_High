@@ -50,6 +50,10 @@ public class InventoryMenu : MonoBehaviour
             {
                 itemSlot.GetComponent<ShowItemDescription>().isAudioDevice = true;
             }
+            if (itemHold[itemCounter].CompareTag("DoorKey"))
+            {
+                itemSlot.GetComponent<ShowItemDescription>().isDoorKey = true;
+            }
             Instantiate(itemSlot, buttonLocations[itemCounter]);
             itemCounter++;
         }
