@@ -17,6 +17,7 @@ public class ItemPickup : MonoBehaviour
     {
         inventoryCounter = 0;
         pickedUpItem = false;
+        relatedDoor = null;
         playAudio = false;
     }
 
