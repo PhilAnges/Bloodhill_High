@@ -8,6 +8,7 @@ public class ItemProperties : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public AudioSource recording;
+    public GameObject lockedDoor;
     
 
 

@@ -8,6 +8,7 @@ public class ItemPickup : MonoBehaviour
 
     public GameObject[] inventory;
     public AudioSource givenAudio;
+    public GameObject relatedDoor;
     public int inventoryCounter;
     public bool pickedUpItem;
 

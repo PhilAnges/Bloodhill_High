@@ -39,9 +39,13 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            if (other.GetComponent<ItemPickup>().relatedDoor == gameObject)
+            {
+                openTheDoor = true;
+            }
+
             if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
-                
                 openTheDoor = true;
             }
         }
