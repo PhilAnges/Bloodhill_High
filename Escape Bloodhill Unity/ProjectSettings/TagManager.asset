@@ -8,6 +8,7 @@ TagManager:
   - Button
   - Journal
   - DoorKey
+  - Enemy
   layers:
   - Default
   - TransparentFX
