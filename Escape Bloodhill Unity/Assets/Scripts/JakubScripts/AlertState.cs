@@ -14,6 +14,7 @@ public class AlertState : AIState
     {        
         parent.Sight();
         parent.Orient(parent.playerPosition);
+        UpdateAwareness();
         CheckConditions();
     }
 

@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4384291423186546062}
   m_Layer: 0
-  m_Name: DoubleDoor
+  m_Name: DoubleDoor_Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,6 +672,9 @@ GameObject:
   - component: {fileID: 3306199798335881175}
   - component: {fileID: 6756801628266356965}
   - component: {fileID: 3860121601043494807}
+  - component: {fileID: 1552640492}
+  - component: {fileID: 1552640493}
+  - component: {fileID: 1552640494}
   m_Layer: 0
   m_Name: Cube.004
   m_TagString: Untagged
@@ -741,6 +744,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1552640492
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048995881311241780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009828353, y: 0.02, z: 0.020350093}
+  m_Center: {x: -0.005, y: 0, z: 0.0101750465}
+--- !u!65 &1552640493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048995881311241780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009828353, y: 0.0005000799, z: 0.020350093}
+  m_Center: {x: -0.005, y: 0, z: 0.0101750465}
+--- !u!114 &1552640494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048995881311241780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0.05
+  spin: 0.01
+  actionKey: 101
+  locked: 0
+  swing: {x: -1, y: -1, z: -1, w: 1}
+  openTheDoor: 0
 --- !u!1 &8610771715321052380
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +878,9 @@ GameObject:
   - component: {fileID: 8255779787625158722}
   - component: {fileID: 5365773925881043622}
   - component: {fileID: 173811823028850105}
+  - component: {fileID: 2080403982}
+  - component: {fileID: 2080403983}
+  - component: {fileID: 2080403981}
   m_Layer: 0
   m_Name: Cube.009
   m_TagString: Untagged
@@ -844,7 +895,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9008929224313374997}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -8.978136, y: 0.000000102911144, z: -0.048178405}
   m_LocalScale: {x: 99.60044, y: 99.60044, z: 99.60044}
   m_Children:
@@ -852,7 +903,7 @@ Transform:
   - {fileID: 4271777608262291736}
   m_Father: {fileID: 4384291423186546062}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5365773925881043622
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -899,3 +950,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2080403982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008929224313374997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009828353, y: 0.02, z: 0.020350093}
+  m_Center: {x: 0.0048975125, y: 0, z: 0.0101750465}
+--- !u!65 &2080403983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008929224313374997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009828353, y: 0.0005000799, z: 0.020350093}
+  m_Center: {x: 0.0048975125, y: -0.00023340015, z: 0.0101750465}
+--- !u!114 &2080403981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008929224313374997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0.05
+  spin: 0.01
+  actionKey: 101
+  locked: 0
+  swing: {x: -1, y: -1, z: -1, w: 1}
+  openTheDoor: 0

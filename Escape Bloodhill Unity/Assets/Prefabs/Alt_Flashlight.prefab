@@ -323,7 +323,7 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -335,7 +335,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 1000
-  field of view: 60
+  field of view: 73.21646
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -385,6 +385,7 @@ MonoBehaviour:
   swayFactor: 0
   ogSwayFactor: 0
   parent: {fileID: 0}
+  farBackness: 0.336
 --- !u!1001 &4946624494442416648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 1506533858103175343, guid: c1f129079c30835429a9ebf53de02654,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.643
+      value: 0.567
       objectReference: {fileID: 0}
     - target: {fileID: 1506533858103175343, guid: c1f129079c30835429a9ebf53de02654,
         type: 3}
