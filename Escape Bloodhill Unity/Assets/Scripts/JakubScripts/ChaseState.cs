@@ -14,6 +14,7 @@ public class ChaseState : AIState
         parent.Sight();
         parent.Orient(parent.playerPosition);
         parent.navAgent.SetDestination(parent.playerPosition);
+        UpdateAwareness();
         CheckConditions();
     }
 
@@ -22,6 +23,7 @@ public class ChaseState : AIState
         parent.navAgent.stoppingDistance = parent.playerChaseStoppingDistance;
         parent.navAgent.SetDestination(parent.playerPosition);
         parent.navAgent.speed = parent.patrolSpeed * parent.chaseSpeedMultiplier;
+        parent.player.isBeingChased = true;
         Debug.Log("Entering Chase State");
     }
 
@@ -29,13 +31,18 @@ public class ChaseState : AIState
     {
         parent.navAgent.stoppingDistance = parent.ogStoppingDistance;
         parent.Teleport(parent.pathPoints[parent.previousPoint].gameObject.transform.position);
+        parent.player.isBeingChased = false;
     }
 
     public override void CheckConditions()
     {
-        if (parent.gameController.playerIsSafe == true)
+        if (parent.player.isHidden == true)
         {
             parent.SetState(new PatrolState(parent));
-        }     
+        }
+        if (parent.awareness <= 0)
+        {
+            parent.SetState(new SearchState(parent));
+        }
     }
 }

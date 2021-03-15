@@ -15,6 +15,7 @@ public class PlayerWalk : PlayerState
     {
         parent.Move();
         parent.DrainStamina(false);
+        parent.CalculateAdrenaline();
         CheckConditions();
     }
 
@@ -27,6 +28,7 @@ public class PlayerWalk : PlayerState
         parent.camera.walkBobMagnitude = parent.camera.ogMagnitude;
         highPoint = parent.camera.ogStandHeight;
         lowPoint = highPoint- parent.camera.walkBobMagnitude;
+        parent.noiseLevel = 2;
     }
 
     public override void ExitBehavior()
@@ -38,25 +40,34 @@ public class PlayerWalk : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Crouch"))
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
 
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            parent.SetState(new PlayerIdle(parent));
+        }
+        else if (Input.GetButtonDown("Sprint"))
+        {
+            parent.SetState(new PlayerRun(parent));
+        }
+        /*
         if (Input.GetAxis("Horizontal") == 0)
         {
             if (Input.GetAxis("Vertical") == 0)
             {
                 parent.SetState(new PlayerIdle(parent));
             }
-            else if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Fire3") != 0)
+            else if (Input.GetAxis("Vertical") > 0 && Input.GetButtonDown("Sprint"))
             {
                 parent.SetState(new PlayerRun(parent));
             }  
         }
-
-        if (Input.GetKeyDown(KeyCode.F))
+        */
+        if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }
@@ -95,12 +106,12 @@ public class PlayerWalk : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.walkSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
             parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }
