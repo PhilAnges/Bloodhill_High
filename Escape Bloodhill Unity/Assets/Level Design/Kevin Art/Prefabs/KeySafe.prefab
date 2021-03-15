@@ -329,6 +329,8 @@ GameObject:
   - component: {fileID: 405572259010495998}
   - component: {fileID: 6240978328780093703}
   - component: {fileID: 8003445083798294802}
+  - component: {fileID: 3579390574994345177}
+  - component: {fileID: 4984124484092130808}
   m_Layer: 0
   m_Name: KeySafe
   m_TagString: Untagged
@@ -411,6 +413,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 5942086413982268935, guid: 9ced9f79d81de0245a0c0ec49990f0d0, type: 3}
+--- !u!65 &3579390574994345177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665738019660565979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.821847, y: 17.43813, z: 12.562555}
+  m_Center: {x: 0, y: 0, z: 12.37}
+--- !u!114 &4984124484092130808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665738019660565979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0
+  spin: 0
+  actionKey: 101
+  locked: 0
+  swing: {x: 0, y: 0, z: 0, w: 0}
+  openTheDoor: 0
 --- !u!1 &7966166516335166597
 GameObject:
   m_ObjectHideFlags: 0

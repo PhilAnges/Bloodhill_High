@@ -27,6 +27,8 @@ public class FirstPersonCamera : MonoBehaviour
     public float ogSwayFactor;
 
     public PlayerController parent;
+    [Range(-0.5f, 0.5f)]
+    public float farBackness = 1f;
 
     void Awake()
     {
@@ -50,33 +52,42 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 targetPosition;
-
-        transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(-mouseVector.y, parent.transform.right);
-        transform.rotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 1);
-
-        if (parent.isCrouching)
+        if (parent)
         {
-            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z + swayFactor);
+            Vector3 targetPosition;
+
+            transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(-mouseVector.y, parent.transform.right);
+            transform.rotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 1);
+
+            if (parent.isCrouching)
+            {
+                targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z);
+            }
+            else
+            {
+                targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z);
+            }
+            transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * swayFactor) - (parent.transform.forward * farBackness), 0.1f);
         }
-        else
-        {
-            targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z + swayFactor);
-        }       
-        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
+
+        
     }
 
     public void Look()
     {
-        var mouseChange = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        mouseChange = Vector2.Scale(mouseChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+        if (parent)
+        {
+            Vector2 lookChange = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        smoothVector.x = Mathf.Lerp(smoothVector.x, mouseChange.x, 1f / smoothing);
-        smoothVector.y = Mathf.Lerp(smoothVector.y, mouseChange.y, 1f / smoothing);
-        mouseVector += smoothVector;
-        mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
+            lookChange = Vector2.Scale(lookChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 
-        parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
+            smoothVector.x = Mathf.Lerp(smoothVector.x, lookChange.x, 1f / smoothing);
+            smoothVector.y = Mathf.Lerp(smoothVector.y, lookChange.y, 1f / smoothing);
+            mouseVector += smoothVector;
+            mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
+
+            parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
+        }
     }
 
     public void Move(float targetHeight)

@@ -196,3 +196,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   doorCamera: {fileID: 17201461098386135}
+  actionKey: 101

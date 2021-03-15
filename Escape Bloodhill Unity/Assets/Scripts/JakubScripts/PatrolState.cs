@@ -15,6 +15,13 @@ public class PatrolState : AIState
         parent.navAgent.speed = parent.patrolSpeed;
 
         parent.Sight();
+
+        if (parent.pathPoints.Count < 2)
+        {
+            Debug.Log("AI is trying to use a path with less than two points");
+            return;
+        }
+
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
             if (parent.nextPoint == parent.pathPoints.Count - 1 && parent.pathDirection == 1)
@@ -29,6 +36,7 @@ public class PatrolState : AIState
             parent.nextPoint = parent.nextPoint + parent.pathDirection;
             parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].gameObject.transform.position);
         }
+        UpdateAwareness();
         CheckConditions();
     }
 

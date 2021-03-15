@@ -32,5 +32,17 @@ public class AIState
     public virtual void CheckConditions()
     {
 
-    }    
+    }
+
+    public void UpdateAwareness()
+    {
+        if (parent.aware)
+        {
+            parent.awareness += Time.deltaTime;
+        }
+        else if (parent.awareness > 0)
+        {
+            parent.awareness -= Time.deltaTime;
+        }
+    }
 }

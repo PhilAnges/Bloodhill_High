@@ -42,8 +42,26 @@ public class PlayerController : MonoBehaviour
     public float runSwayIntensity = 0.2f;
     public float crouchSwayIntensity = 0.1f;
 
-    public float viewTimer;
-    public bool viewStep;
+    public float flickTimer;
+
+    private CapsuleCollider collider;
+
+    public int adrenalineLevel = 0;
+    public float lvlOneThreshold;
+    public float lvlTwoThreshold;
+    public float lvlThreeThreshold;
+
+    private Transform ghost;
+
+    public int noiseLevel = 0;
+    public bool isHidden = false;
+    public bool noGhost = false;
+
+    private AudioSource heart;
+    public bool isBeingChased = false;
+    private float ghostDistance;
+    public bool running = false;
+
 
 
     private void Awake()
@@ -52,10 +70,18 @@ public class PlayerController : MonoBehaviour
         ogMoveSpeed = moveSpeed;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
-        camera = GetComponentInChildren<FirstPersonCamera>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCamera>();
+        //camera = GetComponentInChildren<FirstPersonCamera>();
+        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCamera>();
         lights = camera.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
+        collider = GetComponent<CapsuleCollider>();
+        heart = GetComponentInChildren<AudioSource>();
+
+        if (FindGhost() == null)
+        {
+            noGhost = true;
+        }
+        
         SetState(new PlayerIdle(this));       
     }
 
@@ -67,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         currentState.WalkRythm();
+        HeartBeat();
     }
 
     private void LateUpdate()
@@ -87,10 +114,10 @@ public class PlayerController : MonoBehaviour
     public float GetXInput()
     {
         float input = Input.GetAxisRaw("Horizontal");
-        Vector3 direction = transform.rotation * new Vector3(input, 0, 0).normalized;
+        //Vector3 direction = transform.rotation * new Vector3(input, 0, 0).normalized;
 
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
+        //RaycastHit hit;
+        //Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
         /*if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
         {
             input = 0f;
@@ -102,10 +129,10 @@ public class PlayerController : MonoBehaviour
     public float GetZInput()
     {
         float input = Input.GetAxisRaw("Vertical");
-        Vector3 direction = transform.rotation * new Vector3(0, 0, input).normalized;
+        //Vector3 direction = transform.rotation * new Vector3(0, 0, input).normalized;
 
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
+        //RaycastHit hit;
+        //Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
         /*
         if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
         {
@@ -118,6 +145,12 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         Vector3 moveDirection = transform.rotation * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+        if (running)
+        {
+            moveDirection = transform.forward;
+        }
+
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, 2f))
@@ -160,8 +193,143 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Crouch()
+    IEnumerator  Flicker()
     {
-        //camera.Move();
+        float interval = Random.Range(0.06f, 0.08f);
+        float interval2 = Random.Range(0.08f, 0.2f);
+        int flickers = Random.Range(6, 12);
+        if (flickers %2 != 0)
+        {
+            flickers--;
+        }
+
+        int i = 0;
+
+        while (flickers != 0)
+        {
+            Flashlight();
+            flickers--;
+
+            if (i < 2)
+            {
+                i++;
+                yield return new WaitForSeconds(interval2);
+            }
+            else
+            {
+                yield return new WaitForSeconds(interval);
+            }
+            
+        }
+
+        yield return null;
+    }
+
+    public void FlashlightFlicker()
+    {
+        if (flashLightOn)
+        {
+            StartCoroutine("Flicker");
+        } 
+    }
+
+    public void ChangeSize()
+    {
+        if (isCrouching)
+        {
+            collider.height = 1;
+            collider.center = new Vector3(0,0.5f, 0);
+        }
+        else
+        {
+            collider.height = 2;
+            collider.center = new Vector3(0, 1f, 0);
+        }
+    }
+
+    public void CalculateAdrenaline()
+    {
+        if (noGhost)
+        {
+            return;
+        }
+        else if (!ghost)
+        {
+            ghost = FindGhost().transform;
+        }
+
+        //Gonna need a story check to make sure it doesn't trigger through floors and ceilings
+
+        ghostDistance = Vector3.Distance(transform.position, ghost.position);
+
+        if (isBeingChased)
+        {
+            adrenalineLevel = 4;
+        }
+        else if (ghostDistance <= lvlOneThreshold)
+        {
+            if (ghostDistance <= lvlTwoThreshold)
+            {
+                if (ghostDistance <= lvlThreeThreshold)
+                {
+                    adrenalineLevel = 3;
+                    return;
+                }
+                adrenalineLevel = 2;
+                return;
+            }
+            adrenalineLevel = 1;
+        }
+        //Temp
+        else
+        {
+            adrenalineLevel = 0;
+        }
+    }
+
+    public GameObject FindGhost()
+    {
+        GameObject theGhost = GameObject.FindGameObjectWithTag("Enemy");
+
+        return theGhost;
+    }
+
+    public void HeartBeat()
+    {
+        //StartCoroutine("HeartCycle");
+        switch (adrenalineLevel)
+        {
+            case 0:
+                //heart.pitch = 1f;
+                heart.volume = 0f;
+                break;
+            case 1:
+                //heart.pitch = 1f;
+                heart.volume = 0.2f;
+                break;
+            case 2:
+                //heart.pitch = 1.4f;
+                heart.volume = 0.3f;
+                break;
+            case 3:
+                //heart.pitch = 1.6f;
+                heart.volume = 0.4f;
+                break;
+            case 4:
+                //heart.pitch = 1.6f;
+                heart.volume = 1f;
+                break;
+        }
+
+        float pitchChange = ghostDistance / lvlOneThreshold;
+        heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+
+    }
+
+    IEnumerator HeartCycle()
+    {
+        
+
+        yield return null;
     }
 }

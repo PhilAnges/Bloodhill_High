@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 
+
 [CustomEditor(typeof(PathPoint))]
 public class PathPointEditorScript : Editor
 {
@@ -15,9 +16,15 @@ public class PathPointEditorScript : Editor
         PathPoint pathPoint = (PathPoint)target;
         parent = pathPoint.gameObject.GetComponentInParent<Path>();
 
+
+        if (GUILayout.Button("Add Waypoint"))
+        {
+            parent.AddWaypoint();
+        }
+
         if (GUILayout.Button("Insert Next"))
         {
-            if (pathPoint.endPoint == true)
+            if (/*pathPoint.endPoint == true*/pathPoint.transform.GetSiblingIndex() == parent.transform.childCount - 1)
             {
                 Debug.Log("Use 'Add Waypoint' to add to the end of the path");
             }
@@ -31,7 +38,7 @@ public class PathPointEditorScript : Editor
         {
             if (pathPoint.transform.GetSiblingIndex() == 0)
             {
-                Debug.Log("Can't insert a new start node yet");
+                Debug.Log("Can't insert a new start node");
             }
             else
             {
@@ -46,7 +53,7 @@ public class PathPointEditorScript : Editor
             }
             else
             {
-                if (pathPoint.endPoint)
+                if (pathPoint.transform.GetSiblingIndex() == parent.transform.childCount - 1)
                 {
                     pathPoint.next = parent.transform.GetChild(0).GetComponent<PathPoint>();
                     parent.transform.GetChild(0).GetComponent<PathPoint>().prev = pathPoint;
@@ -73,16 +80,13 @@ public class PathPointEditorScript : Editor
 
             
         }
-        if (GUILayout.Button("Add Waypoint"))
-        {
-            parent.AddWaypoint();
-        }
+
         if (GUILayout.Button("Delete This Waypoint"))
         {
-            if (pathPoint.endPoint)
+            if (pathPoint.transform.GetSiblingIndex() == parent.transform.childCount - 1)
             {
                 parent.lastPointMade = pathPoint.prev;
-                pathPoint.prev.endPoint = true;
+                //pathPoint.prev.endPoint = true;
                 DestroyImmediate(pathPoint.gameObject);
             }
             else if (pathPoint.transform.GetSiblingIndex() == 0)
@@ -97,12 +101,32 @@ public class PathPointEditorScript : Editor
                 DestroyImmediate(pathPoint.gameObject);
             }
         }
+
+        EditorGUILayout.HelpBox("'Add Waypoint' will create a new point at the end of the path. \n" + 
+            "'Insert Next' will add a point in between this point and the next. \n" + 
+            "'Insert Prev' will add a new point between this point and the previous one. \n" +
+            "'Loop' will link this point to the first one. Only works on the last point and takes a few seconds to show visually in the scene. \n" +
+            "'Unloop' will unlink the first node from this one. Also takes a few seconds to show in the scene. \n" +
+            "Use 'Delete this waypoint' to delete points or you'll have to relink the ones surrounding them manually. \n", MessageType.Info);
     }
 
     [DrawGizmo(GizmoType.InSelectionHierarchy |GizmoType.NonSelected |GizmoType.Pickable)]
     static void DrawPointNode(PathPoint point, GizmoType gizmoType)
     {
-        Gizmos.color = Color.blue;
+
+        if (point.transform.GetSiblingIndex() == point.transform.parent.transform.childCount - 1 && point.transform.GetSiblingIndex() != 0)
+        {
+            Gizmos.color = Color.red;
+        }
+        else if (point.transform.GetSiblingIndex() == 0)
+        {
+            Gizmos.color = Color.green;
+        }
+        else
+        {
+            Gizmos.color = Color.blue;
+        }
+
         Gizmos.DrawSphere(point.gameObject.transform.position, 0.5f);
 
         if (point.next != null)

@@ -8,7 +8,9 @@ public class AIController : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navAgent;
     [HideInInspector]
+    public PlayerController player;
     public GameController gameController;
+
     [HideInInspector]
     public Vector3 currentDestination;
     [HideInInspector]
@@ -59,13 +61,18 @@ public class AIController : MonoBehaviour
 
     private Transform spherePos;
 
-    void Start()
+    private EnemyHearing hearingRange;
+    public float hearingLimit = 2f;
+
+    void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
+        hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
         navAgent.speed = patrolSpeed;
         nextPoint = 0;
         previousPoint = 0;
@@ -110,7 +117,7 @@ public class AIController : MonoBehaviour
 
                     playerDirection = (playerPosition - previousPlayerPosition);
 
-                    awareness += Time.deltaTime;
+                    //awareness += Time.deltaTime;
                     return;
                 }
                 else
@@ -119,15 +126,28 @@ public class AIController : MonoBehaviour
                 }
             }
         }
-        if (awareness > 0)
+        else
         {
-            awareness -= Time.deltaTime;
+            aware = false;
         }
+        Hearing();
     }
 
     public void Hearing()
     {
-
+        if (!aware && hearingRange.inRange)
+        {
+            if (player.noiseLevel > 1)
+            {
+                playerPosition = player.transform.position;
+                aware = true;
+            }
+            else if (Vector3.Distance(transform.position, player.transform.position) <= hearingLimit)
+            {
+                playerPosition = player.transform.position;
+                aware = true;
+            }
+        }
     }
 
     public void Orient(Vector3 target)
@@ -151,7 +171,7 @@ public class AIController : MonoBehaviour
         if (path.transform.childCount > 0)
         {
             PathPoint currentPoint = path.gameObject.transform.GetChild(0).GetComponent<PathPoint>();
-            while (!currentPoint.endPoint)
+            while (currentPoint.transform.GetSiblingIndex() != path.transform.childCount - 1)
             {
                 outList.Add(currentPoint);
                 currentPoint = currentPoint.next;
