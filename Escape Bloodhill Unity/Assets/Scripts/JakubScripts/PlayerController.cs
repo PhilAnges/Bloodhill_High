@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource heart;
     public bool isBeingChased = false;
     private float ghostDistance;
+    public bool running = false;
 
 
 
@@ -144,6 +145,12 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         Vector3 moveDirection = transform.rotation * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+        if (running)
+        {
+            moveDirection = transform.forward;
+        }
+
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, 2f))

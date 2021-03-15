@@ -40,25 +40,34 @@ public class PlayerWalk : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Crouch"))
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
 
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            parent.SetState(new PlayerIdle(parent));
+        }
+        else if (Input.GetButtonDown("Sprint"))
+        {
+            parent.SetState(new PlayerRun(parent));
+        }
+        /*
         if (Input.GetAxis("Horizontal") == 0)
         {
             if (Input.GetAxis("Vertical") == 0)
             {
                 parent.SetState(new PlayerIdle(parent));
             }
-            else if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Fire3") != 0)
+            else if (Input.GetAxis("Vertical") > 0 && Input.GetButtonDown("Sprint"))
             {
                 parent.SetState(new PlayerRun(parent));
             }  
         }
-
-        if (Input.GetKeyDown(KeyCode.F))
+        */
+        if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }

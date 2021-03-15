@@ -30,6 +30,7 @@ public class PlayerRun : PlayerState
         highPoint = parent.camera.ogStandHeight;
         lowPoint = highPoint - parent.runBobIntensity;
         parent.noiseLevel = 3;
+        parent.running = true;
     }
 
     public override void ExitBehavior()
@@ -37,17 +38,20 @@ public class PlayerRun : PlayerState
         Debug.Log("Leaving Run State");
         parent.moveSpeed = parent.ogMoveSpeed;
         parent.camera.standHeight = highPoint;
+        parent.running = false;
     }
 
     public override void CheckConditions()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Crouch"))
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Fire3") == 0)
+
+        //Things that will make you stop sprinting
+        if (/*Input.GetAxis("Horizontal") != 0 ||*/ Input.GetAxis("Vertical") < 0 || !Input.GetButton("Sprint"))
         {
             if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
             {
@@ -59,7 +63,7 @@ public class PlayerRun : PlayerState
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }

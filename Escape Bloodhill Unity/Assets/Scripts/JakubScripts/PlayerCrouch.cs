@@ -47,21 +47,21 @@ public class PlayerCrouch : PlayerState
     {
         if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
         {
-            if (Input.GetAxis("Fire3") != 0)
+            if (Input.GetButtonDown("Sprint"))
             {
                 parent.SetState(new PlayerRun(parent));
             }
-            else if (Input.GetKeyDown(KeyCode.C))
+            else if (Input.GetButtonDown("Crouch"))
             {
                 parent.SetState(new PlayerWalk(parent));
             }
         }
-        else if (Input.GetKeyDown(KeyCode.C))
+        else if (Input.GetButtonDown("Crouch"))
         {
             parent.SetState(new PlayerIdle(parent));
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }

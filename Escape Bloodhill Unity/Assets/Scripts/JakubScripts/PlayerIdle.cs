@@ -31,7 +31,7 @@ public class PlayerIdle : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Crouch"))
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
@@ -49,7 +49,7 @@ public class PlayerIdle : PlayerState
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }
