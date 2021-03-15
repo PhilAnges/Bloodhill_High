@@ -15,6 +15,7 @@ public class PlayerCrouch : PlayerState
         parent.camera.Look();
         parent.Move();
         parent.DrainStamina(false);
+        parent.CalculateAdrenaline();
         CheckConditions();
     }
 
@@ -23,13 +24,14 @@ public class PlayerCrouch : PlayerState
         Debug.Log("Entering Crouch State");
         parent.moveSpeed *= parent.crouchSpeedMultiplier;
         parent.isCrouching = true;
-
+        parent.ChangeSize();
         parent.camera.walkBobMagnitude = parent.crouchBobIntensity;
         parent.stepInterval = parent.crouchInterval;
         parent.camera.swayFactor = parent.crouchSwayIntensity;
         rythmTimer = parent.stepInterval * 2;
         highPoint = parent.camera.ogCrouchHeight;
         lowPoint = highPoint - parent.crouchBobIntensity;
+        parent.noiseLevel = 1;
     }
 
     public override void ExitBehavior()
@@ -38,6 +40,7 @@ public class PlayerCrouch : PlayerState
         parent.moveSpeed = parent.ogMoveSpeed;
         parent.camera.crouchHeight = highPoint;
         parent.isCrouching = false;
+        parent.ChangeSize();
     }
 
     public override void CheckConditions()
@@ -97,12 +100,12 @@ public class PlayerCrouch : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.crouchSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
             parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, parent.camera.ogCrouchHeight, 0.05f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }

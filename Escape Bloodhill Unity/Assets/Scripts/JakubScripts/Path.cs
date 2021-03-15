@@ -38,11 +38,12 @@ public class Path : MonoBehaviour
         {
             newPointScript.prev = lastPointMade;
             lastPointMade.next = newPointScript;
-            lastPointMade.endPoint = false;
-            newPointScript.endPoint = true;
+            //lastPointMade.endPoint = false;
+            //newPointScript.endPoint = true;
         }
        
         lastPointMade = newPointScript;
+        Selection.activeGameObject = newPoint;
     }
 
     public void InsertWaypoint(int index, Vector3 position)

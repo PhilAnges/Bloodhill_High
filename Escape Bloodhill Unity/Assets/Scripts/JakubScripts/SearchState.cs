@@ -17,6 +17,7 @@ public class SearchState : AIState
     public override void UpdateBehavior()
     {
         parent.Sight();
+
         if (parent.navAgent.remainingDistance <= 0 && checking == false)
         {
             Quaternion targetRot = Quaternion.LookRotation((parent.transform.position + (parent.playerDirection.normalized * 5f)) - parent.transform.position);
@@ -35,6 +36,7 @@ public class SearchState : AIState
             Debug.Log("Setting bool");
             coastIsClear = true;
         }
+        UpdateAwareness();
         CheckConditions();
     }
 

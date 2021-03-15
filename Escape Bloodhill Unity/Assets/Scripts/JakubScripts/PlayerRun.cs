@@ -17,6 +17,7 @@ public class PlayerRun : PlayerState
         parent.camera.Look();
         parent.Move();
         parent.DrainStamina(true);
+        parent.CalculateAdrenaline();
         CheckConditions();
     }
 
@@ -28,6 +29,7 @@ public class PlayerRun : PlayerState
         rythmTimer = parent.stepInterval * 2;
         highPoint = parent.camera.ogStandHeight;
         lowPoint = highPoint - parent.runBobIntensity;
+        parent.noiseLevel = 3;
     }
 
     public override void ExitBehavior()
@@ -96,12 +98,12 @@ public class PlayerRun : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.runSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            parent.viewTimer = rythmTimer;
+            //parent.viewTimer = rythmTimer;
             parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }
