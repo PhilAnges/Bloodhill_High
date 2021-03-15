@@ -247,6 +247,10 @@ GameObject:
   - component: {fileID: 7134799510265581535}
   - component: {fileID: 3524079506508911615}
   - component: {fileID: 6033439988151125998}
+  - component: {fileID: 1234382872}
+  - component: {fileID: 1234382874}
+  - component: {fileID: 1234382873}
+  - component: {fileID: 1234382875}
   m_Layer: 0
   m_Name: pCube6
   m_TagString: Untagged
@@ -317,6 +321,69 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1234382872
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766659596427795853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.099498, y: 14.675898, z: 1.2225068}
+  m_Center: {x: 5.363582, y: 0, z: -0.4290992}
+--- !u!65 &1234382874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766659596427795853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.821847, y: 17.43813, z: 12.562555}
+  m_Center: {x: 5.9, y: 0, z: 6.33}
+--- !u!114 &1234382873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766659596427795853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0.05
+  spin: 0.01
+  actionKey: 101
+  locked: 1
+  swing: {x: 0, y: 0, z: 0, w: 9}
+  openTheDoor: 0
+--- !u!114 &1234382875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766659596427795853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316963a2210c381468246bdf380eb10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  player: {fileID: 0}
+  passwordPlease: {fileID: 0}
+  instructions: {fileID: 0}
+  startTyping: 13
+  thisIsPassword: 24
 --- !u!1 &5665738019660565979
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +396,6 @@ GameObject:
   - component: {fileID: 405572259010495998}
   - component: {fileID: 6240978328780093703}
   - component: {fileID: 8003445083798294802}
-  - component: {fileID: 3579390574994345177}
-  - component: {fileID: 4984124484092130808}
   m_Layer: 0
   m_Name: KeySafe
   m_TagString: Untagged
@@ -345,7 +410,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665738019660565979}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.4789488, y: 1.28, z: 0.064}
   m_LocalScale: {x: 0.0328084, y: 0.0328084, z: 0.0328084}
   m_Children:
@@ -413,38 +478,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 5942086413982268935, guid: 9ced9f79d81de0245a0c0ec49990f0d0, type: 3}
---- !u!65 &3579390574994345177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665738019660565979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.821847, y: 17.43813, z: 12.562555}
-  m_Center: {x: 0, y: 0, z: 12.37}
---- !u!114 &4984124484092130808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665738019660565979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  howLong: 0
-  spin: 0
-  actionKey: 101
-  locked: 0
-  swing: {x: 0, y: 0, z: 0, w: 0}
-  openTheDoor: 0
 --- !u!1 &7966166516335166597
 GameObject:
   m_ObjectHideFlags: 0

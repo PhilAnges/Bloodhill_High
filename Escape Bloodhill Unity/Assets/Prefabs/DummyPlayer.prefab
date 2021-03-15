@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6929356276309289195}
   - component: {fileID: 3187912927524468353}
   - component: {fileID: 2225558749351203795}
+  - component: {fileID: 4914845555321865613}
   m_Layer: 8
   m_Name: DummyPlayer
   m_TagString: Player
@@ -113,6 +114,7 @@ MonoBehaviour:
   isHidden: 0
   noGhost: 0
   isBeingChased: 0
+  running: 0
 --- !u!81 &3187912927524468353
 AudioListener:
   m_ObjectHideFlags: 0
@@ -136,6 +138,24 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   gameOverMenu: {fileID: 0}
+--- !u!114 &4914845555321865613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498542383292317154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f7b7f57d63f01479eeaf49e490a005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playAudio: 0
+  inventory: []
+  givenAudio: {fileID: 0}
+  relatedDoor: {fileID: 0}
+  inventoryCounter: 0
+  pickedUpItem: 0
 --- !u!1 &8618621780088035931
 GameObject:
   m_ObjectHideFlags: 0
