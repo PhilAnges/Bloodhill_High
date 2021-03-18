@@ -16,15 +16,15 @@ public class FlashlightFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z);
 
         //targetPosition = Quaternion.Euler(0f, parent.transform.rotation.y, 0f) * targetPosition;
 
-        
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * 0.3f) - (parent.transform.forward * -0.5f) - (parent.transform.up * 0.3f), 0.1f);
         transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
+        transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * 0.5f) - (parent.transform.forward * -0.5f) - (parent.transform.up * 0.3f), 0.4f);
+        //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
     }
 }

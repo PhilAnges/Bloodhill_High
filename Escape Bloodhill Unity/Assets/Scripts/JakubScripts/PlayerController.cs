@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
         }
-        rigbod.velocity = moveDirection * moveSpeed * Time.deltaTime;
+        rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
         Debug.DrawRay(transform.position, moveDirection * 2f, Color.green, 0.5f);
     }
 
