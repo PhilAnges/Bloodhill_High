@@ -20,13 +20,14 @@ public class PlayerIdle : PlayerState
 
     public override void EntryBehavior()
     {
-        Debug.Log("Entering Idle State");
+        //Debug.Log("Entering Idle State");
+        parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
     }
 
     public override void ExitBehavior()
     {
-        Debug.Log("Leaving Idle State");
+        //Debug.Log("Leaving Idle State");
     }
 
     public override void CheckConditions()

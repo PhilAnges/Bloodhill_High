@@ -23,7 +23,7 @@ public class PlayerRun : PlayerState
 
     public override void EntryBehavior()
     {
-        Debug.Log("Entering Run State");
+        //Debug.Log("Entering Run State");
         parent.moveSpeed *= parent.runSpeedMultiplier;
         parent.stepInterval = parent.runInterval;
         rythmTimer = parent.stepInterval * 2;
@@ -35,7 +35,7 @@ public class PlayerRun : PlayerState
 
     public override void ExitBehavior()
     {
-        Debug.Log("Leaving Run State");
+        //Debug.Log("Leaving Run State");
         parent.moveSpeed = parent.ogMoveSpeed;
         parent.camera.standHeight = highPoint;
         parent.running = false;
@@ -49,9 +49,8 @@ public class PlayerRun : PlayerState
             return;
         }
 
-
         //Things that will make you stop sprinting
-        if (/*Input.GetAxis("Horizontal") != 0 ||*/ Input.GetAxis("Vertical") < 0 || !Input.GetButton("Sprint"))
+        if (!Input.GetButton("Sprint"))
         {
             if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
             {
@@ -62,11 +61,38 @@ public class PlayerRun : PlayerState
                 parent.SetState(new PlayerWalk(parent));
             }
         }
+        else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            parent.SetState(new PlayerIdle(parent));
+        }
 
         if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
         }
+
+
+        /*//Things that will make you stop sprinting
+        if (Input.GetAxis("Vertical") < 0 || !Input.GetButton("Sprint"))
+        {
+            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            {
+                parent.SetState(new PlayerIdle(parent));
+            }
+            else
+            {
+                parent.SetState(new PlayerWalk(parent));
+            }
+        }
+        else if (Input.GetButton("Sprint") && Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            parent.SetState(new PlayerIdle(parent));
+        }
+
+        if (Input.GetButtonDown("Flashlight"))
+        {
+            parent.Flashlight();
+        }*/
     }
 
     public override void WalkRythm()

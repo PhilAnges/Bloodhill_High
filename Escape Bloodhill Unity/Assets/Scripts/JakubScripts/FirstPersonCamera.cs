@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FirstPersonCamera : MonoBehaviour
 {
-    private Vector2 mouseVector, smoothVector;
+    public Vector2 mouseVector, smoothVector;
 
     [Range(0.1f, 10.0f)]
     public float sensitivity = 5.0f;
@@ -27,13 +27,22 @@ public class FirstPersonCamera : MonoBehaviour
     public float ogSwayFactor;
 
     public PlayerController parent;
-    [Range(-0.5f, 0.5f)]
+    public FlashlightFollow child;
+    public GameObject flashlightPrefab;
+
+    [Range(-0.3f, 0.5f)]
     public float farBackness = 1f;
 
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         parent = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        Vector3 targetPosition = new Vector3(parent.transform.position.x + 0.34f, parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
+
+        child = Instantiate(flashlightPrefab, targetPosition, Quaternion.Euler(90f, 0f ,0f)).GetComponent<FlashlightFollow>();
+        child.parent = this.transform;
+        parent.lights = child.GetComponentsInChildren<Light>();
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;

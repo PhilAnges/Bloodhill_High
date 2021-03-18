@@ -13,7 +13,7 @@ public class AIController : MonoBehaviour
 
     [HideInInspector]
     public Vector3 currentDestination;
-    [HideInInspector]
+    //[HideInInspector]
     public bool aware = false;
     [HideInInspector]
     public float arriveDistance;
@@ -25,7 +25,7 @@ public class AIController : MonoBehaviour
     public int previousPoint;
     [HideInInspector]
     public AIState currentState;
-    [HideInInspector]
+    //[HideInInspector]
     public float awareness = 0f;
     [HideInInspector]
     public Vector3 playerPosition;
@@ -44,7 +44,7 @@ public class AIController : MonoBehaviour
     private int frameIncrement = 0;    
     private int playerMask = 1 << 8;
 
-    [Range(5f, 20f)]
+    [Range(5f, 50f)]
     public float maxViewDistance = 10f;
     [Range(1f, 10f)]
     public float patrolSpeed;
@@ -56,6 +56,7 @@ public class AIController : MonoBehaviour
     public float playerChaseStoppingDistance;
 
     public Path defaultPath;
+    public Path currentPath;
 
     public List<PathPoint> pathPoints;
 
@@ -63,6 +64,11 @@ public class AIController : MonoBehaviour
 
     private EnemyHearing hearingRange;
     public float hearingLimit = 2f;
+
+    public float timeToLosePlayer = 2f;
+    //[HideInInspector]
+    public float playerLostTime = 0;
+    public float maxAwareness = 5f;
 
     void Awake()
     {
@@ -102,7 +108,7 @@ public class AIController : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * maxViewDistance, Color.red, 0.5f);
         if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
         {           
-            if (Physics.Raycast(transform.position, (hit.transform.position - transform.position), out hat, maxViewDistance))
+            if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hat, maxViewDistance))
             {
                 if (hat.collider.tag == "Player")
                 {
@@ -180,4 +186,12 @@ public class AIController : MonoBehaviour
         }
         return outList;
     }
+
+    public void SetPath(Path newPath)
+    {
+        pathPoints = PopulateList(newPath);
+        nextPoint = 0;
+        previousPoint = 0;
+    }
+
 }
