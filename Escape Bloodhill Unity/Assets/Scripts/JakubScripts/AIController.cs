@@ -105,9 +105,12 @@ public class AIController : MonoBehaviour
     {
         RaycastHit hit, hat;
 
+        Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
         Debug.DrawRay(transform.position, transform.forward * maxViewDistance, Color.red, 0.5f);
         if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
-        {           
+        {
+            Debug.DrawRay(transform.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
             if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hat, maxViewDistance))
             {
                 if (hat.collider.tag == "Player")
@@ -192,6 +195,7 @@ public class AIController : MonoBehaviour
         pathPoints = PopulateList(newPath);
         nextPoint = 0;
         previousPoint = 0;
+        navAgent.SetDestination(pathPoints[nextPoint].gameObject.transform.position);
     }
 
 }

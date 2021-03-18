@@ -90,11 +90,13 @@ MonoBehaviour:
   ogMoveSpeed: 0
   ogRegenRate: 0
   camera: {fileID: 0}
+  flashlight: {fileID: 0}
   lights: []
   flashLightOn: 0
   isCrouching: 0
   stamina: 100
-  camPrefab: {fileID: 9083725253466467257, guid: fdede3bbf0c0a8a408aa81a2d8e77aee,
+  rigbod: {fileID: 0}
+  camPrefab: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
     type: 3}
   stepInterval: 0.35
   ogstepInterval: 0
