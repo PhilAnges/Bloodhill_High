@@ -36,11 +36,17 @@ public class AIState
 
     public void UpdateAwareness()
     {
-        if (parent.aware)
+        if (parent.aware && parent.awareness < parent.maxAwareness)
         {
             parent.awareness += Time.deltaTime;
+            parent.playerLostTime = 0f;
         }
-        else if (parent.awareness > 0)
+        else if (parent.playerLostTime < parent.timeToLosePlayer)
+        {
+            parent.playerLostTime += Time.deltaTime;
+        }
+
+        if (parent.awareness > 0 && parent.playerLostTime >= parent.timeToLosePlayer)
         {
             parent.awareness -= Time.deltaTime;
         }

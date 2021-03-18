@@ -21,7 +21,7 @@ public class PlayerCrouch : PlayerState
 
     public override void EntryBehavior()
     {
-        Debug.Log("Entering Crouch State");
+        //Debug.Log("Entering Crouch State");
         parent.moveSpeed *= parent.crouchSpeedMultiplier;
         parent.isCrouching = true;
         parent.ChangeSize();
@@ -36,7 +36,7 @@ public class PlayerCrouch : PlayerState
 
     public override void ExitBehavior()
     {
-        Debug.Log("Leaving Crouch State");
+        //Debug.Log("Leaving Crouch State");
         parent.moveSpeed = parent.ogMoveSpeed;
         parent.camera.crouchHeight = highPoint;
         parent.isCrouching = false;

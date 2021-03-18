@@ -55,7 +55,7 @@ public class PatrolState : AIState
 
     public override void CheckConditions()
     {
-        if (parent.awareness > 0f)
+        if (parent.aware)
         {
             parent.SetState(new AlertState(parent));
         }

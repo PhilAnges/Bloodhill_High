@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float ogRegenRate;
     [HideInInspector]
     public FirstPersonCamera camera;
+    public Transform flashlight;
     public Light[] lights;
     public bool flashLightOn = false;
     public bool isCrouching = false;
@@ -29,8 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float stamina = 100f;
 
-    private Rigidbody rigbod;
+    public Rigidbody rigbod;
     public  GameObject camPrefab;
+    
     public float stepInterval = 2f;
     public float ogstepInterval;
     public float runInterval = 0.2f;
@@ -67,12 +69,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
+        
         ogMoveSpeed = moveSpeed;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
-        //camera = GetComponentInChildren<FirstPersonCamera>();
-        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCamera>();
-        lights = camera.GetComponentsInChildren<Light>();
+        //lights = flashlight.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
