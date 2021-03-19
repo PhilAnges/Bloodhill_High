@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionDistance: 0.45
   collisionScale: 0.5
-  moveSpeed: 250
+  moveSpeed: 100
   runSpeedMultiplier: 2
-  runStaminaCost: 5
+  runStaminaCost: 20
   crouchSpeedMultiplier: 0.5
   staminaRegenRate: 2.5
   staminaRegenMultiplier: 0.5

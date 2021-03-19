@@ -70,12 +70,16 @@ public class AIController : MonoBehaviour
     public float playerLostTime = 0;
     public float maxAwareness = 5f;
 
+    private Transform
+        eyePos;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
+        eyePos = gameObject.transform.Find("Eyes").transform;
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
         hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
@@ -107,11 +111,11 @@ public class AIController : MonoBehaviour
 
         Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
-        Debug.DrawRay(transform.position, transform.forward * maxViewDistance, Color.red, 0.5f);
+        Debug.DrawRay(spherePos.position, transform.forward * maxViewDistance, Color.red, 0.5f);
         if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
         {
-            Debug.DrawRay(transform.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
-            if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hat, maxViewDistance))
+            Debug.DrawRay(eyePos.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
+            if (Physics.Raycast(eyePos.position, (player.transform.position - transform.position), out hat, maxViewDistance))
             {
                 if (hat.collider.tag == "Player")
                 {
