@@ -23,6 +23,11 @@ public class PlayerState
 
     }
 
+    public virtual void FixedUpdateBehavior()
+    {
+
+    }
+
     public virtual void EntryBehavior()
     {
 

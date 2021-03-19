@@ -13,7 +13,7 @@ public class PlayerWalk : PlayerState
 
     public override void UpdateBehavior()
     {
-        parent.Move();
+        
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -21,7 +21,7 @@ public class PlayerWalk : PlayerState
 
     public override void EntryBehavior()
     {
-        //Debug.Log("Entering Walk State");
+        Debug.Log("Entering Walk State");
         parent.staminaRegenRate *= parent.staminaRegenMultiplier;
         parent.stepInterval = parent.ogstepInterval;
         rythmTimer = parent.stepInterval * 2;
@@ -33,7 +33,7 @@ public class PlayerWalk : PlayerState
 
     public override void ExitBehavior()
     {
-        //Debug.Log("Leaving Walk State");
+        Debug.Log("Leaving Walk State");
         parent.staminaRegenRate = parent.ogRegenRate;
         parent.camera.standHeight = highPoint;
     }
@@ -45,28 +45,17 @@ public class PlayerWalk : PlayerState
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
-
-        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
-        {
-            parent.SetState(new PlayerIdle(parent));
-        }
-        else if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButton("Sprint") && Input.GetAxisRaw("Vertical") > 0)
         {
             parent.SetState(new PlayerRun(parent));
+            return;
         }
-        /*
-        if (Input.GetAxis("Horizontal") == 0)
+        if (!Input.GetButton("Vertical") && !Input.GetButton("Horizontal"))
         {
-            if (Input.GetAxis("Vertical") == 0)
-            {
-                parent.SetState(new PlayerIdle(parent));
-            }
-            else if (Input.GetAxis("Vertical") > 0 && Input.GetButtonDown("Sprint"))
-            {
-                parent.SetState(new PlayerRun(parent));
-            }  
+            parent.SetState(new PlayerIdle(parent));
+            return;
         }
-        */
+
         if (Input.GetButtonDown("Flashlight"))
         {
             parent.Flashlight();
@@ -117,5 +106,10 @@ public class PlayerWalk : PlayerState
         }
 
         //parent.viewStep = step;
+    }
+
+    public override void FixedUpdateBehavior()
+    {
+        parent.Move();
     }
 }
