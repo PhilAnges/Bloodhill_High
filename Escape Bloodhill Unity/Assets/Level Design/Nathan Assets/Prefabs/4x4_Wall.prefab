@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7956336934554983789}
   - component: {fileID: 3774366460796638573}
   - component: {fileID: 5589142102299388684}
+  - component: {fileID: 7705143576679623579}
   m_Layer: 0
   m_Name: 4x4_WallBase
   m_TagString: Untagged
@@ -112,6 +113,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7705143576679623579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469215362213693532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04, y: 0.029999997, z: 0.005}
+  m_Center: {x: 0.02, y: 0.014999999, z: 8.5391305e-11}
 --- !u!1 &4009281877190825234
 GameObject:
   m_ObjectHideFlags: 0

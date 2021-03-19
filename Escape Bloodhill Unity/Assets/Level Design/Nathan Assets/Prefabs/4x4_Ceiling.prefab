@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6661597205458137842}
   - component: {fileID: 2389645457792829636}
   - component: {fileID: 8220530060979205181}
+  - component: {fileID: 6196327067069446854}
   m_Layer: 0
   m_Name: 4x4_Ceiling
   m_TagString: Untagged
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6196327067069446854
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649898905056297185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 5816388351409971782, guid: d502c91a02820994f89f798b1e530b7f, type: 3}
