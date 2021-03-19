@@ -50,7 +50,7 @@ public class PlayerWalk : PlayerState
             parent.SetState(new PlayerRun(parent));
             return;
         }
-        if (!Input.GetButton("Vertical") && !Input.GetButton("Horizontal"))
+        if (/*!Input.GetButton("Vertical") && !Input.GetButton("Horizontal") || */Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
         {
             parent.SetState(new PlayerIdle(parent));
             return;

@@ -6628,6 +6628,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 309833255}
     m_Modifications:
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8008,6 +8018,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 309833255}
     m_Modifications:
+    - target: {fileID: 4257721069744872297, guid: 3c0ea952e54d35047a7d57dc8525eaf3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257721069744872297, guid: 3c0ea952e54d35047a7d57dc8525eaf3,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4815938521524409551, guid: 3c0ea952e54d35047a7d57dc8525eaf3,
         type: 3}
       propertyPath: m_Name
@@ -9112,6 +9132,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 982001393}
     m_Modifications:
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10585,6 +10615,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 309833255}
     m_Modifications:
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537160402260343250, guid: f4b97118474420a48825ec1838d65e0b,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
         type: 3}
       propertyPath: m_LocalPosition.x

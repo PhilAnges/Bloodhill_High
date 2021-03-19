@@ -6,6 +6,7 @@ public class FlashlightFollow : MonoBehaviour
 {
     public Transform parent;
     public float swayFactor = 0;
+    public float runSwayIntensity = 2f;
     public float farBackness = 0;
 
 
@@ -24,7 +25,7 @@ public class FlashlightFollow : MonoBehaviour
 
 
         transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
-        transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * 0.5f) - (parent.transform.forward * -0.5f) - (parent.transform.up * 0.3f), 0.4f);
+        transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f), 0.4f);
         //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
     }
 }
