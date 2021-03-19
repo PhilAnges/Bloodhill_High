@@ -20,14 +20,16 @@ public class PlayerIdle : PlayerState
 
     public override void EntryBehavior()
     {
-        //Debug.Log("Entering Idle State");
+        parent.moveSpeed = 0;
+        Debug.Log("Entering Idle State");
         parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
     }
 
     public override void ExitBehavior()
     {
-        //Debug.Log("Leaving Idle State");
+        parent.moveSpeed = parent.ogMoveSpeed;
+        Debug.Log("Leaving Idle State");
     }
 
     public override void CheckConditions()
@@ -38,16 +40,16 @@ public class PlayerIdle : PlayerState
             return;
         }
 
-        if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
+        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
         {
-            if (Input.GetAxis("Fire3") != 0)
-            {
-                parent.SetState(new PlayerRun(parent));
-            }
-            else
-            {
-                parent.SetState(new PlayerWalk(parent));
-            }
+            parent.SetState(new PlayerRun(parent));
+            return;
+        }
+
+        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+        {
+            parent.SetState(new PlayerWalk(parent));
+            return;
         }
 
         if (Input.GetButtonDown("Flashlight"))

@@ -13,7 +13,7 @@ public class PlayerCrouch : PlayerState
     public override void UpdateBehavior()
     {
         parent.camera.Look();
-        parent.Move();
+        //parent.Move();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -109,5 +109,10 @@ public class PlayerCrouch : PlayerState
             parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, parent.camera.ogCrouchHeight, 0.05f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }
+    }
+
+    public override void FixedUpdateBehavior()
+    {
+        parent.Move();
     }
 }

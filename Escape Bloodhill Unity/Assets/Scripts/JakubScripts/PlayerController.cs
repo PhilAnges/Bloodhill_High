@@ -89,10 +89,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentState.UpdateBehavior();
+        //Debug.Log(rigbod.velocity);
     }
 
     private void FixedUpdate()
     {
+        currentState.FixedUpdateBehavior();
         currentState.WalkRythm();
         HeartBeat();
     }

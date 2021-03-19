@@ -23735,6 +23735,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3146109923975926123, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146109923975926123, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5498542383292317154, guid: dd294e24b449fe440a1e8991a312318e,
         type: 3}
       propertyPath: m_Name
@@ -23801,6 +23811,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
         type: 3}
+    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: runStaminaCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd294e24b449fe440a1e8991a312318e, type: 3}
 --- !u!1001 &8017519051739646576
@@ -23829,6 +23849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DummyAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017519051976634656, guid: 4192ba3343e7e4a408671730f2c7972e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8017519051976634660, guid: 4192ba3343e7e4a408671730f2c7972e,
         type: 3}
