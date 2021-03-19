@@ -49,7 +49,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   journalUI: {fileID: 0}
   button: {fileID: 0}
-  pauseButton: 9
+  pauseButton: 27
 --- !u!114 &4883341769070792769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneArray:
-  - NewSceneForJohn
+  - Game
   - MainMenu
   - HowToPlay
