@@ -441,6 +441,9 @@ GameObject:
   - component: {fileID: 5314855599815958534}
   - component: {fileID: 7785242769262856564}
   - component: {fileID: 1569182801386533383}
+  - component: {fileID: 6249338099055870363}
+  - component: {fileID: 6889017733882443631}
+  - component: {fileID: 2295225751359395683}
   m_Layer: 0
   m_Name: Ceiling Trim.003
   m_TagString: Untagged
@@ -508,6 +511,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6249338099055870363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087715405189535354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010242412, y: 0.029999997, z: 0.005}
+  m_Center: {x: -0.034878697, y: 0.014999999, z: 0.00024858533}
+--- !u!65 &6889017733882443631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087715405189535354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010257024, y: 0.029999997, z: 0.005}
+  m_Center: {x: -0.005128506, y: 0.014999999, z: 0.00024858533}
+--- !u!65 &2295225751359395683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087715405189535354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019340672, y: 0.00964421, z: 0.005}
+  m_Center: {x: -0.019959781, y: 0.025177754, z: 0.00024858533}
 --- !u!1 &5423627239560553374
 GameObject:
   m_ObjectHideFlags: 0
