@@ -13,7 +13,6 @@ public class PlayerWalk : PlayerState
 
     public override void UpdateBehavior()
     {
-        
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -50,7 +49,7 @@ public class PlayerWalk : PlayerState
             parent.SetState(new PlayerRun(parent));
             return;
         }
-        if (!Input.GetButton("Vertical") && !Input.GetButton("Horizontal"))
+        if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
         {
             parent.SetState(new PlayerIdle(parent));
             return;
@@ -95,17 +94,13 @@ public class PlayerWalk : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.walkSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
-            //parent.viewTimer = rythmTimer;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            //parent.viewTimer = rythmTimer;
             parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }
-
-        //parent.viewStep = step;
     }
 
     public override void FixedUpdateBehavior()
