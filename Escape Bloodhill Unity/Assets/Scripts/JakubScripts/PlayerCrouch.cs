@@ -100,12 +100,10 @@ public class PlayerCrouch : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.crouchSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
-            //parent.viewTimer = rythmTimer;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            //parent.viewTimer = rythmTimer;
             parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, parent.camera.ogCrouchHeight, 0.05f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
         }

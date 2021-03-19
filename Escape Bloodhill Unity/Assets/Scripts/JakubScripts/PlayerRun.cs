@@ -110,7 +110,7 @@ public class PlayerRun : PlayerState
                     parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
 
                     //Flashlight Sway Test
-                    parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, 0f, 0.05f);
+                    //parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, 0f, 0.05f);
                 }
             }
             //Between Step 2 and Step 1
@@ -120,7 +120,7 @@ public class PlayerRun : PlayerState
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.runSwayIntensity * beat, 0.1f);
 
                 //Flashlight Sway Test
-                parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, parent.camera.child.runSwayIntensity * beat, 0.1f);
+                //parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, parent.camera.child.runSwayIntensity * beat, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
             //parent.viewTimer = rythmTimer;
@@ -133,7 +133,7 @@ public class PlayerRun : PlayerState
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
 
             //Flashlight Sway Test
-            parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, 0f, 0.05f);
+            //parent.camera.child.swayFactor = Mathf.Lerp(parent.camera.child.swayFactor, 0f, 0.05f);
         }
 
         //parent.viewStep = step;
