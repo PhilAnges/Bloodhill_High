@@ -73,7 +73,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.92265093, b: 0, a: 1}
   m_Intensity: 10
-  m_Range: 0.1
+  m_Range: 0.05
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -192,6 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51ae5859f589ef44b6d2fbf300ae1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyes: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  endColor: {r: 0, g: 0, b: 0, a: 0}
+  parent: {fileID: 0}
+  percentAware: 0
 --- !u!1 &5144514307936768555
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +303,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.92265093, b: 0, a: 1}
   m_Intensity: 10
-  m_Range: 0.1
+  m_Range: 0.05
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

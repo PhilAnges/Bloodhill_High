@@ -73596,6 +73596,16 @@ PrefabInstance:
       propertyPath: startColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3311041016401561669, guid: 4192ba3343e7e4a408671730f2c7972e,
+        type: 3}
+      propertyPath: range
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311041016401561669, guid: 4192ba3343e7e4a408671730f2c7972e,
+        type: 3}
+      propertyPath: intensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3313629168448148977, guid: 4192ba3343e7e4a408671730f2c7972e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -73699,7 +73709,7 @@ PrefabInstance:
     - target: {fileID: 8017519051976634661, guid: 4192ba3343e7e4a408671730f2c7972e,
         type: 3}
       propertyPath: searchAlertTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8017519051976634661, guid: 4192ba3343e7e4a408671730f2c7972e,
         type: 3}

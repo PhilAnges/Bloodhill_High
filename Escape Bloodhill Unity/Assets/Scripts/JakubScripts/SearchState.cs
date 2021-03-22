@@ -43,7 +43,7 @@ public class SearchState : AIState
     public override void EntryBehavior()
     {
         parent.navAgent.SetDestination(parent.playerPosition);
-        parent.awareness = 0f;
+        //parent.awareness = 0f;
         /*if (parent.alertTime >= 0)
         {
             parent.alertTime--;

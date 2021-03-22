@@ -77,6 +77,8 @@ public class AIController : MonoBehaviour
     private Transform eyePos;
     public bool gotPlayer = false;
 
+    public EyeLights eyeGlower;
+
     void Awake()
     {
         //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -84,6 +86,7 @@ public class AIController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
         eyePos = gameObject.transform.Find("Eyes").transform;
+        eyeGlower = gameObject.transform.Find("bloodhillantagrig").GetComponent<EyeLights>();
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
         hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
@@ -135,8 +138,6 @@ public class AIController : MonoBehaviour
                         playerPosition = hat.transform.position;
 
                         playerDirection = (playerPosition - previousPlayerPosition);
-
-                        //awareness += Time.deltaTime;
                         return;
                     }
                     else
@@ -157,8 +158,6 @@ public class AIController : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             gotPlayer = false;
         }
-
-        
     }
 
     public void Hearing()
