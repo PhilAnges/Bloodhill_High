@@ -79,7 +79,7 @@ public class AIController : MonoBehaviour
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
