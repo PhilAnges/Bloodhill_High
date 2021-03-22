@@ -34,8 +34,6 @@ public class PatrolState : AIState
             loop = false;
         }
 
-
-
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
             if (loop)
@@ -63,39 +61,21 @@ public class PatrolState : AIState
                 }
             }
 
-            
-            //parent.previousPoint = parent.nextPoint;
-            //parent.nextPoint = parent.pathPoints[parent.nextPoint].next.;
             parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
         }
-        /*
-        if (parent.navAgent.remainingDistance <= parent.arriveDistance)
-        {
-            if (parent.nextPoint == parent.pathPoints.Count - 1 && parent.pathDirection == 1)
-            {
-                parent.pathDirection *= -1;
-            }
-            else if (parent.nextPoint == 0 && parent.pathDirection == -1)
-            {
-                parent.pathDirection *= -1;
-            }
-            parent.previousPoint = parent.nextPoint;
-            parent.nextPoint = parent.nextPoint + parent.pathDirection;
-            parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].gameObject.transform.position);
-        }
-        */
+
         UpdateAwareness();
         CheckConditions();
     }
 
     public override void EntryBehavior()
     {
-        //parent.Teleport(parent.nextPathPoint.transform.position);
         parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
         parent.aware = false;
         parent.awareness = 0f;
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
+        parent.eyeGlower.ResetEyes();
         Debug.Log("Entering Patrol State");
     }
 

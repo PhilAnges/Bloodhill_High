@@ -5,10 +5,12 @@ using UnityEngine;
 public class EyeLights : MonoBehaviour
 {
     public Light[] eyes;
-    public Color startColor;
-    public Color endColor;
+    public Color startColor, endColor;
     public AIController parent;
     public float percentAware;
+    private float ogRange, ogIntensity;
+    public float range, intensity;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -16,6 +18,8 @@ public class EyeLights : MonoBehaviour
         parent = GetComponentInParent<AIController>();
         eyes = GetComponentsInChildren<Light>();
         startColor = eyes[0].color;
+        ogRange = eyes[0].range;
+        ogIntensity = eyes[0].intensity;
     }
 
     // Update is called once per frame
@@ -29,5 +33,23 @@ public class EyeLights : MonoBehaviour
             light.color = Color.Lerp(light.color, endColor, 0.5f);
         }
 
+    }
+
+    public void ResetEyes()
+    {
+        foreach (Light light in eyes)
+        {
+            light.range = ogRange;
+            light.intensity = ogIntensity;
+        }
+    }
+
+    public void ActivateEyes()
+    {
+        foreach (Light light in eyes)
+        {
+            light.range = range;
+            light.intensity = intensity;
+        }
     }
 }

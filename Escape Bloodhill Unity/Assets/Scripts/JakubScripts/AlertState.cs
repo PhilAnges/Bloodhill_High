@@ -23,6 +23,7 @@ public class AlertState : AIState
         parent.navAgent.isStopped = true;
         parent.Orient(parent.playerPosition);
         parent.alertTime = parent.ogAlertTime;
+        parent.eyeGlower.ActivateEyes();
         Debug.Log("Entering Alert State");
     }
 
