@@ -5504,6 +5504,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2225558749351203795, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: gameOverMenu
+      value: 
+      objectReference: {fileID: 1343503470}
     - target: {fileID: 4914845555321865613, guid: dd294e24b449fe440a1e8991a312318e,
         type: 3}
       propertyPath: inventory.Array.size
@@ -5574,6 +5579,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6929356276309289195, guid: dd294e24b449fe440a1e8991a312318e,
+        type: 3}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1588299303}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd294e24b449fe440a1e8991a312318e, type: 3}
 --- !u!1001 &420215363
@@ -10704,7 +10714,7 @@ PrefabInstance:
     - target: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51b4c142e9700b4898f2e785f3238eb, type: 3}
@@ -18968,6 +18978,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1690804245}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1343503470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8450829528305968182, guid: 95b6de6e43e1e9d41a90650b6b2a3935,
+    type: 3}
+  m_PrefabInstance: {fileID: 1765758329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1344654360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21670,7 +21686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504144370
 Transform:
   m_ObjectHideFlags: 0
@@ -22543,6 +22559,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 418734765}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1588299303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2225558749351203795, guid: dd294e24b449fe440a1e8991a312318e,
+    type: 3}
+  m_PrefabInstance: {fileID: 418734765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588299301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea634d64ded6ea42a49b74ada1e5357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1590932942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25937,6 +25965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450829528305968182, guid: 95b6de6e43e1e9d41a90650b6b2a3935,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b6de6e43e1e9d41a90650b6b2a3935, type: 3}
