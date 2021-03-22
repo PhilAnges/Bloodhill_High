@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 933358394319673260}
   - component: {fileID: 3381166010957222470}
   - component: {fileID: 2778753201216311569}
+  - component: {fileID: 5605523472972050068}
   m_Layer: 0
   m_Name: OC_WallBase.001
   m_TagString: Untagged
@@ -347,3 +348,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5605523472972050068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802312021306264955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.004000001, y: 0.029999997, z: 0.0040000044}
+  m_Center: {x: -2.3283064e-10, y: 0.0015871208, z: 2.3283064e-10}
