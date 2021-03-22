@@ -42,12 +42,11 @@ public class FirstPersonCamera : MonoBehaviour
 
         Destroy(GameObject.Find("Flashlight"));
         child = Instantiate(flashlightPrefab, targetPosition, Quaternion.Euler(90f, 0f ,0f)).GetComponent<FlashlightFollow>();
-        Debug.Log("spawning flashlight");
-        child.parent = this.transform;
+        child.SetParent(this.transform);
+        //child.parent = this.transform;
         //parent.lights = null;
         //parent.lights = child.GetComponentsInChildren<Light>();
         //child.active = true;
-        Debug.Log("Made lights");
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;
@@ -72,6 +71,11 @@ public class FirstPersonCamera : MonoBehaviour
 
             transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(-mouseVector.y, parent.transform.right);
             transform.rotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 1);
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up);
+            }
 
             if (parent.isCrouching)
             {

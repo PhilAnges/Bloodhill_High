@@ -449,4 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   swayFactor: 0
+  runSwayIntensity: 2
   farBackness: 0
+  active: 0
+  lights: []
