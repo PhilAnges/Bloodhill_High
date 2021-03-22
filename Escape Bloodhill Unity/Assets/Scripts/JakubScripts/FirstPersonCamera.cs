@@ -66,7 +66,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (parent)
+        if (parent && parent.hp.currentHealth != 0)
         {
             Vector3 targetPosition;
 
