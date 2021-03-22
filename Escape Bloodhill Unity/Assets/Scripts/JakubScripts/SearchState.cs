@@ -44,10 +44,12 @@ public class SearchState : AIState
     {
         parent.navAgent.SetDestination(parent.playerPosition);
         parent.awareness = 0f;
-        if (parent.alertTime >= 0)
+        /*if (parent.alertTime >= 0)
         {
             parent.alertTime--;
         }
+        */
+        parent.alertTime = parent.searchAlertTime;
         Debug.Log("Entering Search State");
     }
 
@@ -58,6 +60,12 @@ public class SearchState : AIState
 
     public override void CheckConditions()
     {
+        if (parent.player.hp.currentHealth == 0)
+        {
+            
+            parent.SetState(new PatrolState(parent));
+        }
+
         if (parent.aware)
         {
             if (parent.awareness >= parent.alertTime)

@@ -24,4 +24,6 @@ public class EnemyHearing : MonoBehaviour
             inRange = false;
         }
     }
+
+   
 }

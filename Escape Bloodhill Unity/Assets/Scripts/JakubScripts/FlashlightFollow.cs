@@ -8,17 +8,24 @@ public class FlashlightFollow : MonoBehaviour
     public float swayFactor = 0;
     public float runSwayIntensity = 2f;
     public float farBackness = 0;
+    public bool active = false;
+    public Light[] lights;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        lights = GetComponentsInChildren<Light>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (parent != null)
+        {
+            
+        }
+
         Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z);
 
         //targetPosition = Quaternion.Euler(0f, parent.transform.rotation.y, 0f) * targetPosition;

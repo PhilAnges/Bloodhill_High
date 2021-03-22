@@ -20,7 +20,7 @@ public class PlayerIdle : PlayerState
 
     public override void EntryBehavior()
     {
-        parent.moveSpeed = 0;
+        parent.moveSpeed = parent.ogMoveSpeed;
         Debug.Log("Entering Idle State");
         parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
