@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PatrolState : AIState
 {
+    private bool loop = false;
+
     public PatrolState(AIController parentAI)
     {
         parent = parentAI;
+        
     }
 
     public override void UpdateBehavior()
@@ -22,6 +25,50 @@ public class PatrolState : AIState
             return;
         }
 
+        if (parent.pathPoints[parent.pathPoints.Count - 1].looped)
+        {
+            loop = true;
+        }
+        else
+        {
+            loop = false;
+        }
+
+
+
+        if (parent.navAgent.remainingDistance <= parent.arriveDistance)
+        {
+            if (loop)
+            {
+                parent.nextPathPoint = parent.nextPathPoint.next;
+            }
+            else
+            {
+                if (parent.nextPathPoint.next == null)
+                {
+                    parent.pathDirection = -1;
+                }
+                else if (parent.nextPathPoint == parent.startPathPoint)
+                {
+                    parent.pathDirection = 1;
+                }
+
+                if (parent.pathDirection == 1)
+                {
+                    parent.nextPathPoint = parent.nextPathPoint.next;
+                }
+                else if (parent.pathDirection == -1)
+                {
+                    parent.nextPathPoint = parent.nextPathPoint.prev;
+                }
+            }
+
+            
+            //parent.previousPoint = parent.nextPoint;
+            //parent.nextPoint = parent.pathPoints[parent.nextPoint].next.;
+            parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
+        }
+        /*
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
             if (parent.nextPoint == parent.pathPoints.Count - 1 && parent.pathDirection == 1)
@@ -36,13 +83,17 @@ public class PatrolState : AIState
             parent.nextPoint = parent.nextPoint + parent.pathDirection;
             parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].gameObject.transform.position);
         }
+        */
         UpdateAwareness();
         CheckConditions();
     }
 
     public override void EntryBehavior()
     {
-        parent.navAgent.SetDestination(parent.pathPoints[0].gameObject.transform.position);
+        //parent.Teleport(parent.nextPathPoint.transform.position);
+        parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
+        parent.aware = false;
+        parent.awareness = 0f;
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         Debug.Log("Entering Patrol State");

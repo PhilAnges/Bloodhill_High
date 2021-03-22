@@ -22,6 +22,7 @@ public class AlertState : AIState
     {
         parent.navAgent.isStopped = true;
         parent.Orient(parent.playerPosition);
+        parent.alertTime = parent.ogAlertTime;
         Debug.Log("Entering Alert State");
     }
 
@@ -32,7 +33,7 @@ public class AlertState : AIState
 
     public override void CheckConditions()
     {
-        if (parent.gameController.playerIsSafe == true || parent.awareness <= 0f)
+        if (parent.gameController.playerIsSafe == true || parent.awareness <= 0f || parent.player.hp.currentHealth == 0)
         {
             parent.SetState(new PatrolState(parent));
         }

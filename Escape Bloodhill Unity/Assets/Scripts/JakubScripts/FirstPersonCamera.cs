@@ -40,9 +40,14 @@ public class FirstPersonCamera : MonoBehaviour
 
         Vector3 targetPosition = new Vector3(parent.transform.position.x + 0.34f, parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
 
+        Destroy(GameObject.Find("Flashlight"));
         child = Instantiate(flashlightPrefab, targetPosition, Quaternion.Euler(90f, 0f ,0f)).GetComponent<FlashlightFollow>();
+        Debug.Log("spawning flashlight");
         child.parent = this.transform;
-        parent.lights = child.GetComponentsInChildren<Light>();
+        //parent.lights = null;
+        //parent.lights = child.GetComponentsInChildren<Light>();
+        //child.active = true;
+        Debug.Log("Made lights");
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;
@@ -61,7 +66,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (parent)
+        if (parent && parent.hp.currentHealth != 0)
         {
             Vector3 targetPosition;
 

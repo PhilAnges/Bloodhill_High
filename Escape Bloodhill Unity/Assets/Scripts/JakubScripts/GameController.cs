@@ -9,8 +9,13 @@ public class GameController : MonoBehaviour
     public GameObject playerPrefab;
     public Transform player;
 
-    void Start()
+    void Awake()
     {
+        if (!GameObject.FindGameObjectWithTag("Player"))
+        {
+            Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        }
+
         
     }
 

@@ -19,9 +19,11 @@ public class AIController : MonoBehaviour
     public float arriveDistance;
     [HideInInspector]
     public int pathDirection = 1;
-    [HideInInspector]
+    //[HideInInspector]
     public int nextPoint;
-    [HideInInspector]
+    public PathPoint nextPathPoint;
+    public PathPoint startPathPoint;
+    //[HideInInspector]
     public int previousPoint;
     [HideInInspector]
     public AIState currentState;
@@ -35,6 +37,8 @@ public class AIController : MonoBehaviour
     public float ogStoppingDistance;
     [HideInInspector]
     public float ogAlertTime;
+    public float searchAlertTime;
+    
     [HideInInspector]
     public float fieldOfView = 2f;
     [HideInInspector]
@@ -70,12 +74,12 @@ public class AIController : MonoBehaviour
     public float playerLostTime = 0;
     public float maxAwareness = 5f;
 
-    private Transform
-        eyePos;
+    private Transform eyePos;
+    public bool gotPlayer = false;
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
@@ -88,7 +92,7 @@ public class AIController : MonoBehaviour
         previousPoint = 0;
 
         pathPoints = PopulateList(defaultPath);
-
+        SetPath(defaultPath);
         currentState = new PatrolState(this);
         SetState(currentState);
     }
@@ -109,41 +113,52 @@ public class AIController : MonoBehaviour
     {
         RaycastHit hit, hat;
 
-        Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-
-        Debug.DrawRay(spherePos.position, transform.forward * maxViewDistance, Color.red, 0.5f);
-        if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
+        if (player && !gotPlayer)
         {
-            Debug.DrawRay(eyePos.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
-            if (Physics.Raycast(eyePos.position, (player.transform.position - transform.position), out hat, maxViewDistance))
+            Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
+            Debug.DrawRay(spherePos.position, transform.forward * maxViewDistance, Color.red, 0.5f);
+            if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
             {
-                if (hat.collider.tag == "Player")
+                Debug.DrawRay(eyePos.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
+                if (Physics.Raycast(eyePos.position, (player.transform.position - transform.position), out hat, maxViewDistance))
                 {
-                    aware = true;
-                    if (frameIncrement == frameLimit)
+                    if (hat.collider.tag == "Player")
                     {
-                        previousPlayerPosition = playerPosition;
-                        frameIncrement = 0;
+                        aware = true;
+                        if (frameIncrement == frameLimit)
+                        {
+                            previousPlayerPosition = playerPosition;
+                            frameIncrement = 0;
+                        }
+                        frameIncrement++;
+                        playerPosition = hat.transform.position;
+
+                        playerDirection = (playerPosition - previousPlayerPosition);
+
+                        //awareness += Time.deltaTime;
+                        return;
                     }
-                    frameIncrement++;
-                    playerPosition = hat.transform.position;
-
-                    playerDirection = (playerPosition - previousPlayerPosition);
-
-                    //awareness += Time.deltaTime;
-                    return;
-                }
-                else
-                {
-                    aware = false;
+                    else
+                    {
+                        aware = false;
+                    }
                 }
             }
+            else
+            {
+                aware = false;
+            }
+            Hearing();
         }
         else
         {
-            aware = false;
+            hearingRange.inRange = false;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            gotPlayer = false;
         }
-        Hearing();
+
+        
     }
 
     public void Hearing()
@@ -175,7 +190,8 @@ public class AIController : MonoBehaviour
 
     public void Teleport(Vector3 targetLocation)
     {
-        transform.position = targetLocation;
+        navAgent.SetDestination(targetLocation);
+        navAgent.Warp(targetLocation);
     }
 
     public List<PathPoint> PopulateList(Path path)
@@ -199,7 +215,11 @@ public class AIController : MonoBehaviour
         pathPoints = PopulateList(newPath);
         nextPoint = 0;
         previousPoint = 0;
-        navAgent.SetDestination(pathPoints[nextPoint].gameObject.transform.position);
+        pathDirection = 1;
+        startPathPoint = pathPoints[0];
+        nextPathPoint = pathPoints[0];
+
+        navAgent.SetDestination(nextPathPoint.transform.position);
     }
 
 }

@@ -76672,11 +76672,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyAI
       objectReference: {fileID: 0}
-    - target: {fileID: 8017519051976634656, guid: 4192ba3343e7e4a408671730f2c7972e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8017519051976634660, guid: 4192ba3343e7e4a408671730f2c7972e,
         type: 3}
       propertyPath: m_LocalPosition.x

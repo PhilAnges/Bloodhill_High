@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
     public bool isBeingChased = false;
     private float ghostDistance;
     public bool running = false;
+    public PlayerHealth hp;
+
 
 
 
@@ -70,26 +72,41 @@ public class PlayerController : MonoBehaviour
     {
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         
-        ogMoveSpeed = moveSpeed;
+        ogMoveSpeed = 100f;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
         //lights = flashlight.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
+        hp = GetComponent<PlayerHealth>();
 
         if (FindGhost() == null)
         {
             noGhost = true;
         }
-        
+
+        GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
+
         SetState(new PlayerIdle(this));       
     }
 
     void Update()
     {
         currentState.UpdateBehavior();
-        //Debug.Log(rigbod.velocity);
+
+        if (hp.currentHealth == 0)
+        {
+            ghost.GetComponent<AIController>().gotPlayer = true;
+
+            if (camera.child)
+            {
+                Destroy(camera.child.gameObject);
+            }
+
+            
+        }
+
     }
 
     private void FixedUpdate()
@@ -178,6 +195,15 @@ public class PlayerController : MonoBehaviour
 
     public void Flashlight()
     {
+        if (lights.Length == 0)
+        {
+            lights = camera.child.lights;
+        }
+        else if (lights[0] == null)
+        {
+            lights = camera.child.lights;
+        }
+
         if (flashLightOn)
         {
             foreach (Light light in lights)
