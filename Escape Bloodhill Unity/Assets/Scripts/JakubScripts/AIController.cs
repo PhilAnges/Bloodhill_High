@@ -40,7 +40,7 @@ public class AIController : MonoBehaviour
     public float searchAlertTime;
     
     [HideInInspector]
-    public float fieldOfView = 2f;
+    public float fieldOfView = 3f;
     [HideInInspector]
     public Vector3 playerDirection;
 

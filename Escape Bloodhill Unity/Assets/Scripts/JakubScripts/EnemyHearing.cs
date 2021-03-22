@@ -25,5 +25,14 @@ public class EnemyHearing : MonoBehaviour
         }
     }
 
-   
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerPos = other.transform.position;
+            inRange = true;
+        }
+    }
+
+
 }
