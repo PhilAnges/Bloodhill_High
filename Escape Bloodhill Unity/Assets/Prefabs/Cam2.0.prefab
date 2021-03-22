@@ -114,7 +114,7 @@ MonoBehaviour:
   child: {fileID: 0}
   flashlightPrefab: {fileID: 8107463360128681753, guid: 6bce795bfb2642140866a555c4d97905,
     type: 3}
-  farBackness: 0.336
+  farBackness: 0
 --- !u!114 &4456162923450563121
 MonoBehaviour:
   m_ObjectHideFlags: 0
