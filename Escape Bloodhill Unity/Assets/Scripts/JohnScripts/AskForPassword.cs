@@ -18,6 +18,9 @@ public class AskForPassword : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
+        //Debug.Log(Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40));
+        //thisIsPassword = Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40);
+        Debug.Log(thisIsPassword);
     }
 
     // Update is called once per frame
