@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class JournalPickup : MonoBehaviour
 {
+
+    public int journalNumber;
+    public bool mustPickUp;
+
     public string playerTag;
     public KeyCode pickItUp;
     public GameObject journalButton;
@@ -26,13 +30,26 @@ public class JournalPickup : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            if (Input.GetKeyUp(pickItUp))
-            {
-                journalButton.GetComponentInChildren<Text>().text = gameObject.GetComponent<ItemProperties>().itemName;
-                journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Add(gameObject);
-                gameObject.SetActive(false);
-                
+            if (mustPickUp == true) {
+                if (Input.GetKeyUp(pickItUp))
+                {
+                    PickupTheJournal();
+                }
             }
+            else
+            if(mustPickUp == false){
+                PickupTheJournal();
+            }
+        }
+    }
+
+    void PickupTheJournal()
+    {
+        if (journalNumber == journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Count)
+        {
+            journalButton.GetComponentInChildren<Text>().text = gameObject.GetComponent<ItemProperties>().itemName;
+            journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Add(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
