@@ -33,6 +33,9 @@ public class FirstPersonCamera : MonoBehaviour
     [Range(-0.3f, 0.5f)]
     public float farBackness = 1f;
 
+    public bool lookingBack = false;
+    public float lookSpeed;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -69,12 +72,17 @@ public class FirstPersonCamera : MonoBehaviour
         {
             Vector3 targetPosition;
 
-            transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(-mouseVector.y, parent.transform.right);
-            transform.rotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 1);
-
             if (Input.GetKey(KeyCode.Space))
             {
-                transform.rotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up);
+                Quaternion targetRotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up) * Quaternion.Euler(-mouseVector.y, 0, 0);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Quaternion targetRotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 0);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
             }
 
             if (parent.isCrouching)
@@ -86,9 +94,7 @@ public class FirstPersonCamera : MonoBehaviour
                 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z);
             }
             transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * swayFactor) - (parent.transform.forward * farBackness), 0.1f);
-        }
-
-        
+        }    
     }
 
     public void Look()

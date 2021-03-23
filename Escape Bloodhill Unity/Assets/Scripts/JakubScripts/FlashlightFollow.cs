@@ -14,6 +14,7 @@ public class FlashlightFollow : MonoBehaviour
     private MeshRenderer switchModel;
     private FirstPersonCamera parentScript;
     private bool parentSet = false;
+    public bool deactivateOnTurn = false;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class FlashlightFollow : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && deactivateOnTurn)
         {
             model.enabled = false;
             switchModel.enabled = false;
@@ -52,13 +53,14 @@ public class FlashlightFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z);
+        Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
 
         //targetPosition = Quaternion.Euler(0f, parent.transform.rotation.y, 0f) * targetPosition;
 
 
-        transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
-        transform.position = Vector3.Lerp(transform.position, targetPosition + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f), 0.4f);
+        //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
+        transform.rotation = Quaternion.Slerp(transform.rotation, parent.transform.rotation * Quaternion.Euler(90, 0, 0), 20f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.4f);
         //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
     }
 
