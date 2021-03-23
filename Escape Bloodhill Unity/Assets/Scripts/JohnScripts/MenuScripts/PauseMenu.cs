@@ -60,6 +60,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(true);
         inventoryUI.SetActive(false);
+        journalUI.SetActive(false);
         Time.timeScale = 0f;
         inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
