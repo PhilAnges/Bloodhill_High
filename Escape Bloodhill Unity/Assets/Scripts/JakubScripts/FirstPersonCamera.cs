@@ -72,7 +72,7 @@ public class FirstPersonCamera : MonoBehaviour
         {
             Vector3 targetPosition;
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetAxis("LookBack") != 0)
             {
                 Quaternion targetRotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up) * Quaternion.Euler(-mouseVector.y, 0, 0);
 

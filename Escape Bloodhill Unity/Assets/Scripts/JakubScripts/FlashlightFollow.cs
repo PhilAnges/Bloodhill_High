@@ -27,7 +27,7 @@ public class FlashlightFollow : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && deactivateOnTurn)
+        if (Input.GetAxis("LookBack") != 0 && deactivateOnTurn)
         {
             model.enabled = false;
             switchModel.enabled = false;
