@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseVector: {x: 0, y: 0}
   smoothVector: {x: 0, y: 0}
-  sensitivity: 0.92
+  sensitivity: 1.39
   smoothing: 2.27
   height: 1.5
   crouchHeight: 1
