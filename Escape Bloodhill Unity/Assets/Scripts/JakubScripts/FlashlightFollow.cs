@@ -55,13 +55,8 @@ public class FlashlightFollow : MonoBehaviour
     {
         Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
 
-        //targetPosition = Quaternion.Euler(0f, parent.transform.rotation.y, 0f) * targetPosition;
-
-
-        //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
         transform.rotation = Quaternion.Slerp(transform.rotation, parent.transform.rotation * Quaternion.Euler(90, 0, 0), 20f * Time.deltaTime);
         transform.position = Vector3.Lerp(transform.position, targetPosition, 0.4f);
-        //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 1);
     }
 
     public void SetParent(Transform newParent)
