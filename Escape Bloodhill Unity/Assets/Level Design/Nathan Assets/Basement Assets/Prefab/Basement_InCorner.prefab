@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3256911757683275879}
   - component: {fileID: 9083292707430515870}
   - component: {fileID: 1741445802132854150}
+  - component: {fileID: 8010669119095562889}
   m_Layer: 0
   m_Name: Basement_InCorner
   m_TagString: Untagged
@@ -90,5 +91,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.010104496, y: 0.025, z: 0.010104497}
-  m_Center: {x: -0.0049477518, y: 0.012499996, z: 0.0049477513}
+  m_Size: {x: 0.000108535285, y: 0.024999999, z: 0.010104496}
+  m_Center: {x: 0.00005022883, y: 0.0124999955, z: 0.0049477513}
+--- !u!65 &8010669119095562889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364089744530665538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010104496, y: 0.024999997, z: 0.00013374578}
+  m_Center: {x: -0.0049477518, y: 0.012499994, z: -0.000037624246}
