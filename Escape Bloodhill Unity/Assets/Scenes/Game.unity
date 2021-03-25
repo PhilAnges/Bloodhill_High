@@ -5350,6 +5350,24 @@ Transform:
   m_Father: {fileID: 173042982}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &102020141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 344215708466672099, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &102020144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220086170886252385, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102020141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &104450119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15304,6 +15322,24 @@ Transform:
   m_Father: {fileID: 1348644014}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &300149936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1704983328491212696, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &300149939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1704983328491212703, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300149936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &301538181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16796,6 +16832,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81d521123f4ea59458f0425584a40cd5, type: 3}
+--- !u!1 &335748351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3331024410151850432, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &335748354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1168882488481616517, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335748351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &337494866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29448,6 +29502,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537669408}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &538353071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2080072173296394612, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &538353074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3028236230619634054, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538353071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &539116395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33155,6 +33227,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27887932}
     m_Modifications:
+    - target: {fileID: 573609700558533811, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 335748354}
+    - target: {fileID: 1016356795283512657, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 538353074}
+    - target: {fileID: 1313557958948260494, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 880855023}
     - target: {fileID: 1704983327335167619, guid: 2efe46114986d144a96cbf17de1f4236,
         type: 3}
       propertyPath: m_Name
@@ -33163,7 +33250,7 @@ PrefabInstance:
     - target: {fileID: 1704983327335167619, guid: 2efe46114986d144a96cbf17de1f4236,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1704983327335167623, guid: 2efe46114986d144a96cbf17de1f4236,
         type: 3}
@@ -33280,6 +33367,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 1704983328032284611, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1164695930}
+    - target: {fileID: 1704983328162979845, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 864725501}
+    - target: {fileID: 1704983328491212702, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 300149939}
+    - target: {fileID: 1704983328991052642, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1585992815}
+    - target: {fileID: 2346488423936504537, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 102020144}
+    - target: {fileID: 2654092993904469101, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 681861053}
+    - target: {fileID: 3719952747097673802, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 2062962117}
+    - target: {fileID: 7689282437777815654, guid: 2efe46114986d144a96cbf17de1f4236,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 979634642}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2efe46114986d144a96cbf17de1f4236, type: 3}
 --- !u!4 &629330388 stripped
@@ -36416,6 +36543,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 681616767}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &681861050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1835818782842318640, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &681861053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2540582647924379928, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681861050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &681904064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4803580855927952071, guid: 464b262fe297ff045bb109bcac799ef6,
@@ -45436,6 +45581,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 863006281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &864725498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1704983328162979847, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &864725501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1704983328162979898, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864725498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865210406
 GameObject:
   m_ObjectHideFlags: 0
@@ -46120,6 +46283,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 878850712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &880855020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3940867280550409487, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &880855023 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6543229033694991170, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880855020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883074484
 GameObject:
   m_ObjectHideFlags: 0
@@ -51264,6 +51445,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 978349715}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &979634639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5627566796885515716, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &979634642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1690064312881656788, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979634639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &983427710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60366,6 +60565,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1164418476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1164695927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1704983328032284621, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1164695930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1704983328032284608, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164695927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164707293
 GameObject:
   m_ObjectHideFlags: 0
@@ -78734,6 +78951,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1581112501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1585992812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1704983328991052652, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1585992815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1704983328991052643, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585992812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1588804176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82743,6 +82978,350 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1655489819}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1655765549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3154271573929530913, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154271573929530913, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154271573929530916, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 3154271573929530916, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 2086055014}
+    - target: {fileID: 3154271573929530917, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: "I never thought I would ever come to the asylum but here I am. I've
+        only heard stories and rumors of this place and they all point to something
+        supernatural. That shit can\u2019t be true. I just think the doctor got a
+        little too carried away with her work and that's why this place closed. Nobody
+        cares that it is closed now but I need to know what was going on here."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320344, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_Name
+      value: NoteCollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.4519777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756862694681320345, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107511858777408, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107511858777408, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 864725498}
+    - target: {fileID: 6042107511858777409, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: There has to be something here about the hospital closing and the head
+        doctor. If she was as bad as she is rumored to have been then there might
+        be stuff in her office that I can find to learn more about the history of
+        this place but more specifically Dr.Hill
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107511858777413, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107511858777413, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512210547048, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 979634639}
+    - target: {fileID: 6042107512210547048, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107512210547049, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: Why is all of this stuff here? What kind of person was this Dr.Hill?
+        She seems like the devil incarnate. Well it looks like there is something
+        I can gather here. I better take it while I can. Maybe I can expose the truth
+        on the shit that happened here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512226069552, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 538353071}
+    - target: {fileID: 6042107512226069552, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107512226069553, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: This place is filled with locked doors so I better take this key with
+        me, it could prove to be useful but either way I need to be careful. What
+        the hell is going on? Is there someone here with me? Something doesn't feel
+        right and I NEED TO GET THE F**K OUT OF HERE NOW!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512321695726, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 102020141}
+    - target: {fileID: 6042107512321695726, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107512321695727, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: This place is hell on earth? Why would they need all of this down here?
+        Did anyone know what was down here? Needless to say, there seems to be a staircase
+        in the operating room that leads upstairs. Could that be the way into the
+        office?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512610761394, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: Who looked all of this stuff away? More importantly why did they go to
+        this extent of keeping me out? Something isn't right here. Either way I have
+        to get in that office so lets hope this key can get me there so I better check
+        to see if it opens that door.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512610761395, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 2062962114}
+    - target: {fileID: 6042107512610761395, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107512648164062, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 1843238109}
+    - target: {fileID: 6042107512648164062, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107512648164063, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: "Who the hell is doing this? Those numbers\u2026 are they the safe codes?
+        How could they be and how could someone get them in the first place? I guess
+        there is only one way to find out and that is to try the safe."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512785952118, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: Dammit, the door is locked. There has to be a way in. Maybe I can find
+        a key in the security office that I passed when I entered this place. Hopefully
+        no one has stolen the key.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107512785952119, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 1164695927}
+    - target: {fileID: 6042107512785952119, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513002185323, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513002185323, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513002185326, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 1585992812}
+    - target: {fileID: 6042107513002185326, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513002185327, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: "The damn door is caved in. I can\u2019t just leave now. Maybe there
+        is another way in. There is too much rubble to get in the room but I might
+        be able to look through one of the small openings and see if there is another
+        way in."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513141631886, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 335748351}
+    - target: {fileID: 6042107513141631886, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513141631887, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: "There are a lot of keys missing and there doesn't seem to be one for
+        the door behind the reception door. \u201CUnder lock and key?\u201D Is someone
+        playing games with me? Is the key in the safe? It is my only option so i might
+        as well go for it but where could the code be. Maybe I should look around
+        more. My only question is why the noose? I've heard that one of the patients
+        managed to hang themselves in one of the therapy rooms and so the looters
+        ran with that story and made a little art instalment in the room. Maybe i
+        should check that out while I'm here."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513286677939, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513286677939, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513286677942, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 300149936}
+    - target: {fileID: 6042107513286677942, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513286677943, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: Through the darkness i could make out what looked like a staircase that
+        goes to the basement. Why would the doctor need her own staircase down? Either
+        way, there has to be another way down. Maybe that door I saw behind the reception
+        desk.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513691384796, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 681861050}
+    - target: {fileID: 6042107513691384796, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513691384797, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: Who left this here and why? Did somebody want me to find this? It is
+        the only lead I have on opening the cell to get the key. I know it's a long
+        shot but maybe there is something down here to play this in.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042107513798509962, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalButton
+      value: 
+      objectReference: {fileID: 880855020}
+    - target: {fileID: 6042107513798509962, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: journalMenuControler
+      value: 
+      objectReference: {fileID: 1671389075}
+    - target: {fileID: 6042107513798509963, guid: 714ddd32ff914a24c961bb896f35289e,
+        type: 3}
+      propertyPath: itemDescription
+      value: I cant believe that worked. Why would someone lock this key away? What
+        in the basement are they trying to hide? I should head down and be careful,
+        only god knows what is down there.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 714ddd32ff914a24c961bb896f35289e, type: 3}
 --- !u!1001 &1656035177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91177,6 +91756,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1837133578}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1843238109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7508683560701069053, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1843452074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94929,6 +95514,10 @@ PrefabInstance:
       propertyPath: passwordPlease
       value: 
       objectReference: {fileID: 741888685}
+    - target: {fileID: 1234382875, guid: dfe9421b256e91240a0fb8c991bab796, type: 3}
+      propertyPath: wallWithPassword
+      value: 
+      objectReference: {fileID: 2115418467}
     - target: {fileID: 5665738019660565979, guid: dfe9421b256e91240a0fb8c991bab796,
         type: 3}
       propertyPath: m_Name
@@ -102325,6 +102914,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2057521669}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2062962114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4182173157426177859, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062962117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5231685235380669985, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062962114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2063068270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103948,6 +104555,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
     type: 3}
   m_PrefabInstance: {fileID: 2085811376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2086055014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1704983328161262199, guid: 2efe46114986d144a96cbf17de1f4236,
+    type: 3}
+  m_PrefabInstance: {fileID: 628986223}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2087154981
 GameObject:
