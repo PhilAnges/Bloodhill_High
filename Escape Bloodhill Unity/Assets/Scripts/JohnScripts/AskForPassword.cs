@@ -9,6 +9,7 @@ public class AskForPassword : MonoBehaviour
     public GameObject player;
     public GameObject passwordPlease;
     public GameObject instructions;
+    public GameObject wallWithPassword;
     public KeyCode startTyping;
     public string thisIsPassword;
 
@@ -19,13 +20,15 @@ public class AskForPassword : MonoBehaviour
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
         //Debug.Log(Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40));
-        //thisIsPassword = Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40);
+        thisIsPassword = Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40);
         Debug.Log(thisIsPassword);
+        wallWithPassword.GetComponent<Text>().text = "The safe combination is \n" + thisIsPassword;        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         player = GameObject.FindGameObjectWithTag("MainCamera");
 
         if (thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
