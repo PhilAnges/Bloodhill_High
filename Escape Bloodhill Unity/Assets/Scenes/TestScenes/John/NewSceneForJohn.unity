@@ -11104,6 +11104,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 758475668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &801703060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6881805570272589962, guid: 515ce789728820741ac41da249c3dcae,
+    type: 3}
+  m_PrefabInstance: {fileID: 7506777415423396915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &805810832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3705818509803227072, guid: 929752e6f4ef4724e9f9b688402a43be,
@@ -16236,6 +16242,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 929752e6f4ef4724e9f9b688402a43be, type: 3}
+--- !u!1 &1141823079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1071809627704559730, guid: 515ce789728820741ac41da249c3dcae,
+    type: 3}
+  m_PrefabInstance: {fileID: 7506777415423396915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1142488501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
@@ -24197,6 +24209,18 @@ PrefabInstance:
       propertyPath: wallWithPassword
       value: 
       objectReference: {fileID: 1765005440}
+    - target: {fileID: 1234382875, guid: dfe9421b256e91240a0fb8c991bab796, type: 3}
+      propertyPath: positionOne
+      value: 
+      objectReference: {fileID: 1765005440}
+    - target: {fileID: 1234382875, guid: dfe9421b256e91240a0fb8c991bab796, type: 3}
+      propertyPath: positionTwo
+      value: 
+      objectReference: {fileID: 801703060}
+    - target: {fileID: 1234382875, guid: dfe9421b256e91240a0fb8c991bab796, type: 3}
+      propertyPath: positionThree
+      value: 
+      objectReference: {fileID: 1141823079}
     - target: {fileID: 5665738019660565979, guid: dfe9421b256e91240a0fb8c991bab796,
         type: 3}
       propertyPath: m_Name
@@ -32450,6 +32474,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7506777413960815794, guid: 515ce789728820741ac41da249c3dcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -162.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7506777414589236752, guid: 515ce789728820741ac41da249c3dcae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32564,6 +32593,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ComboOnWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885022083294262677, guid: 515ce789728820741ac41da249c3dcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885022083294262677, guid: 515ce789728820741ac41da249c3dcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515ce789728820741ac41da249c3dcae, type: 3}

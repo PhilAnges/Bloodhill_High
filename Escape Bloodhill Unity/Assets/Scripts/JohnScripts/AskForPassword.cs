@@ -9,9 +9,15 @@ public class AskForPassword : MonoBehaviour
     public GameObject player;
     public GameObject passwordPlease;
     public GameObject instructions;
-    public GameObject wallWithPassword;
+    public GameObject positionOne;
+    public GameObject positionTwo;
+    public GameObject positionThree;
     public KeyCode startTyping;
     public string thisIsPassword;
+
+    private int numberOne;
+    private int numberTwo;
+    private int numberThree;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +25,18 @@ public class AskForPassword : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
-        //Debug.Log(Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40));
-        thisIsPassword = Random.Range(0, 40) + " " + Random.Range(0, 40) + " " + Random.Range(0, 40);
+
+        numberOne = Random.Range(0, 40);
+        numberTwo = Random.Range(0, 40);
+        numberThree = Random.Range(0, 40);
+
+        thisIsPassword = numberOne + " " + numberTwo + " " + numberThree;
         Debug.Log(thisIsPassword);
-        wallWithPassword.GetComponent<Text>().text = "The safe combination is \n" + thisIsPassword;        
+        positionOne.GetComponent<Text>().text = numberOne + "";
+        positionTwo.GetComponent<Text>().text = numberTwo + "";
+        positionThree.GetComponent<Text>().text = numberThree + "";
+
+
     }
 
     // Update is called once per frame
