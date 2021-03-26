@@ -36,13 +36,19 @@ public class PlayerIdle : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetButtonDown("Crouch"))
+
+        if (parent.airborn)
+        {
+            return;
+        }
+
+        if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
+        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint") && !parent.airborn)
         {
             parent.SetState(new PlayerRun(parent));
             return;
@@ -58,5 +64,10 @@ public class PlayerIdle : PlayerState
         {
             parent.Flashlight();
         }
+    }
+
+    public override void FixedUpdateBehavior()
+    {
+        parent.Move();
     }
 }

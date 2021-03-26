@@ -9,7 +9,6 @@ public class PatrolState : AIState
     public PatrolState(AIController parentAI)
     {
         parent = parentAI;
-        
     }
 
     public override void UpdateBehavior()
@@ -63,7 +62,6 @@ public class PatrolState : AIState
 
             parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
         }
-
         UpdateAwareness();
         CheckConditions();
     }

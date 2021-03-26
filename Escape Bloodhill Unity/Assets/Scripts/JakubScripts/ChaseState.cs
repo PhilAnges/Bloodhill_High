@@ -14,9 +14,6 @@ public class ChaseState : AIState
         parent.Sight();
         parent.Orient(parent.playerPosition);
         parent.navAgent.SetDestination(parent.playerPosition);
-
-        
-
         UpdateAwareness();
         CheckConditions();
     }
@@ -33,7 +30,6 @@ public class ChaseState : AIState
     public override void ExitBehavior()
     {
         parent.navAgent.stoppingDistance = parent.ogStoppingDistance;
-        //parent.Teleport(parent.pathPoints[parent.previousPoint].gameObject.transform.position);
         parent.player.isBeingChased = false;
     }
 
@@ -48,7 +44,6 @@ public class ChaseState : AIState
 
         if (parent.player.isHidden == true)
         {
-            //parent.Teleport(parent.nextPathPoint.transform.position);
             parent.SetState(new PatrolState(parent));
             return;
         }

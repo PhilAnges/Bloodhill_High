@@ -45,6 +45,13 @@ public class PlayerCrouch : PlayerState
 
     public override void CheckConditions()
     {
+        if (parent.airborn)
+        {
+            parent.SetState(new PlayerIdle(parent));
+            return;
+        }
+
+
         if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
         {
             if (Input.GetButtonDown("Sprint"))

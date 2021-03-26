@@ -44,7 +44,7 @@ public class PlayerRun : PlayerState
 
     public override void CheckConditions()
     {
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {
             parent.SetState(new PlayerCrouch(parent));
             return;

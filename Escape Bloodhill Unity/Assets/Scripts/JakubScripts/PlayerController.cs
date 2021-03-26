@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider collider;
 
     public int adrenalineLevel = 0;
+
     public float lvlOneThreshold;
     public float lvlTwoThreshold;
     public float lvlThreeThreshold;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private float ghostDistance;
     public bool running = false;
     public PlayerHealth hp;
+    public bool airborn = false;
 
 
 
@@ -75,7 +77,6 @@ public class PlayerController : MonoBehaviour
         ogMoveSpeed = 100f;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
-        //lights = flashlight.GetComponentsInChildren<Light>();
         rigbod = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
@@ -84,6 +85,10 @@ public class PlayerController : MonoBehaviour
         if (FindGhost() == null)
         {
             noGhost = true;
+        }
+        else
+        {
+            ghost = FindGhost().transform;
         }
 
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
@@ -104,10 +109,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(camera.child.gameObject);
             }
-
-            
         }
-
     }
 
     private void FixedUpdate()
@@ -135,31 +137,12 @@ public class PlayerController : MonoBehaviour
     public float GetXInput()
     {
         float input = Input.GetAxisRaw("Horizontal");
-        //Vector3 direction = transform.rotation * new Vector3(input, 0, 0).normalized;
-
-        //RaycastHit hit;
-        //Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
-        /*if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
-        {
-            input = 0f;
-        }
-        Debug.Log(input);*/
         return input;
     }
 
     public float GetZInput()
     {
         float input = Input.GetAxisRaw("Vertical");
-        //Vector3 direction = transform.rotation * new Vector3(0, 0, input).normalized;
-
-        //RaycastHit hit;
-        //Debug.DrawRay(transform.position, direction * collisionDistance, Color.red, 0.5f);
-        /*
-        if (Physics.SphereCast(transform.position, collisionScale, direction, out hit, collisionDistance))
-        {
-            input = 0f;
-        }
-        Debug.Log(input);*/
         return input;
     }
 
@@ -174,11 +157,18 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 2f))
+        Debug.DrawRay(heart.transform.position, -transform.up * 2f, Color.red, 0.5f);
+        if (Physics.Raycast(heart.transform.position, -transform.up, out hit, 2f))
         {
+            airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
+            rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
         }
-        rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
+        else
+        {
+            airborn = true;
+        }
+        
         Debug.DrawRay(transform.position, moveDirection * 2f, Color.green, 0.5f);
     }
 
@@ -206,7 +196,6 @@ public class PlayerController : MonoBehaviour
             {
                 lights = camera.child.lights;
             }
-
             if (flashLightOn)
             {
                 foreach (Light light in lights)
@@ -224,8 +213,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        
     }
 
     IEnumerator  Flicker()
@@ -254,9 +241,7 @@ public class PlayerController : MonoBehaviour
             {
                 yield return new WaitForSeconds(interval);
             }
-            
         }
-
         yield return null;
     }
 
@@ -284,17 +269,22 @@ public class PlayerController : MonoBehaviour
 
     public void CalculateAdrenaline()
     {
+        Debug.Log("Running CalculateAdrenaline");
+
         if (noGhost)
         {
-            return;
-        }
-        else if (!ghost)
-        {
-            ghost = FindGhost().transform;
+            if (FindGhost() == null)
+            {
+                return;
+            }
+            else
+            {
+                ghost = FindGhost().transform;
+                noGhost = false;
+            }
         }
 
         //Gonna need a story check to make sure it doesn't trigger through floors and ceilings
-
         ghostDistance = Vector3.Distance(transform.position, ghost.position);
 
         if (isBeingChased)
@@ -325,13 +315,11 @@ public class PlayerController : MonoBehaviour
     public GameObject FindGhost()
     {
         GameObject theGhost = GameObject.FindGameObjectWithTag("Enemy");
-
         return theGhost;
     }
 
     public void HeartBeat()
     {
-        //StartCoroutine("HeartCycle");
         switch (adrenalineLevel)
         {
             case 0:
@@ -355,16 +343,12 @@ public class PlayerController : MonoBehaviour
                 heart.volume = 1f;
                 break;
         }
-
         float pitchChange = ghostDistance / lvlOneThreshold;
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
-
     }
 
     IEnumerator HeartCycle()
     {
-        
-
         yield return null;
     }
 }

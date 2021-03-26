@@ -11,18 +11,6 @@ public class CamPatrolState : PatrolState
 
     public override void UpdateBehavior()
     {        
-        if (parent.navAgent.remainingDistance <= parent.arriveDistance)
-        {
-            if (parent.nextPoint == parent.pathPoints.Count - 1 && parent.pathDirection == 1)
-            {
-                parent.pathDirection *= -1;
-            }
-            else if (parent.nextPoint == 0 && parent.pathDirection == -1)
-            {
-                parent.pathDirection *= -1;
-            }
-            parent.nextPoint = parent.nextPoint + parent.pathDirection;
-            parent.navAgent.SetDestination(parent.pathPoints[parent.nextPoint].gameObject.transform.position);
-        }
+        
     }   
 }
