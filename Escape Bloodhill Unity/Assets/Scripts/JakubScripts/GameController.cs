@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
     public Path enemyStartingPath;
     public AIController enemyScript;
 
+    public AudioSource ambientMusic, tenseMusic, chaseMusic;
+    public AudioSource[] music;
+
     void Awake()
     {
         if (!GameObject.FindGameObjectWithTag("Player"))
@@ -27,6 +30,8 @@ public class GameController : MonoBehaviour
             AIState startState = new PatrolState(enemyScript);
             enemyScript.SetState(startState);
         }
+        music = GetComponents<AudioSource>();
+        music[0].Play();
     }
 
     void Update()
@@ -38,5 +43,15 @@ public class GameController : MonoBehaviour
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         enemy.GetComponent<AIController>().SetPath(path);
+    }
+
+    public void ChangeMusic(int songIndex)
+    {
+        foreach (AudioSource song in music)
+        {
+            song.Stop();
+        }
+
+        music[songIndex].Play();
     }
 }
