@@ -73,7 +73,7 @@ public class FirstPersonCamera : MonoBehaviour
                 parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
             }
 
-            if (Input.GetAxis("LookBack") != 0)
+            if (Input.GetAxis("LookBack") != 0 && !parent.airborn)
             {
                 targetRotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up) * Quaternion.Euler(-mouseVector.y, 0, 0);
             }

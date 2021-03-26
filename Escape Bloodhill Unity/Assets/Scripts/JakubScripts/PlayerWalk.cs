@@ -39,19 +39,13 @@ public class PlayerWalk : PlayerState
 
     public override void CheckConditions()
     {
-        if (parent.airborn)
-        {
-            parent.SetState(new PlayerIdle(parent));
-            return;
-        }
 
-
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
-        if (Input.GetButton("Sprint") && Input.GetAxisRaw("Vertical") > 0)
+        if (Input.GetButton("Sprint") && Input.GetAxisRaw("Vertical") > 0 && !parent.airborn)
         {
             parent.SetState(new PlayerRun(parent));
             return;

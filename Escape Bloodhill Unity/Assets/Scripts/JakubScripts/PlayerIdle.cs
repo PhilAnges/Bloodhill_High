@@ -42,13 +42,13 @@ public class PlayerIdle : PlayerState
             return;
         }
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
+        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint") && !parent.airborn)
         {
             parent.SetState(new PlayerRun(parent));
             return;
