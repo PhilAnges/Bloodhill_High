@@ -7,12 +7,16 @@ public class AIController : MonoBehaviour
 {    
     [HideInInspector]
     public NavMeshAgent navAgent;
+
     [HideInInspector]
     public PlayerController player;
+
+    [HideInInspector]
     public GameController gameController;
 
     [HideInInspector]
     public Vector3 currentDestination;
+
     //[HideInInspector]
     public bool aware = false;
     [HideInInspector]
@@ -81,7 +85,6 @@ public class AIController : MonoBehaviour
 
     void Awake()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
@@ -93,21 +96,22 @@ public class AIController : MonoBehaviour
         navAgent.speed = patrolSpeed;
         nextPoint = 0;
         previousPoint = 0;
-
-        pathPoints = PopulateList(defaultPath);
-        SetPath(defaultPath);
-        currentState = new PatrolState(this);
-        SetState(currentState);
     }
 
     void Update()
     {
-        currentState.UpdateBehavior();
+        if (currentState != null)
+        {
+            currentState.UpdateBehavior();
+        }
     }
 
     public void SetState(AIState newState)
     {
-        currentState.ExitBehavior();
+        if (currentState!= null)
+        {
+            currentState.ExitBehavior();
+        }
         currentState = newState;
         currentState.EntryBehavior();
     }
@@ -220,5 +224,4 @@ public class AIController : MonoBehaviour
 
         navAgent.SetDestination(nextPathPoint.transform.position);
     }
-
 }

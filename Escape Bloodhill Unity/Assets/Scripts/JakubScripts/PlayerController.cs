@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
-        
+        camera.SetParent(this);
         ogMoveSpeed = 100f;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
+        GameObject.Find("John's Programming Box").transform.Find("Safe Room").GetComponent<SafeRoom>().player = this.gameObject;
 
         SetState(new PlayerIdle(this));       
     }
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         currentState.UpdateBehavior();
 
-        if (hp.currentHealth == 0)
+        if (hp.currentHealth == 0 && !noGhost)
         {
             ghost.GetComponent<AIController>().gotPlayer = true;
 
@@ -195,31 +196,36 @@ public class PlayerController : MonoBehaviour
 
     public void Flashlight()
     {
-        if (lights.Length == 0)
+        if (lights != null)
         {
-            lights = camera.child.lights;
-        }
-        else if (lights[0] == null)
-        {
-            lights = camera.child.lights;
+            if (lights.Length == 0)
+            {
+                lights = camera.child.lights;
+            }
+            else if (lights[0] == null)
+            {
+                lights = camera.child.lights;
+            }
+
+            if (flashLightOn)
+            {
+                foreach (Light light in lights)
+                {
+                    light.enabled = false;
+                    flashLightOn = false;
+                }
+            }
+            else
+            {
+                foreach (Light light in lights)
+                {
+                    light.enabled = true;
+                    flashLightOn = true;
+                }
+            }
         }
 
-        if (flashLightOn)
-        {
-            foreach (Light light in lights)
-            {
-                light.enabled = false;
-                flashLightOn = false;
-            }
-        }
-        else
-        {
-            foreach (Light light in lights)
-            {
-                light.enabled = true;
-                flashLightOn = true;
-            }
-        }
+        
     }
 
     IEnumerator  Flicker()

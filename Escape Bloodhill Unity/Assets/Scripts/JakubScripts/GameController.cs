@@ -5,9 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public bool playerIsSafe = false;
+    public bool enemyActive = false;
     public bool playerIsHidden = false;
     public GameObject playerPrefab;
-    public Transform player;
+    public GameObject enemyPrefab;
+    public Transform enemySpawnPoint;
+    public Path enemyStartingPath;
+    public AIController enemyScript;
 
     void Awake()
     {
@@ -15,12 +19,24 @@ public class GameController : MonoBehaviour
         {
             Instantiate(playerPrefab, transform.position, Quaternion.identity);
         }
-
-        
+        if (enemyActive && !GameObject.FindGameObjectWithTag("Enemy"))
+        {
+            GameObject enemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
+            enemyScript = enemy.GetComponent<AIController>();
+            enemyScript.SetPath(enemyStartingPath);
+            AIState startState = new PatrolState(enemyScript);
+            enemyScript.SetState(startState);
+        }
     }
 
     void Update()
     {
-        
+
+    }
+
+    public void SpawnEnemy(Vector3 spawnPosition, Path path)
+    {
+        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        enemy.GetComponent<AIController>().SetPath(path);
     }
 }

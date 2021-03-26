@@ -42,8 +42,6 @@ public class FirstPersonCamera : MonoBehaviour
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        parent = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        targetPosition = new Vector3(parent.transform.position.x + 0.34f, parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
         Destroy(GameObject.Find("Flashlight"));
         child = Instantiate(flashlightPrefab, targetPosition, Quaternion.Euler(90f, 0f ,0f)).GetComponent<FlashlightFollow>();
         child.SetParent(this.transform);
@@ -107,5 +105,11 @@ public class FirstPersonCamera : MonoBehaviour
         {
             parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
         }
+    }
+
+    public void SetParent(PlayerController player)
+    {
+        parent = player;
+        targetPosition = new Vector3(parent.transform.position.x + 0.34f, parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
     }
 }
