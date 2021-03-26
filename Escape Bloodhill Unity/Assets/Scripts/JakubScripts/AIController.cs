@@ -4,84 +4,84 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
-{    
-    [HideInInspector]
-    public NavMeshAgent navAgent;
-
-    [HideInInspector]
-    public PlayerController player;
-
-    [HideInInspector]
-    public GameController gameController;
-
+{
+    /*
     [HideInInspector]
     public Vector3 currentDestination;
-
-    //[HideInInspector]
-    public bool aware = false;
     [HideInInspector]
-    public float arriveDistance;
-    [HideInInspector]
-    public int pathDirection = 1;
-    //[HideInInspector]
     public int nextPoint;
-    public PathPoint nextPathPoint;
-    public PathPoint startPathPoint;
-    //[HideInInspector]
-    public int previousPoint;
     [HideInInspector]
-    public AIState currentState;
-    //[HideInInspector]
-    public float awareness = 0f;
+    public int previousPoint;
+    public Path defaultPath;
+    */
+
+    [HideInInspector]
+    public NavMeshAgent navAgent;
+    [HideInInspector]
+    public PlayerController player;
     [HideInInspector]
     public Vector3 playerPosition;
     [HideInInspector]
     public Vector3 previousPlayerPosition;
     [HideInInspector]
-    public float ogStoppingDistance;
+    public Vector3 playerDirection;
+    [HideInInspector]
+    public GameController gameController;
+    [HideInInspector]
+    public AIState currentState;
+    [HideInInspector]
+    public EyeLights eyeGlower;
+
+    [HideInInspector]
+    public bool aware = false;
+    [HideInInspector]
+    public float awareness = 0f;
+    public float maxAwareness = 5f;
     [HideInInspector]
     public float ogAlertTime;
+    public float alertTime;
     public float searchAlertTime;
-    
+
+    private Transform eyePos;
+    private Transform spherePos;
     [HideInInspector]
     public float fieldOfView = 3f;
-    [HideInInspector]
-    public Vector3 playerDirection;
-
-    private int frameLimit = 10;
-    private int frameIncrement = 0;    
-    private int playerMask = 1 << 8;
-
+    private EnemyHearing hearingRange;
+    public float hearingLimit = 2f;
     [Range(5f, 50f)]
     public float maxViewDistance = 10f;
+
+    [Range(1f, 45f)]
+    public float rotationSpeed = 5f;
     [Range(1f, 10f)]
     public float patrolSpeed;
     [Range(1f, 10f)]
     public float chaseSpeedMultiplier = 2f;
-    [Range(1f, 45f)]
-    public float rotationSpeed = 5f;
-    public float alertTime = 3f;    
+    [HideInInspector]
+    public float arriveDistance;
+    [HideInInspector]
+    public float ogStoppingDistance;
     public float playerChaseStoppingDistance;
-
-    public Path defaultPath;
-    public Path currentPath;
-
-    public List<PathPoint> pathPoints;
-
-    private Transform spherePos;
-
-    private EnemyHearing hearingRange;
-    public float hearingLimit = 2f;
-
     public float timeToLosePlayer = 2f;
-    //[HideInInspector]
+    [HideInInspector]
     public float playerLostTime = 0;
-    public float maxAwareness = 5f;
-
-    private Transform eyePos;
+    [HideInInspector]
     public bool gotPlayer = false;
 
-    public EyeLights eyeGlower;
+    [HideInInspector]
+    public int pathDirection = 1;
+    [HideInInspector]
+    public PathPoint nextPathPoint;
+    [HideInInspector]
+    public PathPoint startPathPoint;
+    [HideInInspector]
+    public Path currentPath;
+    [HideInInspector]
+    public List<PathPoint> pathPoints;
+
+    private int frameLimit = 10;
+    private int frameIncrement = 0;    
+    private int playerMask = 1 << 8;
 
     void Awake()
     {
@@ -94,8 +94,6 @@ public class AIController : MonoBehaviour
         ogAlertTime = alertTime;
         hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
         navAgent.speed = patrolSpeed;
-        nextPoint = 0;
-        previousPoint = 0;
     }
 
     void Update()
@@ -216,12 +214,9 @@ public class AIController : MonoBehaviour
     public void SetPath(Path newPath)
     {
         pathPoints = PopulateList(newPath);
-        nextPoint = 0;
-        previousPoint = 0;
         pathDirection = 1;
         startPathPoint = pathPoints[0];
         nextPathPoint = pathPoints[0];
-
         navAgent.SetDestination(nextPathPoint.transform.position);
     }
 }

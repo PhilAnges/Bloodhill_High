@@ -19,12 +19,9 @@ public class InventoryMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         itemCounter = 0;
         itemHold = playerCharacter.GetComponent<ItemPickup>().inventory;
-
-
     }
 
     // Update is called once per frame
