@@ -24,6 +24,7 @@ public class ChaseState : AIState
         parent.navAgent.SetDestination(parent.playerPosition);
         parent.navAgent.speed = parent.patrolSpeed * parent.chaseSpeedMultiplier;
         parent.player.isBeingChased = true;
+        //parent.gameController.ChangeMusic(2);
         Debug.Log("Entering Chase State");
     }
 
