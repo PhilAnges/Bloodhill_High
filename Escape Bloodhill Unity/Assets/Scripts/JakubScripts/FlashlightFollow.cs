@@ -16,6 +16,10 @@ public class FlashlightFollow : MonoBehaviour
     private bool parentSet = false;
     public bool deactivateOnTurn = false;
 
+    private Vector3 onPosition, offPosition;
+    private bool switchedOn = false;
+    public AudioSource switchClick;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +27,9 @@ public class FlashlightFollow : MonoBehaviour
         lights = GetComponentsInChildren<Light>();
         model = GetComponent<MeshRenderer>();
         switchModel = transform.GetChild(0).GetComponent<MeshRenderer>();
+        offPosition = switchModel.transform.localPosition;
+        onPosition = transform.GetChild(4).localPosition;
+        switchClick = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -74,5 +81,21 @@ public class FlashlightFollow : MonoBehaviour
     {
         parent = newParent;
         parentScript = parent.GetComponent<FirstPersonCamera>();
+    }
+
+    public void FlipSwitch()
+    {
+        if (switchedOn)
+        {
+            switchClick.Play();
+            switchModel.transform.localPosition = offPosition;
+            switchedOn = false;
+        }
+        else
+        {
+            switchClick.Play();
+            switchModel.transform.localPosition = onPosition;
+            switchedOn = true;
+        }
     }
 }

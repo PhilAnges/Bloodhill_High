@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = false;
                     flashLightOn = false;
+                    camera.child.FlipSwitch();
                 }
             }
             else
@@ -210,6 +211,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = true;
                     flashLightOn = true;
+                    camera.child.FlipSwitch();
                 }
             }
         }
