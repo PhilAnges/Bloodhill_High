@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public GameObject camPrefab;
     [HideInInspector]
     public PlayerHealth hp;
+    [HideInInspector]
+    public ItemPickup itemScript;
 
     [SerializeField]
     private float stamina = 100f;
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour
     public bool flashLightOn = false;
     [HideInInspector]
     public bool isCrouching = false;
+    //[HideInInspector]
+    public bool hasTriggerItem = false;
 
     private void Awake()
     {
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
         hp = GetComponent<PlayerHealth>();
+        itemScript = GetComponent<ItemPickup>();
 
         if (FindGhost() == null)
         {
@@ -361,5 +366,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator HeartCycle()
     {
         yield return null;
+    }
+
+    public void CheckForItem()
+    {
+        if (itemScript.inventory[1] != null)
+        {
+            hasTriggerItem = true;
+        }
     }
 }
