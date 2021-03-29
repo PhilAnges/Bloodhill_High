@@ -4,9 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    /*
+     public float collisionDistance = 2f;
+     public float collisionScale = 0.5f;
+
+     */
+    [HideInInspector]
     public PlayerState currentState;
-    public float collisionDistance = 2f;
-    public float collisionScale = 0.5f;
+    [HideInInspector]
+    public FirstPersonCamera camera;
+    [HideInInspector]
+    public Transform flashlight;
+    [HideInInspector]
+    public Light[] lights;
+    [HideInInspector]
+    public Rigidbody rigbod;
+    [HideInInspector]
+    public GameObject camPrefab;
+    [HideInInspector]
+    public PlayerHealth hp;
+
+    [SerializeField]
+    private float stamina = 100f;
+    private Transform ghost;
+    private float ghostDistance;
+    private CapsuleCollider collider;
+    private AudioSource heart;
 
     [Range(100f, 1000f)]
     public float moveSpeed = 250f;
@@ -21,54 +44,40 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float ogRegenRate;
     [HideInInspector]
-    public FirstPersonCamera camera;
-    public Transform flashlight;
-    public Light[] lights;
-    public bool flashLightOn = false;
-    public bool isCrouching = false;
-
-    [SerializeField]
-    private float stamina = 100f;
-
-    public Rigidbody rigbod;
-    public  GameObject camPrefab;
-    
-    public float stepInterval = 2f;
     public float ogstepInterval;
+    [HideInInspector]
+    public float flickTimer;
+      
+    public float stepInterval = 2f;    
     public float runInterval = 0.2f;
     public float crouchInterval = 0.5f;
-
     public float runBobIntensity = 0.2f;
     public float crouchBobIntensity = 0.05f;
     public float walkSwayIntensity = 0.2f;
     public float runSwayIntensity = 0.2f;
     public float crouchSwayIntensity = 0.1f;
-
-    public float flickTimer;
-
-    private CapsuleCollider collider;
-
+ 
     public int adrenalineLevel = 0;
-
     public float lvlOneThreshold;
     public float lvlTwoThreshold;
     public float lvlThreeThreshold;
 
-    private Transform ghost;
-
+    [HideInInspector]
     public int noiseLevel = 0;
+    [HideInInspector]
     public bool isHidden = false;
+    [HideInInspector]
     public bool noGhost = false;
-
-    private AudioSource heart;
+    [HideInInspector]
     public bool isBeingChased = false;
-    private float ghostDistance;
+    [HideInInspector]
     public bool running = false;
-    public PlayerHealth hp;
+    [HideInInspector]
     public bool airborn = false;
-
-
-
+    [HideInInspector]
+    public bool flashLightOn = false;
+    [HideInInspector]
+    public bool isCrouching = false;
 
     private void Awake()
     {
@@ -157,8 +166,8 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        Debug.DrawRay(heart.transform.position, -transform.up * 2f, Color.red, 0.5f);
-        if (Physics.Raycast(heart.transform.position, -transform.up, out hit, 2f))
+        Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
+        if (Physics.Raycast(heart.transform.position, -transform.up, out hit, 1.25f))
         {
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
