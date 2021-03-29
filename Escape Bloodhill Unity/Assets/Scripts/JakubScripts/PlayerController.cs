@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
 
     public void CalculateAdrenaline()
     {
-        Debug.Log("Running CalculateAdrenaline");
+        //Debug.Log("Running CalculateAdrenaline");
 
         if (noGhost)
         {

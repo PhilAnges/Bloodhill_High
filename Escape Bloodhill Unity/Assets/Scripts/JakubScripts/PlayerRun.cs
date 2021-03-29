@@ -23,7 +23,7 @@ public class PlayerRun : PlayerState
 
     public override void EntryBehavior()
     {
-        Debug.Log("Entering Run State");
+        //Debug.Log("Entering Run State");
         parent.moveSpeed *= parent.runSpeedMultiplier;
         parent.stepInterval = parent.runInterval;
         rythmTimer = parent.stepInterval * 2;
@@ -35,7 +35,7 @@ public class PlayerRun : PlayerState
 
     public override void ExitBehavior()
     {
-        Debug.Log("Leaving Run State");
+        //Debug.Log("Leaving Run State");
         parent.moveSpeed = parent.ogMoveSpeed;
         
         parent.camera.standHeight = highPoint;
