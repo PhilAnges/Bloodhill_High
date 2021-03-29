@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1856282910356995469}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: switchOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 3931271907981582677}
   - component: {fileID: 3999258524839025127}
   - component: {fileID: 8420160100483373404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LightSwitch_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 7547937267434992581}
   - component: {fileID: 5832092515255693401}
   - component: {fileID: 4658211366951337486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

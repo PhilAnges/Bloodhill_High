@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerCrouch : PlayerState
 {
+    public bool headRoom;
+    private int mask;
+
     public PlayerCrouch(PlayerController parentPlayer)
     {
         parent = parentPlayer;
         beat = 1;
+        mask = ~LayerMask.GetMask("Player");
     }
 
     public override void UpdateBehavior()
@@ -16,6 +20,7 @@ public class PlayerCrouch : PlayerState
         //parent.Move();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
+        CheckHeadroom();
         CheckConditions();
     }
 
@@ -32,6 +37,7 @@ public class PlayerCrouch : PlayerState
         highPoint = parent.camera.ogCrouchHeight;
         lowPoint = highPoint - parent.crouchBobIntensity;
         parent.noiseLevel = 1;
+        headRoom = true;
     }
 
     public override void ExitBehavior()
@@ -52,9 +58,9 @@ public class PlayerCrouch : PlayerState
         }
 
 
-        if (parent.GetXInput() != 0 || parent.GetZInput() != 0)
+        if (parent.GetXInput() != 0 || parent.GetZInput() != 0 && headRoom)
         {
-            if (Input.GetButtonDown("Sprint"))
+            if (Input.GetButton("Sprint"))
             {
                 parent.SetState(new PlayerRun(parent));
             }
@@ -63,7 +69,7 @@ public class PlayerCrouch : PlayerState
                 parent.SetState(new PlayerWalk(parent));
             }
         }
-        else if (Input.GetButtonDown("Crouch"))
+        else if (Input.GetButtonDown("Crouch") && headRoom)
         {
             parent.SetState(new PlayerIdle(parent));
         }
@@ -119,5 +125,21 @@ public class PlayerCrouch : PlayerState
     public override void FixedUpdateBehavior()
     {
         parent.Move();
+    }
+
+    public void CheckHeadroom()
+    {
+        RaycastHit hit;
+
+        Debug.DrawRay(parent.transform.position + parent.transform.up * 0.05f, parent.transform.up * 2f, Color.blue, 0.5f);
+        if (Physics.Raycast(parent.transform.position + parent.transform.up * 0.05f, parent.transform.up, out hit, 2f, mask))
+        {
+            headRoom = false;
+            Debug.Log(hit.collider.gameObject);
+        }
+        else
+        {
+            headRoom = true;
+        }
     }
 }

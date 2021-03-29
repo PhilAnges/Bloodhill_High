@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 903116700645452483}
   - component: {fileID: 2065710825597411305}
   m_Layer: 0
-  m_Name: 2x2_Floor
+  m_Name: 2x2_Basement_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2517243974997322764
 Transform:

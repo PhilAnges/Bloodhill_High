@@ -83,6 +83,7 @@ public class AIController : MonoBehaviour
     private int frameIncrement = 0;    
     private int playerMask = 1 << 8;
 
+
     void Awake()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
