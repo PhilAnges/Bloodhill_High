@@ -43,7 +43,7 @@ public class JournalPickup : MonoBehaviour
         }
     }
 
-    void PickupTheJournal()
+    public void PickupTheJournal()
     {
         if (journalNumber == journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Count)
         {
