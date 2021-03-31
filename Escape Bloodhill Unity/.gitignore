@@ -69,3 +69,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Those weird meta files
+/[Aa]ssets/Prefabs/Camera.meta
+/[Aa]ssets/Prefabs/Old.meta

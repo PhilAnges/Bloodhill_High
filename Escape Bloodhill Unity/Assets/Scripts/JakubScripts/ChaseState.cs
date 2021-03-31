@@ -43,7 +43,7 @@ public class ChaseState : AIState
             return;
         }
 
-        if (parent.player.isHidden == true)
+        if (parent.gameController.playerIsSafe)
         {
             parent.SetState(new PatrolState(parent));
             return;
