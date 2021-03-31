@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public bool playerIsSafe = false;
     public bool enemyActive = false;
+    public bool enemyStartIdle = true;
     public bool playerIsHidden = false;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -15,6 +16,8 @@ public class GameController : MonoBehaviour
 
     public AudioSource ambientMusic, tenseMusic, chaseMusic;
     public AudioSource[] music;
+
+    public int basementPhase = 0;
 
     void Awake()
     {
@@ -27,7 +30,16 @@ public class GameController : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
             enemyScript = enemy.GetComponent<AIController>();
             enemyScript.SetPath(enemyStartingPath);
-            AIState startState = new PatrolState(enemyScript);
+            AIState startState;
+            if (enemyStartIdle)
+            {
+                startState = new IdleState(enemyScript);
+            }
+            else
+            {
+                startState = new PatrolState(enemyScript);
+            }
+            
             enemyScript.SetState(startState);
         }
         music = GetComponents<AudioSource>();
