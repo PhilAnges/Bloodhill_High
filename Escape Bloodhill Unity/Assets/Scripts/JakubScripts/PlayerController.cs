@@ -112,7 +112,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
         GameObject.Find("John's Programming Box").transform.Find("Safe Room").GetComponent<SafeRoom>().player = this.gameObject;
 
-        SetState(new PlayerIdle(this));       
+        SetState(new PlayerIdle(this));
+        StartCoroutine("RandomFlicker");
     }
 
     void Update()
@@ -271,6 +272,16 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine("Flicker");
         } 
+    }
+
+    IEnumerator RandomFlicker()
+    {
+        if (transform.position.y < -2f && flashLightOn)
+        {
+            FlashlightFlicker();
+        }
+        yield return new WaitForSeconds(Random.Range(20f, 60f));
+        StartCoroutine("RandomFlicker");
     }
 
     public void ChangeSize()
