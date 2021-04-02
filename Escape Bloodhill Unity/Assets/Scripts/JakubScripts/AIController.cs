@@ -228,6 +228,7 @@ public class AIController : MonoBehaviour
 
     public void SetPath(Path newPath)
     {
+        currentPath = newPath;
         pathPoints = PopulateList(newPath);
         pathDirection = 1;
         startPathPoint = pathPoints[0];

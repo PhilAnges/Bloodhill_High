@@ -31,7 +31,7 @@ public class SwitchPath : MonoBehaviour
         {
             AIController enemy = gameController.enemyScript;
             enemy.SetPath(newPath);
-            enemy.Teleport(enemy.startPathPoint.transform.position);
+            enemy.Teleport(enemy.currentPath.transform.position);
             gameController.basementPhase = phaseTrigger;
             if (!makeIdle)
             {
