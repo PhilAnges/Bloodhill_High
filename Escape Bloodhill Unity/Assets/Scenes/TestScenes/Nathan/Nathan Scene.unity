@@ -6676,6 +6676,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basement_BarWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.013117971
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1.1368685e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00046888232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.013977726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000005960465
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000026763248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538670487891960593, guid: 5f53904a8a61507488e902dda50a4e29,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180.00002
+      objectReference: {fileID: 0}
     - target: {fileID: 4186187449800379084, guid: 5f53904a8a61507488e902dda50a4e29,
         type: 3}
       propertyPath: m_LocalPosition.x
