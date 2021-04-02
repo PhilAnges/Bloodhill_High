@@ -50,6 +50,8 @@ MonoBehaviour:
   journalUI: {fileID: 0}
   button: {fileID: 0}
   pauseButton: 27
+  inventoryButton: 105
+  journalButton: 106
 --- !u!114 &4883341769070792769
 MonoBehaviour:
   m_ObjectHideFlags: 0

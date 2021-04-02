@@ -14,10 +14,12 @@ public class JournalPickup : MonoBehaviour
     public GameObject journalButton;
     public GameObject journalMenuControler;
 
+    public GameObject notification;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        notification.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,6 +51,8 @@ public class JournalPickup : MonoBehaviour
         {
             journalButton.GetComponentInChildren<Text>().text = gameObject.GetComponent<ItemProperties>().itemName;
             journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Add(gameObject);
+
+            notification.SetActive(true);
             gameObject.SetActive(false);
         }
     }
