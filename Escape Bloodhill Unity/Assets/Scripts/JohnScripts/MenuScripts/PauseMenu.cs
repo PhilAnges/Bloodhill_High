@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject journalUI;
     public GameObject button;
     public KeyCode pauseButton;
+    public KeyCode inventoryButton;
+    public KeyCode journalButton;
     private bool isPaused;
 
     // Start is called before the first frame update
@@ -30,6 +32,20 @@ public class PauseMenu : MonoBehaviour
         button = GameObject.FindGameObjectWithTag("Button");
 
         player = GameObject.FindGameObjectWithTag("MainCamera");
+
+        if (Input.GetKeyUp(inventoryButton))
+        {
+            player.GetComponent<FirstPersonCamera>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Inventory();
+        }
+
+        if (Input.GetKeyUp(journalButton))
+        {
+            player.GetComponent<FirstPersonCamera>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Journal();
+        }
 
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
         {
