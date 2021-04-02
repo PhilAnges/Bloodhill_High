@@ -27,20 +27,7 @@ public class GameController : MonoBehaviour
         }
         if (enemyActive && !GameObject.FindGameObjectWithTag("Enemy"))
         {
-            GameObject enemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
-            enemyScript = enemy.GetComponent<AIController>();
-            enemyScript.SetPath(enemyStartingPath);
-            AIState startState;
-            if (enemyStartIdle)
-            {
-                startState = new IdleState(enemyScript);
-            }
-            else
-            {
-                startState = new PatrolState(enemyScript);
-            }
-            
-            enemyScript.SetState(startState);
+            SpawnEnemy();
         }
         music = GetComponents<AudioSource>();
         music[0].Play();
@@ -65,5 +52,23 @@ public class GameController : MonoBehaviour
         }
 
         music[songIndex].Play();
+    }
+
+    public void SpawnEnemy()
+    {
+        GameObject enemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
+        enemyScript = enemy.GetComponent<AIController>();
+        enemyScript.SetPath(enemyStartingPath);
+        AIState startState;
+        if (enemyStartIdle)
+        {
+            startState = new IdleState(enemyScript);
+        }
+        else
+        {
+            startState = new PatrolState(enemyScript);
+        }
+
+        enemyScript.SetState(startState);
     }
 }
