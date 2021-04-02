@@ -7,7 +7,7 @@ public class AIState
     public AIController parent;
     public AIState nextState;
     public float maxAwareness;
-
+    public bool waiting = false;
 
     public AIState()
     {

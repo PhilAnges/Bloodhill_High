@@ -24,7 +24,8 @@ public class IdleState : AIState
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         parent.eyeGlower.ResetEyes();
-        Debug.Log("Entering Idle State");
+        parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
+        //Debug.Log("Entering Idle State");
     }
 
     public override void ExitBehavior()

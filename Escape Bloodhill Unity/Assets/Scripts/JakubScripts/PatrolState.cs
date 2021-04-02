@@ -5,6 +5,7 @@ using UnityEngine;
 public class PatrolState : AIState
 {
     private bool loop = false;
+    
 
     public PatrolState(AIController parentAI)
     {
@@ -13,6 +14,8 @@ public class PatrolState : AIState
 
     public override void UpdateBehavior()
     {
+        
+
         //Delete this line in final build
         parent.navAgent.speed = parent.patrolSpeed;
 
@@ -35,32 +38,48 @@ public class PatrolState : AIState
 
         if (parent.navAgent.remainingDistance <= parent.arriveDistance)
         {
-            if (loop)
+            if (!waiting)
             {
-                parent.nextPathPoint = parent.nextPathPoint.next;
+                waiting = true;
+                parent.Wait(parent.currentPathPoint.waitTime);
             }
-            else
-            {
-                if (parent.nextPathPoint.next == null)
-                {
-                    parent.pathDirection = -1;
-                }
-                else if (parent.nextPathPoint == parent.startPathPoint)
-                {
-                    parent.pathDirection = 1;
-                }
 
-                if (parent.pathDirection == 1)
+            if (parent.readyToMove)
+            {
+                if (loop)
                 {
                     parent.nextPathPoint = parent.nextPathPoint.next;
                 }
-                else if (parent.pathDirection == -1)
+                else
                 {
-                    parent.nextPathPoint = parent.nextPathPoint.prev;
-                }
-            }
+                    if (parent.nextPathPoint.next == null)
+                    {
+                        parent.pathDirection = -1;
+                    }
+                    else if (parent.nextPathPoint == parent.startPathPoint)
+                    {
+                        parent.pathDirection = 1;
+                    }
 
-            parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
+                    if (parent.pathDirection == 1)
+                    {
+                        parent.nextPathPoint = parent.nextPathPoint.next;
+                    }
+                    else if (parent.pathDirection == -1)
+                    {
+                        parent.nextPathPoint = parent.nextPathPoint.prev;
+                    }
+                }
+
+                parent.navAgent.SetDestination(parent.nextPathPoint.transform.position);
+                waiting = false;
+            }
+        }
+
+            
+        else
+        {
+            parent.currentPathPoint = parent.nextPathPoint;
         }
         UpdateAwareness();
         CheckConditions();

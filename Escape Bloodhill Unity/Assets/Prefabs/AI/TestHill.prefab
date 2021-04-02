@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 8017519051976634661}
   - component: {fileID: 8017519051976634662}
   - component: {fileID: 6487193055443446319}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: TestHill
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -814,6 +814,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  lit: 0
 --- !u!195 &8017519051976634662
 NavMeshAgent:
   m_ObjectHideFlags: 0
