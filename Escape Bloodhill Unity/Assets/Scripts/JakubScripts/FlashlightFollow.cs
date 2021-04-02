@@ -20,6 +20,8 @@ public class FlashlightFollow : MonoBehaviour
     private bool switchedOn = false;
     public AudioSource switchClick;
 
+    public Transform lightSource;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +32,7 @@ public class FlashlightFollow : MonoBehaviour
         offPosition = switchModel.transform.localPosition;
         onPosition = transform.GetChild(4).localPosition;
         switchClick = GetComponent<AudioSource>();
+        lightSource = transform.GetChild(3);
     }
 
     private void Update()
@@ -64,6 +67,11 @@ public class FlashlightFollow : MonoBehaviour
                 }
             }
         }
+
+        if (switchedOn)
+        {
+            LightRay();
+        }
     }
 
     void LateUpdate()
@@ -97,5 +105,26 @@ public class FlashlightFollow : MonoBehaviour
             switchModel.transform.localPosition = onPosition;
             switchedOn = true;
         }
+    }
+
+    public void LightRay()
+    {
+        RaycastHit hit;
+
+        Debug.DrawRay(lightSource.position, lightSource.forward * 20f, Color.yellow, 0.5f);
+        
+        if (Physics.SphereCast(lightSource.position, 0.1f, transform.up, out hit, 20f))
+        {
+            //Debug.Log(hit.collider.gameObject);
+            if (hit.collider.tag == "Enemy")
+            {
+                parentScript.parent.ghostScript.lit = true;
+            }
+            else
+            {
+                parentScript.parent.ghostScript.lit = false;
+            }
+        }
+        
     }
 }

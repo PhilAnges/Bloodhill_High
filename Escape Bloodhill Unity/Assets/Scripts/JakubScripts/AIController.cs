@@ -70,7 +70,9 @@ public class AIController : MonoBehaviour
 
     [HideInInspector]
     public int pathDirection = 1;
-    [HideInInspector]
+    //[HideInInspector]
+    public PathPoint currentPathPoint;
+    //[HideInInspector]
     public PathPoint nextPathPoint;
     [HideInInspector]
     public PathPoint startPathPoint;
@@ -82,6 +84,11 @@ public class AIController : MonoBehaviour
     private int frameLimit = 10;
     private int frameIncrement = 0;    
     private int playerMask = 1 << 8;
+    private int selfMask;
+
+    [HideInInspector]
+    public bool lit = false;
+    public bool readyToMove = true;
 
 
     void Awake()
@@ -95,6 +102,7 @@ public class AIController : MonoBehaviour
         ogAlertTime = alertTime;
         hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
         navAgent.speed = patrolSpeed;
+        selfMask = ~(LayerMask.GetMask("Enemy") | LayerMask.GetMask("Ignore Raycast"));
     }
 
     void Update()
@@ -127,8 +135,9 @@ public class AIController : MonoBehaviour
             if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
             {
                 Debug.DrawRay(eyePos.position, (player.transform.position - transform.position) * maxViewDistance, Color.green, 0.5f);
-                if (Physics.Raycast(eyePos.position, (player.transform.position - transform.position), out hat, maxViewDistance))
+                if (Physics.Raycast(eyePos.position, (player.transform.position - transform.position), out hat, maxViewDistance, selfMask))
                 {
+                    //Debug.Log(hat.collider.gameObject);
                     if (hat.collider.tag == "Player")
                     {
                         aware = true;
@@ -178,6 +187,11 @@ public class AIController : MonoBehaviour
                 aware = true;
             }
         }
+        if (lit)
+        {
+            playerPosition = player.transform.position;
+            aware = true;
+        }
     }
 
     public void Orient(Vector3 target)
@@ -218,6 +232,43 @@ public class AIController : MonoBehaviour
         pathDirection = 1;
         startPathPoint = pathPoints[0];
         nextPathPoint = pathPoints[0];
+        currentPathPoint = pathPoints[0];
         navAgent.SetDestination(nextPathPoint.transform.position);
+    }
+
+    IEnumerator Waiting(float waitTime)
+    {
+        Debug.Log("Running Wait()");
+        if (waitTime > 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
+        else
+        {
+            yield return null;
+        }
+    }
+
+    IEnumerator Ready()
+    {
+        Debug.Log("Setting readyToMove to true");
+        readyToMove = true;
+        yield return null;
+    }
+
+    IEnumerator PathWait(float waitTime)
+    {
+        Debug.Log("Starting PathWait Coroutine");
+        Debug.Log(waitTime);
+        yield return new WaitForSeconds(waitTime);
+        readyToMove = true;
+    }
+
+    public void Wait(float waitTime)
+    {
+        Debug.Log("Setting readyToMove to false");
+        readyToMove = false;
+        
+        StartCoroutine("PathWait", waitTime);
     }
 }

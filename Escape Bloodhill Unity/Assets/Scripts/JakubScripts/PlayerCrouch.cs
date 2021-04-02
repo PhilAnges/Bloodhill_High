@@ -58,7 +58,7 @@ public class PlayerCrouch : PlayerState
         }
 
 
-        if (parent.GetXInput() != 0 || parent.GetZInput() != 0 && headRoom)
+        if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && headRoom)
         {
             if (Input.GetButton("Sprint"))
             {
@@ -132,10 +132,10 @@ public class PlayerCrouch : PlayerState
         RaycastHit hit;
 
         Debug.DrawRay(parent.transform.position + parent.transform.up * 0.05f, parent.transform.up * 2f, Color.blue, 0.5f);
-        if (Physics.Raycast(parent.transform.position + parent.transform.up * 0.05f, parent.transform.up, out hit, 2f, mask))
+        if (Physics.SphereCast(parent.transform.position + parent.transform.up * 0.05f, 0.1f, parent.transform.up, out hit, 2f, mask))
         {
             headRoom = false;
-            Debug.Log(hit.collider.gameObject);
+            //Debug.Log(hit.collider.gameObject);
         }
         else
         {

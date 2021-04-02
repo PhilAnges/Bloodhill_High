@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float stamina = 100f;
-    private Transform ghost;
+    [HideInInspector]
+    public Transform ghost;
     private float ghostDistance;
     private CapsuleCollider collider;
     private AudioSource heart;
@@ -71,6 +72,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool noGhost = false;
     [HideInInspector]
+    public AIController ghostScript;
+    [HideInInspector]
     public bool isBeingChased = false;
     [HideInInspector]
     public bool running = false;
@@ -103,6 +106,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             ghost = FindGhost().transform;
+            ghostScript = ghost.GetComponent<AIController>();
         }
 
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
@@ -296,6 +300,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 ghost = FindGhost().transform;
+                ghostScript = ghost.GetComponent<AIController>();
                 noGhost = false;
             }
         }
