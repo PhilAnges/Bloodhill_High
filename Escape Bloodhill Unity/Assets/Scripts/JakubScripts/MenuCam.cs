@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class MenuCam : MonoBehaviour
 {
-    public Transform playPosition, optionsPosition, quitPosition;
-    public bool moving = false;
-    public Transform target;
-    public float lookSpeed;
-    // Start is called before the first frame update
+    public Transform startPosition, playPosition, helpPosition, quitPosition;
+    public CamControl cam;
+
+
     void Start()
     {
-        
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamControl>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayButton()
     {
-        if (moving)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, lookSpeed * Time.deltaTime);
-            transform.position = Vector3.Lerp(transform.position, target.position, 0.1f);
-        }
+        cam.target = playPosition;
+    }
+
+    public void HelpButton()
+    {
+        cam.target = helpPosition;
+    }
+
+    public void QuitButton()
+    {
+        cam.target = quitPosition;
+    }
+
+    public void ResetPosition()
+    {
+        cam.target = startPosition;
     }
 }
