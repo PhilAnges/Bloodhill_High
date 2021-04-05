@@ -14,7 +14,7 @@ public class ChaseState : AIState
         parent.Sight();
         parent.Orient(parent.playerPosition);
         parent.navAgent.SetDestination(parent.playerPosition);
-        if (Vector3.Distance(parent.transform.position, parent.playerPosition) <= 3f)
+        if (Vector3.Distance(parent.transform.position, parent.playerPosition) <= 3.5f)
         {
             parent.animator.SetBool("attack", true);
         }
