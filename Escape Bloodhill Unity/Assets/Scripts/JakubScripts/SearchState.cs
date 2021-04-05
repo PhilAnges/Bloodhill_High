@@ -24,6 +24,7 @@ public class SearchState : AIState
             parent.transform.rotation = Quaternion.Slerp(parent.transform.rotation, targetRot, 5f * Time.deltaTime);
             checking = true;
             checkTimer = checkTime;
+            parent.animator.SetBool("searching", true);
             Debug.Log("Setting timer");
         }
         if (checkTimer >= 0f)
@@ -33,7 +34,12 @@ public class SearchState : AIState
         if (checkTimer <= 0 && checking == true && parent.aware == false)
         {
             Debug.Log("Setting bool");
+            parent.animator.SetBool("searching", false);
             coastIsClear = true;
+        }
+        if (Vector3.Distance(parent.transform.position, parent.playerPosition) <= 1)
+        {
+            parent.animator.SetTrigger("attack");
         }
         UpdateAwareness();
         CheckConditions();
@@ -61,8 +67,15 @@ public class SearchState : AIState
     {
         if (parent.player.hp.currentHealth == 0)
         {
-            
-            parent.SetState(new PatrolState(parent));
+
+            if (parent.pathPoints.Count < 2)
+            {
+                parent.SetState(new IdleState(parent));
+            }
+            else
+            {
+                parent.SetState(new PatrolState(parent));
+            }
         }
 
         if (parent.aware)
@@ -78,7 +91,14 @@ public class SearchState : AIState
         }
         else if(coastIsClear)
         {
-            parent.SetState(new PatrolState(parent));
+            if (parent.pathPoints.Count < 2)
+            {
+                parent.SetState(new IdleState(parent));
+            }
+            else
+            {
+                parent.SetState(new PatrolState(parent));
+            }
         }
     }
 }

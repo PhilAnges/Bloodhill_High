@@ -14,6 +14,15 @@ public class ChaseState : AIState
         parent.Sight();
         parent.Orient(parent.playerPosition);
         parent.navAgent.SetDestination(parent.playerPosition);
+        if (Vector3.Distance(parent.transform.position, parent.playerPosition) <= 3f)
+        {
+            parent.animator.SetBool("attack", true);
+        }
+        else
+        {
+            parent.animator.SetBool("attack", false);
+        }
+
         UpdateAwareness();
         CheckConditions();
     }
@@ -25,6 +34,7 @@ public class ChaseState : AIState
         parent.navAgent.speed = parent.patrolSpeed * parent.chaseSpeedMultiplier;
         parent.player.isBeingChased = true;
         //parent.gameController.ChangeMusic(2);
+        parent.animator.SetBool("chasing", true);
         Debug.Log("Entering Chase State");
     }
 
@@ -32,6 +42,7 @@ public class ChaseState : AIState
     {
         parent.navAgent.stoppingDistance = parent.ogStoppingDistance;
         parent.player.isBeingChased = false;
+        parent.animator.SetBool("chasing", false);
     }
 
     public override void CheckConditions()
@@ -39,13 +50,27 @@ public class ChaseState : AIState
         if (parent.player.hp.currentHealth == 0)
         {
             parent.Teleport(parent.nextPathPoint.transform.position);
-            parent.SetState(new PatrolState(parent));
+            if (parent.pathPoints.Count < 2)
+            {
+                parent.SetState(new IdleState(parent));
+            }
+            else
+            {
+                parent.SetState(new PatrolState(parent));
+            }
             return;
         }
 
         if (parent.gameController.playerIsSafe)
         {
-            parent.SetState(new PatrolState(parent));
+            if (parent.pathPoints.Count < 2)
+            {
+                parent.SetState(new IdleState(parent));
+            }
+            else
+            {
+                parent.SetState(new PatrolState(parent));
+            }
             return;
         }
         if (parent.awareness <= 0)

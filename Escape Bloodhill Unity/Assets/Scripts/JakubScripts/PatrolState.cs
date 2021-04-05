@@ -20,7 +20,7 @@ public class PatrolState : AIState
         parent.navAgent.speed = parent.patrolSpeed;
 
         parent.Sight();
-
+        UpdateAwareness();
         if (parent.pathPoints.Count < 2)
         {
             Debug.Log("AI is trying to use a path with less than two points");
@@ -81,7 +81,7 @@ public class PatrolState : AIState
         {
             parent.currentPathPoint = parent.nextPathPoint;
         }
-        UpdateAwareness();
+        
         CheckConditions();
     }
 

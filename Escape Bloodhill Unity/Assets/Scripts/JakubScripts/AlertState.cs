@@ -36,7 +36,16 @@ public class AlertState : AIState
     {
         if (parent.gameController.playerIsSafe == true || parent.awareness <= 0f || parent.player.hp.currentHealth == 0)
         {
-            parent.SetState(new PatrolState(parent));
+            if (parent.pathPoints.Count < 2)
+            {
+                parent.SetState(new IdleState(parent));
+            }
+            else
+            {
+                parent.SetState(new PatrolState(parent));
+            }
+
+            
         }
         else
         {

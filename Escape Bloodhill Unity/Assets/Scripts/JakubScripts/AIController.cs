@@ -19,7 +19,7 @@ public class AIController : MonoBehaviour
     public NavMeshAgent navAgent;
     [HideInInspector]
     public PlayerController player;
-    [HideInInspector]
+    //[HideInInspector]
     public Vector3 playerPosition;
     [HideInInspector]
     public Vector3 previousPlayerPosition;
@@ -29,12 +29,12 @@ public class AIController : MonoBehaviour
     public GameController gameController;
     [HideInInspector]
     public AIState currentState;
-    [HideInInspector]
+    //[HideInInspector]
     public EyeLights eyeGlower;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool aware = false;
-    [HideInInspector]
+    //[HideInInspector]
     public float awareness = 0f;
     public float maxAwareness = 5f;
     [HideInInspector]
@@ -42,7 +42,7 @@ public class AIController : MonoBehaviour
     public float alertTime;
     public float searchAlertTime;
 
-    private Transform eyePos;
+    public Transform eyePos;
     private Transform spherePos;
     [HideInInspector]
     public float fieldOfView = 3f;
@@ -90,19 +90,22 @@ public class AIController : MonoBehaviour
     public bool lit = false;
     public bool readyToMove = true;
 
+    public Animator animator;
+
 
     void Awake()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
-        eyePos = gameObject.transform.Find("Eyes").transform;
+        //eyePos = gameObject.transform.Find("Eyes").transform;
         eyeGlower = gameObject.transform.Find("bloodhillantagrig").GetComponent<EyeLights>();
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
         hearingRange = transform.GetChild(1).GetComponent<EnemyHearing>();
         navAgent.speed = patrolSpeed;
         selfMask = ~(LayerMask.GetMask("Enemy") | LayerMask.GetMask("Ignore Raycast"));
+        animator = gameObject.transform.Find("bloodhillantagrig").GetComponent<Animator>();
     }
 
     void Update()
