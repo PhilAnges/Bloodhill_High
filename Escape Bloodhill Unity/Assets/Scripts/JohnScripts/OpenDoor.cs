@@ -16,6 +16,9 @@ public class OpenDoor : MonoBehaviour
     public bool openTheDoor;
     private float waitToMove;
 
+    public AudioSource openDoorSound;
+    public AudioSource lockedDoorSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,10 +44,12 @@ public class OpenDoor : MonoBehaviour
         {
             if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
+                openDoorSound.Play();
                 openTheDoor = true;
             }else
             if (other.GetComponent<ItemPickup>().relatedDoor == gameObject)
             {
+                openDoorSound.Play();
                 openTheDoor = true;
             }
             
@@ -53,6 +58,7 @@ public class OpenDoor : MonoBehaviour
 
     public void OpenTheDoor()
     {
+        
         Vector3 headingTo = outOfWay - transform.position;
         transform.position += (headingTo / headingTo.magnitude) * howLong * Time.deltaTime;
         if (headingTo.magnitude < tolerance)

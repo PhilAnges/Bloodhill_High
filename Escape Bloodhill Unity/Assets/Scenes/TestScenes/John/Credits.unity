@@ -346,8 +346,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: {fileID: 187770753}
-  creditsOver: 20
+  creditsOver: 10
+  multiplier: 10
   target: {x: 0, y: 0, z: 0}
+  mainMenu: MainMenu
 --- !u!114 &1023666628
 MonoBehaviour:
   m_ObjectHideFlags: 0

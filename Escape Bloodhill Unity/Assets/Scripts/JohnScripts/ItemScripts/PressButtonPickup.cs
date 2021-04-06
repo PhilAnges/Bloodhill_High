@@ -6,6 +6,8 @@ public class PressButtonPickup : MonoBehaviour
 {
     public string playerTag;
     public KeyCode pickItUp;
+    public AudioSource pickUpSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class PressButtonPickup : MonoBehaviour
                 other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] = gameObject;
 
                 gameObject.SetActive(false);
+                pickUpSound.Play();
             }
         }
     }
