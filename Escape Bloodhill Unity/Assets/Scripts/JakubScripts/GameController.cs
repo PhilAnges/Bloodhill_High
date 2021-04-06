@@ -16,8 +16,11 @@ public class GameController : MonoBehaviour
 
     public AudioSource ambientMusic, tenseMusic, chaseMusic;
     public AudioSource[] music;
+    public float[] volumes;
 
     public int basementPhase = 0;
+
+    public float fadeSpeed;
 
     void Awake()
     {
@@ -30,7 +33,16 @@ public class GameController : MonoBehaviour
             SpawnEnemy();
         }
         music = GetComponents<AudioSource>();
-        music[0].Play();
+        volumes = new float[3];
+
+        for (int i = 0; i < music.Length; i++)
+        {
+            volumes[i] = music[i].volume;
+        }
+
+        music[0].volume = 0f;
+        //music[0].Play();
+        ChangeMusic(0, volumes[0]);
     }
 
     void Update()
@@ -44,14 +56,17 @@ public class GameController : MonoBehaviour
         enemy.GetComponent<AIController>().SetPath(path);
     }
 
-    public void ChangeMusic(int songIndex)
+    public void ChangeMusic(int songIndex, float targetVolume)
     {
-        foreach (AudioSource song in music)
-        {
-            song.Stop();
-        }
 
-        music[songIndex].Play();
+        for (int i = 0; i < music.Length; i++)
+        {
+            if (i != songIndex)
+            {
+                StartCoroutine(FadeOut(i, true, targetVolume));
+            }
+        }
+        StartCoroutine(FadeIn(songIndex, false, targetVolume));
     }
 
     public void SpawnEnemy()
@@ -71,4 +86,35 @@ public class GameController : MonoBehaviour
 
         enemyScript.SetState(startState);
     }
+
+    IEnumerator FadeOut(int songIndex, bool playing, float targetVolume)
+    {
+        if (music[songIndex].volume > 0f)
+        {
+            music[songIndex].volume -= fadeSpeed;
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(FadeOut(songIndex, true, targetVolume));
+        }
+        else if (songIndex != 1)
+        {
+            music[songIndex].Stop();
+        }
+    }
+
+    IEnumerator FadeIn(int songIndex, bool playing, float targetVolume)
+    {
+        Debug.Log("Starting FadeIn");
+        if (!playing)
+        {
+            music[songIndex].Play();
+        }
+
+        if (music[songIndex].volume < volumes[songIndex])
+        {
+            music[songIndex].volume += fadeSpeed;
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(FadeIn(songIndex, true, targetVolume));
+        }
+    }
+
 }

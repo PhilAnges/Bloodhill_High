@@ -86,6 +86,10 @@ public class PlayerController : MonoBehaviour
     //[HideInInspector]
     public bool hasTriggerItem = false;
 
+    public int musicState;
+    public bool tension = false;
+    public bool safety = false;
+
     private void Awake()
     {
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
@@ -356,27 +360,68 @@ public class PlayerController : MonoBehaviour
         {
             case 0:
                 //heart.pitch = 1f;
+                if (tension)
+                {
+                    //ghostScript.gameController.ChangeMusic(0, 0f);
+                    tension = false;
+                }
+                musicState = 0;
                 heart.volume = 0f;
                 break;
             case 1:
                 //heart.pitch = 1f;
+                if (!tension)
+                {
+                    //ghostScript.gameController.ChangeMusic(1, 0f);
+                    tension = true;
+                }
+                musicState = 1;
                 heart.volume = 0.2f;
                 break;
             case 2:
                 //heart.pitch = 1.4f;
+                musicState = 1;
                 heart.volume = 0.3f;
                 break;
             case 3:
                 //heart.pitch = 1.6f;
+                musicState = 1;
                 heart.volume = 0.4f;
                 break;
             case 4:
                 //heart.pitch = 1.6f;
+                musicState = 1;
                 heart.volume = 1f;
                 break;
         }
+
         float pitchChange = ghostDistance / lvlOneThreshold;
+        /*
+        if (musicState == 1 && !isBeingChased && !tension)
+        {
+            ghostScript.gameController.ChangeMusic(1);
+            Debug.Log("Starting Tension Music");
+            tension = true;
+            safety = false;
+        }
+        else if (musicState == 0 && !isBeingChased && !safety)
+        {
+            tension = false;
+            ghostScript.gameController.ChangeMusic(0);
+            safety = true;
+        }
+        if (musicState == 1)
+        {
+            ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+        }
+        */
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+        if (tension && !isBeingChased)
+        {
+            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+        }
+        //ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+
     }
 
     IEnumerator HeartCycle()

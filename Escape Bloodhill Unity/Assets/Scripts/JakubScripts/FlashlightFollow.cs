@@ -115,15 +115,19 @@ public class FlashlightFollow : MonoBehaviour
         
         if (Physics.SphereCast(lightSource.position, 0.1f, transform.up, out hit, 20f))
         {
-            //Debug.Log(hit.collider.gameObject);
-            if (hit.collider.tag == "Enemy")
+            if (!parentScript.parent.noGhost)
             {
-                parentScript.parent.ghostScript.lit = true;
+                //Debug.Log(hit.collider.gameObject);
+                if (hit.collider.tag == "Enemy")
+                {
+                    parentScript.parent.ghostScript.lit = true;
+                }
+                else
+                {
+                    parentScript.parent.ghostScript.lit = false;
+                }
             }
-            else
-            {
-                parentScript.parent.ghostScript.lit = false;
-            }
+            
         }
         
     }
