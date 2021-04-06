@@ -15,6 +15,7 @@ public class JournalPickup : MonoBehaviour
     public GameObject journalMenuControler;
 
     public GameObject notification;
+    public AudioSource journalPickupNoise;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class JournalPickup : MonoBehaviour
             journalMenuControler.GetComponent<JournalMenuControl>().journalEntries.Add(gameObject);
 
             notification.SetActive(true);
+            journalPickupNoise.Play();
             gameObject.SetActive(false);
         }
     }
