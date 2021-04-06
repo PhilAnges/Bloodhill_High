@@ -10457,7 +10457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &599088663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14887,6 +14887,8 @@ MonoBehaviour:
   helpPosition: {fileID: 267889470}
   quitPosition: {fileID: 1012610039}
   cam: {fileID: 0}
+  yes: {fileID: 599088662}
+  no: {fileID: 1563872422}
   currentButton: 0
 --- !u!4 &827493633 stripped
 Transform:
@@ -23856,7 +23858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60cf91bc8c1c5e940876e51bed94e650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1619834712}
   rotationSpeed: 2.5
   moveSpeed: 2.5
 --- !u!1 &1338293232
@@ -26902,7 +26904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1563872423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26967,7 +26969,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 827493632}
-        m_MethodName: HelpButton
+        m_MethodName: ResetPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
