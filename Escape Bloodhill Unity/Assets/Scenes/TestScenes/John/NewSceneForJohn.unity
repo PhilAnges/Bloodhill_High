@@ -5591,13 +5591,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402363935}
-  m_LocalRotation: {x: 0.6905722, y: 0.18990445, z: 0.18528447, w: 0.6728418}
+  m_LocalRotation: {x: 0.6896118, y: -0.17588593, z: -0.18882765, w: 0.67664164}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 59.195004, y: 92.9, z: 92.511}
+  m_LocalEulerAnglesHint: {x: 60.091003, y: 268.50598, z: 267.421}
 --- !u!1001 &406208788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17344,6 +17344,8 @@ MonoBehaviour:
   locked: 1
   swing: {x: 0, y: 0, z: 0, w: 9}
   openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
 --- !u!65 &1175829834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33479,6 +33481,7 @@ MonoBehaviour:
   journalButton: {fileID: 155340394}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382079271062575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33608,6 +33611,7 @@ MonoBehaviour:
   journalButton: {fileID: 110805047}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382079724609543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33737,6 +33741,7 @@ MonoBehaviour:
   journalButton: {fileID: 1003165602}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382079727811935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33772,6 +33777,7 @@ MonoBehaviour:
   journalButton: {fileID: 216593768}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382079764455041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33990,6 +33996,7 @@ MonoBehaviour:
   journalButton: {fileID: 2072281519}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!1 &1286382080012102622
 GameObject:
   m_ObjectHideFlags: 0
@@ -34045,6 +34052,7 @@ MonoBehaviour:
   journalButton: {fileID: 618362086}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382080094266289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34190,6 +34198,7 @@ MonoBehaviour:
   journalButton: {fileID: 1292581583}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!1 &1286382080225041434
 GameObject:
   m_ObjectHideFlags: 0
@@ -34303,6 +34312,7 @@ MonoBehaviour:
   journalButton: {fileID: 761024660}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382080411325185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34432,6 +34442,7 @@ MonoBehaviour:
   journalButton: {fileID: 998627629}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382080554965729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34561,6 +34572,7 @@ MonoBehaviour:
   journalButton: {fileID: 1683214132}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382080795956441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34711,6 +34723,7 @@ MonoBehaviour:
   journalButton: {fileID: 479863949}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382081196534451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34892,6 +34905,7 @@ MonoBehaviour:
   journalButton: {fileID: 140585879}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &1286382081240417509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35899,6 +35913,7 @@ MonoBehaviour:
   journalButton: {fileID: 1956259765}
   journalMenuControler: {fileID: 860177205}
   notification: {fileID: 886874380}
+  journalPickupNoise: {fileID: 0}
 --- !u!114 &7621775168733452107
 MonoBehaviour:
   m_ObjectHideFlags: 0

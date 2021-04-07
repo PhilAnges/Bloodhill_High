@@ -33,7 +33,7 @@ public class OpenDoor : MonoBehaviour
     {
         if((transform.position != outOfWay) && (openTheDoor == true))
         {
-            OpenTheDoor();
+            //OpenTheDoor();
             SwingOpen();
         }
     }
