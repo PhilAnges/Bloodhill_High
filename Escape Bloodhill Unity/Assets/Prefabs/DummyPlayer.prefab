@@ -257,6 +257,13 @@ MonoBehaviour:
   inventory:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   givenAudio: {fileID: 0}
   relatedDoor: {fileID: 0}
   inventoryCounter: 0
