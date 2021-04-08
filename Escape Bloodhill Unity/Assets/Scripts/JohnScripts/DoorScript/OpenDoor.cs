@@ -10,8 +10,11 @@ public class OpenDoor : MonoBehaviour
     public KeyCode actionKey;
     public bool locked;
 
+    public float upperLimRotate;
+    public float lowerLimRotate;
+
     private Vector3 outOfWay;
-    public Quaternion swing;
+    public Collider destroyThis;
     private float tolerance;
     public bool openTheDoor;
     private float waitToMove;
@@ -31,11 +34,20 @@ public class OpenDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(transform.rotation.x);
         if((transform.position != outOfWay) && (openTheDoor == true))
         {
-            //OpenTheDoor();
+            OpenTheDoor();
             SwingOpen();
         }
+        /*if(openTheDoor == true)
+        {
+            SwingOpen();
+        }
+        if ((transform.rotation. >= ))
+        {
+            openTheDoor = false;
+        }*/
     }
 
     public void OnTriggerStay(Collider other)
@@ -44,21 +56,20 @@ public class OpenDoor : MonoBehaviour
         {
             if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
+                Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
             }else
             if (other.GetComponent<ItemPickup>().relatedDoor == gameObject)
             {
+                Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
-            }
-            
+            }            
         }
     }
-
     public void OpenTheDoor()
-    {
-        
+    {        
         Vector3 headingTo = outOfWay - transform.position;
         transform.position += (headingTo / headingTo.magnitude) * howLong * Time.deltaTime;
         if (headingTo.magnitude < tolerance)
@@ -69,6 +80,8 @@ public class OpenDoor : MonoBehaviour
     }
     public void SwingOpen()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, swing, spin);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, swing, spin);
+        transform.Rotate(Vector3.forward * spin * Time.deltaTime);
+        
     }
 }

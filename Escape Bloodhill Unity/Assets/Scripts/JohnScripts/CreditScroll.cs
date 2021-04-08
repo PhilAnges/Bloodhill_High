@@ -12,6 +12,7 @@ public class CreditScroll : MonoBehaviour
     public Vector3 target;
     public string mainMenu;
     private float tolerance;
+    private float changeScene;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,8 @@ public class CreditScroll : MonoBehaviour
 
     private void Awake()
     {
-        creditsOver = creditsOver + Time.time;
+        //Awake is called before Start, so scrollTime is scaling with
+        changeScene = creditsOver + Time.time;
     }
 
 
@@ -36,7 +38,7 @@ public class CreditScroll : MonoBehaviour
         }
 
 
-        if(Time.time > creditsOver)
+        if(Time.time > changeScene)
         {
             SceneManager.LoadScene(mainMenu);
         }
