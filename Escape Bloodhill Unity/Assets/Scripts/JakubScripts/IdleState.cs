@@ -13,7 +13,7 @@ public class IdleState : AIState
         //Delete this line in final build
         parent.navAgent.speed = parent.patrolSpeed;
 
-        if (parent.navAgent.remainingDistance == 0f)
+        if (parent.navAgent.remainingDistance == 0f && parent.startPathPoint.lookTarget != null)
         {
             parent.Orient(parent.startPathPoint.lookTarget.position);
         }
