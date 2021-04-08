@@ -479,6 +479,9 @@ GameObject:
   - component: {fileID: 4579125345579906173}
   - component: {fileID: 8288146088381130080}
   - component: {fileID: 2938064814281548033}
+  - component: {fileID: 8884352965921854922}
+  - component: {fileID: 7759655102905433688}
+  - component: {fileID: 228163210578970385}
   m_Layer: 0
   m_Name: BDD_LDoorFrame
   m_TagString: Untagged
@@ -550,6 +553,56 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8884352965921854922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960823762423744822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009517541, y: 0.02, z: 0.019756138}
+  m_Center: {x: -0.004762656, y: -0.00038763144, z: 0.0078431945}
+--- !u!65 &7759655102905433688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960823762423744822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009517541, y: 0.0007743426, z: 0.019756138}
+  m_Center: {x: -0.004762656, y: -0.00038763144, z: 0.0078431945}
+--- !u!114 &228163210578970385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960823762423744822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0.05
+  spin: 110
+  actionKey: 101
+  locked: 0
+  upperLimRotate: 0
+  lowerLimRotate: 0
+  destroyThis: {fileID: 7759655102905433688}
+  openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
+  notification: {fileID: 0}
 --- !u!1 &4146006819581389662
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +770,9 @@ GameObject:
   - component: {fileID: 8714995802069841172}
   - component: {fileID: 5814993861599678515}
   - component: {fileID: 9200777547901211649}
+  - component: {fileID: 4056672321974207444}
+  - component: {fileID: 493772544343180166}
+  - component: {fileID: 644194764583203152}
   m_Layer: 0
   m_Name: BDD_RDoorFrame
   m_TagString: Untagged
@@ -788,6 +844,56 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4056672321974207444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862304107681614918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0094741415, y: 0.0007743426, z: 0.019756138}
+  m_Center: {x: 0.004743794, y: -0.00038769105, z: 0.0078431945}
+--- !u!65 &493772544343180166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862304107681614918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0094741415, y: 0.02, z: 0.019756138}
+  m_Center: {x: 0.004743794, y: 0, z: 0.0078431945}
+--- !u!114 &644194764583203152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862304107681614918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  howLong: 0.05
+  spin: 110
+  actionKey: 101
+  locked: 0
+  upperLimRotate: 0
+  lowerLimRotate: 0
+  destroyThis: {fileID: 493772544343180166}
+  openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
+  notification: {fileID: 0}
 --- !u!1 &6677449481983321138
 GameObject:
   m_ObjectHideFlags: 0
