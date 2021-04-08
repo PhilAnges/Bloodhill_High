@@ -349,7 +349,7 @@ MonoBehaviour:
   creditsOver: 10
   multiplier: 10
   target: {x: 0, y: 0, z: 0}
-  mainMenu: MainMenu
+  mainMenu: MenuScene
 --- !u!114 &1023666628
 MonoBehaviour:
   m_ObjectHideFlags: 0
