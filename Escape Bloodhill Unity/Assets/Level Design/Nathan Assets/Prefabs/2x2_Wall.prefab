@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 225693037997900814, guid: c64998f3dd1619d4aafd918c27c39ac1, type: 3}
+  - {fileID: 2100000, guid: 96c5c41695a4ea24c8492875671435b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,7 +135,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2155458650626278442, guid: c64998f3dd1619d4aafd918c27c39ac1, type: 3}
+  - {fileID: 2100000, guid: 66df8e2efd4ccb94da898f5191494fa2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,7 +292,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 761620614585007677, guid: c64998f3dd1619d4aafd918c27c39ac1, type: 3}
+  - {fileID: 2100000, guid: 9384d8370a167f64094cda08a509c99b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -428,6 +428,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FIXED2x2_CeilingTrim
       objectReference: {fileID: 0}
+    - target: {fileID: 3964425504842301786, guid: df6a2d542434b544dad03e58b40060ff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 331cc33a6be4dd846b9061f07b826286, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6a2d542434b544dad03e58b40060ff, type: 3}
 --- !u!4 &6878578435655258775 stripped
