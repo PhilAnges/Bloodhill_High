@@ -284,6 +284,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4883341769070792769, guid: 3e20501575a1d0b4890a0b8ff72ba8f2,
+        type: 3}
+      propertyPath: sceneArray.Array.data[1]
+      value: MenuScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4883341769070792780, guid: 3e20501575a1d0b4890a0b8ff72ba8f2,
         type: 3}
       propertyPath: m_Name
