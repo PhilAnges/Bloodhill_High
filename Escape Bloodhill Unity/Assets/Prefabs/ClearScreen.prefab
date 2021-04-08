@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2095025414485993601}
   - component: {fileID: 1118014578422384591}
   m_Layer: 0
-  m_Name: BlackScreen
+  m_Name: ClearScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dea228ad245464e8da1a23ce6725cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackScreen: {fileID: 0}
   fadeAmount: 0.05
-  fadeInterval: 2
-  fadeDelay: 0.75
+  fadeInterval: 3
+  fadeDelay: 0
+  fadeIn: 1
 --- !u!1 &6624348776730067720
 GameObject:
   m_ObjectHideFlags: 0

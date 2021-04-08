@@ -229,22 +229,6 @@ MonoBehaviour:
   percentAware: 0
   range: 0.1
   intensity: 10
---- !u!114 &6538684219307821742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992625084315953122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0778b7b7c0eb74b84fe9e431354576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnitude: 1
-  upper: {fileID: 4141933415391198733}
-  lower: {fileID: 4156884251977293547}
-  up: 1
 --- !u!1 &5144514307936768555
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,30 +765,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navAgent: {fileID: 0}
   player: {fileID: 0}
-  gameController: {fileID: 0}
-  currentDestination: {x: 0, y: 0, z: 0}
-  aware: 0
-  arriveDistance: 0.05
-  pathDirection: 1
-  nextPoint: 0
-  nextPathPoint: {fileID: 0}
-  startPathPoint: {fileID: 0}
-  previousPoint: 0
-  awareness: 0
   playerPosition: {x: 0, y: 0, z: 0}
   previousPlayerPosition: {x: 0, y: 0, z: 0}
-  ogStoppingDistance: 0
-  ogAlertTime: 0
-  searchAlertTime: 3
-  fieldOfView: 3
   playerDirection: {x: 0, y: 0, z: 0}
+  gameController: {fileID: 0}
+  eyeGlower: {fileID: 0}
+  aware: 0
+  awareness: 0
+  maxAwareness: 3
+  ogAlertTime: 0
+  alertTime: 1
+  searchAlertTime: 3
+  eyePos: {fileID: 0}
+  fieldOfView: 3
+  hearingLimit: 0
   maxViewDistance: 40.7
+  rotationSpeed: 15
   patrolSpeed: 1
   chaseSpeedMultiplier: 3
-  rotationSpeed: 15
-  alertTime: 1
+  arriveDistance: 0.05
+  ogStoppingDistance: 0
   playerChaseStoppingDistance: 1
-  defaultPath: {fileID: 0}
+  timeToLosePlayer: 2
+  playerLostTime: 0
+  gotPlayer: 0
+  pathDirection: 1
+  currentPathPoint: {fileID: 0}
+  nextPathPoint: {fileID: 0}
+  startPathPoint: {fileID: 0}
   currentPath: {fileID: 0}
   pathPoints:
   - {fileID: 0}
@@ -812,12 +800,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  hearingLimit: 0
-  timeToLosePlayer: 2
-  playerLostTime: 0
-  maxAwareness: 3
-  gotPlayer: 0
-  eyeGlower: {fileID: 0}
+  lit: 0
+  readyToMove: 1
+  animator: {fileID: 0}
 --- !u!195 &8017519051976634662
 NavMeshAgent:
   m_ObjectHideFlags: 0

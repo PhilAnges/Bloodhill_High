@@ -4,23 +4,47 @@ using UnityEngine.UI;
 
 public class ScreenFade : MonoBehaviour
 {
-    public Image blackScreen;
+    private Image blackScreen;
     private float alpha = 1f;
     public float fadeAmount = 0.05f;
-    public float fadeInterval = 0.05f;
+    public float fadeInterval = 5f;
     public float fadeDelay = 1f;
+    private bool fade = false;
+    private Color targetColor;
+
+    public bool fadeIn = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        blackScreen = GetComponentInChildren<Image>();
+        if (fadeIn)
+        {
+            blackScreen = GetComponentInChildren<Image>();
+            blackScreen.color = new Color(0f, 0f, 0f, 0f);
+            targetColor = new Color(0f, 0f, 0f, 1f);
+        }
+        else
+        {
+            blackScreen = GetComponentInChildren<Image>();
+            blackScreen.color = new Color(0f, 0f, 0f, 1f);
+            targetColor = new Color(0f, 0f, 0f, 0f);
+        }
+     
         StartCoroutine("Delay");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (fade)
+        {
+            blackScreen.color = Color.Lerp(blackScreen.color, targetColor, fadeInterval * Time.deltaTime);
+
+            if (blackScreen.color.a <= 0f)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     IEnumerator UnFade()
@@ -42,6 +66,7 @@ public class ScreenFade : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(fadeDelay);
-        StartCoroutine("UnFade");
+        fade = true;
+        //StartCoroutine("UnFade");
     }
 }
