@@ -14,7 +14,7 @@ public class PlayerRun : PlayerState
 
     public override void UpdateBehavior()
     {
-        parent.camera.Look();
+        //parent.camera.Look();
         //parent.Move();
         parent.DrainStamina(true);
         parent.CalculateAdrenaline();

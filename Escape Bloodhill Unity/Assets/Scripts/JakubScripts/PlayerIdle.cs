@@ -13,6 +13,7 @@ public class PlayerIdle : PlayerState
     {
         parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
         parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
+        //parent.Move();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();

@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     {
         if (!GameObject.FindGameObjectWithTag("Player"))
         {
-            Instantiate(playerPrefab, transform.position, Quaternion.identity);
+            Instantiate(playerPrefab, transform.position, transform.rotation);
         }
         if (enemyActive && !GameObject.FindGameObjectWithTag("Enemy"))
         {
@@ -40,8 +40,8 @@ public class GameController : MonoBehaviour
             volumes[i] = music[i].volume;
         }
 
-        music[0].volume = 0f;
-        //music[0].Play();
+        music[1].volume = 0f;
+        music[1].Play();
         ChangeMusic(0, volumes[0]);
     }
 

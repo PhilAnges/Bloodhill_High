@@ -13,6 +13,7 @@ public class PlayerWalk : PlayerState
 
     public override void UpdateBehavior()
     {
+        //parent.Move();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();

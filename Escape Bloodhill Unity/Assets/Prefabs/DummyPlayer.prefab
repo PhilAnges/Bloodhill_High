@@ -171,8 +171,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215c9cb50667c4d4e9a55961e36f390a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionDistance: 0.45
-  collisionScale: 0.5
+  camera: {fileID: 0}
+  flashlight: {fileID: 0}
+  lights: []
+  rigbod: {fileID: 0}
+  camPrefab: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
+    type: 3}
+  hp: {fileID: 0}
+  itemScript: {fileID: 0}
+  stamina: 100
+  ghost: {fileID: 0}
   moveSpeed: 100
   runSpeedMultiplier: 2
   runStaminaCost: 20
@@ -181,17 +189,9 @@ MonoBehaviour:
   staminaRegenMultiplier: 0.5
   ogMoveSpeed: 0
   ogRegenRate: 0
-  camera: {fileID: 0}
-  flashlight: {fileID: 0}
-  lights: []
-  flashLightOn: 0
-  isCrouching: 0
-  stamina: 100
-  rigbod: {fileID: 0}
-  camPrefab: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
-    type: 3}
-  stepInterval: 0.35
   ogstepInterval: 0
+  flickTimer: 0
+  stepInterval: 0.35
   runInterval: 0.2
   crouchInterval: 0.5
   runBobIntensity: 0.15
@@ -199,7 +199,6 @@ MonoBehaviour:
   walkSwayIntensity: 0.05
   runSwayIntensity: 0.15
   crouchSwayIntensity: 0.1
-  flickTimer: 0
   adrenalineLevel: 0
   lvlOneThreshold: 15
   lvlTwoThreshold: 10
@@ -207,9 +206,16 @@ MonoBehaviour:
   noiseLevel: 0
   isHidden: 0
   noGhost: 0
+  ghostScript: {fileID: 0}
   isBeingChased: 0
   running: 0
-  hp: {fileID: 0}
+  airborn: 0
+  flashLightOn: 0
+  isCrouching: 0
+  hasTriggerItem: 0
+  musicState: 0
+  tension: 0
+  safety: 0
 --- !u!81 &3187912927524468353
 AudioListener:
   m_ObjectHideFlags: 0

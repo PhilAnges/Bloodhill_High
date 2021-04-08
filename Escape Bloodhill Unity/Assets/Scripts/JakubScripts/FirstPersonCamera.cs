@@ -39,16 +39,18 @@ public class FirstPersonCamera : MonoBehaviour
     private Vector3 targetPosition;
     private Quaternion targetRotation;
 
+    public Transform flashlightTransform;
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Destroy(GameObject.Find("Flashlight"));
-        child = Instantiate(flashlightPrefab, targetPosition, Quaternion.Euler(90f, 0f ,0f)).GetComponent<FlashlightFollow>();
+        child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * Quaternion.Euler(90f, 0f ,0f)/*, this.transform*/).GetComponent<FlashlightFollow>();
         child.SetParent(this.transform);
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;
         ogSwayFactor = swayFactor;
+        mouseVector = new Vector2(-90f, 0f);
     }
 
     void Update()
@@ -58,19 +60,25 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+    }
+
+    private void LateUpdate()
+    {
+        Vector2 lookChange = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
         if (parent && parent.hp.currentHealth != 0)
         {
             if (parent)
             {
-                Vector2 lookChange = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-                lookChange = Vector2.Scale(lookChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+                //lookChange = Vector2.Scale(lookChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 
-                smoothVector.x = Mathf.Lerp(smoothVector.x, lookChange.x, 1f / smoothing);
-                smoothVector.y = Mathf.Lerp(smoothVector.y, lookChange.y, 1f / smoothing);
-                mouseVector += smoothVector;
+                //smoothVector.x = Mathf.Lerp(smoothVector.x, lookChange.x, 1f / smoothing);
+                //smoothVector.y = Mathf.Lerp(smoothVector.y, lookChange.y, 1f / smoothing);
+                mouseVector += lookChange;
                 mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
 
-                parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
+                parent.transform.rotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
             }
 
             if (Input.GetAxis("LookBack") != 0 && !parent.airborn)
@@ -79,7 +87,8 @@ public class FirstPersonCamera : MonoBehaviour
             }
             else
             {
-                targetRotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 0);
+                //targetRotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 0);
+                targetRotation = Quaternion.Euler(-mouseVector.y, mouseVector.x, 0);
             }
 
             if (parent.isCrouching)
@@ -91,12 +100,13 @@ public class FirstPersonCamera : MonoBehaviour
                 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z) + (parent.transform.right * swayFactor) - (parent.transform.forward * farBackness);
             }
         }
-    }
 
-    private void LateUpdate()
-    {
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, lookSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp(transform.position, targetPosition , 0.1f);
+        //transform.rotation = targetRotation;
+
+
     }
 
     public void Look()

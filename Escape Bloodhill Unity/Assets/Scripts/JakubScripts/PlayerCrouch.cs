@@ -16,7 +16,7 @@ public class PlayerCrouch : PlayerState
 
     public override void UpdateBehavior()
     {
-        parent.camera.Look();
+        //parent.camera.Look();
         //parent.Move();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
