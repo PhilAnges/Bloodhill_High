@@ -47,6 +47,7 @@ MonoBehaviour:
   next: {fileID: 1715316902}
   looped: 0
   waitTime: 2
+  lookTarget: {fileID: 0}
 --- !u!1 &221554036
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +95,7 @@ MonoBehaviour:
   next: {fileID: 0}
   looped: 0
   waitTime: 0
+  lookTarget: {fileID: 0}
 --- !u!1 &342615865
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +494,7 @@ MonoBehaviour:
   next: {fileID: 0}
   looped: 0
   waitTime: 0
+  lookTarget: {fileID: 0}
 --- !u!1 &1715316901
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +542,7 @@ MonoBehaviour:
   next: {fileID: 0}
   looped: 0
   waitTime: 0
+  lookTarget: {fileID: 0}
 --- !u!1 &1791452674
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +710,7 @@ MonoBehaviour:
   next: {fileID: 2030561698}
   looped: 0
   waitTime: 2
+  lookTarget: {fileID: 0}
 --- !u!1 &2030561696
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +758,7 @@ MonoBehaviour:
   next: {fileID: 0}
   looped: 0
   waitTime: 0
+  lookTarget: {fileID: 0}
 --- !u!1 &2105867311
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +965,7 @@ MonoBehaviour:
   next: {fileID: 0}
   looped: 0
   waitTime: 0
+  lookTarget: {fileID: 0}
 --- !u!1 &8113134162635765252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1137,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7aa7b4c38fe017d469b582c389f4f915, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
