@@ -99,7 +99,7 @@ public class AskForPassword : MonoBehaviour
         passwordPlease.GetComponent<TypePasscode>().password = "";
         passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
         passwordPlease.SetActive(false);
-        gameObject.GetComponent<OpenDoor>().openTheDoor = true;
+        gameObject.GetComponent<SafeDoor>().openTheDoor = true;
         player.GetComponent<FirstPersonCamera>().enabled = true;
         Destroy(gameObject.GetComponent<AskForPassword>(), 0.0f);
     }

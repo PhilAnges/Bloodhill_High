@@ -21,6 +21,7 @@ public class OpenDoor : MonoBehaviour
 
     public AudioSource openDoorSound;
     public AudioSource lockedDoorSound;
+    public GameObject notification;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class OpenDoor : MonoBehaviour
         outOfWay = new Vector3(transform.position.x, transform.position.y, transform.position.z + .04f);
         openTheDoor = false;
         tolerance = howLong * Time.deltaTime;
+        notification.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,6 +56,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            notification.SetActive(true);
             if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
                 Destroy(destroyThis);

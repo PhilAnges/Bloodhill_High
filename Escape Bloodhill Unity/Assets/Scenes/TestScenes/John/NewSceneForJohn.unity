@@ -2077,6 +2077,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 81978885}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &150720831 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1552640492, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 326689065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &154764561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6459844454285345398, guid: f4b97118474420a48825ec1838d65e0b,
@@ -4633,8 +4639,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1552640494, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1552640494, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
+      propertyPath: notification
+      value: 
+      objectReference: {fileID: 886874380}
+    - target: {fileID: 1552640494, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
+      propertyPath: openDoorSound
+      value: 
+      objectReference: {fileID: 856054337}
+    - target: {fileID: 1552640494, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
+      propertyPath: lockedDoorSound
+      value: 
+      objectReference: {fileID: 856054337}
+    - target: {fileID: 1552640494, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
+      propertyPath: destroyThis
+      value: 
+      objectReference: {fileID: 150720831}
     - target: {fileID: 2080403981, guid: 39a2527b7daf5374fa3fbb0ba9d4c8e4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -17470,6 +17492,7 @@ MonoBehaviour:
   openTheDoor: 0
   openDoorSound: {fileID: 0}
   lockedDoorSound: {fileID: 0}
+  notification: {fileID: 0}
 --- !u!65 &1175829834
 BoxCollider:
   m_ObjectHideFlags: 0
