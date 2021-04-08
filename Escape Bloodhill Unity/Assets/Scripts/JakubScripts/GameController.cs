@@ -22,6 +22,12 @@ public class GameController : MonoBehaviour
 
     public float fadeSpeed;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+
+    }
+
     void Awake()
     {
         if (!GameObject.FindGameObjectWithTag("Player"))
