@@ -112,7 +112,7 @@ MonoBehaviour:
     value: 360
   sampleCount:
     overrideState: 1
-    value: 10
+    value: 5
 --- !u!114 &-5252186259136623720
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -43,7 +43,9 @@ public class Path : MonoBehaviour
         }
        
         lastPointMade = newPointScript;
+#if (UNITY_EDITOR)
         Selection.activeGameObject = newPoint;
+#endif
     }
 
     public void InsertWaypoint(int index, Vector3 position)
@@ -60,7 +62,8 @@ public class Path : MonoBehaviour
         newPointScript.prev.next = newPointScript;
         newPointScript.next.prev = newPointScript;
 
+#if (UNITY_EDITOR)
         Selection.activeGameObject = newPoint;
-
+#endif
     }
 }

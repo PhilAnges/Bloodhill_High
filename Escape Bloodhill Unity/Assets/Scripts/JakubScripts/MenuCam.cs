@@ -8,11 +8,13 @@ public class MenuCam : MonoBehaviour
     public CamControl cam;
     public GameObject yes, no;
     public int currentButton = 0;
+    private MenuControl menuControl;
 
 
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamControl>();
+        menuControl = GetComponent<MenuControl>();
     }
 
     public void PlayButton()
@@ -46,5 +48,21 @@ public class MenuCam : MonoBehaviour
         currentButton = 0;
         yes.SetActive(false);
         no.SetActive(false);
+    }
+
+    public void YesButton()
+    {
+        switch (currentButton)
+        {
+            case 1:
+                menuControl.ChangeScene(0);
+                break;
+            case 2:
+                menuControl.ChangeScene(2);
+                break;
+            case 3:
+                menuControl.ToExitGame();
+                break;
+        }
     }
 }

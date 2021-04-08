@@ -12,6 +12,12 @@ public class IdleState : AIState
     {
         //Delete this line in final build
         parent.navAgent.speed = parent.patrolSpeed;
+
+        if (parent.navAgent.remainingDistance == 0f)
+        {
+            parent.Orient(parent.startPathPoint.lookTarget.position);
+        }
+
         parent.Sight();  
         UpdateAwareness();
         CheckConditions();

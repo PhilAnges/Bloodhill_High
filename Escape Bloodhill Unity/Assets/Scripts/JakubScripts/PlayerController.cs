@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Light[] lights;
     [HideInInspector]
     public Rigidbody rigbod;
-    [HideInInspector]
     public GameObject camPrefab;
     [HideInInspector]
     public PlayerHealth hp;
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         camera.SetParent(this);
-        ogMoveSpeed = 100f;
+        ogMoveSpeed = moveSpeed;
         ogRegenRate = staminaRegenRate;
         ogstepInterval = stepInterval;
         rigbod = GetComponent<Rigidbody>();
@@ -144,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        camera.Look();
+        //camera.Look();
     }
 
     public void SetState(PlayerState newState)
@@ -181,7 +180,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
-        if (Physics.Raycast(heart.transform.position, -transform.up, out hit, 1.25f))
+        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f))
         {
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
@@ -323,12 +322,19 @@ public class PlayerController : MonoBehaviour
         //Gonna need a story check to make sure it doesn't trigger through floors and ceilings
         ghostDistance = Vector3.Distance(transform.position, ghost.position);
 
+
+
         if (isBeingChased)
         {
             adrenalineLevel = 4;
         }
         else if (ghostDistance <= lvlOneThreshold)
         {
+            if (!tension)
+            {
+                //ghostScript.gameController.ChangeMusic(1, 0f);
+                tension = true;
+            }
             if (ghostDistance <= lvlTwoThreshold)
             {
                 if (ghostDistance <= lvlThreeThreshold)
@@ -344,6 +350,11 @@ public class PlayerController : MonoBehaviour
         //Temp
         else
         {
+            if (tension)
+            {
+                //ghostScript.gameController.ChangeMusic(0, 0f);
+                tension = false;
+            }
             adrenalineLevel = 0;
         }
     }
@@ -356,25 +367,19 @@ public class PlayerController : MonoBehaviour
 
     public void HeartBeat()
     {
+        
+
         switch (adrenalineLevel)
         {
             case 0:
                 //heart.pitch = 1f;
-                if (tension)
-                {
-                    //ghostScript.gameController.ChangeMusic(0, 0f);
-                    tension = false;
-                }
+                
                 musicState = 0;
                 heart.volume = 0f;
                 break;
             case 1:
                 //heart.pitch = 1f;
-                if (!tension)
-                {
-                    //ghostScript.gameController.ChangeMusic(1, 0f);
-                    tension = true;
-                }
+                
                 musicState = 1;
                 heart.volume = 0.2f;
                 break;
