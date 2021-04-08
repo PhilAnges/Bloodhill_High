@@ -6,7 +6,7 @@ public class MenuCam : MonoBehaviour
 {
     public Transform startPosition, playPosition, helpPosition, quitPosition;
     public CamControl cam;
-    public GameObject yes, no;
+    public GameObject yes, no, confirmText;
     public int currentButton = 0;
     private MenuControl menuControl;
     public GameObject screenFade;
@@ -25,6 +25,7 @@ public class MenuCam : MonoBehaviour
         currentButton = 1;
         yes.SetActive(true);
         no.SetActive(true);
+        confirmText.SetActive(true);
 
     }
 
@@ -34,6 +35,7 @@ public class MenuCam : MonoBehaviour
         currentButton = 2;
         yes.SetActive(true);
         no.SetActive(true);
+        confirmText.SetActive(true);
     }
 
     public void QuitButton()
@@ -42,6 +44,7 @@ public class MenuCam : MonoBehaviour
         currentButton = 3;
         yes.SetActive(true);
         no.SetActive(true);
+        confirmText.SetActive(true);
     }
 
     public void ResetPosition()
@@ -50,6 +53,7 @@ public class MenuCam : MonoBehaviour
         currentButton = 0;
         yes.SetActive(false);
         no.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     public void YesButton()

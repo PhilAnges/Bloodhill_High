@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class FPSCount : MonoBehaviour
 {
     private Text fps;
+    private int count;
+    private int prevFPS;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,12 @@ public class FPSCount : MonoBehaviour
     void Update()
     {
         int frames = (int)(1f / Time.unscaledDeltaTime);
-        fps.text = frames.ToString();
+
+        if (prevFPS - frames > 5)
+        {
+            fps.text = frames.ToString();
+        }
+        prevFPS = frames;
+
     }
 }
