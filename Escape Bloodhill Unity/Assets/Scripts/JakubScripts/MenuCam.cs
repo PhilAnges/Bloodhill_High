@@ -9,6 +9,8 @@ public class MenuCam : MonoBehaviour
     public GameObject yes, no;
     public int currentButton = 0;
     private MenuControl menuControl;
+    public GameObject screenFade;
+    public float sceneChangeDelay = 1f;
 
 
     void Start()
@@ -55,14 +57,33 @@ public class MenuCam : MonoBehaviour
         switch (currentButton)
         {
             case 1:
-                menuControl.ChangeScene(0);
+                StartCoroutine("PlayScene");
                 break;
             case 2:
-                menuControl.ChangeScene(2);
+                StartCoroutine("HelpScene");
                 break;
             case 3:
-                menuControl.ToExitGame();
+                StartCoroutine("QuitGame");
                 break;
         }
+    }
+
+    IEnumerator PlayScene()
+    {
+        Instantiate(screenFade);
+        yield return new WaitForSeconds(sceneChangeDelay);
+        menuControl.ChangeScene(0);
+    }
+    IEnumerator HelpScene()
+    {
+        Instantiate(screenFade);
+        yield return new WaitForSeconds(sceneChangeDelay);
+        menuControl.ChangeScene(2);
+    }
+    IEnumerator QuitGame()
+    {
+        Instantiate(screenFade);
+        yield return new WaitForSeconds(sceneChangeDelay);
+        menuControl.ToExitGame();
     }
 }
