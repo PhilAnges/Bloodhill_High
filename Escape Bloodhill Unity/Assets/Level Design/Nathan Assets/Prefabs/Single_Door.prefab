@@ -291,11 +291,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   howLong: 0.05
-  spin: 0.01
+  spin: 110
   actionKey: 101
   locked: 0
-  swing: {x: -1, y: -1, z: -1, w: 1}
+  upperLimRotate: 0
+  lowerLimRotate: 0
+  destroyThis: {fileID: 8900656987325540514}
   openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
 --- !u!65 &502247345063019023
 BoxCollider:
   m_ObjectHideFlags: 0
