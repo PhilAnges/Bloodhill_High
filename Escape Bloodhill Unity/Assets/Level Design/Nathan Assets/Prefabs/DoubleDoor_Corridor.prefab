@@ -751,11 +751,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   howLong: 0.05
-  spin: 0.01
+  spin: 110
   actionKey: 101
   locked: 0
-  swing: {x: -1, y: -1, z: -1, w: 1}
+  upperLimRotate: 0
+  lowerLimRotate: 0
+  destroyThis: {fileID: 1552640493}
   openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
 --- !u!1 &8610771715321052380
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,11 +961,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   howLong: 0.05
-  spin: 0.01
+  spin: -110
   actionKey: 101
   locked: 0
-  swing: {x: -1, y: -1, z: -1, w: 1}
+  upperLimRotate: 0
+  lowerLimRotate: 0
+  destroyThis: {fileID: 2080403983}
   openTheDoor: 0
+  openDoorSound: {fileID: 0}
+  lockedDoorSound: {fileID: 0}
 --- !u!1001 &714628557789653527
 PrefabInstance:
   m_ObjectHideFlags: 0
