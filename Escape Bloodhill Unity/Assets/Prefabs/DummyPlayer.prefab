@@ -177,6 +177,8 @@ MonoBehaviour:
   rigbod: {fileID: 0}
   camPrefab: {fileID: 9083725253466467257, guid: c51b4c142e9700b4898f2e785f3238eb,
     type: 3}
+  screenFadePrefab: {fileID: 253970753570762922, guid: 24f0f93bf2371eb4a92fd39b3ebde75b,
+    type: 3}
   hp: {fileID: 0}
   itemScript: {fileID: 0}
   stamina: 100

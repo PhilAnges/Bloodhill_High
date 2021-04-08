@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Rigidbody rigbod;
     public GameObject camPrefab;
+    public GameObject screenFadePrefab;
     [HideInInspector]
     public PlayerHealth hp;
     [HideInInspector]
@@ -89,8 +90,12 @@ public class PlayerController : MonoBehaviour
     public bool tension = false;
     public bool safety = false;
 
+    
+
     private void Awake()
     {
+        Instantiate(screenFadePrefab);
+
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         camera.SetParent(this);
         ogMoveSpeed = moveSpeed;
