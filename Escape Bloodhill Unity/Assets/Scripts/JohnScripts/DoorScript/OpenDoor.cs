@@ -36,7 +36,7 @@ public class OpenDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.rotation.x);
+        //Debug.Log(transform.rotation.x);
         if((transform.position != outOfWay) && (openTheDoor == true))
         {
             OpenTheDoor();

@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 6033439988151125998}
   - component: {fileID: 1234382872}
   - component: {fileID: 1234382874}
-  - component: {fileID: 1234382873}
   - component: {fileID: 1234382875}
   m_Layer: 0
   m_Name: pCube6
@@ -347,25 +346,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.821847, y: 17.43813, z: 12.562555}
   m_Center: {x: 5.9, y: 0, z: 6.33}
---- !u!114 &1234382873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766659596427795853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d33c67b35401e04385c8994da8f9c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  howLong: 0.05
-  spin: 0.01
-  actionKey: 101
-  locked: 1
-  swing: {x: 0, y: 0, z: 0, w: 9}
-  openTheDoor: 0
 --- !u!114 &1234382875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +362,9 @@ MonoBehaviour:
   player: {fileID: 0}
   passwordPlease: {fileID: 0}
   instructions: {fileID: 0}
+  positionOne: {fileID: 0}
+  positionTwo: {fileID: 0}
+  positionThree: {fileID: 0}
   startTyping: 13
   thisIsPassword: 24
 --- !u!1 &5665738019660565979

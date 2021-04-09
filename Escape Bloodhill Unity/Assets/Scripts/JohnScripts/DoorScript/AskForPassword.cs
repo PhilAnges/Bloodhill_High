@@ -18,6 +18,7 @@ public class AskForPassword : MonoBehaviour
     private int numberOne;
     private int numberTwo;
     private int numberThree;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class AskForPassword : MonoBehaviour
         numberOne = Random.Range(0, 40);
         numberTwo = Random.Range(0, 40);
         numberThree = Random.Range(0, 40);
+        gameObject.GetComponent<StopTime>().enabled = false;
 
         thisIsPassword = numberOne + " " + numberTwo + " " + numberThree;
         Debug.Log(thisIsPassword);
@@ -42,19 +44,20 @@ public class AskForPassword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        player = GameObject.FindGameObjectWithTag("MainCamera");
-
+        
+        
         if (thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
         {
             CorrectPassword();
         }
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
+            gameObject.GetComponent<StopTime>().enabled = true;
             instructions.SetActive(true);
         }
     }
@@ -63,6 +66,7 @@ public class AskForPassword : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            gameObject.GetComponent<StopTime>().enabled = false;
             instructions.SetActive(false);
             passwordPlease.GetComponent<TypePasscode>().password = "";
             passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
@@ -76,8 +80,8 @@ public class AskForPassword : MonoBehaviour
         {
             if (Input.GetKeyUp(startTyping))
             {
-                DisableAskForPassword(passwordPlease.activeSelf);
-                player.GetComponent<FirstPersonCamera>().enabled = !player.GetComponent<FirstPersonCamera>().enabled;
+                
+                DisableAskForPassword(passwordPlease.activeSelf);                
             }
         }
     }
@@ -95,12 +99,13 @@ public class AskForPassword : MonoBehaviour
     }
     public void CorrectPassword()
     {
+        gameObject.GetComponent<StopTime>().enabled = false;
+        Time.timeScale = 1f;
         instructions.SetActive(false);
         passwordPlease.GetComponent<TypePasscode>().password = "";
         passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
         passwordPlease.SetActive(false);
         gameObject.GetComponent<SafeDoor>().openTheDoor = true;
-        player.GetComponent<FirstPersonCamera>().enabled = true;
         Destroy(gameObject.GetComponent<AskForPassword>(), 0.0f);
-    }
+    }        
 }
