@@ -27,6 +27,7 @@ public class PlayerIdle : PlayerState
         //Debug.Log("Entering Idle State");
         parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
+        parent.camera.child.moveDepth = 0f;
     }
 
     public override void ExitBehavior()
