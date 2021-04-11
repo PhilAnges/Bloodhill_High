@@ -334,7 +334,7 @@ Light:
   m_Color: {r: 0.8773585, g: 0.85641176, b: 0.6787113, a: 1}
   m_Intensity: 2
   m_Range: 25
-  m_SpotAngle: 60
+  m_SpotAngle: 70.1
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -363,7 +363,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 2800000, guid: f938fc13cf1b60948b6f218a73e45f66, type: 3}
+  m_Cookie: {fileID: 2800000, guid: d6be5c53132e5f84184c852bebb7c0a3, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -497,9 +497,12 @@ MonoBehaviour:
   bobMagnitude: 0.02
   swayMagnitude: 0
   moveMagnitude: 0.02
-  runBobMagnitude: 0
+  runBobMagnitude: 0.1
+  crouchBobMagnitude: 0.04
   moveTilt: 0
   walkTilt: 2.5
+  runTilt: 20
+  crouchTilt: 7
 --- !u!82 &4658211366951337486
 AudioSource:
   m_ObjectHideFlags: 0

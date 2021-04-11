@@ -34,9 +34,13 @@ public class FlashlightFollow : MonoBehaviour
     public float swayMagnitude;
     public float moveMagnitude;
     public float runBobMagnitude;
+    public float crouchBobMagnitude;
 
     public float moveTilt = 0f;
     public float walkTilt;
+    public float runTilt;
+    public float crouchTilt;
+
 
 
 
