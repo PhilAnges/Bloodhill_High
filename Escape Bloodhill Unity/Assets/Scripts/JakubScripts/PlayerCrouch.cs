@@ -104,6 +104,8 @@ public class PlayerCrouch : PlayerState
                     //Between Step 1 and Step 2
                     parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, highPoint, 0.05f);
                     parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
+                    parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, parent.camera.child.crouchBobMagnitude, 0.1f);
+                    parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, parent.camera.child.crouchTilt, 0.1f);
                 }
             }
             //Between Step 2 and Step 1
@@ -111,6 +113,8 @@ public class PlayerCrouch : PlayerState
             {
                 parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, lowPoint, 0.1f);
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.crouchSwayIntensity * beat, 0.1f);
+                parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, -parent.camera.child.crouchBobMagnitude, 0.1f);
+                parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, -parent.camera.child.crouchTilt, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
         }
@@ -119,6 +123,8 @@ public class PlayerCrouch : PlayerState
             rythmTimer = parent.stepInterval * 2;
             parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, parent.camera.ogCrouchHeight, 0.05f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
+            parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, 0f, 0.1f);
+            parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, 0f, 0.1f);
         }
     }
 

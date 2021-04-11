@@ -196,7 +196,7 @@ MonoBehaviour:
   stepInterval: 0.35
   runInterval: 0.2
   crouchInterval: 0.5
-  runBobIntensity: 0.15
+  runBobIntensity: 0.3
   crouchBobIntensity: 0.2
   walkSwayIntensity: 0.05
   runSwayIntensity: 0.15

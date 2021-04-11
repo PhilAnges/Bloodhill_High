@@ -47,4 +47,19 @@ public class PlayerState
     {
 
     }
+
+    public virtual void MoveDirection()
+    {
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            parent.camera.child.moveDepth =  -parent.camera.child.moveMagnitude;
+            Debug.Log(parent.camera.child.moveDepth);
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            parent.camera.child.moveDepth = parent.camera.child.moveMagnitude;
+            Debug.Log(parent.camera.child.moveDepth);
+        }
+    }
+    
 }

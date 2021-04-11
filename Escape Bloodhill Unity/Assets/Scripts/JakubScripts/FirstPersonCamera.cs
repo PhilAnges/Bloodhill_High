@@ -44,8 +44,9 @@ public class FirstPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Destroy(GameObject.Find("Flashlight"));
-        child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * Quaternion.Euler(90f, 0f ,0f)/*, this.transform*/).GetComponent<FlashlightFollow>();
+        child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * Quaternion.Euler(90f, 0f ,0f), this.transform).GetComponent<FlashlightFollow>();
         child.SetParent(this.transform);
+        //child.centerPosition = flashlightTransform.position;
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;

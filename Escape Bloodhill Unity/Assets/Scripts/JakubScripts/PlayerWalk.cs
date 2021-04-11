@@ -14,6 +14,7 @@ public class PlayerWalk : PlayerState
     public override void UpdateBehavior()
     {
         //parent.Move();
+        MoveDirection();
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -29,6 +30,7 @@ public class PlayerWalk : PlayerState
         highPoint = parent.camera.ogStandHeight;
         lowPoint = highPoint- parent.camera.walkBobMagnitude;
         parent.noiseLevel = 2;
+        parent.camera.child.moveDepth = parent.camera.child.moveMagnitude;
     }
 
     public override void ExitBehavior()
@@ -36,6 +38,8 @@ public class PlayerWalk : PlayerState
         //Debug.Log("Leaving Walk State");
         parent.staminaRegenRate = parent.ogRegenRate;
         parent.camera.standHeight = highPoint;
+        parent.camera.child.bobHeight = 0f;
+        
     }
 
     public override void CheckConditions()
@@ -87,6 +91,8 @@ public class PlayerWalk : PlayerState
                     //Between Step 1 and Step 2
                     parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, highPoint, 0.1f);
                     parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
+                    parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, parent.camera.child.bobMagnitude, 0.1f);
+                    parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, parent.camera.child.walkTilt, 0.1f);
                 }
             }
             //Between Step 2 and Step 1
@@ -94,6 +100,8 @@ public class PlayerWalk : PlayerState
             {
                 parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, lowPoint, 0.1f);
                 parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.walkSwayIntensity * beat, 0.1f);
+                parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, -parent.camera.child.bobMagnitude, 0.1f);
+                parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, -parent.camera.child.walkTilt, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
         }
@@ -102,6 +110,8 @@ public class PlayerWalk : PlayerState
             rythmTimer = parent.stepInterval * 2;
             parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
             parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
+            parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, 0f, 0.1f);
+            parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, 0f, 0.1f);
         }
     }
 
@@ -109,4 +119,5 @@ public class PlayerWalk : PlayerState
     {
         parent.Move();
     }
+
 }

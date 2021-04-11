@@ -23,6 +23,26 @@ public class FlashlightFollow : MonoBehaviour
     public Transform lightSource;
     private Vector3 velocity;
 
+    public Vector3 centerPosition;
+    private Vector3 centerRotation;
+    private Vector3 targetPosition;
+
+    public Vector3 horizontalBounds, verticalBounds;
+    public float bobHeight = 0f;
+    public float moveDepth = 0f;
+    public float bobMagnitude;
+    public float swayMagnitude;
+    public float moveMagnitude;
+    public float runBobMagnitude;
+    public float crouchBobMagnitude;
+
+    public float moveTilt = 0f;
+    public float walkTilt;
+    public float runTilt;
+    public float crouchTilt;
+
+
+
 
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +54,9 @@ public class FlashlightFollow : MonoBehaviour
         onPosition = transform.GetChild(4).localPosition;
         switchClick = GetComponent<AudioSource>();
         lightSource = transform.GetChild(3);
+        //centerPosition = transform.localPosition;
+        centerRotation = transform.localEulerAngles;
+        centerPosition = new Vector3(0.261f, -0.285f, 0.398f);
     }
 
     private void Update()
@@ -73,19 +96,45 @@ public class FlashlightFollow : MonoBehaviour
         {
             LightRay();
         }
+
+        targetPosition = centerPosition;
+
+        if (Input.GetAxis("Mouse X") > 0.3f)
+        {
+            targetPosition = centerPosition + horizontalBounds;
+        }
+        else if (Input.GetAxis("Mouse X") < -0.3f)
+        {
+            targetPosition = centerPosition - horizontalBounds;
+        }
+
+        if (Input.GetAxis("Mouse Y") > 0.3f)
+        {
+            targetPosition += verticalBounds;
+        }
+        else if (Input.GetAxis("Mouse Y") < -0.3f)
+        {
+            targetPosition -= verticalBounds;
+        }
+
+        targetPosition += (transform.forward * bobHeight);
+        targetPosition += (Vector3.forward * moveDepth);
+
+
+        //Debug.Log(targetPosition);
     }
 
     void LateUpdate()
     {
         if (parent != null)
         {
-            Vector3 targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 40f * Time.deltaTime);
+            //targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
+            //transform.position = Vector3.Lerp(transform.position, targetPosition, 40f * Time.deltaTime);
             //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 0.05f);
-            transform.rotation = Quaternion.Slerp(transform.rotation, parent.transform.rotation * Quaternion.Euler(90, 0, 0), 40f * Time.deltaTime);
-            //transform.position = targetPosition;
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(90 + moveTilt, 0, 0), 5f * Time.deltaTime);
+            //transform.localPosition = targetPosition;
             //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 0);
-
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, 5f * Time.deltaTime);
         }   
     }
 
