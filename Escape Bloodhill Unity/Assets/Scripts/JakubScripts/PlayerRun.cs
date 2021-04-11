@@ -16,6 +16,7 @@ public class PlayerRun : PlayerState
     {
         //parent.camera.Look();
         //parent.Move();
+        MoveDirection(parent.camera.child.runMoveMagnitude);
         parent.DrainStamina(true);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -140,4 +141,6 @@ public class PlayerRun : PlayerState
     {
         parent.Move();
     }
+
+    
 }

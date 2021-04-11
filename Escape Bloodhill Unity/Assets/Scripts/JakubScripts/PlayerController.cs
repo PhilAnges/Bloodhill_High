@@ -439,11 +439,15 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    public void CheckForItem()
+    public bool CheckForItem()
     {
-        if (itemScript.inventory[1] != null)
+        if (itemScript.inventory[4] != null)
         {
-            hasTriggerItem = true;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

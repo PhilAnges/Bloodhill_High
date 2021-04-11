@@ -14,7 +14,7 @@ public class PlayerWalk : PlayerState
     public override void UpdateBehavior()
     {
         //parent.Move();
-        MoveDirection();
+        MoveDirection(parent.camera.child.moveMagnitude);
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();

@@ -498,6 +498,7 @@ MonoBehaviour:
   swayMagnitude: 0
   moveMagnitude: 0.02
   runBobMagnitude: 0.1
+  runMoveMagnitude: 0.05
   crouchBobMagnitude: 0.04
   moveTilt: 0
   walkTilt: 2.5
