@@ -34,6 +34,7 @@ public class FlashlightFollow : MonoBehaviour
     public float swayMagnitude;
     public float moveMagnitude;
     public float runBobMagnitude;
+    public float runMoveMagnitude;
     public float crouchBobMagnitude;
 
     public float moveTilt = 0f;
@@ -131,10 +132,10 @@ public class FlashlightFollow : MonoBehaviour
             //targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
             //transform.position = Vector3.Lerp(transform.position, targetPosition, 40f * Time.deltaTime);
             //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 0.05f);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(90 + moveTilt, 0, 0), 5f * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(90 + moveTilt, 0, 0), 4f * Time.deltaTime);
             //transform.localPosition = targetPosition;
             //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 0);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, 5f * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, 4f * Time.deltaTime);
         }   
     }
 

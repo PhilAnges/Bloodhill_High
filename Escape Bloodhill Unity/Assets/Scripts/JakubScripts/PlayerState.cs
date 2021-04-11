@@ -48,17 +48,25 @@ public class PlayerState
 
     }
 
-    public virtual void MoveDirection()
+    public virtual void MoveDirection(float magnitude)
     {
         if (Input.GetAxis("Vertical") > 0)
         {
-            parent.camera.child.moveDepth =  -parent.camera.child.moveMagnitude;
+            parent.camera.child.moveDepth =  -magnitude;
             Debug.Log(parent.camera.child.moveDepth);
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        if (Input.GetAxis("Vertical") < 0 || Input.GetAxis("LookBack") != 0)
         {
-            parent.camera.child.moveDepth = parent.camera.child.moveMagnitude;
+            parent.camera.child.moveDepth = magnitude;
             Debug.Log(parent.camera.child.moveDepth);
+        }
+        if (Input.GetAxis("LookBack") != 0)
+        {
+            parent.camera.child.moveDepth = parent.camera.child.runMoveMagnitude;
+        }
+        else if (Input.GetAxis("Vertical") == 0)
+        {
+            parent.camera.child.moveDepth = 0f;
         }
     }
     
