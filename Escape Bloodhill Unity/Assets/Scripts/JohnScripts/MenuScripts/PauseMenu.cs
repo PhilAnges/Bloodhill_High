@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseUI;
     public GameObject inventoryUI;
     public GameObject journalUI;
-    public GameObject button;
+    //public GameObject button;
     public KeyCode pauseButton;
     public KeyCode inventoryButton;
     public KeyCode journalButton;
@@ -29,20 +29,20 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        button = GameObject.FindGameObjectWithTag("Button");
+        //button = GameObject.FindGameObjectWithTag("Button");
 
         player = GameObject.FindGameObjectWithTag("MainCamera");
 
         if (Input.GetKeyUp(inventoryButton))
         {
-            player.GetComponent<FirstPersonCamera>().enabled = false;
+            //player.GetComponent<FirstPersonCamera>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Inventory();
         }
 
         if (Input.GetKeyUp(journalButton))
         {
-            player.GetComponent<FirstPersonCamera>().enabled = false;
+            //player.GetComponent<FirstPersonCamera>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Journal();
         }
@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
     public void Unpause()
     {
         isPaused = false;
-        player.GetComponent<FirstPersonCamera>().enabled = true;
+        //player.GetComponent<FirstPersonCamera>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         inventoryUI.SetActive(false);
         pauseUI.SetActive(false);
@@ -72,7 +72,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        player.GetComponent<FirstPersonCamera>().enabled = false;
+        //player.GetComponent<FirstPersonCamera>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(true);
         inventoryUI.SetActive(false);
@@ -86,13 +86,16 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(false);
         journalUI.SetActive(false);
         inventoryUI.SetActive(true);
+        Time.timeScale = 0f;
         inventoryUI.GetComponent<InventoryMenu>().PopulateInventory(0);
     }
 
     public void Journal()
     {
+        pauseUI.SetActive(false);
         inventoryUI.SetActive(false);
         journalUI.SetActive(true);
+        Time.timeScale = 0f;
         inventoryUI.GetComponent<InventoryMenu>().DepopulateInventory(0);
     }
 

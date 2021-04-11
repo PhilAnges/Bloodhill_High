@@ -27,7 +27,7 @@ public class TypePasscode : MonoBehaviour
             else if ((c == '\n') || (c == '\r')) // enter/return
             {
                 password = fromKeyboard.text;
-                print(password);
+                //print(password);
             }
             else
             {
