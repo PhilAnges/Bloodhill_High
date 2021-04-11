@@ -8,12 +8,14 @@ public class AskForPasswordTwo : MonoBehaviour
     public GameObject player;
     public GameObject passwordPlease;
     public GameObject instructions;
+    public GameObject textBackground;
     public KeyCode startTyping;
     public string thisIsPassword;
 
     // Start is called before the first frame update 
     void Start() 
-    { 
+    {
+        textBackground.SetActive(false);
         player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
@@ -65,15 +67,18 @@ public class AskForPasswordTwo : MonoBehaviour
         if (isActive == false)
         {
             passwordPlease.SetActive(true);
+            textBackground.SetActive(true);
         }
         if (isActive == true)
         {
             passwordPlease.SetActive(false);
+            textBackground.SetActive(false);
         }
     }
 
     public void CorrectPassword()
     {
+        textBackground.SetActive(false);
         instructions.SetActive(false);
         passwordPlease.GetComponent<TypePasscode>().password = "";
         passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";

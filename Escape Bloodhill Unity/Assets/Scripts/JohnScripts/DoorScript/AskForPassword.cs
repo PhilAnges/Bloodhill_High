@@ -9,6 +9,7 @@ public class AskForPassword : MonoBehaviour
     public GameObject player;
     public GameObject passwordPlease;
     public GameObject instructions;
+    public GameObject textBackground;
     public GameObject positionOne;
     public GameObject positionTwo;
     public GameObject positionThree;
@@ -26,6 +27,7 @@ public class AskForPassword : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
+        textBackground.SetActive(false);
 
         numberOne = Random.Range(0, 40);
         numberTwo = Random.Range(0, 40);
@@ -91,14 +93,17 @@ public class AskForPassword : MonoBehaviour
         if (isActive == false)
         {
             passwordPlease.SetActive(true);
+            textBackground.SetActive(true);
         }
         if (isActive == true)
         {
             passwordPlease.SetActive(false);
+            textBackground.SetActive(false);
         }
     }
     public void CorrectPassword()
     {
+        textBackground.SetActive(false);
         gameObject.GetComponent<StopTime>().enabled = false;
         Time.timeScale = 1f;
         instructions.SetActive(false);
