@@ -59,13 +59,13 @@ public class OpenDoor : MonoBehaviour
             notification.SetActive(true);
             if ((Input.GetKeyUp(actionKey))&&(locked == false))
             {
-                Destroy(destroyThis);
+                //Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
             }else
             if (other.GetComponent<ItemPickup>().relatedDoor == gameObject)
             {
-                Destroy(destroyThis);
+                //Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
             }            
@@ -80,6 +80,7 @@ public class OpenDoor : MonoBehaviour
             transform.position = outOfWay;
             waitToMove = Time.deltaTime;
         }
+        Destroy(destroyThis);
     }
     public void SwingOpen()
     {

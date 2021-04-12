@@ -598,7 +598,7 @@ MonoBehaviour:
   locked: 0
   upperLimRotate: 0
   lowerLimRotate: 0
-  destroyThis: {fileID: 7759655102905433688}
+  destroyThis: {fileID: 8884352965921854922}
   openTheDoor: 0
   openDoorSound: {fileID: 0}
   lockedDoorSound: {fileID: 0}

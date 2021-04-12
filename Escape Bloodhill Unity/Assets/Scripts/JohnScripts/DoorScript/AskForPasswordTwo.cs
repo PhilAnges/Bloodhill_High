@@ -19,6 +19,7 @@ public class AskForPasswordTwo : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera");
         passwordPlease.SetActive(false);
         instructions.SetActive(false);
+        gameObject.GetComponent<StopTime>().enabled = false;
     } 
      
     // Update is called once per frame 
@@ -35,6 +36,7 @@ public class AskForPasswordTwo : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            gameObject.GetComponent<StopTime>().enabled = true;
             instructions.SetActive(true);
         }
     }
@@ -43,6 +45,7 @@ public class AskForPasswordTwo : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            gameObject.GetComponent<StopTime>().enabled = false;
             instructions.SetActive(false);
             passwordPlease.GetComponent<TypePasscode>().password = "";
             passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
@@ -79,6 +82,7 @@ public class AskForPasswordTwo : MonoBehaviour
     public void CorrectPassword()
     {
         textBackground.SetActive(false);
+        gameObject.GetComponent<StopTime>().enabled = false;
         instructions.SetActive(false);
         passwordPlease.GetComponent<TypePasscode>().password = "";
         passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
