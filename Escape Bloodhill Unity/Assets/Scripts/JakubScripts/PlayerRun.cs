@@ -81,7 +81,7 @@ public class PlayerRun : PlayerState
 
         if (Input.GetButtonDown("Flashlight"))
         {
-            parent.Flashlight();
+            parent.Flashlight(true);
         }
     }
 

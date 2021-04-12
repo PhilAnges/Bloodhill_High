@@ -9,6 +9,7 @@ TagManager:
   - Journal
   - DoorKey
   - Enemy
+  - Flashlight
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Flashlight
   - Enemy
-  - 
+  - Post Processing
   - 
   - 
   - 

@@ -18,6 +18,7 @@ public class FPSCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         int frames = (int)(1f / Time.unscaledDeltaTime);
 
         if (prevFPS - frames > 5)
@@ -25,6 +26,9 @@ public class FPSCount : MonoBehaviour
             fps.text = frames.ToString();
         }
         prevFPS = frames;
+        
+        //count = GameObject.FindGameObjectsWithTag("Flashlight").Length;
+        //fps.text = count.ToString();
 
     }
 }

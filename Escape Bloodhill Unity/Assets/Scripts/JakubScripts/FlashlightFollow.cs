@@ -18,7 +18,7 @@ public class FlashlightFollow : MonoBehaviour
 
     private Vector3 onPosition, offPosition;
     private bool switchedOn = false;
-    public AudioSource switchClick;
+    public AudioSource switchClickOn, switchClickOff, flickerSound;
 
     public Transform lightSource;
     private Vector3 velocity;
@@ -53,7 +53,7 @@ public class FlashlightFollow : MonoBehaviour
         switchModel = transform.GetChild(0).GetComponent<MeshRenderer>();
         offPosition = switchModel.transform.localPosition;
         onPosition = transform.GetChild(4).localPosition;
-        switchClick = GetComponent<AudioSource>();
+        //switchClickOn = GetComponent<AudioSource>();
         lightSource = transform.GetChild(3);
         //centerPosition = transform.localPosition;
         centerRotation = transform.localEulerAngles;
@@ -145,18 +145,25 @@ public class FlashlightFollow : MonoBehaviour
         parentScript = parent.GetComponent<FirstPersonCamera>();
     }
 
-    public void FlipSwitch()
+    public void FlipSwitch(bool physical)
     {
         if (switchedOn)
         {
-            switchClick.Play();
-            switchModel.transform.localPosition = offPosition;
+            if (physical)
+            {
+                switchClickOff.Play();
+                switchModel.transform.localPosition = offPosition;
+            }
+
             switchedOn = false;
         }
         else
         {
-            switchClick.Play();
-            switchModel.transform.localPosition = onPosition;
+            if (physical)
+            {
+                switchClickOn.Play();
+                switchModel.transform.localPosition = onPosition;
+            }
             switchedOn = true;
         }
     }
