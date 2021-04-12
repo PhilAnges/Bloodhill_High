@@ -64,7 +64,7 @@ public class PlayerIdle : PlayerState
 
         if (Input.GetButtonDown("Flashlight"))
         {
-            parent.Flashlight();
+            parent.Flashlight(true);
         }
     }
 

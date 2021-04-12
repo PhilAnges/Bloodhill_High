@@ -63,7 +63,7 @@ public class PlayerWalk : PlayerState
 
         if (Input.GetButtonDown("Flashlight"))
         {
-            parent.Flashlight();
+            parent.Flashlight(true);
         }
     }
 

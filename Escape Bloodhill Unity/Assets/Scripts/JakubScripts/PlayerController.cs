@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Flashlight()
+    public void Flashlight(bool physical)
     {
         if (lights != null)
         {
@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = false;
                     flashLightOn = false;
-                    camera.child.FlipSwitch();
+                    camera.child.FlipSwitch(physical);
                 }
             }
             else
@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = true;
                     flashLightOn = true;
-                    camera.child.FlipSwitch();
+                    camera.child.FlipSwitch(physical);
                 }
             }
         }
@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour
 
         while (flickers != 0)
         {
-            Flashlight();
+            Flashlight(false);
             flickers--;
 
             if (i < 2)
@@ -289,6 +289,7 @@ public class PlayerController : MonoBehaviour
             FlashlightFlicker();
         }
         yield return new WaitForSeconds(Random.Range(20f, 60f));
+        camera.child.flickerSound.Play();
         StartCoroutine("RandomFlicker");
     }
 
