@@ -401,17 +401,17 @@ public class PlayerController : MonoBehaviour
                 //heart.pitch = 1f;
                 
                 musicState = 1;
-                heart.volume = 0.2f;
+                heart.volume = 0.7f;
                 break;
             case 2:
                 //heart.pitch = 1.4f;
                 musicState = 1;
-                heart.volume = 0.3f;
+                heart.volume = 0.8f;
                 break;
             case 3:
                 //heart.pitch = 1.6f;
                 musicState = 1;
-                heart.volume = 0.4f;
+                heart.volume = 0.9f;
                 break;
             case 4:
                 //heart.pitch = 1.6f;
@@ -443,7 +443,7 @@ public class PlayerController : MonoBehaviour
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
         if (tension && !isBeingChased)
         {
-            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0f, 0.3f));
+            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0.75f, 1f));
         }
         //ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
 
