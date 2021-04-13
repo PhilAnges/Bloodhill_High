@@ -31,6 +31,8 @@ public class PlayerWalk : PlayerState
         lowPoint = highPoint- parent.camera.walkBobMagnitude;
         parent.noiseLevel = 2;
         parent.camera.child.moveDepth = parent.camera.child.moveMagnitude;
+        parent.footsteps[0].Stop();
+        parent.footsteps[1].PlayDelayed(0.2f);
     }
 
     public override void ExitBehavior()
@@ -39,7 +41,8 @@ public class PlayerWalk : PlayerState
         parent.staminaRegenRate = parent.ogRegenRate;
         parent.camera.standHeight = highPoint;
         parent.camera.child.bobHeight = 0f;
-        
+        parent.footsteps[1].Stop();
+
     }
 
     public override void CheckConditions()

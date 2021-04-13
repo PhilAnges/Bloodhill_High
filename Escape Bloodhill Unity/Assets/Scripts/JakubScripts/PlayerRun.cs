@@ -32,6 +32,8 @@ public class PlayerRun : PlayerState
         lowPoint = highPoint - parent.runBobIntensity;
         parent.noiseLevel = 3;
         parent.running = true;
+        parent.footsteps[0].Stop();
+        parent.footsteps[2].Play();
     }
 
     public override void ExitBehavior()
@@ -41,15 +43,16 @@ public class PlayerRun : PlayerState
         
         parent.camera.standHeight = highPoint;
         parent.running = false;
+        parent.footsteps[2].Stop();
     }
 
     public override void CheckConditions()
     {
-        if (Input.GetButtonDown("Crouch") && !parent.airborn)
+        /*if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {
             parent.SetState(new PlayerCrouch(parent));
             return;
-        }
+        }*/
 
 
         if (!Input.GetButton("Sprint"))
