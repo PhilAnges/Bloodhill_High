@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5595012924348356891}
   - component: {fileID: 5595012924348356868}
   - component: {fileID: 5595012924348356869}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Motion Blur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
