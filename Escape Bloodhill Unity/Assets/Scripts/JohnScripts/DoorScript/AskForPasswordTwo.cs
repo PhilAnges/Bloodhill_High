@@ -46,6 +46,7 @@ public class AskForPasswordTwo : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             gameObject.GetComponent<StopTime>().enabled = false;
+            textBackground.SetActive(false);
             instructions.SetActive(false);
             passwordPlease.GetComponent<TypePasscode>().password = "";
             passwordPlease.GetComponent<TypePasscode>().fromKeyboard.text = "";
