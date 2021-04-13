@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 
         music[1].volume = 0f;
         music[1].Play();
-        ChangeMusic(0, volumes[0]);
+        //ChangeMusic(0, volumes[0]);
     }
 
     void Update()

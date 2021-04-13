@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
     public bool tension = false;
     public bool safety = false;
 
+    public AudioSource[] footsteps;
+
     
 
     private void Awake()
@@ -248,7 +250,7 @@ public class PlayerController : MonoBehaviour
     {
         float interval = Random.Range(0.06f, 0.08f);
         float interval2 = Random.Range(0.08f, 0.2f);
-        int flickers = Random.Range(6, 12);
+        int flickers = Random.Range(22, 24);
         if (flickers %2 != 0)
         {
             flickers--;
@@ -278,6 +280,7 @@ public class PlayerController : MonoBehaviour
     {
         if (flashLightOn)
         {
+            camera.child.flickerSound.Play();
             StartCoroutine("Flicker");
         } 
     }
@@ -289,7 +292,7 @@ public class PlayerController : MonoBehaviour
             FlashlightFlicker();
         }
         yield return new WaitForSeconds(Random.Range(20f, 60f));
-        camera.child.flickerSound.Play();
+        
         StartCoroutine("RandomFlicker");
     }
 

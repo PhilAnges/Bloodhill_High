@@ -6,6 +6,7 @@ public class PlayerCrouch : PlayerState
 {
     public bool headRoom;
     private int mask;
+    private bool soundPlayed = false;
 
     public PlayerCrouch(PlayerController parentPlayer)
     {
@@ -38,6 +39,7 @@ public class PlayerCrouch : PlayerState
         lowPoint = highPoint - parent.crouchBobIntensity;
         parent.noiseLevel = 1;
         headRoom = true;
+        
     }
 
     public override void ExitBehavior()
@@ -47,6 +49,7 @@ public class PlayerCrouch : PlayerState
         parent.camera.crouchHeight = highPoint;
         parent.isCrouching = false;
         parent.ChangeSize();
+        parent.footsteps[0].Stop();
     }
 
     public override void CheckConditions()
@@ -58,16 +61,30 @@ public class PlayerCrouch : PlayerState
         }
 
 
-        if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && headRoom)
+        if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)/* && headRoom*/)
         {
-            if (Input.GetButton("Sprint"))
+            if (headRoom)
             {
-                parent.SetState(new PlayerRun(parent));
+                if (Input.GetButton("Sprint"))
+                {
+                    parent.SetState(new PlayerRun(parent));
+                }
+                else if (Input.GetButtonDown("Crouch"))
+                {
+                    parent.SetState(new PlayerWalk(parent));
+                }
             }
-            else if (Input.GetButtonDown("Crouch"))
+            if (!soundPlayed)
             {
-                parent.SetState(new PlayerWalk(parent));
+                parent.footsteps[0].PlayDelayed(0.2f);
+                soundPlayed = true;
             }
+            
+        }
+        else if (soundPlayed)
+        {
+            parent.footsteps[0].Stop();
+            soundPlayed = false;
         }
         else if (Input.GetButtonDown("Crouch") && headRoom)
         {

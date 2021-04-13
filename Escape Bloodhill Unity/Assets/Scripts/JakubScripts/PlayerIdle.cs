@@ -28,6 +28,7 @@ public class PlayerIdle : PlayerState
         parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
         parent.camera.child.moveDepth = 0f;
+        parent.footsteps[0].Stop();
     }
 
     public override void ExitBehavior()
