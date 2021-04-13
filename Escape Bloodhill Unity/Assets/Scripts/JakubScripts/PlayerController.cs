@@ -250,6 +250,7 @@ public class PlayerController : MonoBehaviour
     {
         float interval = Random.Range(0.06f, 0.08f);
         float interval2 = Random.Range(0.08f, 0.2f);
+
         int flickers = Random.Range(22, 24);
         if (flickers %2 != 0)
         {
@@ -267,6 +268,15 @@ public class PlayerController : MonoBehaviour
             {
                 i++;
                 yield return new WaitForSeconds(interval2);
+            }
+            else if (i == flickers - 6)
+            {
+                i++;
+                yield return new WaitForSeconds(0.5f);
+            }
+            else if (i == flickers - 2)
+            {
+                yield return new WaitForSeconds(0.5f);
             }
             else
             {
@@ -292,7 +302,8 @@ public class PlayerController : MonoBehaviour
             FlashlightFlicker();
         }
         yield return new WaitForSeconds(Random.Range(20f, 60f));
-        
+        //yield return new WaitForSeconds(10f);
+
         StartCoroutine("RandomFlicker");
     }
 
@@ -390,17 +401,17 @@ public class PlayerController : MonoBehaviour
                 //heart.pitch = 1f;
                 
                 musicState = 1;
-                heart.volume = 0.2f;
+                heart.volume = 0.7f;
                 break;
             case 2:
                 //heart.pitch = 1.4f;
                 musicState = 1;
-                heart.volume = 0.3f;
+                heart.volume = 0.8f;
                 break;
             case 3:
                 //heart.pitch = 1.6f;
                 musicState = 1;
-                heart.volume = 0.4f;
+                heart.volume = 0.9f;
                 break;
             case 4:
                 //heart.pitch = 1.6f;
@@ -432,7 +443,7 @@ public class PlayerController : MonoBehaviour
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
         if (tension && !isBeingChased)
         {
-            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0f, 1f));
+            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0.75f, 1f));
         }
         //ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
 

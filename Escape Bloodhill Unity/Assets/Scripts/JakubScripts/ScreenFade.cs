@@ -38,12 +38,14 @@ public class ScreenFade : MonoBehaviour
     {
         if (fade)
         {
-            blackScreen.color = Color.Lerp(blackScreen.color, targetColor, fadeInterval * Time.deltaTime);
-
-            if (blackScreen.color.a <= 0f)
+            if (blackScreen.color == targetColor)
             {
                 Destroy(this.gameObject);
             }
+
+            blackScreen.color = Color.Lerp(blackScreen.color, targetColor, fadeInterval * Time.deltaTime);
+
+            
         }
     }
 
@@ -58,7 +60,7 @@ public class ScreenFade : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             StopCoroutine("UnFade");
         }
     }
