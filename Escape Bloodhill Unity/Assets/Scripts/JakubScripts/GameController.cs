@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
 
     public float fadeSpeed;
 
+    public int currentBackground = 0;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -62,17 +64,26 @@ public class GameController : MonoBehaviour
         enemy.GetComponent<AIController>().SetPath(path);
     }
 
-    public void ChangeMusic(int songIndex, float targetVolume)
+    public void ChangeMusic(int songIndex, float targetVolume, bool fade)
     {
 
         for (int i = 0; i < music.Length; i++)
         {
             if (i != songIndex)
             {
-                StartCoroutine(FadeOut(i, true, targetVolume));
+                StartCoroutine(FadeOut(i, true));
             }
         }
-        StartCoroutine(FadeIn(songIndex, false, targetVolume));
+        if (fade)
+        {
+            StartCoroutine(FadeIn(songIndex, false));
+        }
+        else
+        {
+            music[songIndex].volume = volumes[songIndex];
+            music[songIndex].Play();
+        }
+        
     }
 
     public void SpawnEnemy()
@@ -93,13 +104,13 @@ public class GameController : MonoBehaviour
         enemyScript.SetState(startState);
     }
 
-    IEnumerator FadeOut(int songIndex, bool playing, float targetVolume)
+    IEnumerator FadeOut(int songIndex, bool playing)
     {
         if (music[songIndex].volume > 0f)
         {
             music[songIndex].volume -= fadeSpeed;
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(FadeOut(songIndex, true, targetVolume));
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(FadeOut(songIndex, true));
         }
         else if (songIndex != 1)
         {
@@ -107,7 +118,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    IEnumerator FadeIn(int songIndex, bool playing, float targetVolume)
+    IEnumerator FadeIn(int songIndex, bool playing)
     {
         Debug.Log("Starting FadeIn");
         if (!playing)
@@ -119,7 +130,7 @@ public class GameController : MonoBehaviour
         {
             music[songIndex].volume += fadeSpeed;
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(FadeIn(songIndex, true, targetVolume));
+            StartCoroutine(FadeIn(songIndex, true));
         }
     }
 

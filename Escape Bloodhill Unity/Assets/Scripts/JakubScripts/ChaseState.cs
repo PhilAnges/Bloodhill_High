@@ -33,7 +33,7 @@ public class ChaseState : AIState
         parent.navAgent.SetDestination(parent.playerPosition);
         parent.navAgent.speed = parent.patrolSpeed * parent.chaseSpeedMultiplier;
         parent.player.isBeingChased = true;
-        parent.gameController.ChangeMusic(2, parent.gameController.volumes[2]);
+        parent.gameController.ChangeMusic(2, parent.gameController.volumes[2], false);
         parent.animator.SetBool("chasing", true);
         Debug.Log("Entering Chase State");
     }
@@ -44,7 +44,7 @@ public class ChaseState : AIState
         parent.player.isBeingChased = false;
         parent.animator.SetBool("chasing", false);
         parent.animator.SetBool("attack", false);
-        parent.gameController.ChangeMusic(0, parent.gameController.volumes[0]);
+        parent.gameController.ChangeMusic(parent.gameController.currentBackground, parent.gameController.volumes[0], true);
     }
 
     public override void CheckConditions()

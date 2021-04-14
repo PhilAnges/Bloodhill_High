@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
         if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f))
         {
+            Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
             rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
@@ -249,9 +250,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator  Flicker()
     {
         float interval = Random.Range(0.06f, 0.08f);
-        float interval2 = Random.Range(0.08f, 0.2f);
+        float interval2 = Random.Range(0.2f, 0.2f);
 
-        int flickers = Random.Range(22, 24);
+        int flickers = 24;
         if (flickers %2 != 0)
         {
             flickers--;
@@ -269,12 +270,12 @@ public class PlayerController : MonoBehaviour
                 i++;
                 yield return new WaitForSeconds(interval2);
             }
-            else if (i == flickers - 6)
+            else if (i == flickers - 7)
             {
                 i++;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
-            else if (i == flickers - 2)
+            else if (i == flickers)
             {
                 yield return new WaitForSeconds(0.5f);
             }
@@ -288,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
     public void FlashlightFlicker()
     {
-        if (flashLightOn)
+        if (camera.child.switchedOn)
         {
             camera.child.flickerSound.Play();
             StartCoroutine("Flicker");
@@ -301,8 +302,8 @@ public class PlayerController : MonoBehaviour
         {
             FlashlightFlicker();
         }
-        yield return new WaitForSeconds(Random.Range(20f, 60f));
-        //yield return new WaitForSeconds(10f);
+        //yield return new WaitForSeconds(Random.Range(20f, 60f));
+        yield return new WaitForSeconds(10f);
 
         StartCoroutine("RandomFlicker");
     }
@@ -350,11 +351,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (ghostDistance <= lvlOneThreshold)
         {
-            if (!tension)
-            {
-                //ghostScript.gameController.ChangeMusic(1, 0f);
-                tension = true;
-            }
             if (ghostDistance <= lvlTwoThreshold)
             {
                 if (ghostDistance <= lvlThreeThreshold)
@@ -367,14 +363,8 @@ public class PlayerController : MonoBehaviour
             }
             adrenalineLevel = 1;
         }
-        //Temp
         else
         {
-            if (tension)
-            {
-                //ghostScript.gameController.ChangeMusic(0, 0f);
-                tension = false;
-            }
             adrenalineLevel = 0;
         }
     }
@@ -392,35 +382,48 @@ public class PlayerController : MonoBehaviour
         switch (adrenalineLevel)
         {
             case 0:
-                //heart.pitch = 1f;
-                
+                tension = false;
                 musicState = 0;
                 heart.volume = 0f;
+                ghostScript.gameController.ChangeMusic(ghostScript.gameController.currentBackground, 0.2f, false);
                 break;
             case 1:
-                //heart.pitch = 1f;
-                
+                if (!isBeingChased && !tension)
+                {
+                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    tension = true;
+                }
                 musicState = 1;
-                heart.volume = 0.7f;
+                heart.volume = 0.1f;
                 break;
             case 2:
-                //heart.pitch = 1.4f;
+                if (!isBeingChased && !tension)
+                {
+                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    tension = true;
+                }
                 musicState = 1;
-                heart.volume = 0.8f;
+                heart.volume = 0.2f;
                 break;
             case 3:
-                //heart.pitch = 1.6f;
+                if (!isBeingChased && !tension)
+                {
+                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    tension = true;
+                }
                 musicState = 1;
-                heart.volume = 0.9f;
+                heart.volume = 0.3f;
                 break;
             case 4:
-                //heart.pitch = 1.6f;
+                tension = false;
+                //ghostScript.gameController.ChangeMusic(ghostScript.gameController.currentBackground, 0.2f, false);
                 musicState = 1;
-                heart.volume = 1f;
+                heart.volume = 0.4f;
                 break;
         }
 
         float pitchChange = ghostDistance / lvlOneThreshold;
+        //float volumeChange = ghostDistance / 10f;
         /*
         if (musicState == 1 && !isBeingChased && !tension)
         {
@@ -443,7 +446,7 @@ public class PlayerController : MonoBehaviour
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
         if (tension && !isBeingChased)
         {
-            ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0.75f, 1f));
+            //ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0.8f, 1f));
         }
         //ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
 
