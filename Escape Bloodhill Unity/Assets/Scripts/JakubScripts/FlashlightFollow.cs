@@ -17,7 +17,7 @@ public class FlashlightFollow : MonoBehaviour
     public bool deactivateOnTurn = false;
 
     private Vector3 onPosition, offPosition;
-    private bool switchedOn = false;
+    public bool switchedOn = false;
     public AudioSource switchClickOn, switchClickOff, flickerSound;
 
     public Transform lightSource;
@@ -95,7 +95,12 @@ public class FlashlightFollow : MonoBehaviour
 
         if (switchedOn)
         {
+            lights[0].enabled = true;
             LightRay();
+        }
+        else if (lights[0].enabled)
+        {
+            lights[0].enabled = false;
         }
 
         targetPosition = centerPosition;

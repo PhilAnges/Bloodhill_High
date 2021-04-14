@@ -20,11 +20,11 @@ public class ChangeMusicTest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameController.ChangeMusic(1, 100f);
+        gameController.ChangeMusic(1, 100f, true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        gameController.ChangeMusic(0, 100f);
+        gameController.ChangeMusic(0, 100f, true);
     }
 }
