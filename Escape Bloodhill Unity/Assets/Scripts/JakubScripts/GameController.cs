@@ -74,6 +74,18 @@ public class GameController : MonoBehaviour
         {
             basementStarted = false;
         }
+        else
+        {
+            basementStarted = false;
+        }
+        if (songIndex != 0)
+        {
+            ambientStarted = false;
+        }
+        else
+        {
+            ambientStarted = false;
+        }
 
         Debug.Log("Changing music to index " + songIndex);
         for (int i = 0; i < music.Length; i++)
@@ -115,10 +127,11 @@ public class GameController : MonoBehaviour
 
     IEnumerator FadeOut(int songIndex, bool playing)
     {
+        Debug.Log("Starting FadeOut");
         if (music[songIndex].volume > 0f)
         {
             music[songIndex].volume -= fadeSpeed;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.02f);
             StartCoroutine(FadeOut(songIndex, true));
         }
         else if (songIndex != 1)
@@ -140,7 +153,7 @@ public class GameController : MonoBehaviour
         if (music[songIndex].volume < volumes[songIndex])
         {
             music[songIndex].volume += fadeSpeed;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.02f);
             StartCoroutine(FadeIn(songIndex, true));
         }
     }
