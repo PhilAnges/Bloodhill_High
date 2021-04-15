@@ -25,6 +25,7 @@ public class PlayerRun : PlayerState
     public override void EntryBehavior()
     {
         //Debug.Log("Entering Run State");
+        parent.staminaRegenRate *= parent.staminaRegenMultiplier;
         parent.moveSpeed *= parent.runSpeedMultiplier;
         parent.stepInterval = parent.runInterval;
         rythmTimer = parent.stepInterval * 2;

@@ -22,7 +22,11 @@ public class GameController : MonoBehaviour
 
     public float fadeSpeed;
 
-    public int currentBackground = 0;
+    public int currentBackground = 4;
+
+    public bool basement = true;
+    public bool ambientStarted = false;
+    public bool basementStarted = false;
 
     private void Start()
     {
@@ -41,21 +45,21 @@ public class GameController : MonoBehaviour
             SpawnEnemy();
         }
         music = GetComponents<AudioSource>();
-        volumes = new float[3];
+        volumes = new float[4];
 
         for (int i = 0; i < music.Length; i++)
         {
             volumes[i] = music[i].volume;
         }
 
-        music[1].volume = 0f;
-        music[1].Play();
+        music[currentBackground].Play();
         //ChangeMusic(0, volumes[0]);
     }
 
     void Update()
     {
 
+        
     }
 
     public void SpawnEnemy(Vector3 spawnPosition, Path path)
@@ -66,12 +70,17 @@ public class GameController : MonoBehaviour
 
     public void ChangeMusic(int songIndex, float targetVolume, bool fade)
     {
+        if (songIndex != 3)
+        {
+            basementStarted = false;
+        }
 
+        Debug.Log("Changing music to index " + songIndex);
         for (int i = 0; i < music.Length; i++)
         {
             if (i != songIndex)
             {
-                StartCoroutine(FadeOut(i, true));
+                StartCoroutine(FadeOut(i, false));
             }
         }
         if (fade)
@@ -116,6 +125,8 @@ public class GameController : MonoBehaviour
         {
             music[songIndex].Stop();
         }
+        
+        //music[songIndex].Fade(fadeSpeed);
     }
 
     IEnumerator FadeIn(int songIndex, bool playing)

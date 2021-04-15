@@ -52,9 +52,9 @@ public class FlashlightFollow : MonoBehaviour
         model = GetComponent<MeshRenderer>();
         switchModel = transform.GetChild(0).GetComponent<MeshRenderer>();
         offPosition = switchModel.transform.localPosition;
-        onPosition = transform.GetChild(4).localPosition;
+        onPosition = transform.GetChild(2).localPosition;
         //switchClickOn = GetComponent<AudioSource>();
-        lightSource = transform.GetChild(3);
+        lightSource = transform.GetChild(1);
         //centerPosition = transform.localPosition;
         centerRotation = transform.localEulerAngles;
         centerPosition = new Vector3(0.261f, -0.285f, 0.398f);
