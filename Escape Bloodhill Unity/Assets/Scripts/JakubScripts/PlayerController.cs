@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public PlayerHealth hp;
     [HideInInspector]
     public ItemPickup itemScript;
+    private GameController gameController;
 
     [SerializeField]
     private float stamina = 100f;
@@ -91,6 +92,10 @@ public class PlayerController : MonoBehaviour
     public bool safety = false;
 
     public AudioSource[] footsteps;
+    public AudioSource breath;
+    public AudioSource breath2;
+    private bool breathing = false;
+    private bool caughtBreath = true;
 
     
 
@@ -121,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
         GameObject.Find("John's Programming Box").transform.Find("Safe Room").GetComponent<SafeRoom>().player = this.gameObject;
-
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         SetState(new PlayerIdle(this));
         StartCoroutine("RandomFlicker");
     }
@@ -139,6 +144,37 @@ public class PlayerController : MonoBehaviour
                 Destroy(camera.child.gameObject);
             }
         }
+        if (transform.position.y < -2f)
+        {
+            if (!gameController.basementStarted && !isBeingChased && adrenalineLevel == 0)
+            {
+                gameController.ChangeMusic(3, 0f, true);
+                gameController.basementStarted = true;
+            }
+        }
+        else
+        {
+            gameController.ChangeMusic(0, 0f, true);
+            gameController.basementStarted = false;
+        }
+
+        if (stamina <= 50f)
+        {
+            if (!breathing)
+            {
+                breath.Play();
+                breathing = true;
+            }
+            
+        }
+        else if (breathing)
+        {
+            breath.Stop();
+            breathing = false;
+            breath2.Play();
+        }
+        
+
     }
 
     private void FixedUpdate()
@@ -189,7 +225,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
         if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f))
         {
-            Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
+            //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
             rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
@@ -302,8 +338,8 @@ public class PlayerController : MonoBehaviour
         {
             FlashlightFlicker();
         }
-        //yield return new WaitForSeconds(Random.Range(20f, 60f));
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(Random.Range(20f, 60f));
+        //yield return new WaitForSeconds(10f);
 
         StartCoroutine("RandomFlicker");
     }
@@ -385,12 +421,18 @@ public class PlayerController : MonoBehaviour
                 tension = false;
                 musicState = 0;
                 heart.volume = 0f;
-                ghostScript.gameController.ChangeMusic(ghostScript.gameController.currentBackground, 0.2f, false);
+                if (gameController.basement && !gameController.basementStarted)
+                {
+                    //gameController.ChangeMusic(3, 0.2f, false);
+                    //gameController.basementStarted = true;
+                    //gameController.ambientStarted = false;
+                }
+                
                 break;
             case 1:
                 if (!isBeingChased && !tension)
                 {
-                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;
                 }
                 musicState = 1;
@@ -399,7 +441,7 @@ public class PlayerController : MonoBehaviour
             case 2:
                 if (!isBeingChased && !tension)
                 {
-                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;
                 }
                 musicState = 1;
@@ -408,7 +450,7 @@ public class PlayerController : MonoBehaviour
             case 3:
                 if (!isBeingChased && !tension)
                 {
-                    ghostScript.gameController.ChangeMusic(1, 0.2f, false);
+                    gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;
                 }
                 musicState = 1;

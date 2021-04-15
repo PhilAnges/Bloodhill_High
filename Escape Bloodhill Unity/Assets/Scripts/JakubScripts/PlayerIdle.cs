@@ -21,6 +21,7 @@ public class PlayerIdle : PlayerState
 
     public override void EntryBehavior()
     {
+        parent.staminaRegenRate = parent.ogRegenRate;
         parent.isCrouching = false;
         parent.camera.standHeight = parent.camera.ogStandHeight;
         parent.moveSpeed = parent.ogMoveSpeed;
