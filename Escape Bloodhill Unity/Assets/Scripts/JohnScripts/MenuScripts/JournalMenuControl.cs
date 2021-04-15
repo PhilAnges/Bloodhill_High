@@ -14,13 +14,14 @@ public class JournalMenuControl : MonoBehaviour
     void Start()
     {
         entry = 0;
+        
         //journalEntries = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ShowJournalEntry(entry);
     }
 
     public void ShowJournalEntry(int entry)
@@ -30,21 +31,21 @@ public class JournalMenuControl : MonoBehaviour
 
     public void LeftArrow()
     {
-        entry = entry - 1;
-        if(entry < 0)
+        if(entry > 0)
         {
-            entry = 0;
+            entry = entry - 1;
+            Debug.Log(entry);
         }
-        ShowJournalEntry(entry);
+        //ShowJournalEntry(entry);
     }
 
     public void RightArrow()
     {
-        entry = entry + 1;
-        if(entry > journalEntries.Capacity)
+        if(entry < (journalEntries.Count - 1))
         {
-            entry = journalEntries.Capacity;
+            entry = entry + 1;
+            Debug.Log(entry);
         }
-        ShowJournalEntry(entry);
+        //ShowJournalEntry(entry);
     }
 }
