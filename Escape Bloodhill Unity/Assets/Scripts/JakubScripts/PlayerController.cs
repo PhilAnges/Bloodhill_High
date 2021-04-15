@@ -150,15 +150,21 @@ public class PlayerController : MonoBehaviour
             {
                 gameController.ChangeMusic(3, 0f, true);
                 gameController.basementStarted = true;
+                gameController.ambientStarted = false;
             }
         }
         else
         {
-            gameController.ChangeMusic(0, 0f, true);
+            if (!gameController.ambientStarted)
+            {
+                gameController.ChangeMusic(0, 0f, true);
+                gameController.ambientStarted = true;
+            }
+            
             gameController.basementStarted = false;
         }
 
-        if (stamina <= 50f)
+        if (stamina <= 0)
         {
             if (!breathing)
             {
@@ -167,11 +173,11 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        else if (breathing)
+        if (breathing && stamina >= 100f)
         {
+            breath2.Play();
             breath.Stop();
             breathing = false;
-            breath2.Play();
         }
         
 
@@ -423,7 +429,7 @@ public class PlayerController : MonoBehaviour
                 heart.volume = 0f;
                 if (gameController.basement && !gameController.basementStarted)
                 {
-                    //gameController.ChangeMusic(3, 0.2f, false);
+                    gameController.ChangeMusic(3, 0.2f, false);
                     //gameController.basementStarted = true;
                     //gameController.ambientStarted = false;
                 }

@@ -443,7 +443,7 @@ MonoBehaviour:
   runSpeedMultiplier: 2
   runStaminaCost: 10
   crouchSpeedMultiplier: 0.5
-  staminaRegenRate: 10
+  staminaRegenRate: 30
   staminaRegenMultiplier: 0.5
   ogMoveSpeed: 0
   ogRegenRate: 0

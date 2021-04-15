@@ -70,12 +70,17 @@ public class GameController : MonoBehaviour
 
     public void ChangeMusic(int songIndex, float targetVolume, bool fade)
     {
+        if (songIndex != 3)
+        {
+            basementStarted = false;
+        }
+
         Debug.Log("Changing music to index " + songIndex);
         for (int i = 0; i < music.Length; i++)
         {
             if (i != songIndex)
             {
-                StartCoroutine(FadeOut(i, true));
+                StartCoroutine(FadeOut(i, false));
             }
         }
         if (fade)
@@ -120,6 +125,8 @@ public class GameController : MonoBehaviour
         {
             music[songIndex].Stop();
         }
+        
+        //music[songIndex].Fade(fadeSpeed);
     }
 
     IEnumerator FadeIn(int songIndex, bool playing)
