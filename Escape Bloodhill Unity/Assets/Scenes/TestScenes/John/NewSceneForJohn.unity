@@ -22052,6 +22052,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2132743687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450181327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2871436916004624129, guid: 3cb5aa5941d3bfd4194be55292da49d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015317577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1451206991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28370,7 +28376,7 @@ MonoBehaviour:
   player: {fileID: 0}
   passwordPlease: {fileID: 2095301183}
   instructions: {fileID: 1490729013}
-  textBackground: {fileID: 0}
+  textBackground: {fileID: 1450181327}
   startTyping: 13
   thisIsPassword: Help
 --- !u!4 &1868875458 stripped

@@ -26,7 +26,7 @@ public class AskForPasswordTwo : MonoBehaviour
     void Update() 
     { 
         player = GameObject.FindGameObjectWithTag("MainCamera");
-        if (thisIsPassword == passwordPlease.GetComponent<TypePasscode>().password)
+        if (thisIsPassword.ToLower() == passwordPlease.GetComponent<TypePasscode>().password.ToLower())
         {
             CorrectPassword();
         }
