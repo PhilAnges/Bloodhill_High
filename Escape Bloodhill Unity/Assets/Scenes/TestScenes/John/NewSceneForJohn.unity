@@ -25083,7 +25083,7 @@ PrefabInstance:
     - target: {fileID: 4640149946110374223, guid: 6915c83a0c302e84b8466fec1bea5411,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.457
+      value: -19.401
       objectReference: {fileID: 0}
     - target: {fileID: 4640149946110374223, guid: 6915c83a0c302e84b8466fec1bea5411,
         type: 3}
@@ -28370,6 +28370,7 @@ MonoBehaviour:
   player: {fileID: 0}
   passwordPlease: {fileID: 2095301183}
   instructions: {fileID: 1490729013}
+  textBackground: {fileID: 0}
   startTyping: 13
   thisIsPassword: Help
 --- !u!4 &1868875458 stripped
