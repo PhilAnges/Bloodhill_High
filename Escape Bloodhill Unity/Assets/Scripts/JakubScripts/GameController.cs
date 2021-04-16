@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     public AudioSource[] music;
     public float[] volumes;
 
-    public int basementPhase = 0;
+    public int basementPhase = -1;
 
     public float fadeSpeed;
 
@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            basementStarted = false;
+            basementStarted = true;
         }
         if (songIndex != 0)
         {
@@ -131,7 +131,7 @@ public class GameController : MonoBehaviour
         if (music[songIndex].volume > 0f)
         {
             music[songIndex].volume -= fadeSpeed;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
             StartCoroutine(FadeOut(songIndex, true));
         }
         else if (songIndex != 1)
@@ -153,7 +153,7 @@ public class GameController : MonoBehaviour
         if (music[songIndex].volume < volumes[songIndex])
         {
             music[songIndex].volume += fadeSpeed;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
             StartCoroutine(FadeIn(songIndex, true));
         }
     }

@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (!gameController.ambientStarted)
+            if (!gameController.ambientStarted && !isBeingChased)
             {
                 gameController.ChangeMusic(0, 0f, true);
                 gameController.ambientStarted = true;

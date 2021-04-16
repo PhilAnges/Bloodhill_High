@@ -25,6 +25,7 @@ public class SpawnEnemyTrigger : MonoBehaviour
         {
             hasSpawned = true;
             gameController.SpawnEnemy();
+            gameController.basementPhase = 0;
         }
     }
 }

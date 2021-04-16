@@ -39,7 +39,7 @@ public class CellTrigger : MonoBehaviour
         {
             enemy.SetPath(path);
             enemy.Teleport(enemy.currentPath.transform.position);
-            gameController.basementPhase = 3;
+            gameController.basementPhase = 4;
             if (tauntOnly)
             {
                 enemy.SetState(new IdleTaunt(enemy));
