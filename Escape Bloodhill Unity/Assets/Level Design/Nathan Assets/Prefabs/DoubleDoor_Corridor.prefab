@@ -449,7 +449,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5314855599815958534
 Transform:
@@ -1427,6 +1427,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FIXED_DDFloorTrim
       objectReference: {fileID: 0}
+    - target: {fileID: 4102252179881115097, guid: e8e42da197070f44cb803717e5c014d6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e42da197070f44cb803717e5c014d6, type: 3}
 --- !u!4 &531327606051743197 stripped
@@ -1501,6 +1506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FIXED_DDFloorTrim (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102252179881115097, guid: e8e42da197070f44cb803717e5c014d6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e42da197070f44cb803717e5c014d6, type: 3}
@@ -1577,6 +1587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FIXED_DDFloorTrim (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4102252179881115097, guid: e8e42da197070f44cb803717e5c014d6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e42da197070f44cb803717e5c014d6, type: 3}
 --- !u!4 &6718178935864308257 stripped
@@ -1651,6 +1666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FIXED_DDFloorTrim (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102252179881115097, guid: e8e42da197070f44cb803717e5c014d6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e42da197070f44cb803717e5c014d6, type: 3}

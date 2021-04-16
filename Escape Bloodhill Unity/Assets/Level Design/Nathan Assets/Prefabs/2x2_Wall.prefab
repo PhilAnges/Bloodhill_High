@@ -172,7 +172,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4688994892279380363
 Transform:
@@ -427,6 +427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FIXED2x2_CeilingTrim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402647582303712646, guid: df6a2d542434b544dad03e58b40060ff,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3964425504842301786, guid: df6a2d542434b544dad03e58b40060ff,
         type: 3}
