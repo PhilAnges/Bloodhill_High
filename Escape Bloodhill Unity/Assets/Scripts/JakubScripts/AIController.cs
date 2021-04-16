@@ -91,6 +91,7 @@ public class AIController : MonoBehaviour
     public bool readyToMove = true;
 
     public Animator animator;
+    public GameObject particleEffect;
 
 
     void Awake()
@@ -210,7 +211,9 @@ public class AIController : MonoBehaviour
     public void Teleport(Vector3 targetLocation)
     {
         navAgent.SetDestination(targetLocation);
+        Instantiate(particleEffect, transform.position, Quaternion.identity);
         navAgent.Warp(targetLocation);
+        Instantiate(particleEffect, targetLocation, Quaternion.identity);
     }
 
     public List<PathPoint> PopulateList(Path path)

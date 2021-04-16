@@ -817,6 +817,9 @@ MonoBehaviour:
   - {fileID: 0}
   lit: 0
   readyToMove: 1
+  animator: {fileID: 0}
+  particleEffect: {fileID: 916548993472448629, guid: d83819d6bb7584942b14897b7260706f,
+    type: 3}
 --- !u!195 &8017519051976634662
 NavMeshAgent:
   m_ObjectHideFlags: 0
