@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public class JournalMenuControl : MonoBehaviour
 {
     public GameObject descriptionBox;
+    public GameObject leftButton;
+    public GameObject rightButton;
     public List<GameObject> journalEntries;
+    public Texture journalStart;
+    public Texture journalMiddle;
 
     private int entry;
 
@@ -14,7 +18,7 @@ public class JournalMenuControl : MonoBehaviour
     void Start()
     {
         entry = 0;
-        
+        descriptionBox.GetComponent<RawImage>().texture = journalStart;
         //journalEntries = new List<GameObject>();
     }
 
@@ -22,6 +26,25 @@ public class JournalMenuControl : MonoBehaviour
     void Update()
     {
         ShowJournalEntry(entry);
+        if(entry == 0)
+        {
+            leftButton.SetActive(false);
+            rightButton.SetActive(true);
+            descriptionBox.GetComponent<RawImage>().texture = journalStart;
+        }
+        if(entry == (journalEntries.Count - 1))
+        {
+            leftButton.SetActive(true);
+            rightButton.SetActive(false);
+            descriptionBox.GetComponent<RawImage>().texture = journalMiddle;
+        }
+        if((entry > 0) && (entry < (journalEntries.Count - 1)))
+        {
+            leftButton.SetActive(true);
+            rightButton.SetActive(true);
+            descriptionBox.GetComponent<RawImage>().texture = journalMiddle;
+        }
+
     }
 
     public void ShowJournalEntry(int entry)
