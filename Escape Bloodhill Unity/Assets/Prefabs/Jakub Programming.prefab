@@ -1187,7 +1187,7 @@ MonoBehaviour:
   music: []
   volumes: []
   basementPhase: -1
-  fadeSpeed: 0.005
+  fadeSpeed: 0.002
   currentBackground: 0
   basement: 0
   ambientStarted: 0

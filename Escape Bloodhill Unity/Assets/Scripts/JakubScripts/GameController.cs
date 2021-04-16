@@ -131,7 +131,7 @@ public class GameController : MonoBehaviour
         if (music[songIndex].volume > 0f)
         {
             music[songIndex].volume -= fadeSpeed;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.02f);
             StartCoroutine(FadeOut(songIndex, true));
         }
         else if (songIndex != 1)
