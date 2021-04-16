@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 5674057259205371055}
   - component: {fileID: 5156220367197393686}
   - component: {fileID: 7226412631872026689}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_BottomStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 177432839152413189}
   - component: {fileID: 2143113873727128191}
   - component: {fileID: 4022801496048625952}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 779003779343665916}
   - component: {fileID: 8610721850888753295}
   - component: {fileID: 2770671416616514813}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: 2010960837308588129}
   - component: {fileID: 4824387407325722059}
   - component: {fileID: 2108261056634568832}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_Floor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 4259494944627892250}
   - component: {fileID: 7501813310924875737}
   - component: {fileID: 4208263644756250472}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_HighStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 8583606605506755689}
   - component: {fileID: 1079608453010259137}
   - component: {fileID: 999191442185402969}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ST1_MidStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,6 +9,7 @@ public class CellTrigger : MonoBehaviour
     private GameController gameController;
     public Path path;
     private bool hasSpawned = false;
+    public bool tauntOnly;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,15 @@ public class CellTrigger : MonoBehaviour
             enemy.SetPath(path);
             enemy.Teleport(enemy.currentPath.transform.position);
             gameController.basementPhase = 3;
-            enemy.SetState(new IdleState(enemy));
+            if (tauntOnly)
+            {
+                enemy.SetState(new IdleTaunt(enemy));
+            }
+            else
+            {
+                enemy.SetState(new IdleState(enemy));
+            }
+            
             hasSpawned = true;
         }
     }

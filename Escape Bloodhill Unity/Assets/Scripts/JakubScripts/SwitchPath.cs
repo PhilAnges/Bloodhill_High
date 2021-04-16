@@ -11,6 +11,7 @@ public class SwitchPath : MonoBehaviour
     public int phaseReq;
     public int phaseTrigger;
     public bool makeIdle;
+    public bool tauntIdle;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,10 @@ public class SwitchPath : MonoBehaviour
             if (!makeIdle)
             {
                 enemy.SetState(new PatrolState(enemy));
+            }
+            else if (tauntIdle)
+            {
+                enemy.SetState(new IdleTaunt(enemy));
             }
             else
             {

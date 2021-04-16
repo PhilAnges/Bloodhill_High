@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8514203356625178965}
   - component: {fileID: 825144343854197603}
   - component: {fileID: 6363314710796949402}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Basement_20mStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}

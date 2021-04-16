@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : AIState
+public class IdleTaunt: AIState
 {
-    public IdleState(AIController parentAI)
+    public IdleTaunt(AIController parentAI)
     {
         parent = parentAI;
     }
@@ -18,8 +18,8 @@ public class IdleState : AIState
             parent.Orient(parent.startPathPoint.lookTarget.position);
         }
 
-        parent.Sight();  
-        UpdateAwareness();
+        //parent.Sight();  
+        //UpdateAwareness();
         CheckConditions();
     }
 
@@ -30,22 +30,18 @@ public class IdleState : AIState
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         parent.eyeGlower.ResetEyes();
-        parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
-
-        
+        //parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
+        parent.animator.SetBool("taunting", true);
         Debug.Log("Entering Idle State");
     }
 
     public override void ExitBehavior()
     {
-
+        parent.animator.SetBool("taunting", false);
     }
 
     public override void CheckConditions()
     {
-        if (parent.aware)
-        {
-            parent.SetState(new AlertState(parent));
-        }
+
     }
 }

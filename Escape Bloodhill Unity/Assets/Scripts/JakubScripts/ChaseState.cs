@@ -14,13 +14,18 @@ public class ChaseState : AIState
         parent.Sight();
         parent.Orient(parent.playerPosition);
         parent.navAgent.SetDestination(parent.playerPosition);
-        if (Vector3.Distance(parent.transform.position, parent.playerPosition) <= 3.5f)
+        Debug.Log("Ghost is " + Vector3.Distance(parent.transform.position, parent.playerPosition) + " units away from player");
+        /*if (Vector3.Distance(parent.transform.position, parent.playerPosition) <=  3.5f)
         {
             parent.animator.SetBool("attack", true);
+        }*/
+        if(Vector3.Distance(parent.transform.position, parent.playerPosition) > 2.5f)
+        {
+            parent.animator.SetBool("attack", false);
         }
         else
         {
-            parent.animator.SetBool("attack", false);
+            parent.animator.SetBool("attack", true);
         }
 
         UpdateAwareness();

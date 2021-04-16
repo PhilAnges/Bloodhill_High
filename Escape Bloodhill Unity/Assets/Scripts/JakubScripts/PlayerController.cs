@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     public bool isBeingChased = false;
     [HideInInspector]
     public bool running = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool airborn = false;
     [HideInInspector]
     public bool flashLightOn = false;
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource breath2;
     private bool breathing = false;
     private bool caughtBreath = true;
+    private int groundMask;
 
     
 
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
         heart = GetComponentInChildren<AudioSource>();
         hp = GetComponent<PlayerHealth>();
         itemScript = GetComponent<ItemPickup>();
-
+        groundMask = LayerMask.GetMask("Ground");
         if (FindGhost() == null)
         {
             noGhost = true;
@@ -229,9 +230,9 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
-        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f))
+        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f/*, groundMask*/))
         {
-            //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
+            Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
             rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;
@@ -507,7 +508,7 @@ public class PlayerController : MonoBehaviour
 
     public bool CheckForItem()
     {
-        if (itemScript.inventory[4] != null)
+        if (itemScript.inventory[5] != null)
         {
             return true;
         }
