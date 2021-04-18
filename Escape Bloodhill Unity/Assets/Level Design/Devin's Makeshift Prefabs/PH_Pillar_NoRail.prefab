@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2729850833418252543, guid: ef792e13be10aab46966ab8edd801bdb, type: 3}
+  - {fileID: 2100000, guid: a99d8d2b13c1e004091866f4ddd25098, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7399804200014250615, guid: ef792e13be10aab46966ab8edd801bdb, type: 3}
+  - {fileID: 2100000, guid: c3ed70896a43545479152e39fc37fe68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,7 +214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8415704638720463850, guid: ef792e13be10aab46966ab8edd801bdb, type: 3}
+  - {fileID: 2100000, guid: c7aba9ba8c16984489145a6006545423, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,7 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908623687906235211}
   m_Layer: 0
-  m_Name: Pillar_FF (19)
+  m_Name: PH_Pillar_NoRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
