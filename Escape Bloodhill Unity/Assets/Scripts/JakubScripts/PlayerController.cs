@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
-        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f/*, groundMask*/))
+        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f, groundMask))
         {
             //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
@@ -437,7 +437,7 @@ public class PlayerController : MonoBehaviour
                 
                 break;
             case 1:
-                if (!isBeingChased && !tension)
+                if (!isBeingChased && !tension && !gameController.playerIsSafe)
                 {
                     gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;
@@ -446,7 +446,7 @@ public class PlayerController : MonoBehaviour
                 heart.volume = 0.1f;
                 break;
             case 2:
-                if (!isBeingChased && !tension)
+                if (!isBeingChased && !tension && !gameController.playerIsSafe)
                 {
                     gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;
@@ -455,7 +455,7 @@ public class PlayerController : MonoBehaviour
                 heart.volume = 0.2f;
                 break;
             case 3:
-                if (!isBeingChased && !tension)
+                if (!isBeingChased && !tension && !gameController.playerIsSafe)
                 {
                     gameController.ChangeMusic(1, 0.2f, false);
                     tension = true;

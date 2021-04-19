@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1875269708774069823}
   - component: {fileID: 5276744000849357510}
   m_Layer: 0
-  m_Name: Fire Alarm Sound-Unwrapped
+  m_Name: Fire Alarm Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &7448194443238730761
 Transform:

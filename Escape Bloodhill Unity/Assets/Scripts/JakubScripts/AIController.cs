@@ -134,7 +134,7 @@ public class AIController : MonoBehaviour
     {
         RaycastHit hit, hat;
 
-        if (player && !gotPlayer)
+        if (player && !gotPlayer && !gameController.playerIsSafe)
         {
             Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 

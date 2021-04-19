@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4557353861486542580
 Transform:
@@ -103,11 +103,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7839533663142341646}
   m_Layer: 0
-  m_Name: Wooden Crutch-Unwrapped
+  m_Name: Wooden Crutch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &7839533663142341646
 Transform:
