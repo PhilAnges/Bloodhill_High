@@ -93,6 +93,8 @@ public class AIController : MonoBehaviour
     public Animator animator;
     public GameObject particleEffect;
 
+    public MeshRenderer body;
+
 
     void Awake()
     {
@@ -100,6 +102,7 @@ public class AIController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
         //eyePos = gameObject.transform.Find("Eyes").transform;
+        body = gameObject.transform.Find("bloodhillantagrig").GetComponent<MeshRenderer>();
         eyeGlower = gameObject.transform.Find("bloodhillantagrig").GetComponent<EyeLights>();
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
@@ -212,8 +215,9 @@ public class AIController : MonoBehaviour
     {
         navAgent.SetDestination(targetLocation);
         Instantiate(particleEffect, transform.position, Quaternion.identity);
+        StartCoroutine("TempHide", targetLocation);
         navAgent.Warp(targetLocation);
-        Instantiate(particleEffect, targetLocation, Quaternion.identity);
+        //Instantiate(particleEffect, targetLocation, Quaternion.identity);
     }
 
     public List<PathPoint> PopulateList(Path path)
@@ -277,5 +281,13 @@ public class AIController : MonoBehaviour
         readyToMove = false;
         
         StartCoroutine("PathWait", waitTime);
+    }
+
+    IEnumerator TempHide(Vector3 effectLocation)
+    {
+        body.enabled = false;
+        yield return new WaitForSeconds(1.1f);
+        body.enabled = true;
+        Instantiate(particleEffect, effectLocation, Quaternion.identity);
     }
 }

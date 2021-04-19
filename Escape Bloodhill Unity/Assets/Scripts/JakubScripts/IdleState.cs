@@ -33,7 +33,7 @@ public class IdleState : AIState
         parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
 
         
-        Debug.Log("Entering Idle State");
+        //Debug.Log("Entering Idle State");
     }
 
     public override void ExitBehavior()

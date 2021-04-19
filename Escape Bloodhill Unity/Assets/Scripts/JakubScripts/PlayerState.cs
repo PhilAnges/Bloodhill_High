@@ -53,12 +53,12 @@ public class PlayerState
         if (Input.GetAxis("Vertical") > 0)
         {
             parent.camera.child.moveDepth =  -magnitude;
-            Debug.Log(parent.camera.child.moveDepth);
+            //Debug.Log(parent.camera.child.moveDepth);
         }
         if (Input.GetAxis("Vertical") < 0 || Input.GetAxis("LookBack") != 0)
         {
             parent.camera.child.moveDepth = magnitude;
-            Debug.Log(parent.camera.child.moveDepth);
+            //Debug.Log(parent.camera.child.moveDepth);
         }
         if (Input.GetAxis("LookBack") != 0)
         {

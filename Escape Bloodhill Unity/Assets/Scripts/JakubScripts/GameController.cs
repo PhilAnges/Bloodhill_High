@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
     public bool ambientStarted = false;
     public bool basementStarted = false;
 
+    public bool paused = false;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -58,8 +60,14 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
-        
+        if (Input.GetKeyUp(KeyCode.Escape) && paused)
+        {
+            paused = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = true;
+        }
     }
 
     public void SpawnEnemy(Vector3 spawnPosition, Path path)
@@ -87,7 +95,7 @@ public class GameController : MonoBehaviour
             ambientStarted = false;
         }
 
-        Debug.Log("Changing music to index " + songIndex);
+        //Debug.Log("Changing music to index " + songIndex);
         for (int i = 0; i < music.Length; i++)
         {
             if (i != songIndex)
@@ -127,7 +135,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator FadeOut(int songIndex, bool playing)
     {
-        Debug.Log("Starting FadeOut");
+        //Debug.Log("Starting FadeOut");
         if (music[songIndex].volume > 0f)
         {
             music[songIndex].volume -= fadeSpeed;
@@ -144,7 +152,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator FadeIn(int songIndex, bool playing)
     {
-        Debug.Log("Starting FadeIn");
+        //Debug.Log("Starting FadeIn");
         if (!playing)
         {
             music[songIndex].Play();

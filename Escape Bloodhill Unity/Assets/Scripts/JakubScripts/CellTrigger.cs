@@ -38,7 +38,9 @@ public class CellTrigger : MonoBehaviour
         if (other.tag == "Player" && player.CheckForItem() == true && hasSpawned == false)
         {
             enemy.SetPath(path);
+            
             enemy.Teleport(enemy.currentPath.transform.position);
+            
             gameController.basementPhase = 4;
             if (tauntOnly)
             {

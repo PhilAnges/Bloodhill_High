@@ -424,9 +424,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 215
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 0.5
-  MaxDistance: 20
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -436,23 +436,68 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.025
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.818392
+      outSlope: -2.818392
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.22760086
+      value: 0.54837036
+      inSlope: -0.4483098
+      outSlope: -0.4483098
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.26120147
+      value: 0.4393921
+      inSlope: -0.340894
+      outSlope: -0.340894
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.32294768
+      value: 0.35064697
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5147613
+      value: 0.19949341
+      inSlope: -0.15631224
+      outSlope: -0.15631224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.82731324
+      value: 0.09573364
+      inSlope: -0.03907806
+      outSlope: -0.03907806
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.025
+      inSlope: -0.02500997
+      outSlope: -0.02500997
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
