@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
         if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f/*, groundMask*/))
         {
-            Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
+            //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
             moveDirection = moveDirection - hit.normal * Vector3.Dot(moveDirection, hit.normal);
             rigbod.velocity = moveDirection.normalized * moveSpeed * Time.deltaTime;

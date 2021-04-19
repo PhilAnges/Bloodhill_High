@@ -18,8 +18,8 @@ public class IdleTaunt: AIState
             parent.Orient(parent.startPathPoint.lookTarget.position);
         }
 
-        //parent.Sight();  
-        //UpdateAwareness();
+        parent.Sight();  
+        UpdateAwareness();
         CheckConditions();
     }
 
@@ -30,9 +30,9 @@ public class IdleTaunt: AIState
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         parent.eyeGlower.ResetEyes();
-        //parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
+        parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
         parent.animator.SetBool("taunting", true);
-        Debug.Log("Entering Idle State");
+        //Debug.Log("Entering Idle State");
     }
 
     public override void ExitBehavior()
@@ -42,6 +42,9 @@ public class IdleTaunt: AIState
 
     public override void CheckConditions()
     {
-
+        if (parent.aware)
+        {
+            parent.SetState(new AlertState(parent));
+        }
     }
 }

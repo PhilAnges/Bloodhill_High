@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5135042495625031930}
   - component: {fileID: 1477141757832989699}
   - component: {fileID: 1419546793908779791}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basement_BarWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4780922949963070835}
   - component: {fileID: 5588324486900274766}
   - component: {fileID: 4559752562247318192}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Barred_MetalRoots.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
