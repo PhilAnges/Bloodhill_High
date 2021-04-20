@@ -34,7 +34,7 @@ public class JournalPickup : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             if (mustPickUp == true) {
-                if (Input.GetKeyUp(pickItUp))
+                if (Input.GetKey(pickItUp))
                 {
                     PickupTheJournal();
                 }
