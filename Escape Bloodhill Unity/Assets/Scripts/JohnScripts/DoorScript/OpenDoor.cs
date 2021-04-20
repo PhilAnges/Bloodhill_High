@@ -57,7 +57,7 @@ public class OpenDoor : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             notification.SetActive(true);
-            if ((Input.GetKeyUp(actionKey))&&(locked == false))
+            if ((Input.GetKey(actionKey))&&(locked == false))
             {
                 //Destroy(destroyThis);
                 openDoorSound.Play();
@@ -71,6 +71,13 @@ public class OpenDoor : MonoBehaviour
             }            
         }
     }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            notification.SetActive(false);
+        }
+    }
     public void OpenTheDoor()
     {        
         Vector3 headingTo = outOfWay - transform.position;
@@ -80,6 +87,7 @@ public class OpenDoor : MonoBehaviour
             transform.position = outOfWay;
             waitToMove = Time.deltaTime;
         }
+        notification.SetActive(false);
         Destroy(destroyThis);
     }
     public void SwingOpen()
