@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public PlayerHealth hp;
     [HideInInspector]
     public ItemPickup itemScript;
-    private GameController gameController;
+    public GameController gameController;
 
     [SerializeField]
     private float stamina = 100f;
@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour
     private bool caughtBreath = true;
     private int groundMask;
 
+    private float[] ogStepVolume;
+    private float breathVolume;
+    private bool breathPause = false;
+
     
 
     private void Awake()
@@ -124,7 +128,7 @@ public class PlayerController : MonoBehaviour
             ghost = FindGhost().transform;
             ghostScript = ghost.GetComponent<AIController>();
         }
-
+        breathVolume = breath.volume;
         GetComponent<PlayerHealth>().gameOverMenu = GameObject.Find("John's Programming Box").transform.Find("GameOver").gameObject;
         GameObject.Find("John's Programming Box").transform.Find("Safe Room").GetComponent<SafeRoom>().player = this.gameObject;
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -139,49 +143,15 @@ public class PlayerController : MonoBehaviour
         if (hp.currentHealth == 0 && !noGhost)
         {
             ghost.GetComponent<AIController>().gotPlayer = true;
+            heart.Stop();
 
             if (camera.child)
             {
                 Destroy(camera.child.gameObject);
             }
         }
-        if (transform.position.y < -2f)
-        {
-            if (!gameController.basementStarted && !isBeingChased && adrenalineLevel == 0)
-            {
-                gameController.ChangeMusic(3, 0f, true);
-                gameController.basementStarted = true;
-                gameController.ambientStarted = false;
-            }
-        }
-        else
-        {
-            if (!gameController.ambientStarted && !isBeingChased)
-            {
-                gameController.ChangeMusic(0, 0f, true);
-                gameController.ambientStarted = true;
-            }
-            
-            gameController.basementStarted = false;
-        }
 
-        if (stamina <= 0)
-        {
-            if (!breathing)
-            {
-                breath.Play();
-                breathing = true;
-            }
-            
-        }
-        if (breathing && stamina >= 100f)
-        {
-            breath2.Play();
-            breath.Stop();
-            breathing = false;
-        }
-        
-
+        AudioChecks();
     }
 
     private void FixedUpdate()
@@ -189,11 +159,6 @@ public class PlayerController : MonoBehaviour
         currentState.FixedUpdateBehavior();
         currentState.WalkRythm();
         HeartBeat();
-    }
-
-    private void LateUpdate()
-    {
-        //camera.Look();
     }
 
     public void SetState(PlayerState newState)
@@ -247,13 +212,16 @@ public class PlayerController : MonoBehaviour
 
     public void DrainStamina(bool drain)
     {
-        if (drain && stamina > 0)
+        if (Time.timeScale == 1)
         {
-            stamina -= (runStaminaCost * Time.deltaTime);
-        }
-        else if (stamina < 100)
-        {
-            stamina += (staminaRegenRate * Time.deltaTime);
+            if (drain && stamina > 0)
+            {
+                stamina -= (runStaminaCost * Time.deltaTime);
+            }
+            else if (stamina < 100)
+            {
+                stamina += (staminaRegenRate * Time.deltaTime);
+            }
         }
     }
 
@@ -367,8 +335,6 @@ public class PlayerController : MonoBehaviour
 
     public void CalculateAdrenaline()
     {
-        //Debug.Log("Running CalculateAdrenaline");
-
         if (noGhost)
         {
             if (FindGhost() == null)
@@ -385,8 +351,6 @@ public class PlayerController : MonoBehaviour
 
         //Gonna need a story check to make sure it doesn't trigger through floors and ceilings
         ghostDistance = Vector3.Distance(transform.position, ghost.position);
-
-
 
         if (isBeingChased)
         {
@@ -420,8 +384,6 @@ public class PlayerController : MonoBehaviour
 
     public void HeartBeat()
     {
-        
-
         switch (adrenalineLevel)
         {
             case 0:
@@ -431,8 +393,6 @@ public class PlayerController : MonoBehaviour
                 if (gameController.basement && !gameController.basementStarted)
                 {
                     gameController.ChangeMusic(3, 0.2f, false);
-                    //gameController.basementStarted = true;
-                    //gameController.ambientStarted = false;
                 }
                 
                 break;
@@ -465,40 +425,13 @@ public class PlayerController : MonoBehaviour
                 break;
             case 4:
                 tension = false;
-                //ghostScript.gameController.ChangeMusic(ghostScript.gameController.currentBackground, 0.2f, false);
                 musicState = 1;
                 heart.volume = 0.4f;
                 break;
         }
 
         float pitchChange = ghostDistance / lvlOneThreshold;
-        //float volumeChange = ghostDistance / 10f;
-        /*
-        if (musicState == 1 && !isBeingChased && !tension)
-        {
-            ghostScript.gameController.ChangeMusic(1);
-            Debug.Log("Starting Tension Music");
-            tension = true;
-            safety = false;
-        }
-        else if (musicState == 0 && !isBeingChased && !safety)
-        {
-            tension = false;
-            ghostScript.gameController.ChangeMusic(0);
-            safety = true;
-        }
-        if (musicState == 1)
-        {
-            ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
-        }
-        */
         heart.pitch = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
-        if (tension && !isBeingChased)
-        {
-            //ghostScript.gameController.music[1].volume = (1 - Mathf.Clamp(pitchChange, 0.8f, 1f));
-        }
-        //ghostScript.gameController.music[1].volume = 1 + (1 - Mathf.Clamp(pitchChange, 0f, 1f));
-
     }
 
     IEnumerator HeartCycle()
@@ -515,6 +448,55 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void AudioChecks()
+    {
+        if (transform.position.y < -2f)
+        {
+            if (!gameController.basementStarted && !isBeingChased && adrenalineLevel == 0)
+            {
+                gameController.ChangeMusic(3, 0f, true);
+                gameController.basementStarted = true;
+                gameController.ambientStarted = false;
+            }
+        }
+        else
+        {
+            if (!gameController.ambientStarted && !isBeingChased)
+            {
+                gameController.ChangeMusic(0, 0f, true);
+                gameController.ambientStarted = true;
+            }
+
+            gameController.basementStarted = false;
+        }
+
+        if (stamina <= 0 && Time.timeScale != 0f)
+        {
+            if (!breathing)
+            {
+                breath.Play();
+                breathing = true;
+            }
+
+        }
+        if (breathing && stamina >= 100f && Time.timeScale != 0f)
+        {
+            breath2.Play();
+            breath.Stop();
+            breathing = false;
+        }
+        if (Time.timeScale == 1f && breathPause && breathing)
+        {
+            breath.UnPause();
+            breathPause = false;
+        }
+        else if (Time.timeScale == 0f)
+        {
+            breath.Pause();
+            breathPause = true;
         }
     }
 }

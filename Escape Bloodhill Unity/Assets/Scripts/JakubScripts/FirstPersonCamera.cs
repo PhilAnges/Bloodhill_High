@@ -40,13 +40,15 @@ public class FirstPersonCamera : MonoBehaviour
     private Quaternion targetRotation;
 
     public Transform flashlightTransform;
+
+    private bool inputReset = false;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Destroy(GameObject.Find("Flashlight"));
         child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * Quaternion.Euler(90f, 0f ,0f), this.transform).GetComponent<FlashlightFollow>();
         child.SetParent(this.transform);
-        //child.centerPosition = flashlightTransform.position;
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
         ogMagnitude = walkBobMagnitude;
@@ -56,7 +58,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -68,14 +70,16 @@ public class FirstPersonCamera : MonoBehaviour
     {
         Vector2 lookChange = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
+        if (inputReset)
+        {
+            lookChange = Vector2.zero;
+            inputReset = false;
+        }
+
         if (parent && parent.hp.currentHealth != 0)
         {
             if (parent)
             {
-                //lookChange = Vector2.Scale(lookChange, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
-
-                //smoothVector.x = Mathf.Lerp(smoothVector.x, lookChange.x, 1f / smoothing);
-                //smoothVector.y = Mathf.Lerp(smoothVector.y, lookChange.y, 1f / smoothing);
                 mouseVector += lookChange;
                 mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
 
@@ -88,7 +92,6 @@ public class FirstPersonCamera : MonoBehaviour
             }
             else
             {
-                //targetRotation = parent.transform.rotation * Quaternion.Euler(-mouseVector.y, 0, 0);
                 targetRotation = Quaternion.Euler(-mouseVector.y, mouseVector.x, 0);
             }
 
@@ -102,12 +105,8 @@ public class FirstPersonCamera : MonoBehaviour
             }
         }
 
-
         transform.position = Vector3.Lerp(transform.position, targetPosition, lookSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
-        //transform.rotation = targetRotation;
-
-
     }
 
     public void Look()
