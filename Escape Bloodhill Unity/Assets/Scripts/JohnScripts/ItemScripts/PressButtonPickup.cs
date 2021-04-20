@@ -24,7 +24,7 @@ public class PressButtonPickup : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            if (Input.GetKeyUp(pickItUp))
+            if (Input.GetKey(pickItUp))
             {
                 while (other.gameObject.GetComponent<ItemPickup>().inventory[other.gameObject.GetComponent<ItemPickup>().inventoryCounter] != null)
                 {

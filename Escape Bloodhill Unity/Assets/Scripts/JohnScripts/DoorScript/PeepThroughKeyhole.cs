@@ -27,7 +27,7 @@ public class PeepThroughKeyhole : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(actionKey))
+            if (Input.GetKey(actionKey))
             {
             playerCamera.GetComponentInChildren<Camera>().enabled = false;
             doorCamera.enabled = true;
