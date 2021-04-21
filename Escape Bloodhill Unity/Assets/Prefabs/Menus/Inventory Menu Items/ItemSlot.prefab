@@ -169,6 +169,7 @@ MonoBehaviour:
   descriptionBox: {fileID: 0}
   playerCharacter: {fileID: 0}
   isAudioDevice: 1
+  isDoorKey: 0
 --- !u!114 &6095038881851415619
 MonoBehaviour:
   m_ObjectHideFlags: 0

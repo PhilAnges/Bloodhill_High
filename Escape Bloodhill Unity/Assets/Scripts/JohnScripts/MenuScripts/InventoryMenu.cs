@@ -40,6 +40,7 @@ public class InventoryMenu : MonoBehaviour
         {
             itemSlot.GetComponent<ShowItemDescription>().itemHeld = itemHold[itemCounter];
             itemSlot.GetComponent<ShowItemDescription>().descriptionBox = descriptionBox;
+            itemSlot.GetComponent<Image>().sprite = itemHold[itemCounter].GetComponent<ItemProperties>().itemTexture;
             itemSlot.GetComponentInChildren<Text>().text = itemHold[itemCounter].GetComponent<ItemProperties>().itemName;
 
 
