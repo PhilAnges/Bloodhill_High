@@ -41,10 +41,11 @@ public class PlayerIdle : PlayerState
     public override void CheckConditions()
     {
 
-        if (parent.airborn)
+        if (parent.airborn || parent.gameController.paused)
         {
             return;
         }
+        
 
         if (Input.GetButtonDown("Crouch") && !parent.airborn)
         {

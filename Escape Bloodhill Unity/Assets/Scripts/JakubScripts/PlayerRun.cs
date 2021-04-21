@@ -54,6 +54,11 @@ public class PlayerRun : PlayerState
             parent.SetState(new PlayerCrouch(parent));
             return;
         }*/
+        if (parent.gameController.paused)
+        {
+            parent.SetState(new PlayerIdle(parent));
+            return;
+        }
 
 
         if (!Input.GetButton("Sprint"))

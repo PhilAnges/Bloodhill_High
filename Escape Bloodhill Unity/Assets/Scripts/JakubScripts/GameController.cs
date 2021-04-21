@@ -55,18 +55,17 @@ public class GameController : MonoBehaviour
         }
 
         music[currentBackground].Play();
-        //ChangeMusic(0, volumes[0]);
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) && paused)
-        {
-            paused = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Time.timeScale == 0)
         {
             paused = true;
+        }
+        else
+        {
+            paused = false;
         }
     }
 
@@ -112,7 +111,6 @@ public class GameController : MonoBehaviour
             music[songIndex].volume = volumes[songIndex];
             music[songIndex].Play();
         }
-        
     }
 
     public void SpawnEnemy()
@@ -146,8 +144,6 @@ public class GameController : MonoBehaviour
         {
             music[songIndex].Stop();
         }
-        
-        //music[songIndex].Fade(fadeSpeed);
     }
 
     IEnumerator FadeIn(int songIndex, bool playing)
