@@ -34,6 +34,8 @@ public class SwitchPath : MonoBehaviour
             enemy.SetPath(newPath);
             enemy.Teleport(enemy.currentPath.transform.position);
             gameController.basementPhase = phaseTrigger;
+            //enemy.awareness = 0f;
+            //enemy.aware = false;
             if (!makeIdle)
             {
                 enemy.SetState(new PatrolState(enemy));

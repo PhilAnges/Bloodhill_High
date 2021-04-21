@@ -41,7 +41,7 @@ public class PlayerIdle : PlayerState
     public override void CheckConditions()
     {
 
-        if (parent.airborn || parent.gameController.paused)
+        if (/*parent.airborn ||*/ parent.gameController.paused)
         {
             return;
         }

@@ -437,6 +437,7 @@ MonoBehaviour:
     type: 3}
   hp: {fileID: 0}
   itemScript: {fileID: 0}
+  gameController: {fileID: 0}
   stamina: 100
   ghost: {fileID: 0}
   moveSpeed: 100
@@ -480,6 +481,7 @@ MonoBehaviour:
   - {fileID: 8151487326447558667}
   breath: {fileID: 639151066404641555}
   breath2: {fileID: 4802982786859294211}
+  fadeInSpeed: 0.5
 --- !u!81 &3187912927524468353
 AudioListener:
   m_ObjectHideFlags: 0
