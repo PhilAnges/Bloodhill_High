@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
     private float breathVolume;
     private bool breathPause = false;
     public float fadeInSpeed = 0.1f;
+    private bool cursorDeactivated = false;
 
 
     
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         SetState(new PlayerIdle(this));
         StartCoroutine("RandomFlicker");
+        Cursor.visible = false;
         
     }
 
@@ -156,6 +158,23 @@ public class PlayerController : MonoBehaviour
         }
 
         AudioChecks();
+
+        if (cursorDeactivated && Time.timeScale == 1f)
+        {
+            Cursor.visible = false;
+            cursorDeactivated = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.I))
+        {
+            if (!cursorDeactivated)
+            {
+                //cursorDeactivated = true;
+                Cursor.visible = true;
+                StartCoroutine("CursorDelay");
+            }
+            
+        }
+        
     }
 
     private void FixedUpdate()
@@ -520,5 +539,12 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         
+    }
+
+    IEnumerator CursorDelay()
+    {
+        //yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
+        cursorDeactivated = true;
     }
 }
