@@ -101,18 +101,21 @@ public class PlayerController : MonoBehaviour
     private float[] ogStepVolume;
     private float breathVolume;
     private bool breathPause = false;
+    public float fadeInSpeed = 0.1f;
+
 
     
 
     private void Awake()
     {
         Instantiate(screenFadePrefab);
-
+        AudioListener.volume = 0f;
+        StartCoroutine("AudioFadeIn");
         camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
         camera.SetParent(this);
-        ogMoveSpeed = moveSpeed;
-        ogRegenRate = staminaRegenRate;
-        ogstepInterval = stepInterval;
+        ogMoveSpeed = 100f;
+        ogRegenRate = 30f;
+        ogstepInterval = 0.35f;
         rigbod = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
@@ -134,6 +137,7 @@ public class PlayerController : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         SetState(new PlayerIdle(this));
         StartCoroutine("RandomFlicker");
+        
     }
 
     void Update()
@@ -195,7 +199,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
-        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f, groundMask))
+        if (Physics.SphereCast(heart.transform.position, 0.1f, -transform.up, out hit, 1.25f, groundMask))
         {
             //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
@@ -500,5 +504,21 @@ public class PlayerController : MonoBehaviour
             breath.Pause();
             breathPause = true;
         }
+    }
+
+    IEnumerator AudioFadeIn()
+    {
+        Debug.Log(AudioListener.volume);
+        if (AudioListener.volume < 1f)
+        {
+            AudioListener.volume += fadeInSpeed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            StartCoroutine("AudioFadeIn");
+        }
+        else
+        {
+            yield return null;
+        }
+        
     }
 }

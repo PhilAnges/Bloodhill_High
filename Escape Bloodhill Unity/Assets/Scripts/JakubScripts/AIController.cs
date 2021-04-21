@@ -93,7 +93,7 @@ public class AIController : MonoBehaviour
     public Animator animator;
     public GameObject particleEffect;
 
-    public MeshRenderer body;
+    public SkinnedMeshRenderer body;
 
 
     void Awake()
@@ -102,7 +102,7 @@ public class AIController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         spherePos = gameObject.transform.Find("Eye");
         //eyePos = gameObject.transform.Find("Eyes").transform;
-        body = gameObject.transform.Find("bloodhillantagrig").GetComponent<MeshRenderer>();
+        body = gameObject.transform.Find("bloodhillantagrig").Find("Merged_Extract3_1").GetComponent<SkinnedMeshRenderer>();
         eyeGlower = gameObject.transform.Find("bloodhillantagrig").GetComponent<EyeLights>();
         ogStoppingDistance = navAgent.stoppingDistance;
         ogAlertTime = alertTime;
@@ -216,8 +216,10 @@ public class AIController : MonoBehaviour
         navAgent.SetDestination(targetLocation);
         Instantiate(particleEffect, transform.position, Quaternion.identity);
         StartCoroutine("TempHide", targetLocation);
+        //navAgent.updateRotation = false;
         navAgent.Warp(targetLocation);
-        //Instantiate(particleEffect, targetLocation, Quaternion.identity);
+        transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        //navAgent.updateRotation = true;
     }
 
     public List<PathPoint> PopulateList(Path path)
@@ -285,9 +287,20 @@ public class AIController : MonoBehaviour
 
     IEnumerator TempHide(Vector3 effectLocation)
     {
+        Debug.Log("Doing TempHide coroutine");
+
         body.enabled = false;
-        yield return new WaitForSeconds(1.1f);
+        for (int i = 0; i < eyeGlower.eyes.Length; i++)
+        {
+            eyeGlower.eyes[i].enabled = false;
+        }
+        
+        yield return new WaitForSeconds(1f);
         body.enabled = true;
+        for (int i = 0; i < eyeGlower.eyes.Length; i++)
+        {
+            eyeGlower.eyes[i].enabled = true;
+        }
         Instantiate(particleEffect, effectLocation, Quaternion.identity);
     }
 }

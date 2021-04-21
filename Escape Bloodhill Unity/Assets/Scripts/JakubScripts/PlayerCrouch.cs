@@ -54,7 +54,19 @@ public class PlayerCrouch : PlayerState
 
     public override void CheckConditions()
     {
-        if (parent.airborn || parent.gameController.paused)
+
+        if (parent.gameController.paused)
+        {
+            parent.footsteps[0].Pause();
+            return;
+        }
+        else if (!parent.footsteps[0].isPlaying)
+        {
+            parent.footsteps[0].UnPause();
+        }
+
+
+        if (parent.airborn)
         {
             parent.SetState(new PlayerIdle(parent));
             return;

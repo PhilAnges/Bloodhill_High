@@ -15,7 +15,7 @@ public class IdleTaunt: AIState
 
         if (parent.navAgent.remainingDistance == 0f && parent.startPathPoint.lookTarget != null)
         {
-            parent.Orient(parent.startPathPoint.lookTarget.position);
+            //parent.Orient(parent.startPathPoint.lookTarget.position);
         }
 
         parent.Sight();  
@@ -30,7 +30,7 @@ public class IdleTaunt: AIState
         parent.navAgent.speed = parent.patrolSpeed;
         parent.alertTime = parent.ogAlertTime;
         parent.eyeGlower.ResetEyes();
-        parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
+        //parent.navAgent.SetDestination(parent.startPathPoint.transform.position);
         parent.animator.SetBool("taunting", true);
         //Debug.Log("Entering Idle State");
     }

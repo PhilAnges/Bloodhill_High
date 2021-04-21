@@ -10,6 +10,7 @@ public class CellTrigger : MonoBehaviour
     public Path path;
     private bool hasSpawned = false;
     public bool tauntOnly;
+    public bool testMode;
 
     // Start is called before the first frame update
     void Start()
@@ -35,23 +36,49 @@ public class CellTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && player.CheckForItem() == true && hasSpawned == false)
+        if (testMode)
         {
-            enemy.SetPath(path);
-            
-            enemy.Teleport(enemy.currentPath.transform.position);
-            
-            gameController.basementPhase = 4;
-            if (tauntOnly)
+            if (other.tag == "Player" && Input.GetKeyDown(KeyCode.R))
             {
-                enemy.SetState(new IdleTaunt(enemy));
+                enemy.SetPath(path);
+                enemy.Teleport(enemy.currentPath.transform.position);
+                gameController.basementPhase = 4;
+
+                if (tauntOnly)
+                {
+                    enemy.SetState(new IdleTaunt(enemy));
+                }
+                else
+                {
+                    enemy.SetState(new IdleState(enemy));
+                }
+
+                hasSpawned = true;
             }
-            else
-            {
-                enemy.SetState(new IdleState(enemy));
-            }
-            
-            hasSpawned = true;
         }
+        else
+        {
+            if (other.tag == "Player" && player.CheckForItem() == true && hasSpawned == false)
+            {
+                enemy.SetPath(path);
+
+                enemy.Teleport(enemy.currentPath.transform.position);
+
+                gameController.basementPhase = 4;
+                if (tauntOnly)
+                {
+                    enemy.SetState(new IdleTaunt(enemy));
+                }
+                else
+                {
+                    enemy.SetState(new IdleState(enemy));
+                }
+
+                hasSpawned = true;
+            }
+        }
+
+
+        
     }
 }
