@@ -441,14 +441,16 @@ public class PlayerController : MonoBehaviour
 
     public bool CheckForItem()
     {
-        if (itemScript.inventory[5] != null)
+        for (int i = 0; i < itemScript.inventory.Length; i++)
         {
-            return true;
+            if (itemScript.inventory[i].GetComponent<ItemProperties>().itemName == "Gold Key")
+            {
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
+
+       
     }
 
     private void AudioChecks()
