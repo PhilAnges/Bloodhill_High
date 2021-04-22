@@ -11,9 +11,9 @@ public class PlayerIdle : PlayerState
 
     public override void UpdateBehavior()
     {
-        parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
-        parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
-        MoveDirection(parent.camera.child.moveMagnitude);
+        parent.cam.standHeight = Mathf.Lerp(parent.cam.standHeight, parent.cam.ogStandHeight, 0.1f);
+        parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, 0f, 0.05f);
+        MoveDirection(parent.cam.child.moveMagnitude);
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -23,12 +23,12 @@ public class PlayerIdle : PlayerState
     {
         parent.staminaRegenRate = parent.ogRegenRate;
         parent.isCrouching = false;
-        parent.camera.standHeight = parent.camera.ogStandHeight;
+        parent.cam.standHeight = parent.cam.ogStandHeight;
         parent.moveSpeed = parent.ogMoveSpeed;
         //Debug.Log("Entering Idle State");
         parent.rigbod.velocity = Vector3.zero;
         parent.noiseLevel = 0;
-        parent.camera.child.moveDepth = 0f;
+        parent.cam.child.moveDepth = 0f;
         parent.footsteps[0].Stop();
     }
 

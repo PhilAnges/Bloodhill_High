@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public PlayerState currentState;
     [HideInInspector]
-    public FirstPersonCamera camera;
+    public FirstPersonCamera cam;
     [HideInInspector]
     public Transform flashlight;
     [HideInInspector]
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Transform ghost;
     private float ghostDistance;
-    private CapsuleCollider collider;
+    private CapsuleCollider myCollider;
     private AudioSource heart;
 
     [Range(100f, 1000f)]
@@ -95,7 +95,6 @@ public class PlayerController : MonoBehaviour
     public AudioSource breath;
     public AudioSource breath2;
     private bool breathing = false;
-    private bool caughtBreath = true;
     private int groundMask;
 
     private float[] ogStepVolume;
@@ -112,13 +111,13 @@ public class PlayerController : MonoBehaviour
         Instantiate(screenFadePrefab);
         AudioListener.volume = 0f;
         StartCoroutine("AudioFadeIn");
-        camera = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
-        camera.SetParent(this);
+        cam = Instantiate(camPrefab, transform.position, transform.rotation).GetComponent<FirstPersonCamera>();
+        cam.SetParent(this);
         ogMoveSpeed = 100f;
         ogRegenRate = 30f;
         ogstepInterval = 0.35f;
         rigbod = GetComponent<Rigidbody>();
-        collider = GetComponent<CapsuleCollider>();
+        myCollider = GetComponent<CapsuleCollider>();
         heart = GetComponentInChildren<AudioSource>();
         hp = GetComponent<PlayerHealth>();
         itemScript = GetComponent<ItemPickup>();
@@ -151,9 +150,9 @@ public class PlayerController : MonoBehaviour
             ghost.GetComponent<AIController>().gotPlayer = true;
             heart.Stop();
 
-            if (camera.child)
+            if (cam.child)
             {
-                Destroy(camera.child.gameObject);
+                Destroy(cam.child.gameObject);
             }
         }
 
@@ -173,6 +172,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("CursorDelay");
             }
             
+        }
+        if (hp.currentHealth == 0f)
+        {
+            Cursor.visible = true;
         }
         
     }
@@ -254,11 +257,11 @@ public class PlayerController : MonoBehaviour
         {
             if (lights.Length == 0)
             {
-                lights = camera.child.lights;
+                lights = cam.child.lights;
             }
             else if (lights[0] == null)
             {
-                lights = camera.child.lights;
+                lights = cam.child.lights;
             }
             if (flashLightOn)
             {
@@ -266,7 +269,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = false;
                     flashLightOn = false;
-                    camera.child.FlipSwitch(physical);
+                    cam.child.FlipSwitch(physical);
                 }
             }
             else
@@ -275,7 +278,7 @@ public class PlayerController : MonoBehaviour
                 {
                     light.enabled = true;
                     flashLightOn = true;
-                    camera.child.FlipSwitch(physical);
+                    cam.child.FlipSwitch(physical);
                 }
             }
         }
@@ -323,9 +326,9 @@ public class PlayerController : MonoBehaviour
 
     public void FlashlightFlicker()
     {
-        if (camera.child.switchedOn)
+        if (cam.child.switchedOn)
         {
-            camera.child.flickerSound.Play();
+            cam.child.flickerSound.Play();
             StartCoroutine("Flicker");
         } 
     }
@@ -346,13 +349,13 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouching)
         {
-            collider.height = 1;
-            collider.center = new Vector3(0,0.5f, 0);
+            myCollider.height = 1;
+            myCollider.center = new Vector3(0,0.5f, 0);
         }
         else
         {
-            collider.height = 2;
-            collider.center = new Vector3(0, 1f, 0);
+            myCollider.height = 2;
+            myCollider.center = new Vector3(0, 1f, 0);
         }
     }
 

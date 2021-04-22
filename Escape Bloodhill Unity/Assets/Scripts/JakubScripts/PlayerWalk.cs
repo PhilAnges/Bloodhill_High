@@ -14,7 +14,7 @@ public class PlayerWalk : PlayerState
     public override void UpdateBehavior()
     {
         //parent.Move();
-        MoveDirection(parent.camera.child.moveMagnitude);
+        MoveDirection(parent.cam.child.moveMagnitude);
         parent.DrainStamina(false);
         parent.CalculateAdrenaline();
         CheckConditions();
@@ -26,11 +26,11 @@ public class PlayerWalk : PlayerState
         parent.staminaRegenRate *= parent.staminaRegenMultiplier;
         parent.stepInterval = parent.ogstepInterval;
         rythmTimer = parent.stepInterval * 2;
-        parent.camera.walkBobMagnitude = parent.camera.ogMagnitude;
-        highPoint = parent.camera.ogStandHeight;
-        lowPoint = highPoint- parent.camera.walkBobMagnitude;
+        parent.cam.walkBobMagnitude = parent.cam.ogMagnitude;
+        highPoint = parent.cam.ogStandHeight;
+        lowPoint = highPoint- parent.cam.walkBobMagnitude;
         parent.noiseLevel = 2;
-        parent.camera.child.moveDepth = parent.camera.child.moveMagnitude;
+        parent.cam.child.moveDepth = parent.cam.child.moveMagnitude;
         parent.footsteps[0].Stop();
         parent.footsteps[1].PlayDelayed(0.2f);
     }
@@ -39,8 +39,8 @@ public class PlayerWalk : PlayerState
     {
         //Debug.Log("Leaving Walk State");
         parent.staminaRegenRate = parent.ogRegenRate;
-        parent.camera.standHeight = highPoint;
-        parent.camera.child.bobHeight = 0f;
+        parent.cam.standHeight = highPoint;
+        parent.cam.child.bobHeight = 0f;
         parent.footsteps[1].Stop();
 
     }
@@ -98,29 +98,29 @@ public class PlayerWalk : PlayerState
                         step = true;
                     }
                     //Between Step 1 and Step 2
-                    parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, highPoint, 0.1f);
-                    parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
-                    parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, parent.camera.child.bobMagnitude, 0.1f);
-                    parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, parent.camera.child.walkTilt, 0.1f);
+                    parent.cam.standHeight = Mathf.Lerp(parent.cam.standHeight, highPoint, 0.1f);
+                    parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, 0f, 0.05f);
+                    parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, parent.cam.child.bobMagnitude, 0.1f);
+                    parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, parent.cam.child.walkTilt, 0.1f);
                 }
             }
             //Between Step 2 and Step 1
             else
             {
-                parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, lowPoint, 0.1f);
-                parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.walkSwayIntensity * beat, 0.1f);
-                parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, -parent.camera.child.bobMagnitude, 0.1f);
-                parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, -parent.camera.child.walkTilt, 0.1f);
+                parent.cam.standHeight = Mathf.Lerp(parent.cam.standHeight, lowPoint, 0.1f);
+                parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, parent.walkSwayIntensity * beat, 0.1f);
+                parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, -parent.cam.child.bobMagnitude, 0.1f);
+                parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, -parent.cam.child.walkTilt, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            parent.camera.standHeight = Mathf.Lerp(parent.camera.standHeight, parent.camera.ogStandHeight, 0.1f);
-            parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
-            parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, 0f, 0.1f);
-            parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, 0f, 0.1f);
+            parent.cam.standHeight = Mathf.Lerp(parent.cam.standHeight, parent.cam.ogStandHeight, 0.1f);
+            parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, 0f, 0.1f);
+            parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, 0f, 0.1f);
+            parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, 0f, 0.1f);
         }
     }
 
