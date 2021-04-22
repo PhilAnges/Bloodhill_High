@@ -47,7 +47,8 @@ public class FirstPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Destroy(GameObject.Find("Flashlight"));
-        child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * Quaternion.Euler(90f, 0f ,0f), this.transform).GetComponent<FlashlightFollow>();
+        child = Instantiate(flashlightPrefab, flashlightTransform.position,transform.rotation * 
+            Quaternion.Euler(90f, 0f ,0f), this.transform).GetComponent<FlashlightFollow>();
         child.SetParent(this.transform);
         ogStandHeight = standHeight;
         ogCrouchHeight = crouchHeight;
@@ -88,7 +89,9 @@ public class FirstPersonCamera : MonoBehaviour
 
             if (Input.GetAxis("LookBack") != 0 && !parent.airborn)
             {
-                targetRotation = parent.transform.rotation * Quaternion.AngleAxis(180f, parent.transform.up) * Quaternion.Euler(-mouseVector.y, 0, 0);
+                targetRotation = parent.transform.rotation * 
+                    Quaternion.AngleAxis(180f, parent.transform.up) * 
+                    Quaternion.Euler(-mouseVector.y, 0, 0);
             }
             else
             {
@@ -97,11 +100,19 @@ public class FirstPersonCamera : MonoBehaviour
 
             if (parent.isCrouching)
             {
-                targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + crouchHeight, parent.transform.position.z) + (parent.transform.right * swayFactor) - (parent.transform.forward * farBackness);
+                targetPosition = new Vector3(parent.transform.position.x,
+                    parent.transform.position.y + crouchHeight,
+                    parent.transform.position.z) + 
+                    (parent.transform.right * swayFactor) - 
+                    (parent.transform.forward * farBackness);
             }
             else
             {
-                targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y + standHeight, parent.transform.position.z) + (parent.transform.right * swayFactor) - (parent.transform.forward * farBackness);
+                targetPosition = new Vector3(parent.transform.position.x,
+                    parent.transform.position.y + standHeight,
+                    parent.transform.position.z) + 
+                    (parent.transform.right * swayFactor) - 
+                    (parent.transform.forward * farBackness);
             }
         }
 
@@ -120,6 +131,7 @@ public class FirstPersonCamera : MonoBehaviour
     public void SetParent(PlayerController player)
     {
         parent = player;
-        targetPosition = new Vector3(parent.transform.position.x + 0.34f, parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
+        targetPosition = new Vector3(parent.transform.position.x + 0.34f,
+            parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
     }
 }
