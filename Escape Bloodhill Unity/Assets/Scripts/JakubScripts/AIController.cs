@@ -222,6 +222,26 @@ public class AIController : MonoBehaviour
         //navAgent.updateRotation = true;
     }
 
+    IEnumerator TempHide(Vector3 effectLocation)
+    {
+        Debug.Log("Doing TempHide coroutine");
+
+        body.enabled = false;
+        for (int i = 0; i < eyeGlower.eyes.Length; i++)
+        {
+            eyeGlower.eyes[i].enabled = false;
+        }
+
+        //yield return new WaitForSeconds(0.2f);
+        yield return null;
+        body.enabled = true;
+        for (int i = 0; i < eyeGlower.eyes.Length; i++)
+        {
+            eyeGlower.eyes[i].enabled = true;
+        }
+        Instantiate(particleEffect, effectLocation, Quaternion.identity);
+    }
+
     public List<PathPoint> PopulateList(Path path)
     {
         List<PathPoint> outList = new List<PathPoint>();
@@ -285,22 +305,5 @@ public class AIController : MonoBehaviour
         StartCoroutine("PathWait", waitTime);
     }
 
-    IEnumerator TempHide(Vector3 effectLocation)
-    {
-        Debug.Log("Doing TempHide coroutine");
-
-        body.enabled = false;
-        for (int i = 0; i < eyeGlower.eyes.Length; i++)
-        {
-            eyeGlower.eyes[i].enabled = false;
-        }
-        
-        yield return new WaitForSeconds(1f);
-        body.enabled = true;
-        for (int i = 0; i < eyeGlower.eyes.Length; i++)
-        {
-            eyeGlower.eyes[i].enabled = true;
-        }
-        Instantiate(particleEffect, effectLocation, Quaternion.identity);
-    }
+    
 }
