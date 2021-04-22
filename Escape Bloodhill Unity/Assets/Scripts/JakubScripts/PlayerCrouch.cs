@@ -31,11 +31,11 @@ public class PlayerCrouch : PlayerState
         parent.moveSpeed *= parent.crouchSpeedMultiplier;
         parent.isCrouching = true;
         parent.ChangeSize();
-        parent.camera.walkBobMagnitude = parent.crouchBobIntensity;
+        parent.cam.walkBobMagnitude = parent.crouchBobIntensity;
         parent.stepInterval = parent.crouchInterval;
-        parent.camera.swayFactor = parent.crouchSwayIntensity;
+        parent.cam.swayFactor = parent.crouchSwayIntensity;
         rythmTimer = parent.stepInterval * 2;
-        highPoint = parent.camera.ogCrouchHeight;
+        highPoint = parent.cam.ogCrouchHeight;
         lowPoint = highPoint - parent.crouchBobIntensity;
         parent.noiseLevel = 1;
         headRoom = true;
@@ -46,7 +46,7 @@ public class PlayerCrouch : PlayerState
     {
         //Debug.Log("Leaving Crouch State");
         parent.moveSpeed = parent.ogMoveSpeed;
-        parent.camera.crouchHeight = highPoint;
+        parent.cam.crouchHeight = highPoint;
         parent.isCrouching = false;
         parent.ChangeSize();
         parent.footsteps[0].Stop();
@@ -131,29 +131,29 @@ public class PlayerCrouch : PlayerState
                         step = true;
                     }
                     //Between Step 1 and Step 2
-                    parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, highPoint, 0.05f);
-                    parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.05f);
-                    parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, parent.camera.child.crouchBobMagnitude, 0.1f);
-                    parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, parent.camera.child.crouchTilt, 0.1f);
+                    parent.cam.crouchHeight = Mathf.Lerp(parent.cam.crouchHeight, highPoint, 0.05f);
+                    parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, 0f, 0.05f);
+                    parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, parent.cam.child.crouchBobMagnitude, 0.1f);
+                    parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, parent.cam.child.crouchTilt, 0.1f);
                 }
             }
             //Between Step 2 and Step 1
             else
             {
-                parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, lowPoint, 0.1f);
-                parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, parent.crouchSwayIntensity * beat, 0.1f);
-                parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, -parent.camera.child.crouchBobMagnitude, 0.1f);
-                parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, -parent.camera.child.crouchTilt, 0.1f);
+                parent.cam.crouchHeight = Mathf.Lerp(parent.cam.crouchHeight, lowPoint, 0.1f);
+                parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, parent.crouchSwayIntensity * beat, 0.1f);
+                parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, -parent.cam.child.crouchBobMagnitude, 0.1f);
+                parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, -parent.cam.child.crouchTilt, 0.1f);
             }
             rythmTimer -= Time.deltaTime;
         }
         else
         {
             rythmTimer = parent.stepInterval * 2;
-            parent.camera.crouchHeight = Mathf.Lerp(parent.camera.crouchHeight, parent.camera.ogCrouchHeight, 0.05f);
-            parent.camera.swayFactor = Mathf.Lerp(parent.camera.swayFactor, 0f, 0.1f);
-            parent.camera.child.bobHeight = Mathf.Lerp(parent.camera.child.bobHeight, 0f, 0.1f);
-            parent.camera.child.moveTilt = Mathf.Lerp(parent.camera.child.moveTilt, 0f, 0.1f);
+            parent.cam.crouchHeight = Mathf.Lerp(parent.cam.crouchHeight, parent.cam.ogCrouchHeight, 0.05f);
+            parent.cam.swayFactor = Mathf.Lerp(parent.cam.swayFactor, 0f, 0.1f);
+            parent.cam.child.bobHeight = Mathf.Lerp(parent.cam.child.bobHeight, 0f, 0.1f);
+            parent.cam.child.moveTilt = Mathf.Lerp(parent.cam.child.moveTilt, 0f, 0.1f);
         }
     }
 

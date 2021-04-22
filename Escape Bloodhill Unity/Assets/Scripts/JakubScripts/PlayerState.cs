@@ -52,21 +52,21 @@ public class PlayerState
     {
         if (Input.GetAxis("Vertical") > 0)
         {
-            parent.camera.child.moveDepth =  -magnitude;
+            parent.cam.child.moveDepth =  -magnitude;
             //Debug.Log(parent.camera.child.moveDepth);
         }
         if (Input.GetAxis("Vertical") < 0 || Input.GetAxis("LookBack") != 0)
         {
-            parent.camera.child.moveDepth = magnitude;
+            parent.cam.child.moveDepth = magnitude;
             //Debug.Log(parent.camera.child.moveDepth);
         }
         if (Input.GetAxis("LookBack") != 0)
         {
-            parent.camera.child.moveDepth = parent.camera.child.runMoveMagnitude;
+            parent.cam.child.moveDepth = parent.cam.child.runMoveMagnitude;
         }
         else if (Input.GetAxis("Vertical") == 0)
         {
-            parent.camera.child.moveDepth = 0f;
+            parent.cam.child.moveDepth = 0f;
         }
     }
     

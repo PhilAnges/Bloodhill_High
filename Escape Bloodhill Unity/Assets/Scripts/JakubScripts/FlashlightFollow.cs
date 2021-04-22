@@ -13,7 +13,6 @@ public class FlashlightFollow : MonoBehaviour
     private MeshRenderer model;
     private MeshRenderer switchModel;
     private FirstPersonCamera parentScript;
-    private bool parentSet = false;
     public bool deactivateOnTurn = false;
 
     private Vector3 onPosition, offPosition;
