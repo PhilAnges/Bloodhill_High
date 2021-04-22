@@ -18105,6 +18105,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basement_20mStairs
       objectReference: {fileID: 0}
+    - target: {fileID: 6363314710796949402, guid: 22306868089a055469b41204181001f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db60d516699806846b8eb65649d7411e, type: 2}
     - target: {fileID: 8514203356625178965, guid: 22306868089a055469b41204181001f1,
         type: 3}
       propertyPath: m_LocalPosition.x
