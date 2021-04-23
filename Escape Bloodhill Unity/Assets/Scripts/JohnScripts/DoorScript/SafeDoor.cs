@@ -59,17 +59,24 @@ public class SafeDoor : MonoBehaviour
             notification.SetActive(true);
             if ((Input.GetKeyUp(actionKey)) && (locked == false))
             {
-                Destroy(destroyThis);
+                //Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
             }
             else
             if (other.GetComponent<ItemPickup>().relatedDoor == gameObject)
             {
-                Destroy(destroyThis);
+                //Destroy(destroyThis);
                 openDoorSound.Play();
                 openTheDoor = true;
             }
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            notification.SetActive(false);
         }
     }
     public void OpenTheDoor()
@@ -81,6 +88,8 @@ public class SafeDoor : MonoBehaviour
             transform.position = outOfWay;
             waitToMove = Time.deltaTime;
         }
+        notification.SetActive(false);
+        Destroy(destroyThis);
     }
     public void SwingOpen()
     {
