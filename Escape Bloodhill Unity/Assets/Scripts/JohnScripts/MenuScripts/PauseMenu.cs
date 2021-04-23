@@ -29,22 +29,34 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //button = GameObject.FindGameObjectWithTag("Button");
+        
 
         player = GameObject.FindGameObjectWithTag("MainCamera");
 
         if (Input.GetKeyUp(inventoryButton))
         {
-            //player.GetComponent<FirstPersonCamera>().enabled = false;
-            Cursor.lockState = CursorLockMode.None;
-            Inventory();
+            if(inventoryUI.activeInHierarchy == false)
+            {
+                Inventory();
+            }
+            else
+            if (inventoryUI.activeInHierarchy == true)
+            {
+                Unpause();
+            }
         }
 
         if (Input.GetKeyUp(journalButton))
         {
-            //player.GetComponent<FirstPersonCamera>().enabled = false;
-            Cursor.lockState = CursorLockMode.None;
-            Journal();
+            if (journalUI.activeInHierarchy == false)
+            {
+                Journal();
+            }
+            else
+            if (journalUI.activeInHierarchy == true)
+            {
+                Unpause();
+            }
         }
 
         if ((Input.GetKeyUp(pauseButton)) && (isPaused == true))
@@ -60,7 +72,6 @@ public class PauseMenu : MonoBehaviour
     public void Unpause()
     {
         isPaused = false;
-        //player.GetComponent<FirstPersonCamera>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         inventoryUI.SetActive(false);
         pauseUI.SetActive(false);
@@ -72,7 +83,6 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        //player.GetComponent<FirstPersonCamera>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(true);
         inventoryUI.SetActive(false);
@@ -83,6 +93,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Inventory()
     {
+        Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(false);
         journalUI.SetActive(false);
         inventoryUI.SetActive(true);
@@ -92,6 +103,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Journal()
     {
+        Cursor.lockState = CursorLockMode.None;
         pauseUI.SetActive(false);
         inventoryUI.SetActive(false);
         journalUI.SetActive(true);
