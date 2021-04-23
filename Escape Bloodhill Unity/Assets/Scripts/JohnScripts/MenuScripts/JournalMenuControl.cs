@@ -19,7 +19,6 @@ public class JournalMenuControl : MonoBehaviour
     {
         entry = 0;
         descriptionBox.GetComponent<RawImage>().texture = journalStart;
-        //journalEntries = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -44,7 +43,6 @@ public class JournalMenuControl : MonoBehaviour
             rightButton.SetActive(true);
             descriptionBox.GetComponent<RawImage>().texture = journalMiddle;
         }
-
     }
 
     public void ShowJournalEntry(int entry)
@@ -59,7 +57,6 @@ public class JournalMenuControl : MonoBehaviour
             entry = entry - 1;
             Debug.Log(entry);
         }
-        //ShowJournalEntry(entry);
     }
 
     public void RightArrow()
@@ -69,6 +66,5 @@ public class JournalMenuControl : MonoBehaviour
             entry = entry + 1;
             Debug.Log(entry);
         }
-        //ShowJournalEntry(entry);
     }
 }
