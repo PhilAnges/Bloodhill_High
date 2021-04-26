@@ -8,8 +8,8 @@ public class ActivateSpook : MonoBehaviour
 
     public bool passiveSpook;
     public GameObject spook;
-    public Vector3 spookSpawn;
-    public Quaternion spookFacing;
+    //public Vector3 spookSpawn;
+    //public Quaternion spookFacing;
 
     public KeyCode pickItUp;
 
@@ -31,7 +31,8 @@ public class ActivateSpook : MonoBehaviour
         {
             if (passiveSpook == true)
             {
-                Instantiate(spook, spookSpawn, spookFacing);
+                //Instantiate(spook, spookSpawn, spookFacing);
+                spook.SetActive(true);
                 gameObject.SetActive(false);
             }
         }
@@ -46,7 +47,8 @@ public class ActivateSpook : MonoBehaviour
             {
                 if (Input.GetKeyUp(pickItUp))
                 {
-                    Instantiate(spook, spookSpawn, spookFacing);
+                    spook.SetActive(true);
+                    //Instantiate(spook, spookSpawn, spookFacing);
                 }
             }
         }

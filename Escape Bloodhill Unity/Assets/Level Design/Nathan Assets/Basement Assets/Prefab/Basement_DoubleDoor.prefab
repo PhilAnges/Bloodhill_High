@@ -602,7 +602,8 @@ MonoBehaviour:
   lowerLimRotate: 0
   destroyThis: {fileID: 8884352965921854922}
   openTheDoor: 0
-  openDoorSound: {fileID: 6057099836051453390}
+  openDoorSound:
+  - {fileID: 6057099836051453390}
   lockedDoorSound: {fileID: 2260959155046806352}
   notification: {fileID: 0}
 --- !u!82 &6057099836051453390
@@ -1087,7 +1088,8 @@ MonoBehaviour:
   lowerLimRotate: 0
   destroyThis: {fileID: 493772544343180166}
   openTheDoor: 0
-  openDoorSound: {fileID: 7760432172643140472}
+  openDoorSound:
+  - {fileID: 7760432172643140472}
   lockedDoorSound: {fileID: 7244617567536404161}
   notification: {fileID: 0}
 --- !u!82 &7760432172643140472

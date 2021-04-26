@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,7 +135,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,7 +213,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,7 +291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -369,7 +369,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,7 +447,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -478,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7385889728109110578}
   m_Layer: 0
-  m_Name: Double Door Trims
+  m_Name: Double Door Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,7 +567,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -645,7 +645,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -723,7 +723,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -801,7 +801,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +879,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -957,7 +957,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -512163996188174004, guid: beb1ef4955508ff4b9cb59812cc04895, type: 3}
+  - {fileID: 2100000, guid: 26e457656a3a6bc4495d0935a65754de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
