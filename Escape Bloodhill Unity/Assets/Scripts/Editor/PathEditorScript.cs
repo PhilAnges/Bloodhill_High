@@ -6,6 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(Path))]
 public class PathEditorScript : Editor
 {
+#if (UNITY_EDITOR)
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -24,4 +25,5 @@ public class PathEditorScript : Editor
             " There have to be at least two points for the path to work and they need to be its children." +
             " Start point is green, end point is red.", MessageType.Info);
     }
+#endif
 }

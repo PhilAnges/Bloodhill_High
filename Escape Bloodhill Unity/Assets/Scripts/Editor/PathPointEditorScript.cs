@@ -9,7 +9,7 @@ using UnityEditor;
 public class PathPointEditorScript : Editor
 {
     private Path parent;
-
+#if (UNITY_EDITOR)
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -111,6 +111,7 @@ public class PathPointEditorScript : Editor
     }
 
     [DrawGizmo(GizmoType.InSelectionHierarchy |GizmoType.NonSelected |GizmoType.Pickable)]
+#endif
     static void DrawPointNode(PathPoint point, GizmoType gizmoType)
     {
 
