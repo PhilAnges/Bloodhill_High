@@ -224,7 +224,7 @@ public class AIController : MonoBehaviour
 
     IEnumerator TempHide(Vector3 effectLocation)
     {
-        Debug.Log("Doing TempHide coroutine");
+        //Debug.Log("Doing TempHide coroutine");
 
         body.enabled = false;
         for (int i = 0; i < eyeGlower.eyes.Length; i++)
