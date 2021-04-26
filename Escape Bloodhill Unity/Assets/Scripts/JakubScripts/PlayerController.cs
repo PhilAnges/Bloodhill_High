@@ -530,7 +530,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator AudioFadeIn()
     {
-        Debug.Log(AudioListener.volume);
+        //Debug.Log(AudioListener.volume);
         if (AudioListener.volume < 1f)
         {
             AudioListener.volume += fadeInSpeed * Time.deltaTime;
