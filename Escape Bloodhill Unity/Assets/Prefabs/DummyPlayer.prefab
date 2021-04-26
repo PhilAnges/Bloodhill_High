@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215c9cb50667c4d4e9a55961e36f390a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  cam: {fileID: 0}
   flashlight: {fileID: 0}
   lights: []
   rigbod: {fileID: 0}
@@ -860,7 +860,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8151897f5757ba440b56b611efc1fa3c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f9ccb4aaea526564c8ce7290c65d8cde, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1

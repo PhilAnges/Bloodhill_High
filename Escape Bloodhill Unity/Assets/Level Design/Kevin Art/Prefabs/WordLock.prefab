@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 9063463868834267165}
   - component: {fileID: 3385419619782081764}
   - component: {fileID: 239452229998064173}
+  - component: {fileID: 1915958617109965628}
   m_Layer: 0
   m_Name: WordLock
   m_TagString: Untagged
@@ -172,3 +173,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4419359197236712790, guid: e8011a33b3ba9dd41bcc9ff653e73088, type: 3}
+--- !u!95 &1915958617109965628
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947329454739392568}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64dace99f12402c43a9e8d55f0b1fb6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
