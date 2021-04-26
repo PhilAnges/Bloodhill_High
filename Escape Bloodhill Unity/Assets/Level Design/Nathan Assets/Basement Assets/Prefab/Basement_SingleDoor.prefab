@@ -503,7 +503,8 @@ MonoBehaviour:
   lowerLimRotate: 0
   destroyThis: {fileID: 2170114463910820884}
   openTheDoor: 0
-  openDoorSound: {fileID: 2603930818860975998}
+  openDoorSound:
+  - {fileID: 2603930818860975998}
   lockedDoorSound: {fileID: 7192379408274656400}
   notification: {fileID: 0}
 --- !u!82 &2603930818860975998
