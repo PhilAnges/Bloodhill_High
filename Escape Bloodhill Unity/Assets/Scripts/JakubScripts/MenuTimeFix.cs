@@ -8,6 +8,7 @@ public class MenuTimeFix : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
