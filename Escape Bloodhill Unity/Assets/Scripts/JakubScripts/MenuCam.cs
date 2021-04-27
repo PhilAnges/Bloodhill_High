@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuCam : MonoBehaviour
 {
-    public Transform startPosition, playPosition, helpPosition, quitPosition;
+    public Transform startPosition, playPosition, helpPosition, helpPosition2, quitPosition;
     public CamControl cam;
-    public GameObject yes, no, confirmText;
+    public GameObject yes, no, confirmText, back;
     public int currentButton = 0;
     private MenuControl menuControl;
     public GameObject screenFade;
     public float sceneChangeDelay = 1f;
+    public GameObject[] mainButtons;
 
 
     void Start()
@@ -21,9 +23,15 @@ public class MenuCam : MonoBehaviour
 
     public void PlayButton()
     {
+        for (int i = 0; i < mainButtons.Length; i++)
+        {
+            mainButtons[i].SetActive(false);
+        }
         cam.target = playPosition;
         currentButton = 1;
+        back.SetActive(false);
         yes.SetActive(true);
+        //no.GetComponentInChildren<Text>().text = "No";
         no.SetActive(true);
         confirmText.SetActive(true);
 
@@ -32,28 +40,61 @@ public class MenuCam : MonoBehaviour
     public void HelpButton()
     {
         cam.target = helpPosition;
+        StartCoroutine("HelpZoom");
         currentButton = 2;
-        yes.SetActive(true);
-        no.SetActive(true);
-        confirmText.SetActive(true);
+        back.SetActive(true);
+        for (int i = 0; i < mainButtons.Length; i++)
+        {
+            mainButtons[i].SetActive(false);
+        }
+        yes.SetActive(false);
+        //no.GetComponentInChildren<Text>().text = "Back";
+        no.SetActive(false);
+        //confirmText.SetActive(true);
     }
 
     public void QuitButton()
     {
+        for (int i = 0; i < mainButtons.Length; i++)
+        {
+            mainButtons[i].SetActive(false);
+        }
         cam.target = quitPosition;
         currentButton = 3;
+        back.SetActive(false);
         yes.SetActive(true);
+        //no.GetComponentInChildren<Text>().text = "No";
         no.SetActive(true);
         confirmText.SetActive(true);
     }
 
     public void ResetPosition()
     {
+        for (int i = 0; i < mainButtons.Length; i++)
+        {
+            mainButtons[i].SetActive(true);
+        }
+
         cam.target = startPosition;
         currentButton = 0;
+        back.SetActive(false);
         yes.SetActive(false);
+        //no.GetComponentInChildren<Text>().text = "No";
         no.SetActive(false);
         confirmText.SetActive(false);
+    }
+
+    public void BackFromHelp()
+    {
+        
+        cam.target = helpPosition;
+        StartCoroutine("ResetZoom");
+        currentButton = 0;
+        back.SetActive(false);
+        yes.SetActive(false);
+        //no.GetComponentInChildren<Text>().text = "No";
+        no.SetActive(false);
+        
     }
 
     public void YesButton()
@@ -64,7 +105,7 @@ public class MenuCam : MonoBehaviour
                 StartCoroutine("PlayScene");
                 break;
             case 2:
-                StartCoroutine("HelpScene");
+                //StartCoroutine("HelpScene");
                 break;
             case 3:
                 StartCoroutine("QuitGame");
@@ -89,5 +130,23 @@ public class MenuCam : MonoBehaviour
         Instantiate(screenFade);
         yield return new WaitForSeconds(sceneChangeDelay);
         menuControl.ToExitGame();
+    }
+
+    IEnumerator HelpZoom()
+    {
+        yield return new WaitForSeconds(1f);
+        cam.target = helpPosition2;
+    }
+
+    IEnumerator ResetZoom()
+    {
+        yield return new WaitForSeconds(1f);
+        cam.target = startPosition;
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < mainButtons.Length; i++)
+        {
+            mainButtons[i].SetActive(true);
+        }
+        confirmText.SetActive(false);
     }
 }
