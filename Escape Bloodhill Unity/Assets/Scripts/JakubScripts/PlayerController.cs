@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
     public float fadeInSpeed = 0.1f;
     private bool cursorDeactivated = false;
 
+    public bool suspendControls = false;
+
 
     
 
@@ -138,12 +140,17 @@ public class PlayerController : MonoBehaviour
         SetState(new PlayerIdle(this));
         StartCoroutine("RandomFlicker");
         Cursor.visible = false;
-        
+        suspendControls = false;
     }
 
     void Update()
     {
-        currentState.UpdateBehavior();
+        if (!suspendControls)
+        {
+            currentState.UpdateBehavior();
+        }
+
+        
 
         if (hp.currentHealth == 0 && !noGhost)
         {
@@ -182,9 +189,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        currentState.FixedUpdateBehavior();
-        currentState.WalkRythm();
-        HeartBeat();
+        if (!suspendControls)
+        {
+            currentState.FixedUpdateBehavior();
+            currentState.WalkRythm();
+            HeartBeat();
+        }
+
+        
+        
     }
 
     public void SetState(PlayerState newState)
@@ -521,10 +534,18 @@ public class PlayerController : MonoBehaviour
             breath.UnPause();
             breathPause = false;
         }
-        else if (Time.timeScale == 0f)
+        else if (Time.timeScale == 0f || suspendControls)
         {
             breath.Pause();
             breathPause = true;
+        }
+
+        if (suspendControls)
+        {
+            foreach (AudioSource sound in footsteps)
+            {
+                sound.Stop();
+            }
         }
     }
 

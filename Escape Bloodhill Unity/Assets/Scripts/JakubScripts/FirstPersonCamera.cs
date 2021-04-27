@@ -43,6 +43,10 @@ public class FirstPersonCamera : MonoBehaviour
 
     private bool inputReset = false;
 
+    private Camera mainCam;
+    public Camera flashCam;
+    public GameObject secondCam;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -55,6 +59,7 @@ public class FirstPersonCamera : MonoBehaviour
         ogMagnitude = walkBobMagnitude;
         ogSwayFactor = swayFactor;
         mouseVector = new Vector2(-90f, 0f);
+        mainCam = GetComponent<Camera>();
     }
 
     void Update()
@@ -77,7 +82,7 @@ public class FirstPersonCamera : MonoBehaviour
             inputReset = false;
         }
 
-        if (parent && parent.hp.currentHealth != 0)
+        if (parent && parent.hp.currentHealth != 0 && !parent.suspendControls)
         {
             if (parent)
             {
@@ -115,16 +120,23 @@ public class FirstPersonCamera : MonoBehaviour
                     (parent.transform.forward * farBackness);
             }
         }
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, lookSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
+        if (!parent.suspendControls)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPosition, lookSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
+        }
+        
     }
 
     public void Look()
     {
         if (parent)
         {
-            parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
+            if (!parent.suspendControls)
+            {
+                parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
+            }
+            
         }
     }
 
@@ -133,5 +145,12 @@ public class FirstPersonCamera : MonoBehaviour
         parent = player;
         targetPosition = new Vector3(parent.transform.position.x + 0.34f,
             parent.transform.position.y - 0.31f, parent.transform.position.z + 0.57f);
+    }
+
+    public void ChangeCam()
+    {
+        mainCam.enabled = false;
+        flashCam.enabled = false;
+        secondCam.SetActive(true);
     }
 }
