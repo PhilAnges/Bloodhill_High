@@ -29,12 +29,22 @@ public class GameController : MonoBehaviour
     public bool basementStarted = false;
 
     public bool paused = false;
+    private Transform spawnPoint;
+    private Vector3 safeSpawn;
+    public Transform firstSpawn;
+    private bool spawnMoved = false;
+    public bool moveRespawn;
 
     private void Start()
     {
         Time.timeScale = 1f;
+        spawnPoint = GameObject.Find("John's Programming Box").transform.Find("Safe Room").transform.Find("SpawnPoint").transform;
+        safeSpawn = spawnPoint.position;
+        if (moveRespawn)
+        {
+            spawnPoint.position = firstSpawn.position;
+        }
         
-
     }
 
     void Awake()
@@ -67,6 +77,11 @@ public class GameController : MonoBehaviour
         else
         {
             paused = false;
+        }
+        if (moveRespawn && basementPhase == 2 && !spawnMoved)
+        {
+            spawnPoint.position = safeSpawn;
+            spawnMoved = true;
         }
     }
 

@@ -6,9 +6,12 @@ public class TestJump : MonoBehaviour
 {
     private PlayerController script;
     private KillPlayer killbox;
-    public float waitTime = 3f;
+    public float fadeOutWaitTime = 3f;
+    public float timeToFadeOut = 3f;
     private AudioSource sound;
     private GameController gameController;
+
+    public GameObject clearScreen, blackScreen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,9 +41,12 @@ public class TestJump : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(waitTime);
-        //gameObject.AddComponent<KillPlayer>();
+        yield return new WaitForSeconds(fadeOutWaitTime);
+        Instantiate(clearScreen);
+        yield return new WaitForSeconds(timeToFadeOut);
+        Instantiate(blackScreen);
         script.hp.currentHealth = 0;
+        
 
 
     }

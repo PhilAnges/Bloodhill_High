@@ -182,7 +182,7 @@ public class FlashlightFollow : MonoBehaviour
         {
             if (!parentScript.parent.noGhost)
             {
-                //Debug.Log(hit.collider.gameObject);
+                Debug.Log(hit.collider.gameObject);
                 if (hit.collider.tag == "Enemy")
                 {
                     parentScript.parent.ghostScript.lit = true;

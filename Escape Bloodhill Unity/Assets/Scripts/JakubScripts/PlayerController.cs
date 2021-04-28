@@ -141,6 +141,8 @@ public class PlayerController : MonoBehaviour
         StartCoroutine("RandomFlicker");
         Cursor.visible = false;
         suspendControls = false;
+        Input.ResetInputAxes();
+        rigbod.velocity = Vector3.zero;
     }
 
     void Update()
@@ -234,7 +236,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(heart.transform.position, -transform.up * 1.25f, Color.red, 0.5f);
-        if (Physics.SphereCast(heart.transform.position, 0.1f, -transform.up, out hit, 1.25f, groundMask))
+        if (Physics.SphereCast(heart.transform.position, 0.2f, -transform.up, out hit, 1.25f, groundMask))
         {
             //Debug.Log("The normal for " + hit.transform.gameObject + "is " + hit.normal);
             airborn = false;
@@ -243,11 +245,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            moveDirection = new Vector3(moveDirection.x, -3f, moveDirection.z);
+            rigbod.velocity = moveDirection * moveSpeed * Time.deltaTime;
             airborn = true;
         }
         
         Debug.DrawRay(transform.position, moveDirection * 2f, Color.green, 0.5f);
     }
+
+
 
     public void DrainStamina(bool drain)
     {
