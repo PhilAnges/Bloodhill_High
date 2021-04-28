@@ -930,7 +930,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce77646cd9ec4c84c9f344381eb3dc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0.5
+  fadeOutWaitTime: 0.5
+  timeToFadeOut: 3
+  clearScreen: {fileID: 253970753570762922, guid: 7bf5bc52958d232438294265cfc794ae,
+    type: 3}
+  blackScreen: {fileID: 253970753570762922, guid: 77fee475c7884ef449e1333e94b42ddd,
+    type: 3}
 --- !u!82 &4747956908984093338
 AudioSource:
   m_ObjectHideFlags: 0
