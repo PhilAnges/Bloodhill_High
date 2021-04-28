@@ -22,7 +22,7 @@ public class PlayerWalk : PlayerState
 
     public override void EntryBehavior()
     {
-        Debug.Log("Entering Walk State");
+        //Debug.Log("Entering Walk State");
         parent.staminaRegenRate *= parent.staminaRegenMultiplier;
         parent.stepInterval = parent.ogstepInterval;
         rythmTimer = parent.stepInterval * 2;
