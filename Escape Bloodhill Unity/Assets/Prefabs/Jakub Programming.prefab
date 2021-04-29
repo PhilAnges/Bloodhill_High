@@ -1305,7 +1305,7 @@ MonoBehaviour:
   basementStarted: 0
   paused: 0
   firstSpawn: {fileID: 2712963044940460924}
-  moveRespawn: 0
+  moveRespawn: 1
 --- !u!82 &8113134162635765375
 AudioSource:
   m_ObjectHideFlags: 0
