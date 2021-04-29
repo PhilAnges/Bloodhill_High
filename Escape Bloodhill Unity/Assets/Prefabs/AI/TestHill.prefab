@@ -818,7 +818,7 @@ MonoBehaviour:
   lit: 0
   readyToMove: 1
   animator: {fileID: 0}
-  particleEffect: {fileID: 916548993472448629, guid: d83819d6bb7584942b14897b7260706f,
+  particleEffect: {fileID: 916548993472448629, guid: ca1a5aba4a326514bbee41d3fe58399c,
     type: 3}
   body: {fileID: 0}
 --- !u!195 &8017519051976634662

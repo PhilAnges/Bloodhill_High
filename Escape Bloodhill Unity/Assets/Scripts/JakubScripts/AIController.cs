@@ -94,6 +94,7 @@ public class AIController : MonoBehaviour
     public GameObject particleEffect;
 
     public SkinnedMeshRenderer body;
+    public bool suspendSenses = false;
 
 
     void Awake()
@@ -134,9 +135,9 @@ public class AIController : MonoBehaviour
     {
         RaycastHit hit, hat;
 
-        if (player && !gotPlayer && !gameController.playerIsSafe)
+        if (player && !gotPlayer && !gameController.playerIsSafe && !suspendSenses)
         {
-            Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+            //Vector3 lookTarget = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
             Debug.DrawRay(spherePos.position, transform.forward * maxViewDistance, Color.red, 0.5f);
             if (Physics.SphereCast(spherePos.position, fieldOfView, transform.forward, out hit, maxViewDistance, playerMask))
@@ -176,6 +177,7 @@ public class AIController : MonoBehaviour
             hearingRange.inRange = false;
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             gotPlayer = false;
+            aware = false;
         }
     }
 
@@ -213,12 +215,15 @@ public class AIController : MonoBehaviour
 
     public void Teleport(Vector3 targetLocation)
     {
+        suspendSenses = true;
         navAgent.SetDestination(targetLocation);
         Instantiate(particleEffect, transform.position, Quaternion.identity);
         StartCoroutine("TempHide", targetLocation);
         //navAgent.updateRotation = false;
         navAgent.Warp(targetLocation);
         transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        lit = false;
+        suspendSenses = false;
         //navAgent.updateRotation = true;
     }
 
@@ -305,5 +310,7 @@ public class AIController : MonoBehaviour
         StartCoroutine("PathWait", waitTime);
     }
 
-    
+
+
+
 }
