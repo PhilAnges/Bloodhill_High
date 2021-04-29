@@ -181,7 +181,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 2800000, guid: d6be5c53132e5f84184c852bebb7c0a3, type: 3}
+  m_Cookie: {fileID: 2800000, guid: 38264cc5207300542a10660ec071a6e7, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
