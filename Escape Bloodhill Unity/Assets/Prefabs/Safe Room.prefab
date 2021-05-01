@@ -106,7 +106,9 @@ GameObject:
   - component: {fileID: 4936034679822718361}
   - component: {fileID: 4936034679822718365}
   - component: {fileID: 4936034679822718364}
-  m_Layer: 0
+  - component: {fileID: 5346412557887140374}
+  - component: {fileID: 4621643273097288019}
+  m_Layer: 2
   m_Name: Safe Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +222,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allItems: []
   itemsInSaferoom: []
+--- !u!65 &5346412557887140374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936034679822718362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5547164, y: 1, z: 0.4869857}
+  m_Center: {x: 6.407443, y: 0, z: -1.8423094}
+--- !u!65 &4621643273097288019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936034679822718362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51946235, y: 1, z: 0.61950475}
+  m_Center: {x: -2.5378594, y: 0, z: -1.9503158}
 --- !u!1 &4936034681428996146
 GameObject:
   m_ObjectHideFlags: 0
