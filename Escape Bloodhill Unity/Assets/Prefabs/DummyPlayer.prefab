@@ -482,6 +482,7 @@ MonoBehaviour:
   breath: {fileID: 639151066404641555}
   breath2: {fileID: 4802982786859294211}
   fadeInSpeed: 0.5
+  suspendControls: 0
 --- !u!81 &3187912927524468353
 AudioListener:
   m_ObjectHideFlags: 0
@@ -519,6 +520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playAudio: 0
   inventory:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
