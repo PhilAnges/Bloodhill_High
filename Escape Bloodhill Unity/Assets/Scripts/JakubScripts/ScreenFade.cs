@@ -14,6 +14,8 @@ public class ScreenFade : MonoBehaviour
 
     public bool fadeIn = false;
 
+    public Image blackFix;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +46,21 @@ public class ScreenFade : MonoBehaviour
             }
 
             blackScreen.color = Color.Lerp(blackScreen.color, targetColor, fadeInterval * Time.deltaTime);
+        }
 
-            
+        if (fadeIn && blackScreen.color.a >= 0.99f)
+        {
+            blackFix.gameObject.SetActive(true);
         }
     }
 
     IEnumerator UnFade()
     {
+        if (fadeIn && alpha >= 0.5f)
+        {
+            
+        }
+
         if (alpha > 0)
         {
             alpha -= fadeAmount;
@@ -60,6 +70,7 @@ public class ScreenFade : MonoBehaviour
         }
         else
         {
+            
             //Destroy(this.gameObject);
             StopCoroutine("UnFade");
         }
