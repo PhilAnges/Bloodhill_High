@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187770753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1000, z: 0}
+  m_LocalPosition: {x: 0, y: -1200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 377955521}
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: {fileID: 187770753}
-  creditsOver: 45
+  creditsOver: 52
   multiplier: 1
   target: {x: 0, y: 0, z: 0}
   mainMenu: MenuScene
@@ -653,7 +653,7 @@ MonoBehaviour:
   initialDelay: 1
   musicStartTime: 0
   titleStartTime: 3.3
-  titleFadeInTime: 10
+  titleFadeInTime: 6
   titleFadeOutTime: 0
   titleStayTime: 3
   creditController: {fileID: 1023666626}
