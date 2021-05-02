@@ -19,7 +19,7 @@ public class SafeRoom : MonoBehaviour
     void Start()
     {
         isIn = false;
-        storage = new GameObject[10];
+        storage = new GameObject[11];
         gameOverScreen = player.gameObject.GetComponent<PlayerHealth>().gameOverMenu;
     }
 
