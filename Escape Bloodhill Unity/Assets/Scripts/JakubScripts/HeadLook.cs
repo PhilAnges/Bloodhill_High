@@ -9,15 +9,19 @@ public class HeadLook : MonoBehaviour
 
     void LateUpdate()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Vector3 targetPosition = new Vector3(player.position.x, player.position.y + 1f, player.position.z);
-        //transform.LookAt(targetPosition, transform.up);
-
-        if (parent.aware)
+        if (parent.player)
         {
-            transform.LookAt(targetPosition, transform.up);
+            player = parent.player.transform;
+            Vector3 targetPosition = new Vector3(player.position.x, player.position.y + 1f, player.position.z);
+
+            if (parent.aware)
+            {
+                transform.LookAt(targetPosition, transform.up);
+            }
         }
+        
 
     }
 }
