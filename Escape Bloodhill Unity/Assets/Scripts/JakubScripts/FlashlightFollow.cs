@@ -41,10 +41,8 @@ public class FlashlightFollow : MonoBehaviour
     public float runTilt;
     public float crouchTilt;
 
+    public Texture2D flashLight, keyLight;
 
-
-
-    // Start is called before the first frame update
     void Awake()
     {
         lights = GetComponentsInChildren<Light>();
@@ -52,9 +50,7 @@ public class FlashlightFollow : MonoBehaviour
         switchModel = transform.GetChild(0).GetComponent<MeshRenderer>();
         offPosition = switchModel.transform.localPosition;
         onPosition = transform.GetChild(2).localPosition;
-        //switchClickOn = GetComponent<AudioSource>();
         lightSource = transform.GetChild(1);
-        //centerPosition = transform.localPosition;
         centerRotation = transform.localEulerAngles;
         centerPosition = new Vector3(0.261f, -0.285f, 0.398f);
     }
@@ -124,23 +120,16 @@ public class FlashlightFollow : MonoBehaviour
 
         targetPosition += (transform.forward * bobHeight);
         targetPosition += (Vector3.forward * moveDepth);
-
-
-        //Debug.Log(targetPosition);
     }
 
     void LateUpdate()
     {
         if (parent != null)
         {
-            //targetPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z) + (parent.transform.right * 0.25f) - (parent.transform.forward * -0.4f) - (parent.transform.up * 0.3f);
-            //transform.position = Vector3.Lerp(transform.position, targetPosition, 40f * Time.deltaTime);
-            //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 0.05f);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(90 + moveTilt, 0, 0), 4f * Time.deltaTime);
-            //transform.localPosition = targetPosition;
-            //transform.rotation = parent.transform.rotation * Quaternion.Euler(90, 0, 0);
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, 4f * Time.deltaTime);
-        }   
+        }
+
     }
 
     public void SetParent(Transform newParent)

@@ -64,7 +64,21 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
+        if (mainCam.enabled == false)
+        {
+            foreach (Light light in child.lights)
+            {
+                light.cookie = child.keyLight;
+            }
+        }
+        else
+        {
 
+            foreach (Light light in child.lights)
+            {
+                light.cookie = child.flashLight;
+            }
+        }
     }
 
     private void FixedUpdate()
