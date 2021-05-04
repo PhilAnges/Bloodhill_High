@@ -31,7 +31,7 @@ public class JournalMenuControl : MonoBehaviour
             rightButton.SetActive(true);
             descriptionBox.GetComponent<RawImage>().texture = journalStart;
         }
-        if(entry == (journalEntries.Count - 1))
+        if((entry != 0) && (entry == (journalEntries.Count - 1)))
         {
             leftButton.SetActive(true);
             rightButton.SetActive(false);

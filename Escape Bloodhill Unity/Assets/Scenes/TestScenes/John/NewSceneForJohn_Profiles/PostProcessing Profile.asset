@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   mode:
     overrideState: 1
     value: 0
@@ -67,13 +67,13 @@ MonoBehaviour:
     value: 1
   smoothness:
     overrideState: 1
-    value: 0.2
+    value: 0.388
   roundness:
     overrideState: 1
     value: 1
   rounded:
     overrideState: 1
-    value: 1
+    value: 0
   mask:
     overrideState: 1
     value: {fileID: 0}
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
