@@ -64,6 +64,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
+
+
         if (mainCam.enabled == false)
         {
             foreach (Light light in child.lights)
@@ -89,16 +91,17 @@ public class FirstPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
         Vector2 lookChange = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
-        if (inputReset)
+        
+        if (Cursor.lockState != CursorLockMode.Locked && inputReset)
         {
+            Input.ResetInputAxes();
             lookChange = Vector2.zero;
             inputReset = false;
         }
 
         if (parent && parent.hp.currentHealth != 0 && !parent.suspendControls)
         {
-            if (parent)
+            if (parent && Cursor.lockState == CursorLockMode.Locked)
             {
                 mouseVector += lookChange;
                 mouseVector = new Vector2(mouseVector.x, Mathf.Clamp(mouseVector.y, -44, 60));
@@ -148,6 +151,7 @@ public class FirstPersonCamera : MonoBehaviour
         {
             if (!parent.suspendControls)
             {
+
                 parent.transform.localRotation = Quaternion.AngleAxis(mouseVector.x, Vector3.up);
             }
             
