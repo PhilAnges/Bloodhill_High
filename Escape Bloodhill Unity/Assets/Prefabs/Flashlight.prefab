@@ -325,6 +325,8 @@ MonoBehaviour:
   walkTilt: 2.5
   runTilt: 20
   crouchTilt: 7
+  flashLight: {fileID: 2800000, guid: 38264cc5207300542a10660ec071a6e7, type: 3}
+  keyLight: {fileID: 2800000, guid: 46dc7771e91308f4fbb51794d17c93e3, type: 3}
 --- !u!82 &4658211366951337486
 AudioSource:
   m_ObjectHideFlags: 0
