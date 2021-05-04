@@ -221,7 +221,16 @@ public class AIController : MonoBehaviour
         StartCoroutine("TempHide", targetLocation);
         //navAgent.updateRotation = false;
         navAgent.Warp(targetLocation);
-        transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        //transform.rotation = targetRotation;
+        if (gameController.basementPhase == 6)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        }
+        
         lit = false;
         suspendSenses = false;
         //navAgent.updateRotation = true;
