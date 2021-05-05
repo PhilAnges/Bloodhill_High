@@ -38,8 +38,16 @@ public class AIState
     {
         if (parent.aware && parent.awareness < parent.maxAwareness)
         {
-            parent.awareness += Time.deltaTime;
-            parent.playerLostTime = 0f;
+            if (parent.gameController.basementPhase == 6)
+            {
+                parent.awareness += Time.deltaTime * 3f;
+                parent.playerLostTime = 0f;
+            }
+            else
+            {
+                parent.awareness += Time.deltaTime;
+                parent.playerLostTime = 0f;
+            }
         }
         else if (parent.playerLostTime < parent.timeToLosePlayer)
         {
