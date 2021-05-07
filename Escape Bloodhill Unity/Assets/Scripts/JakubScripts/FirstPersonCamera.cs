@@ -46,6 +46,9 @@ public class FirstPersonCamera : MonoBehaviour
     private Camera mainCam;
     public Camera flashCam;
     public GameObject secondCam;
+    public Transform noKeyHole;
+    public float keyDistance;
+    public bool testBool = false;
 
     void Awake()
     {
@@ -60,13 +63,14 @@ public class FirstPersonCamera : MonoBehaviour
         ogSwayFactor = swayFactor;
         mouseVector = new Vector2(-90f, 0f);
         mainCam = GetComponent<Camera>();
+        noKeyHole = GameObject.Find("Jakub Programming").transform.Find("NoKeyHole");
     }
 
     void Update()
     {
+        keyDistance =  Vector3.Distance(transform.position, noKeyHole.position);
 
-
-        if (mainCam.enabled == false)
+        if (mainCam.enabled == false && keyDistance > 4)
         {
             foreach (Light light in child.lights)
             {
