@@ -68,15 +68,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
-         keyDistance =  Vector3.Distance(transform.position, noKeyHole.position);
-        if (keyDistance < 4)
-        {
-            testBool = true;
-        }
-        else
-        {
-            testBool = false;
-        }
+        keyDistance =  Vector3.Distance(transform.position, noKeyHole.position);
+
         if (mainCam.enabled == false && keyDistance > 4)
         {
             foreach (Light light in child.lights)
